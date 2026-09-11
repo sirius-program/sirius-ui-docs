@@ -100,7 +100,7 @@ class Security extends Component
         try {
             $validated = $this->validate([
                 'current_password' => $this->currentPasswordRules(),
-                'password' => $this->passwordRules(),
+                'password'         => $this->passwordRules(),
             ]);
         } catch (ValidationException $e) {
             $this->reset('current_password', 'password', 'password_confirmation');
@@ -126,11 +126,11 @@ class Security extends Component
             ->select(['id', 'name', 'credential', 'created_at', 'last_used_at'])
             ->latest()
             ->get()
-            ->map(fn ($passkey) => [
-                'id' => $passkey->id,
-                'name' => $passkey->name,
-                'authenticator' => $passkey->authenticator,
-                'created_at_diff' => $passkey->created_at->diffForHumans(),
+            ->map(fn ($passkey): array => [
+                'id'                => $passkey->id,
+                'name'              => $passkey->name,
+                'authenticator'     => $passkey->authenticator,
+                'created_at_diff'   => $passkey->created_at->diffForHumans(),
                 'last_used_at_diff' => $passkey->last_used_at?->diffForHumans(),
             ])
             ->all();
@@ -153,7 +153,7 @@ class Security extends Component
      */
     public function deletePasskey(DeletePasskey $deletePasskey): void
     {
-        if (! $this->deletingPasskeyId) {
+        if (!$this->deletingPasskeyId) {
             return;
         }
 
@@ -183,7 +183,7 @@ class Security extends Component
     {
         $enableTwoFactorAuthentication(auth()->user());
 
-        if (! $this->requiresConfirmation) {
+        if (!$this->requiresConfirmation) {
             $this->twoFactorEnabled = auth()->user()->hasEnabledTwoFactorAuthentication();
         }
 
@@ -274,7 +274,7 @@ class Security extends Component
 
         $this->resetErrorBag();
 
-        if (! $this->requiresConfirmation) {
+        if (!$this->requiresConfirmation) {
             $this->twoFactorEnabled = auth()->user()->hasEnabledTwoFactorAuthentication();
         }
     }
@@ -289,24 +289,24 @@ class Security extends Component
     {
         if ($this->twoFactorEnabled) {
             return [
-                'title' => __('Two-factor authentication enabled'),
+                'title'       => __('Two-factor authentication enabled'),
                 'description' => __('Two-factor authentication is now enabled. Scan the QR code or enter the setup key in your authenticator app.'),
-                'buttonText' => __('Close'),
+                'buttonText'  => __('Close'),
             ];
         }
 
         if ($this->showVerificationStep) {
             return [
-                'title' => __('Verify authentication code'),
+                'title'       => __('Verify authentication code'),
                 'description' => __('Enter the 6-digit code from your authenticator app.'),
-                'buttonText' => __('Continue'),
+                'buttonText'  => __('Continue'),
             ];
         }
 
         return [
-            'title' => __('Enable two-factor authentication'),
+            'title'       => __('Enable two-factor authentication'),
             'description' => __('To finish enabling two-factor authentication, scan the QR code or enter the setup key in your authenticator app.'),
-            'buttonText' => __('Continue'),
+            'buttonText'  => __('Continue'),
         ];
     }
 }

@@ -71,7 +71,7 @@ class Profile extends Component
     {
         $user = Auth::user();
 
-        return $user instanceof MustVerifyEmail && ! $user->hasVerifiedEmail();
+        return $user instanceof MustVerifyEmail && !$user->hasVerifiedEmail();
     }
 
     #[Computed]
@@ -79,6 +79,6 @@ class Profile extends Component
     {
         $user = Auth::user();
 
-        return ! $user instanceof MustVerifyEmail || $user->hasVerifiedEmail();
+        return !$user instanceof MustVerifyEmail || $user->hasVerifiedEmail();
     }
 }
