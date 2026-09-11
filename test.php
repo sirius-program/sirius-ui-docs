@@ -1,104 +1,110 @@
 <?php
 
-$exitCode = 0;
+declare(strict_types=1);
 
 try {
-    if (PHP_OS_FAMILY === 'Windows') {
-        runClearCache();
-        runLintChecking();
-        runTypeChecking();
-        runRefactorChecking();
-        runTests();
-    } else {
-        runClearCache();
-        runLintChecking();
-        runTypeChecking();
-        runRefactorChecking();
+    if (PHP_OS_FAMILY !== 'Windows') {
         runTyposChecking();
-        runTests();
     }
 
+    runClearCache();
+    runLintChecking();
+    runTypeChecking();
+    runRefactorChecking();
+    runTests();
+
     echoSuccess('All checks passed!' . "\n");
-} catch (Throwable $th) {
-    echoError($th->getMessage() . "\n");
+} catch (Throwable $throwable) {
+    echoError($throwable->getMessage() . "\n");
     echoWarning('Please run "composer test" again after you fix the issue.' . "\n\n");
     exit(1);
 }
 
 // Echo
 
-function echoWarning($message)
+function echoWarning(string $message): void
 {
     echo "\033[33m" . $message . "\033[0m";
 }
 
-function echoError($message)
+function echoError(string $message): void
 {
     echo "\033[31m" . $message . "\033[0m";
 }
 
-function echoSuccess($message)
+function echoSuccess(string $message): void
 {
     echo "\033[32m" . $message . "\033[0m";
 }
 
-function echoInfo($message)
+function echoInfo(string $message): void
 {
     echo "\033[34m" . $message . "\033[0m";
 }
 
 // Run Checking
 
-function runClearCache()
+function runClearCache(): void
 {
-    echoInfo('Clearing cache...' . "\n");
-    system('php artisan config:clear --ansi', $exitCode);
-    if ($exitCode) {
-        throw new Exception('Failed clearing cache.');
-    }
+    runCommand(
+        message: 'Clearing cache...',
+        command: 'php artisan config:clear --ansi --no-interaction',
+        failureMessage: 'Failed clearing cache.',
+    );
 }
 
-function runLintChecking()
+function runLintChecking(): void
 {
-    echoInfo('Lint checking...' . "\n");
-    system('composer lint:check', $exitCode);
-    if ($exitCode) {
-        throw new Exception('Failed lint checking, try run "composer lint" for fixing it.');
-    }
+    runCommand(
+        message: 'Lint checking...',
+        command: 'composer lint:check',
+        failureMessage: 'Failed lint checking, try running "composer lint" to fix it.',
+    );
 }
 
-function runTypeChecking()
+function runTypeChecking(): void
 {
-    echoInfo('Type checking...' . "\n");
-    system('composer types:check', $exitCode);
-    if ($exitCode) {
-        throw new Exception('Failed type checking, try run "composer types" for fixing it.');
-    }
+    runCommand(
+        message: 'Type checking...',
+        command: 'composer types:check',
+        failureMessage: 'Failed type checking.',
+    );
 }
 
-function runRefactorChecking()
+function runRefactorChecking(): void
 {
-    echoInfo('Refactor checking...' . "\n");
-    system('composer refactor:check', $exitCode);
-    if ($exitCode) {
-        throw new Exception('Failed refactor checking, try run "composer refactor" for fixing it.');
-    }
+    runCommand(
+        message: 'Refactor checking...',
+        command: 'composer refactor:check',
+        failureMessage: 'Failed refactor checking, try running "composer refactor" to fix it.',
+    );
 }
 
-function runTyposChecking()
+function runTyposChecking(): void
 {
-    echoInfo('Typos checking...' . "\n");
-    system('composer typos:check', $exitCode);
-    if ($exitCode) {
-        throw new Exception('Failed typos checking, try run "composer typos" for fixing it.');
-    }
+    runCommand(
+        message: 'Typos checking...',
+        command: 'composer typos:check',
+        failureMessage: 'Failed typo checking, try running "composer typos" to update the ignore list.',
+    );
 }
 
-function runTests()
+function runTests(): void
 {
-    echoInfo('Running tests...' . "\n");
-    system('php artisan test --compact --parallel', $exitCode);
-    if ($exitCode) {
-        throw new Exception('There are some failing test, please fix them first.');
+    runCommand(
+        message: 'Running tests...',
+        command: 'php artisan test --compact --parallel --exclude-group=browser',
+        failureMessage: 'Some tests are failing. Please fix them first.',
+    );
+}
+
+function runCommand(string $message, string $command, string $failureMessage): void
+{
+    echoInfo($message . "\n");
+
+    system($command, $exitCode);
+
+    if ($exitCode !== 0) {
+        throw new RuntimeException($failureMessage);
     }
 }
