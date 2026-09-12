@@ -1,6 +1,5 @@
 # Sirius UI Implementation Plan
 
-Status: Phases 0 and 1 completed on 2026-09-12 following the user's execution instructions. Phases 2–14 remain unstarted; await further implementation instructions.
 
 Package: `D:/Projects/sirius-ui`  
 Documentation and integration application: `D:/Projects/sirius-ui-docs`
@@ -333,7 +332,49 @@ Verification: package `composer test` passed (17 tests, 95 assertions), docs `co
 - [ ] Browser-test navigation, selecting month/year, keyboard operation, day actions, and Livewire updates.
 - [ ] Add calendar docs and complete the mandatory phase gate.
 
-## Phase 14 — Cross-component validation and release readiness
+## Phase 14 — AI agent skill for package consumers
+
+Prerequisite: complete all component phases through Phase 13 and their documentation. This skill teaches agents how to use the installed Sirius UI release in a consuming application; it must describe implemented APIs rather than planned features.
+
+### 14.1 Portable skill and supported agents
+
+- [ ] Create a portable `SKILL.md` entry point with a clear activation description and focused reference files. Keep the entry point concise and load component details only when relevant.
+- [ ] Target Codex and Claude Code initially. Verify their current project-local skill discovery and installation requirements during this phase; document tested agent versions and any differences. Claim support for other agents only after testing them.
+- [ ] Require Laravel Boost integration through its supported third-party package skill discovery. Ship the canonical entry point at `resources/boost/skills/sirius-ui-development/SKILL.md`, with valid `name` and `description` frontmatter and adjacent references. Include these files in the Composer distribution and verify the convention against the supported Boost version during implementation.
+- [ ] Ensure consumers can select and install the skill through `php artisan boost:install` and refresh it through `php artisan boost:update`. Verify the installed skill can be discovered, activated, and used by the selected agent; Boost installs/distributes the skill, while the agent executes its instructions. Keep standalone usage available without requiring Boost as a production dependency.
+
+### 14.2 Structure, component usage, and application boundaries
+
+- [ ] Explain package structure, configurable namespaces, configuration, assets, published resources, supported framework versions, and the distinction between package internals and consumer extension points.
+- [ ] Provide a component-selection guide and references for every shipped Blade and Livewire component, including props, slots, attributes, events, options, defaults, and supported customization points.
+- [ ] Include working ordinary Blade and Livewire examples covering bindings, validation/error bags, helper text, accessibility, stable IDs, reset, and widget lifecycle behavior.
+- [ ] Explain application-owned responsibilities for table queries, authorization, bulk actions, CSV export, calendar day actions, richtext sanitization, and uploads. Preserve CRUD controller design and the invocable-controller rule for single actions.
+- [ ] Cover local asset installation/builds, Tailwind tokens and themes, Blade Icons, troubleshooting, and relevant test commands. Use only the selected free dependency features.
+- [ ] Instruct agents to inspect the installed package version and configuration, prefer existing components, and avoid inventing APIs or editing `vendor`. Use documented publishing and extension mechanisms; never access `.env` directly or expose secrets.
+- [ ] Bundle version-matched references and examples with each package release so essential usage guidance works without access to the docs repository or a hosted website. Document how to refresh an installed skill after a package upgrade.
+
+### 14.3 Explicit installation and updates
+
+- [ ] Use the same canonical skill source for Boost and standalone installation. Provide an Artisan command to install or update project-local skill files for explicitly selected supported agents without Boost, plus documented manual installation instructions. Avoid duplicate skill names or conflicting ownership when Boost already manages the destination; direct users to the appropriate update mechanism.
+- [ ] Show destination paths and planned changes before applying them. Do not automatically write agent configuration or skill files during Composer installation or service-provider boot.
+- [ ] Make repeated installation idempotent. Track package-managed files, detect user modifications, and require explicit confirmation before replacing customized files. Non-interactive execution must preserve conflicts and report how to resolve them.
+- [ ] Restrict generated paths to the selected project-local skill destinations. Preserve unrelated skills and agent configuration, and provide a documented recovery/update procedure.
+- [ ] Extend applicable architecture checks for the console command and installer boundaries without coupling the package to a specific agent runtime.
+
+### 14.4 Verification and documentation
+
+- [ ] Test clean installation, repeated installation, upgrades, modified-file conflicts, non-interactive behavior, unsupported targets, destination containment, and inclusion of every referenced file in the distribution.
+- [ ] In an isolated consumer project with Sirius UI and a supported Laravel Boost version, verify package discovery, selection through `boost:install`, refresh through `boost:update`, and preservation/resolution of customizations according to the documented ownership rules. Check that every reference survives installation and upgrades; record tested Boost versions and commands.
+- [ ] Verify documented examples against the actual component APIs and execute representative examples in the docs app. Check reference links and stale API names as part of maintenance.
+- [ ] Evaluate skill discovery and representative consumer tasks in clean Codex and Claude Code projects: build a validated form, customize a theme, configure a scoped table, and handle a calendar action. Record outcomes and limitations; text-file validation alone is not evidence of agent compatibility.
+- [ ] Run representative agent tasks using the Boost-installed skill as well as the standalone path. Confirm activation loads Sirius UI instructions and produces working component usage; file presence alone does not satisfy Boost compatibility.
+- [ ] Add an AI Agent Skill docs page and navigation entry covering supported agents, installation, activation, updates, customization conflicts, troubleshooting, and version compatibility. Update the docs README while preserving the package README's minimal docs pointer.
+- [ ] Document the required Boost integration with copyable installation/update commands, agent activation examples, skill-selection guidance, and troubleshooting for an undiscovered or stale skill. Reference the [official third-party package skills documentation](https://github.com/laravel/docs/blob/13.x/boost.md#third-party-package-skills).
+- [ ] Complete the mandatory phase gate: run `composer test` in every changed project, then `composer test:browser` in docs after all project checks pass, and wait for completion.
+
+Acceptance: a consumer can install and refresh the bundled skill through Laravel Boost, and a tested agent can discover and activate that installed skill, understand the package structure, and produce working usage examples without relying on unpublished APIs or modifying vendor code. The standalone installation path must also work. Phase 14 is incomplete until both paths pass their integration checks.
+
+## Phase 15 — Cross-component validation and release readiness
 
 - [ ] Exercise representative forms combining label, helper, error, checkbox, radio, switch, currency, date, upload, richtext, and select inside a modal.
 - [ ] Verify repeated components, multiple instances, validation failures, form reset, conditional rendering, and Livewire navigation without state loss or leaked listeners.
@@ -341,6 +382,7 @@ Verification: package `composer test` passed (17 tests, 95 assertions), docs `co
 - [ ] Verify an ordinary Blade form and a Livewire form submit the documented canonical values, including disabled/readonly behavior.
 - [ ] Verify internal assets load with no runtime CDN requests and no duplicate Alpine/widget initialization.
 - [ ] Verify package distribution includes compiled assets and license notices; validate a clean docs installation against the local dependency instructions.
+- [ ] Verify the release also includes the version-matched AI agent skill and all references, and repeat a clean consumer installation using the documented skill setup.
 - [ ] Finish compatibility checks for the supported Laravel/PHP combinations and record limitations. Do not claim browser/OS support without evidence.
 - [ ] Audit docs navigation, prop tables, events, slots, options, examples, config instructions, and the minimal package README pointer.
 - [ ] Record a release checklist/changelog and any deferred work. Publishing or deploying is outside this plan unless separately requested.
@@ -353,7 +395,8 @@ For each phase, append its outcome here when it is actually executed:
 | Phase | Status | Changed projects | `composer test` results | Docs browser result | Evidence or blockers |
 | --- | --- | --- | --- | --- | --- |
 | 0 | Complete | Package and docs | Both passed: package 5 tests / 31 assertions; docs 6 tests / 21 assertions; lint, types, refactoring passed | Passed: 4 tests / 31 assertions | Both asset builds passed; isolated Laravel 12 suite passed (5 tests / 31 assertions); architecture negative control confirmed; npm/Composer audits passed. See PHASE_0.md. |
-| 1–14 | Not started | None | Not run for implementation | Not run for implementation | Awaiting further implementation instruction |
+| 1 | Complete | Package and docs | Both passed: package 17 tests / 95 assertions; docs 10 tests / 48 assertions; lint, types, refactoring passed | Passed: 8 tests / 59 assertions | Both asset builds passed; label and shared field docs completed. See PHASE_1.md. |
+| 2–15 | Not started | None | Not run for implementation | Not run for implementation | Awaiting further implementation instruction |
 
 Planning-document verification on 2026-09-12: only this Markdown file was added. In docs, `composer test` passed (Pint, PHPStan, Rector, and 1 existing test with 4 assertions), followed by `composer test:browser` passing (1 existing test with 2 assertions). These baseline checks do not validate unimplemented components or complete any phase. The package was unchanged, so its suite was not run for this documentation-only change.
 
