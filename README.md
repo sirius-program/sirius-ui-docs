@@ -14,7 +14,9 @@ The docs stylesheet imports `vendor/sirius/ui/dist/sirius.css`. Widget proofs us
 
 ## Navigation and component index
 
-Open `/components` through the **Sirius UI → Components** sidebar entry. No public components have shipped yet; Phase 1 introduces label and shared form behavior.
+Open `/components` through the **Sirius UI → Components** sidebar entry. Phase 1 provides **Label** at `/components/label` and **Form conventions** at `/components/forms`, with ordinary Blade submission and Livewire validation/reset examples.
+
+Use `<x-sirius::label>` for standalone labels and `<x-sirius::field>` to compose a native control with labels, helpers, validation messages, and accessible IDs. The field requires a stable unique ID; apply its scoped `$component->controlAttributes()` to the actual control. Inline and fieldset/legend layouts prepare the foundation for choice controls.
 
 Phase 2 includes text/number/password inputs, plain textarea, checkbox, radio, and switch. Their component pages will be added when implemented.
 
@@ -22,6 +24,7 @@ Development-only integration fixtures are available at `/development/integration
 
 - [Implementation checklist](IMPLEMENTATION_PLAN.md)
 - [Phase 0 architecture, dependency decisions, and evidence](PHASE_0.md)
+- [Phase 1 form foundation and verification](PHASE_1.md)
 - [Bundled dependency notices](public/third-party-notices.txt)
 
 ## Verification

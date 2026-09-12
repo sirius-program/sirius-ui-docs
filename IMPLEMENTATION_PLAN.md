@@ -1,11 +1,11 @@
 # Sirius UI Implementation Plan
 
-Status: Phase 0 completed on 2026-09-12 following the user instruction to execute Phase 0. Phases 1–14 remain unstarted; await further implementation instructions.
+Status: Phases 0 and 1 completed on 2026-09-12 following the user's execution instructions. Phases 2–14 remain unstarted; await further implementation instructions.
 
 Package: `D:/Projects/sirius-ui`  
 Documentation and integration application: `D:/Projects/sirius-ui-docs`
 
-Phase 0 checkboxes reflect executed work. The reusable phase gate remains an unchecked template; its Phase 0 outcome is recorded below. See PHASE_0.md for architecture boundaries, selected libraries, verification scope, and maintenance notes.
+Phase 0 and Phase 1 checkboxes reflect executed work. The reusable phase gate remains an unchecked template. See PHASE_0.md and PHASE_1.md for architecture boundaries, decisions, verification scope, and maintenance notes.
 
 ## 1. Agreed outcome and architecture
 
@@ -14,6 +14,7 @@ Deliver reusable Tailwind-styled Blade components and class-based Livewire compo
 - Preserve Laravel 12/13 and Livewire 4 support. Verify valid PHP/framework/Testbench combinations instead of assuming every advertised PHP version supports both Laravel majors.
 - Preserve the existing configurable Blade and Livewire namespaces, defaulting to `sirius`.
 - Keep anonymous Blade components in `resources/views/components`, Livewire classes in `src/Livewire`, their views in `resources/views/livewire`, and JavaScript source in `resources/js`.
+- Permit narrowly scoped class-backed Blade adapters in `src/View/Components` when scoped methods are necessary. Phase 1's `Field` computes one control attribute bag for both the caller's slot and the surrounding layout; `label` remains anonymous. Architecture tests require these adapters to extend Laravel's component base and prohibit database dependencies.
 - Extract focused PHP helpers and JS adapters only when they remove real duplication or establish a necessary integration boundary. Avoid a generic repository/service layer for presentation components.
 - Make Blade components work on ordinary Blade pages and inside Livewire. Livewire remains a package dependency; ordinary Blade usage must not require wrapping every input in a Livewire component.
 - Preserve existing `sir-` styling and `--sir-` token conventions; support responsive layouts, light/dark themes, keyboard navigation, and visible focus.
@@ -23,6 +24,7 @@ Deliver reusable Tailwind-styled Blade components and class-based Livewire compo
 
 ## 2. Standing constraints
 
+- Route request-handling logic through controllers, never inline route closures. Design controllers around resources and Laravel's standard CRUD actions (`index`, `create`, `store`, `show`, `edit`, `update`, `destroy`). When a controller needs only one action, use `__invoke()`. Model additional operations as focused resources rather than accumulating custom action methods.
 - Never read, print, or directly modify `.env`. Application code reads configuration via `config()`. If a selected library requires a key, ask the user to set it in `.env`, expose it through an appropriate config entry, and never expose server secrets to the browser.
 - Use free library features with a license compatible with redistribution in this package. Record exact versions, licenses, required notices, and maintenance rationale before selecting a dependency.
 - Bundle third-party JavaScript, styles, fonts, and related assets internally. No runtime CDN dependency. Preserve license notices; do not manually modify vendor source.
@@ -134,13 +136,15 @@ Acceptance: architecture tests exist and pass before Phase 1; docs consumes the 
 
 ## Phase 1 — Shared form foundation and label
 
-- [ ] Implement label, required marker, shared field layout, helper, and error rendering.
-- [ ] Implement stable field/helper/error IDs, error-key resolution, and attribute routing.
-- [ ] Ensure the shared field layout supports labels beside checkbox/radio/switch controls and accessible group labels with shared helper/error associations.
-- [ ] Establish size, spacing, focus, invalid, disabled, readonly, light/dark, and responsive styles through shared tokens.
-- [ ] Test required true/false, escaped text, named error bags, nested names, helper/error coexistence, explicit IDs, and multiple controls.
-- [ ] Add label and form-conventions docs pages with native Blade and Livewire validation examples.
-- [ ] Complete the mandatory phase gate.
+- [x] Implement label, required marker, shared field layout, helper, and error rendering.
+- [x] Implement stable field/helper/error IDs, error-key resolution, and attribute routing.
+- [x] Ensure the shared field layout supports labels beside checkbox/radio/switch controls and accessible group labels with shared helper/error associations.
+- [x] Establish size, spacing, focus, invalid, disabled, readonly, light/dark, and responsive styles through shared tokens.
+- [x] Test required true/false, escaped text, named error bags, nested names, helper/error coexistence, explicit IDs, and multiple controls.
+- [x] Add label and form-conventions docs pages with native Blade and Livewire validation examples.
+- [x] Complete the mandatory phase gate.
+
+Verification: package `composer test` passed (17 tests, 95 assertions), docs `composer test` passed (10 tests, 48 assertions), then docs `composer test:browser` passed (8 tests, 59 assertions). Both asset builds passed. See PHASE_1.md for the composition contract and architecture refinement.
 
 ## Phase 2 — Basic inputs, textarea, checkbox, radio, and switch
 

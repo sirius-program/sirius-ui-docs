@@ -13,8 +13,9 @@ it('discovers the local package and renders its icon dependency', function (): v
         ->toContain('<svg', 'Show password');
 });
 
-it('provides component navigation without advertising unimplemented components', function (): void {
+it('provides navigation for completed components and identifies upcoming inputs', function (): void {
     $this->get(route('components.index'))
         ->assertSee('Sirius UI components')
-        ->assertSee('No public components have shipped yet.');
+        ->assertSee('Form conventions')
+        ->assertSee('scheduled for Phase 2');
 });

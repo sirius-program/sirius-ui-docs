@@ -8,7 +8,11 @@
         </section>
         <section class="rounded-xl border border-zinc-200 p-6 dark:border-zinc-700">
             <h2 class="text-lg font-medium">Component index</h2>
-            <p class="mt-2">No public components have shipped yet. Label and shared form behavior are scheduled for Phase 1.</p>
+            <ul class="mt-3 space-y-3">
+                <li><a class="underline" href="{{ route('components.label') }}" wire:navigate>Label</a> — accessible labels and required markers.</li>
+                <li><a class="underline" href="{{ route('components.forms') }}" wire:navigate>Form conventions</a> — shared field layout, helper text, validation errors, and native attributes.</li>
+            </ul>
+            <p class="mt-4">Typed inputs, textarea, checkbox, radio, and switch are scheduled for Phase 2.</p>
         </section>
     </div>
 </x-layouts::app>

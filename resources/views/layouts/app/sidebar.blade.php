@@ -17,9 +17,11 @@
                     </flux:sidebar.item>
                 </flux:sidebar.group>
                 <flux:sidebar.group :heading="__('Sirius UI')" class="grid">
-                    <flux:sidebar.item :href="route('components.index')" :current="request()->routeIs('components.*')" wire:navigate>
+                    <flux:sidebar.item :href="route('components.index')" :current="request()->routeIs('components.index')" wire:navigate>
                         {{ __('Components') }}
                     </flux:sidebar.item>
+                    <flux:sidebar.item :href="route('components.label')" :current="request()->routeIs('components.label')" wire:navigate>Label</flux:sidebar.item>
+                    <flux:sidebar.item :href="route('components.forms')" :current="request()->routeIs('components.forms')" wire:navigate>Form conventions</flux:sidebar.item>
                 </flux:sidebar.group>
             </flux:sidebar.nav>
         </flux:sidebar>

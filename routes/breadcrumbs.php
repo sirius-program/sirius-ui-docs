@@ -19,6 +19,16 @@ Breadcrumbs::for('components.index', function (BreadcrumbTrail $trail): void {
     $trail->push(__('Components'), route('components.index'));
 });
 
+Breadcrumbs::for('components.label', function (BreadcrumbTrail $trail): void {
+    $trail->parent('components.index');
+    $trail->push(__('Label'), route('components.label'));
+});
+
+Breadcrumbs::for('components.forms', function (BreadcrumbTrail $trail): void {
+    $trail->parent('components.index');
+    $trail->push(__('Form conventions'), route('components.forms'));
+});
+
 Breadcrumbs::for('settings', function (BreadcrumbTrail $trail): void {
     $trail->parent('home');
     $trail->push(__('Settings'), route('appearance.edit'));
