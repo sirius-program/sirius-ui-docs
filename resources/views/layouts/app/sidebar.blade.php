@@ -16,6 +16,11 @@
                         {{ __('Dashboard') }}
                     </flux:sidebar.item>
                 </flux:sidebar.group>
+                <flux:sidebar.group :heading="__('Sirius UI')" class="grid">
+                    <flux:sidebar.item :href="route('components.index')" :current="request()->routeIs('components.*')" wire:navigate>
+                        {{ __('Components') }}
+                    </flux:sidebar.item>
+                </flux:sidebar.group>
             </flux:sidebar.nav>
         </flux:sidebar>
 

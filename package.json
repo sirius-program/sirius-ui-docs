@@ -3,7 +3,7 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "build": "vp build",
+        "build": "node scripts/build-notices.mjs && vp build",
         "dev": "vp dev"
     },
     "dependencies": {
@@ -20,5 +20,12 @@
         "@rollup/rollup-linux-x64-gnu": "4.9.5",
         "@tailwindcss/oxide-linux-x64-gnu": "^4.0.1",
         "lightningcss-linux-x64-gnu": "^1.29.1"
+    },
+    "devDependencies": {
+        "@tiptap/core": "3.31.3",
+        "@tiptap/starter-kit": "3.31.3",
+        "filepond": "4.32.12",
+        "flatpickr": "4.6.13",
+        "tom-select": "2.6.2"
     }
 }

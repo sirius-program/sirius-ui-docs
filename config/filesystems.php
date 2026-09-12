@@ -32,6 +32,12 @@ return [
 
     'disks' => [
 
+        'browser-uploads' => [
+            'driver' => 'local',
+            'root'   => env('SIRIUS_TEST_UPLOAD_ROOT', storage_path('framework/testing/uploads')),
+            'throw'  => true,
+        ],
+
         'local' => [
             'driver' => 'local',
             'root'   => storage_path('app/private'),

@@ -14,6 +14,11 @@ Breadcrumbs::for('dashboard', function (BreadcrumbTrail $trail): void {
     $trail->push(__('Dashboard'), route('dashboard'));
 });
 
+Breadcrumbs::for('components.index', function (BreadcrumbTrail $trail): void {
+    $trail->parent('home');
+    $trail->push(__('Components'), route('components.index'));
+});
+
 Breadcrumbs::for('settings', function (BreadcrumbTrail $trail): void {
     $trail->parent('home');
     $trail->push(__('Settings'), route('appearance.edit'));
