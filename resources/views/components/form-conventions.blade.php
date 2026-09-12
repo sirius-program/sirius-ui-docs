@@ -29,7 +29,7 @@
     helper="We will keep it private." required wire:model="email"&gt;
     &lt;input type="email" {{ $component-&gt;controlAttributes() }}&gt;
 &lt;/x-sirius::field&gt;@endverbatim</code></pre>
-            <p><code>field</code> is the low-level composition API. Apply its scoped <code>$component->controlAttributes()</code> bag exactly once to the native control. Future input components will encapsulate this composition.</p>
+            <p><code>field</code> is the low-level composition API. Apply its scoped <code>$component->controlAttributes()</code> bag exactly once to the native control. The input, textarea, checkbox, radio, and switch components encapsulate this composition for you.</p>
             <p>Supply an explicit, stable, unique <code>id</code>, including a record key for repeated fields. Invoke this method directly inside the field slot: nested Blade components change the scoped <code>$component</code>.</p>
         </section>
         <section class="space-y-4">
@@ -43,7 +43,7 @@
                     <div><input id="demo-channel-sms" type="checkbox" name="channels[]" value="sms"> <x-sirius::label for="demo-channel-sms">SMS</x-sirius::label></div>
                 </div>
             </x-sirius::field>
-            <p>These native controls demonstrate the layout foundation. Dedicated checkbox, radio, and switch components belong to Phase 2.</p>
+            <p>These native controls demonstrate the layout foundation. Use the dedicated checkbox, radio, and switch components for their shared styling and readonly behavior.</p>
             <p>A group renders a fieldset and legend. Give its controls their own IDs, names, labels, and bindings; do not call <code>controlAttributes()</code> for a group. Group required marks the legend only. Enforce at-least-one checkbox selection on the server, rather than marking every option required.</p>
             <pre class="overflow-x-auto rounded-xl bg-zinc-100 p-5 text-sm dark:bg-zinc-900"><code>@verbatim&lt;x-sirius::field id="channels" group label="Channels" helper="Choose one or more"&gt;
     &lt;input type="checkbox" id="email-option" name="channels[]" value="email"&gt;
@@ -56,7 +56,7 @@
                 <dt class="font-medium">id</dt><dd>Required stable control ID; group mode uses it on the fieldset. Helper and error IDs append <code>-helper</code> and <code>-error</code>.</dd>
                 <dt class="font-medium">label / helper</dt><dd>Optional escaped strings. Empty strings omit their elements. Helper and errors can appear together.</dd>
                 <dt class="font-medium">name</dt><dd>Optional native control name. Bracket names such as <code>contacts[0][email]</code> map to dotted error keys.</dd>
-                <dt class="font-medium">required / disabled / readonly</dt><dd>Boolean, default false. Forwarded to a single control. Group disabled applies to its fieldset. Native readonly does not prevent checkbox/radio changes; their custom readonly behavior belongs to Phase 2.</dd>
+                <dt class="font-medium">required / disabled / readonly</dt><dd>Boolean, default false. Forwarded to a single control. Group disabled applies to its fieldset. Native readonly does not prevent checkbox/radio changes; the dedicated choice components implement that behavior through the package script.</dd>
                 <dt class="font-medium">error-key / error-bag</dt><dd>Explicit key overrides the <code>wire:model</code> path, which overrides the normalized name. The bag defaults to <code>default</code>. All messages for that key are rendered.</dd>
                 <dt class="font-medium">errors</dt><dd>Optional ViewErrorBag override. Normally Laravel or Livewire supplies it automatically.</dd>
                 <dt class="font-medium">layout / size</dt><dd><code>stacked</code> (default) or <code>inline</code>; <code>sm</code>, <code>md</code> (default), or <code>lg</code>.</dd>

@@ -4,7 +4,7 @@
 Package: `D:/Projects/sirius-ui`  
 Documentation and integration application: `D:/Projects/sirius-ui-docs`
 
-Phase 0 and Phase 1 checkboxes reflect executed work. The reusable phase gate remains an unchecked template. See PHASE_0.md and PHASE_1.md for architecture boundaries, decisions, verification scope, and maintenance notes.
+Phase 0, Phase 1, and Phase 2 checkboxes reflect executed work. The reusable phase gate remains an unchecked template. See PHASE_0.md, PHASE_1.md, and PHASE_2.md for architecture boundaries, decisions, verification scope, and maintenance notes.
 
 ## 1. Agreed outcome and architecture
 
@@ -149,50 +149,52 @@ Verification: package `composer test` passed (17 tests, 95 assertions), docs `co
 
 ### 2.1 Text and number
 
-- [ ] Implement `input` with text/number types and optional string/slot prefix and suffix.
-- [ ] Forward applicable HTML attributes, including min/max/step, minlength/maxlength, pattern, autocomplete, inputmode, disabled, and readonly.
-- [ ] Keep prefix/suffix separate from the submitted value; handle long adornments and validation styles.
+- [x] Implement `input` with text/number types and optional string/slot prefix and suffix.
+- [x] Forward applicable HTML attributes, including min/max/step, minlength/maxlength, pattern, autocomplete, inputmode, disabled, and readonly.
+- [x] Keep prefix/suffix separate from the submitted value; handle long adornments and validation styles.
 
 ### 2.2 Password and textarea
 
-- [ ] Add the password eye icon with an accessible label and button semantics that do not submit the parent form.
-- [ ] Preserve the password value, selection/focus where practical, and Livewire binding while toggling visibility.
-- [ ] Implement the native textarea with rows, cols, resize customization, helper, errors, and attribute forwarding.
-- [ ] Test rendering and validation; browser-test password toggling, typing, resetting, and programmatic Livewire updates.
-- [ ] Add input, password, and textarea docs pages.
+- [x] Add the password eye icon with an accessible label and button semantics that do not submit the parent form.
+- [x] Preserve the password value, selection/focus where practical, and Livewire binding while toggling visibility.
+- [x] Implement the native textarea with rows, cols, resize customization, helper, errors, and attribute forwarding.
+- [x] Test rendering and validation; browser-test password toggling, typing, resetting, and programmatic Livewire updates.
+- [x] Document text/number/password together on the Input page and provide a separate Textarea page.
 
 ### 2.3 Checkbox
 
-- [ ] Implement `<x-sirius::checkbox>` using a native checkbox and the shared field contract. Keep this separate from text input to support its different layout and checked-state semantics without unrelated prefix/suffix props.
-- [ ] Support a single boolean Livewire binding and multiple checkbox values bound to an array. For ordinary Blade forms, support explicit `value`, initial `checked`, and array-style names such as `roles[]`.
-- [ ] Preserve native submission: unchecked controls are omitted; checked controls submit their configured value. Document server normalization for boolean fields. Do not insert same-name hidden fields that corrupt arrays or duplicate Livewire state.
-- [ ] Expose `indeterminate` as an explicit visual/mixed state independent of checked state and submitted value; synchronize it after Livewire updates. This supports the future table header selection control.
-- [ ] Test boolean and array binding, distinct values including `0`, initial checked state, required validation, disabled state, custom IDs, label activation, helper/errors, and attribute forwarding.
-- [ ] Browser-test Space/label toggling, indeterminate state, server updates, form resets, and multiple instances without duplicated events.
+- [x] Implement `<x-sirius::checkbox>` using a native checkbox and the shared field contract. Keep this separate from text input to support its different layout and checked-state semantics without unrelated prefix/suffix props.
+- [x] Support a single boolean Livewire binding and multiple checkbox values bound to an array. For ordinary Blade forms, support explicit `value`, initial `checked`, and array-style names such as `roles[]`.
+- [x] Preserve native submission: unchecked controls are omitted; checked controls submit their configured value. Document server normalization for boolean fields. Do not insert same-name hidden fields that corrupt arrays or duplicate Livewire state.
+- [x] Expose `indeterminate` as an explicit visual/mixed state independent of checked state and submitted value; synchronize it after Livewire updates. This supports the future table header selection control.
+- [x] Test boolean and array binding, distinct values including `0`, initial checked state, required validation, disabled state, custom IDs, label activation, helper/errors, and attribute forwarding.
+- [x] Browser-test Space/label toggling, indeterminate state, server updates, form resets, and multiple instances without duplicated events.
 
 ### 2.4 Radio
 
-- [ ] Implement `<x-sirius::radio>` using a native radio input. Options in a group share a name and Livewire property while retaining distinct IDs, labels, and values.
-- [ ] Support initial selection, no initial selection, disabled options, required groups, and ordinary Blade form submission of exactly one selected value.
-- [ ] Document value types and explicit Livewire casting where appropriate; do not silently turn all option values into booleans or confuse string `0` with an empty selection.
-- [ ] Document accessible grouping with `fieldset`/`legend`, group helper/error text, and per-option labels using the shared label component.
-- [ ] Test independent groups, changing selection, validation/error mapping, disabled options, and HTML/Livewire attribute forwarding.
-- [ ] Browser-test native arrow-key/Space interaction, label activation, programmatic selection updates, and resets.
+- [x] Implement `<x-sirius::radio>` using a native radio input. Options in a group share a name and Livewire property while retaining distinct IDs, labels, and values.
+- [x] Support initial selection, no initial selection, disabled options, required groups, and ordinary Blade form submission of exactly one selected value.
+- [x] Document value types and explicit Livewire casting where appropriate; do not silently turn all option values into booleans or confuse string `0` with an empty selection.
+- [x] Document accessible grouping with `fieldset`/`legend`, group helper/error text, and per-option labels using the shared label component.
+- [x] Test independent groups, changing selection, validation/error mapping, disabled options, and HTML/Livewire attribute forwarding.
+- [x] Browser-test native arrow-key/Space interaction, label activation, programmatic selection updates, and resets.
 
 ### 2.5 Switch
 
-- [ ] Implement `<x-sirius::switch>` as a Tailwind-styled native checkbox with `role="switch"`, a stable accessible label, visible focus, and visually distinct on/off states in light/dark themes.
-- [ ] Use boolean Livewire state and ordinary checkbox submission semantics. Support `checked`, explicit `value`, disabled, required, helper, and errors; do not introduce a fictitious HTML `type="switch"` or a third mixed state.
-- [ ] Reuse checkbox checked-state/binding behavior where practical without coupling switch to array selection or checkbox indeterminate state.
-- [ ] Preserve native keyboard and label activation. Keep checked state and any explicitly rendered accessibility state consistent during server updates and resets.
-- [ ] Test initial on/off states, validation, disabled interaction, submitted values, focus/keyboard behavior, and Livewire synchronization without duplicate change events.
+- [x] Implement `<x-sirius::switch>` as a Tailwind-styled native checkbox with `role="switch"`, a stable accessible label, visible focus, and visually distinct on/off states in light/dark themes.
+- [x] Use boolean Livewire state and ordinary checkbox submission semantics. Support `checked`, explicit `value`, disabled, required, helper, and errors; do not introduce a fictitious HTML `type="switch"` or a third mixed state.
+- [x] Reuse checkbox checked-state/binding behavior where practical without coupling switch to array selection or checkbox indeterminate state.
+- [x] Preserve native keyboard and label activation. Keep checked state and any explicitly rendered accessibility state consistent during server updates and resets.
+- [x] Test initial on/off states, validation, disabled interaction, submitted values, focus/keyboard behavior, and Livewire synchronization without duplicate change events.
 
 ### 2.6 Choice-control documentation and completion
 
-- [ ] Define and test the documented readonly equivalent for checkbox/radio/switch: block user changes while preserving form submission, focus, and server-driven updates. Do not claim that forwarding the native `readonly` attribute alone implements this behavior.
-- [ ] Add separate Checkbox, Radio, and Switch docs menu entries/pages with ordinary Blade and Livewire examples, props, group semantics, helper/errors, disabled/readonly behavior, and keyboard instructions.
-- [ ] Update the docs README/component index, maintain the package README docs pointer, and extend applicable architecture checks if shared internals are introduced.
-- [ ] Complete the mandatory phase gate: `composer test` in each changed project, followed by `composer test:browser` in docs after all project checks pass.
+- [x] Define and test the documented readonly equivalent for checkbox/radio/switch: block user changes while preserving form submission, focus, and server-driven updates. Do not claim that forwarding the native `readonly` attribute alone implements this behavior.
+- [x] Add one combined Checkbox, Radio & Switch docs menu entry/page, with separate sections for each component's ordinary Blade and Livewire examples, props, group semantics, helper/errors, disabled/readonly behavior, and keyboard instructions.
+- [x] Update the docs README/component index, maintain the package README docs pointer, and extend applicable architecture checks if shared internals are introduced.
+- [x] Complete the mandatory phase gate: `composer test` in each changed project, followed by `composer test:browser` in docs after all project checks pass.
+
+Verification: package `composer test` passed (32 tests, 179 assertions), docs `composer test` passed (24 tests, 106 assertions), then docs `composer test:browser` passed (15 tests, 168 assertions). Both asset builds passed. See PHASE_2.md for architecture, native semantics, asset setup, and browser coverage.
 
 ## Phase 3 — Currency input
 
@@ -396,7 +398,8 @@ For each phase, append its outcome here when it is actually executed:
 | --- | --- | --- | --- | --- | --- |
 | 0 | Complete | Package and docs | Both passed: package 5 tests / 31 assertions; docs 6 tests / 21 assertions; lint, types, refactoring passed | Passed: 4 tests / 31 assertions | Both asset builds passed; isolated Laravel 12 suite passed (5 tests / 31 assertions); architecture negative control confirmed; npm/Composer audits passed. See PHASE_0.md. |
 | 1 | Complete | Package and docs | Both passed: package 17 tests / 95 assertions; docs 10 tests / 48 assertions; lint, types, refactoring passed | Passed: 8 tests / 59 assertions | Both asset builds passed; label and shared field docs completed. See PHASE_1.md. |
-| 2–15 | Not started | None | Not run for implementation | Not run for implementation | Awaiting further implementation instruction |
+| 2 | Complete | Package and docs | Both passed: package 32 tests / 179 assertions; docs 24 tests / 106 assertions; lint, types, refactoring passed | Passed: 15 tests / 168 assertions | Both asset builds passed; native and Livewire interaction, keyboard/readonly, reset, and mobile themes verified. See PHASE_2.md. |
+| 3–15 | Not started | None | Not run for implementation | Not run for implementation | Awaiting further implementation instruction |
 
 Planning-document verification on 2026-09-12: only this Markdown file was added. In docs, `composer test` passed (Pint, PHPStan, Rector, and 1 existing test with 4 assertions), followed by `composer test:browser` passing (1 existing test with 2 assertions). These baseline checks do not validate unimplemented components or complete any phase. The package was unchanged, so its suite was not run for this documentation-only change.
 

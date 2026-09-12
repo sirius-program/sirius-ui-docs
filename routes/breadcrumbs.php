@@ -29,6 +29,16 @@ Breadcrumbs::for('components.forms', function (BreadcrumbTrail $trail): void {
     $trail->push(__('Form conventions'), route('components.forms'));
 });
 
+Breadcrumbs::for('components.control', function (BreadcrumbTrail $trail, string $control): void {
+    $trail->parent('components.index');
+    $trail->push($control === 'choices' ? 'Checkbox, Radio & Switch' : ucfirst($control), route('components.control', ['control' => $control]));
+});
+
+Breadcrumbs::for('development.basic-controls', function (BreadcrumbTrail $trail): void {
+    $trail->parent('components.index');
+    $trail->push('Basic control integration', route('development.basic-controls'));
+});
+
 Breadcrumbs::for('settings', function (BreadcrumbTrail $trail): void {
     $trail->parent('home');
     $trail->push(__('Settings'), route('appearance.edit'));

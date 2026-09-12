@@ -17,5 +17,6 @@ it('provides navigation for completed components and identifies upcoming inputs'
     $this->get(route('components.index'))
         ->assertSee('Sirius UI components')
         ->assertSee('Form conventions')
-        ->assertSee('scheduled for Phase 2');
+        ->assertSee('Checkbox')
+        ->assertSee('Currency and enhanced widgets follow in later phases.');
 });

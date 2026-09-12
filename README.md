@@ -10,7 +10,9 @@ Docs uses a Composer path repository at `../sirius-ui`, mapped to `dev-main`. On
 
 If linking is unavailable, set the repository's `options.symlink` to `false`, run `composer reinstall sirius/ui`, and repeat that reinstall after package edits to refresh the mirrored copy. Never edit files under `vendor`.
 
-The docs stylesheet imports `vendor/sirius/ui/dist/sirius.css`. Widget proofs use lazy, locally bundled JS/CSS imports; no runtime CDN is required and no second Alpine instance is installed. The existing docs layout uses Flux, but the package does not depend on Flux.
+The docs stylesheet imports `vendor/sirius/ui/dist/sirius.css`, and `resources/js/app.js` imports `vendor/sirius/ui/dist/sirius.js`. Build package assets before building docs. The package script enables password visibility, readonly choice controls, and mixed checkbox state without depending on Alpine or Livewire JavaScript. Widget proofs use lazy, locally bundled JS/CSS imports; no runtime CDN is required and no second Alpine instance is installed. The existing docs layout uses Flux, but the package does not depend on Flux.
+
+For applications without a bundler, run `php artisan vendor:publish --tag=sirius-ui-assets` and load `/vendor/sirius-ui/sirius.css` and `/vendor/sirius-ui/sirius.js` once. Refresh published assets after package upgrades, reviewing any local modifications first. The script handles later Livewire renders and navigation automatically.
 
 ## Navigation and component index
 
@@ -18,13 +20,18 @@ Open `/components` through the **Sirius UI → Components** sidebar entry. Phase
 
 Use `<x-sirius::label>` for standalone labels and `<x-sirius::field>` to compose a native control with labels, helpers, validation messages, and accessible IDs. The field requires a stable unique ID; apply its scoped `$component->controlAttributes()` to the actual control. Inline and fieldset/legend layouts prepare the foundation for choice controls.
 
-Phase 2 includes text/number/password inputs, plain textarea, checkbox, radio, and switch. Their component pages will be added when implemented.
+Phase 2 provides **Input** (text, number, and password) at `/components/input`, **Textarea** at `/components/textarea`, and **Checkbox, Radio & Switch** at `/components/choices`. Each control has its own example and options section within the combined page. Former Password, Checkbox, Radio, and Switch URLs redirect to the appropriate combined page. Pages include interactive Livewire examples, native Blade usage, props, errors, readonly/disabled semantics, and keyboard guidance. The Input page includes an ordinary POST form that demonstrates canonical values and boolean normalization without storing data.
 
 Development-only integration fixtures are available at `/development/integrations` and `/development/plain-blade` when the application environment is `local` or `testing`. These are experiments for later components, not public component APIs.
+
+Checkbox and radio options inside `<x-sirius::field group>` share the group's error key, error bag, and accessible descriptions. Put `required` on the group to show a single required marker alongside a single set of validation messages. Required radio groups preserve native validation; validate minimum checkbox selections on the server.
+
+Phase 2 integration fixtures at `/development/basic-controls` and `/development/standalone-controls` verify multiple Livewire instances and native controls without Livewire or Alpine. They are available only in local/testing environments.
 
 - [Implementation checklist](IMPLEMENTATION_PLAN.md)
 - [Phase 0 architecture, dependency decisions, and evidence](PHASE_0.md)
 - [Phase 1 form foundation and verification](PHASE_1.md)
+- [Phase 2 basic controls and verification](PHASE_2.md)
 - [Bundled dependency notices](public/third-party-notices.txt)
 
 ## Verification

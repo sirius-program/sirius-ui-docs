@@ -22,6 +22,9 @@
                     </flux:sidebar.item>
                     <flux:sidebar.item :href="route('components.label')" :current="request()->routeIs('components.label')" wire:navigate>Label</flux:sidebar.item>
                     <flux:sidebar.item :href="route('components.forms')" :current="request()->routeIs('components.forms')" wire:navigate>Form conventions</flux:sidebar.item>
+                    @foreach (['input' => 'Input', 'textarea' => 'Textarea', 'choices' => 'Checkbox, Radio & Switch'] as $control => $controlLabel)
+                        <flux:sidebar.item :href="route('components.control', ['control' => $control])" :current="request()->route('control') === $control" wire:navigate>{{ $controlLabel }}</flux:sidebar.item>
+                    @endforeach
                 </flux:sidebar.group>
             </flux:sidebar.nav>
         </flux:sidebar>

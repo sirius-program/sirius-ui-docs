@@ -11,8 +11,11 @@
             <ul class="mt-3 space-y-3">
                 <li><a class="underline" href="{{ route('components.label') }}" wire:navigate>Label</a> — accessible labels and required markers.</li>
                 <li><a class="underline" href="{{ route('components.forms') }}" wire:navigate>Form conventions</a> — shared field layout, helper text, validation errors, and native attributes.</li>
+                @foreach (['input' => 'Input (text, number, password)', 'textarea' => 'Textarea', 'choices' => 'Checkbox, Radio & Switch'] as $control => $controlLabel)
+                    <li><a class="underline" href="{{ route('components.control', ['control' => $control]) }}" wire:navigate>{{ $controlLabel }}</a></li>
+                @endforeach
             </ul>
-            <p class="mt-4">Typed inputs, textarea, checkbox, radio, and switch are scheduled for Phase 2.</p>
+            <p class="mt-4">Basic controls are available. Currency and enhanced widgets follow in later phases.</p>
         </section>
     </div>
 </x-layouts::app>
