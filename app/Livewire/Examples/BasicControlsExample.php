@@ -13,6 +13,9 @@ final class BasicControlsExample extends Component
     #[Locked]
     public string $kind = 'all';
 
+    #[Locked]
+    public bool $automaticIds = false;
+
     public string $title = '';
 
     public int|string|null $quantity = 0;
@@ -56,10 +59,10 @@ final class BasicControlsExample extends Component
 
     public function loadExample(): void
     {
-        $this->title = 'Server title';
+        $this->title = 'Website redesign';
         $this->quantity = 12;
-        $this->password = 'server-secret';
-        $this->notes = 'Server notes';
+        $this->password = 'Workspace-demo!42';
+        $this->notes = 'Prepare the homepage draft for the design review on Friday.';
         $this->agreed = true;
         $this->roles = ['0'];
         $this->plan = '0';

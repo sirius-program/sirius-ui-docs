@@ -2,6 +2,15 @@
 @import '../../vendor/livewire/flux/dist/flux.css';
 @import '../../vendor/sirius/ui/dist/sirius.css';
 
+.docs-token-tag { color: #0369a1; }
+.docs-token-string { color: #047857; }
+.docs-token-attribute { color: #7e22ce; }
+.docs-token-expression { color: #b45309; }
+.dark .docs-token-tag { color: #7dd3fc; }
+.dark .docs-token-string { color: #6ee7b7; }
+.dark .docs-token-attribute { color: #d8b4fe; }
+.dark .docs-token-expression { color: #fcd34d; }
+
 @source '../views';
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../vendor/livewire/flux-pro/stubs/**/*.blade.php';
@@ -65,3 +74,7 @@ select:focus[data-flux-control] {
 /* \[:where(&)\]:size-4 {
     @apply size-4;
 } */
+
+[data-docs-page] [id] {
+    scroll-margin-top: 6rem;
+}

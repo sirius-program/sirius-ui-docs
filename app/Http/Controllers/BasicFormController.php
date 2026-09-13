@@ -23,7 +23,7 @@ final class BasicFormController extends Controller
 
         $validated['enabled'] = $request->boolean('enabled');
 
-        return to_route('components.control', ['control' => 'input'])
+        return to_route('blade-components.control', ['control' => 'input'])
             ->with('basic-result', $validated)->withInput($validated);
     }
 }

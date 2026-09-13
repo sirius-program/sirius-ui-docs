@@ -15,7 +15,7 @@ Deliver reusable Tailwind-styled Blade components and class-based Livewire compo
 - Keep anonymous Blade components in `resources/views/components`, Livewire classes in `src/Livewire`, their views in `resources/views/livewire`, and JavaScript source in `resources/js`.
 - Permit narrowly scoped class-backed Blade adapters in `src/View/Components` when scoped methods are necessary. Phase 1's `Field` computes one control attribute bag for both the caller's slot and the surrounding layout; `label` remains anonymous. Architecture tests require these adapters to extend Laravel's component base and prohibit database dependencies.
 - Extract focused PHP helpers and JS adapters only when they remove real duplication or establish a necessary integration boundary. Avoid a generic repository/service layer for presentation components.
-- Make Blade components work on ordinary Blade pages and inside Livewire. Livewire remains a package dependency; ordinary Blade usage must not require wrapping every input in a Livewire component.
+- Make Blade controls work on ordinary Blade pages and inside Livewire. The `form` component is specifically for ordinary browser submissions to application controllers, without Livewire submission handling. Livewire remains a package dependency; ordinary Blade usage must not require wrapping every input in a Livewire component.
 - Preserve existing `sir-` styling and `--sir-` token conventions; support responsive layouts, light/dark themes, keyboard navigation, and visible focus.
 - Use Blade Icons with a selected free icon set. Map `info` to Tailwind sky, `success` to emerald, `danger` to red, and `warning` to amber through customizable tokens.
 - The table uses a consumer-defined subclass for query, columns, filters, and optional actions. Queries and authorization belong to the application; package code handles reusable interaction and presentation.
@@ -32,6 +32,7 @@ Deliver reusable Tailwind-styled Blade components and class-based Livewire compo
 - Supply named props for common supported library options and a documented options bag for additional compatible options. Define precedence: component defaults, options bag, then explicit props. Protect lifecycle and value-synchronization callbacks from accidental replacement.
 - Document unsupported options or differences between HTML and widget behavior instead of silently ignoring them.
 - Add a docs menu entry and a working component page as each component is completed. Update the docs README/component index in the same phase.
+- Use the same component documentation pattern: Demo, Usage, Props and attributes, followed by Shared field contract and Assets and interaction when applicable. Stack Livewire and Blade demos with matching controls and values; share Submit / Validate, Load Value, and Reset Sample buttons, with Toggle Readonly only in Livewire. Render props in minimal responsive tables (name, type, mandatory, default, description), followed by accurate HTML5/Alpine/data/ARIA/Livewire support notes. Highlight usage syntax and provide copy controls using the shared docs presentation components.
 - Keep the package README minimal: direct readers to the docs for usage details. Resolve the actual docs location before adding a published URL; do not invent one.
 - Install `sirius/ui` into docs through a Composer path repository pointing to `../sirius-ui`, with local linking when supported and a documented mirror/update fallback. Never copy package components into docs.
 - Keep docs demonstration models, factories, routes, and fixtures inside docs or package test fixtures; never make them production package dependencies.
@@ -46,7 +47,7 @@ All form controls implement the following contract, including enhanced controls:
 - Support Laravel validation error bags, explicit error-key overrides, nested field names, and Livewire validation updates. Prefer an explicit key, then the bound model path, then the normalized input name. Errors and helper text may coexist.
 - Forward arbitrary native HTML attributes, `data-*`, `aria-*`, Alpine attributes, and Livewire directives to their intended control. Document a separate wrapper customization mechanism so control attributes are not accidentally attached to a container.
 - Preserve native semantics where supported: disabled controls are not submitted; readonly controls retain values. For widgets without a native readonly concept, provide a documented equivalent that prevents interaction without disabling submission.
-- Merge classes safely, keep consumer IDs stable, and avoid duplicate IDs for repeated or nested controls.
+- Merge classes safely and preserve explicit consumer IDs. Components needing an ID generate a random five-character string when it is omitted or null; helper/error/trigger associations must use the same generated ID. Generated IDs may change on a fresh server render; document explicit IDs for stable Livewire identity, repeated records, and external selectors.
 - Define initial values, server-to-client updates, client-to-server updates, and reset behavior. Do not generate duplicate submissions or synchronization loops.
 - Client restrictions improve interaction; application-side validation remains required.
 - Checkbox, radio, and switch share label/helper/error handling, with labels placed beside their controls. Use accessible group labeling for related choices. A required radio group means one choice is required; a required checkbox or switch means that individual control must be checked. Do not implement an at-least-one checkbox-group requirement by marking every checkbox required.
@@ -65,6 +66,7 @@ All form controls implement the following contract, including enhanced controls:
 | `file-upload` | Single/multiple upload, progress, cancellation, type and size limits |
 | `textarea` | Native textarea by default; `richtext=true` enables the editor |
 | `select` | Single/multiple selection, local search, optional paginated server search |
+| `form` | Ordinary Blade submission; explicit `action`; `method=GET` by default; automatic CSRF for non-GET methods and method spoofing for PUT/PATCH/DELETE; `sending-file=false` by default |
 | `card`, `modal` | String shorthands, header/footer named slots, body default slot; stable section IDs |
 | `alert`, `badge`, `button` | `variant=info|success|danger|warning` |
 | `collapsible` | Expandable content and accessible trigger; documented initial/open state |
@@ -140,7 +142,7 @@ Acceptance: architecture tests exist and pass before Phase 1; docs consumes the 
 - [x] Ensure the shared field layout supports labels beside checkbox/radio/switch controls and accessible group labels with shared helper/error associations.
 - [x] Establish size, spacing, focus, invalid, disabled, readonly, light/dark, and responsive styles through shared tokens.
 - [x] Test required true/false, escaped text, named error bags, nested names, helper/error coexistence, explicit IDs, and multiple controls.
-- [x] Add label and form-conventions docs pages with native Blade and Livewire validation examples.
+- [x] Document Label with paired native Blade and Livewire examples; keep shared field guidance on component pages and low-level validation fixtures in development.
 - [x] Complete the mandatory phase gate.
 
 Verification: package `composer test` passed (17 tests, 95 assertions), docs `composer test` passed (10 tests, 48 assertions), then docs `composer test:browser` passed (8 tests, 59 assertions). Both asset builds passed. See PHASE_1.md for the composition contract and architecture refinement.
@@ -254,7 +256,35 @@ Verification: package `composer test` passed (32 tests, 179 assertions), docs `c
 - [ ] Browser-test editing, formatting, form submission, programmatic updates, teardown/remount, and multiple editors without duplicate initialization.
 - [ ] Extend textarea docs and complete the mandatory phase gate.
 
-## Phase 8 — Button, badge, and alert
+## Phase 8 — Ordinary Blade form
+
+Prerequisite: complete the form-control phases through Phase 7. This component simplifies ordinary Blade form markup and browser submissions; it does not manage Livewire submissions.
+
+### 8.1 Native form contract
+
+- [ ] Implement `<x-sirius::form>` with a default slot for form contents and a required, explicit `action` URL. Keep route generation in the consuming application.
+- [ ] Default `method` to `GET`. Accept GET, POST, PUT, PATCH, and DELETE case-insensitively; reject unsupported methods with a clear configuration error.
+- [ ] Render GET and POST as native HTML form methods. Render PUT, PATCH, and DELETE as POST with exactly one hidden `_method` containing the requested method.
+- [ ] Automatically render exactly one CSRF field for every non-GET method; render no automatic CSRF or method-spoofing field for GET. Document that consumers should not add duplicate `@csrf` or `@method` directives inside the slot.
+- [ ] Accept boolean `sending-file`, defaulting to `false`, including explicit `:sending-file="false"`. When true, render `enctype="multipart/form-data"` and consume the prop rather than forwarding it as an HTML attribute.
+- [ ] Reject `sending-file=true` with GET or an explicitly conflicting `enctype`. Accept an explicitly matching multipart enctype. When `sending-file=false`, preserve native enctype behavior and any explicit HTML enctype.
+- [ ] Forward applicable HTML5 form attributes, including `id`, `name`, `target`, `autocomplete`, `novalidate`, `accept-charset`, and `rel`, plus `data-*` and `aria-*`. Merge consumer classes safely and prevent duplicated generated method/enctype attributes.
+- [ ] Keep submission native: no AJAX, automatic loading state, or Livewire submission integration. Document that native submit-button overrides retain their HTML meaning and must remain consistent with the configured form method and upload encoding.
+- [ ] Leave validation, authorization, redirects, `old()` values, error bags, and persistence to application controllers and existing field controls. Do not introduce form-owned model state, automatic error summaries, upload endpoints, or dependencies.
+
+### 8.2 Verification and documentation
+
+- [ ] Add rendering tests for default GET, mixed-case methods, explicit action, missing action, unsupported methods, CSRF presence/absence and uniqueness, spoofed methods, slot content, escaped attributes, and attribute/class forwarding.
+- [ ] Test `sending-file` true/false, automatic multipart encoding, matching/conflicting explicit enctype, GET rejection, and absence of leaked component props.
+- [ ] Add ordinary Blade docs examples for GET search, POST submission, PUT/PATCH/DELETE method spoofing, and multipart file submission using the package controls. Use CRUD-oriented controllers; use invocable controllers for single-action resources.
+- [ ] Test actual request methods and payloads, application validation redirects and error bags, restored `old()` values, and uploads using isolated test storage. Include valid and missing/invalid CSRF cases with CSRF protection explicitly active; default test middleware bypass is not sufficient evidence.
+- [ ] Browser-test native GET/POST submission, a spoofed update/delete request, file submission, and validation feedback without Livewire submission handling. Assert no JavaScript errors and verify canonical submitted control values.
+- [ ] Add a Form docs menu/page, document all defaults and rejected combinations, and update the docs README/index. Keep the package README as a minimal docs pointer.
+- [ ] Update applicable architecture tests only if necessary, then complete the mandatory phase gate: `composer test` in every changed project, followed by `composer test:browser` in docs after all checks pass, waiting for completion.
+
+Acceptance: consumers can compose a native form with an explicit action, receive GET behavior by default, submit other supported methods with automatic CSRF/method spoofing, and enable multipart file submission with `sending-file` without introducing Livewire or AJAX submission behavior.
+
+## Phase 9 — Button, badge, and alert
 
 - [ ] Implement the four semantic variants using the agreed Tailwind color mapping and customization tokens.
 - [ ] Implement button `tag=button|a`, validating the allowed tag list. Default real buttons to `type=button`; require explicit submit behavior.
@@ -264,7 +294,7 @@ Verification: package `composer test` passed (32 tests, 179 assertions), docs `c
 - [ ] Test tag semantics, escaped content, attributes, loading/disabled states, and alert dismissal through Livewire updates.
 - [ ] Add separate button, badge, and alert docs entries and complete the mandatory phase gate.
 
-## Phase 9 — Card and collapsible
+## Phase 10 — Card and collapsible
 
 - [ ] Implement card string shorthands, named header/footer slots, and default body slot. Slots override corresponding string shorthands; document precedence.
 - [ ] Give rendered sections `{id}-header`, `{id}-body`, and `{id}-footer` IDs; generate a stable unique root ID when omitted.
@@ -273,7 +303,7 @@ Verification: package `composer test` passed (32 tests, 179 assertions), docs `c
 - [ ] Test slot precedence, section IDs, multiple instances, keyboard toggling, hidden content focus behavior, and Livewire-driven state changes.
 - [ ] Add card and collapsible docs entries and complete the mandatory phase gate.
 
-## Phase 10 — Modal
+## Phase 11 — Modal
 
 - [ ] Reuse the agreed card-like content contract and section ID scheme for modal header/body/footer.
 - [ ] Define open/close binding and events, sizing, initial focus, focus containment, focus return, body scroll handling, and accessible dialog naming.
@@ -283,15 +313,15 @@ Verification: package `composer test` passed (32 tests, 179 assertions), docs `c
 - [ ] Browser-test keyboard behavior, prevented close, focus restoration, Livewire-triggered opening/closing, and widgets mounted inside a modal.
 - [ ] Add modal docs and complete the mandatory phase gate.
 
-## Phase 11 — Livewire table core
+## Phase 12 — Livewire table core
 
-### 11.1 Consumer extension contract and rendering
+### 12.1 Consumer extension contract and rendering
 
 - [ ] Implement the table base class and focused definitions for columns/filters, with typed extension points and consumer-owned scoped Eloquent queries.
 - [ ] Support stable row keys, escaped default cells, explicit custom cell views, empty/loading states, and responsive rendering.
 - [ ] Keep column identifiers server-allowlisted; never use an unchecked client string as a query column or expression.
 
-### 11.2 Search, filtering, ordering, and pagination
+### 12.2 Search, filtering, ordering, and pagination
 
 - [ ] Add debounced global search, per-column search/filter controls, ordering, configurable page sizes, and pagination.
 - [ ] Reset pagination when search/filter/page-size changes; specify deterministic ordering with a unique tie-breaker.
@@ -301,9 +331,9 @@ Verification: package `composer test` passed (32 tests, 179 assertions), docs `c
 - [ ] Browser-test interactive searches, filters, ordering, pagination, and two tables on one page.
 - [ ] Add table docs and complete the mandatory phase gate.
 
-## Phase 12 — Table selection, bulk actions, and CSV
+## Phase 13 — Table selection, bulk actions, and CSV
 
-### 12.1 Selection and mutations
+### 13.1 Selection and mutations
 
 - [ ] Reuse the shared checkbox component for per-row selection and the indeterminate header checkbox; add a visible selection count across pages.
 - [ ] Header selection applies to the current page; selection persists across page navigation and resets when search/filter changes. Selecting all matching results is outside version one.
@@ -313,7 +343,7 @@ Verification: package `composer test` passed (32 tests, 179 assertions), docs `c
 - [ ] Add confirmation UX for destructive actions, duplicate-submit protection, success/failure feedback, and selection cleanup.
 - [ ] Specify atomic failure as the built-in default: validate and authorize the whole selection before changing data. Custom handlers must document deviations and external side effects.
 
-### 12.2 CSV export
+### 13.2 CSV export
 
 - [ ] Export selected authorized rows through configured exportable columns. Do not silently export all results when selection is empty.
 - [ ] Stream/chunk output where appropriate, escape CSV correctly, mitigate spreadsheet formula injection, and document encoding and selection limits.
@@ -322,7 +352,7 @@ Verification: package `composer test` passed (32 tests, 179 assertions), docs `c
 - [ ] Browser-test selection, confirmation, completion/failure feedback, and CSV download.
 - [ ] Extend table docs and complete the mandatory phase gate.
 
-## Phase 13 — Livewire calendar
+## Phase 14 — Livewire calendar
 
 - [ ] Implement the agreed month view using native Livewire unless Phase 0 demonstrates a clear benefit from a free library.
 - [ ] Default to the current month in the configured application timezone; provide previous/next month, month/year selectors, and return-to-today.
@@ -334,28 +364,28 @@ Verification: package `composer test` passed (32 tests, 179 assertions), docs `c
 - [ ] Browser-test navigation, selecting month/year, keyboard operation, day actions, and Livewire updates.
 - [ ] Add calendar docs and complete the mandatory phase gate.
 
-## Phase 14 — AI agent skill for package consumers
+## Phase 15 — AI agent skill for package consumers
 
-Prerequisite: complete all component phases through Phase 13 and their documentation. This skill teaches agents how to use the installed Sirius UI release in a consuming application; it must describe implemented APIs rather than planned features.
+Prerequisite: complete all component phases through Phase 14 and their documentation. This skill teaches agents how to use the installed Sirius UI release in a consuming application; it must describe implemented APIs rather than planned features.
 
-### 14.1 Portable skill and supported agents
+### 15.1 Portable skill and supported agents
 
 - [ ] Create a portable `SKILL.md` entry point with a clear activation description and focused reference files. Keep the entry point concise and load component details only when relevant.
 - [ ] Target Codex and Claude Code initially. Verify their current project-local skill discovery and installation requirements during this phase; document tested agent versions and any differences. Claim support for other agents only after testing them.
 - [ ] Require Laravel Boost integration through its supported third-party package skill discovery. Ship the canonical entry point at `resources/boost/skills/sirius-ui-development/SKILL.md`, with valid `name` and `description` frontmatter and adjacent references. Include these files in the Composer distribution and verify the convention against the supported Boost version during implementation.
 - [ ] Ensure consumers can select and install the skill through `php artisan boost:install` and refresh it through `php artisan boost:update`. Verify the installed skill can be discovered, activated, and used by the selected agent; Boost installs/distributes the skill, while the agent executes its instructions. Keep standalone usage available without requiring Boost as a production dependency.
 
-### 14.2 Structure, component usage, and application boundaries
+### 15.2 Structure, component usage, and application boundaries
 
 - [ ] Explain package structure, configurable namespaces, configuration, assets, published resources, supported framework versions, and the distinction between package internals and consumer extension points.
 - [ ] Provide a component-selection guide and references for every shipped Blade and Livewire component, including props, slots, attributes, events, options, defaults, and supported customization points.
-- [ ] Include working ordinary Blade and Livewire examples covering bindings, validation/error bags, helper text, accessibility, stable IDs, reset, and widget lifecycle behavior.
+- [ ] Include working ordinary Blade and Livewire examples covering bindings, validation/error bags, helper text, accessibility, stable IDs, reset, and widget lifecycle behavior. Explain the ordinary Blade `form` component's GET default, explicit action, CSRF/method spoofing, multipart contract, and separation from Livewire submission handling.
 - [ ] Explain application-owned responsibilities for table queries, authorization, bulk actions, CSV export, calendar day actions, richtext sanitization, and uploads. Preserve CRUD controller design and the invocable-controller rule for single actions.
 - [ ] Cover local asset installation/builds, Tailwind tokens and themes, Blade Icons, troubleshooting, and relevant test commands. Use only the selected free dependency features.
 - [ ] Instruct agents to inspect the installed package version and configuration, prefer existing components, and avoid inventing APIs or editing `vendor`. Use documented publishing and extension mechanisms; never access `.env` directly or expose secrets.
 - [ ] Bundle version-matched references and examples with each package release so essential usage guidance works without access to the docs repository or a hosted website. Document how to refresh an installed skill after a package upgrade.
 
-### 14.3 Explicit installation and updates
+### 15.3 Explicit installation and updates
 
 - [ ] Use the same canonical skill source for Boost and standalone installation. Provide an Artisan command to install or update project-local skill files for explicitly selected supported agents without Boost, plus documented manual installation instructions. Avoid duplicate skill names or conflicting ownership when Boost already manages the destination; direct users to the appropriate update mechanism.
 - [ ] Show destination paths and planned changes before applying them. Do not automatically write agent configuration or skill files during Composer installation or service-provider boot.
@@ -363,7 +393,7 @@ Prerequisite: complete all component phases through Phase 13 and their documenta
 - [ ] Restrict generated paths to the selected project-local skill destinations. Preserve unrelated skills and agent configuration, and provide a documented recovery/update procedure.
 - [ ] Extend applicable architecture checks for the console command and installer boundaries without coupling the package to a specific agent runtime.
 
-### 14.4 Verification and documentation
+### 15.4 Verification and documentation
 
 - [ ] Test clean installation, repeated installation, upgrades, modified-file conflicts, non-interactive behavior, unsupported targets, destination containment, and inclusion of every referenced file in the distribution.
 - [ ] In an isolated consumer project with Sirius UI and a supported Laravel Boost version, verify package discovery, selection through `boost:install`, refresh through `boost:update`, and preservation/resolution of customizations according to the documented ownership rules. Check that every reference survives installation and upgrades; record tested Boost versions and commands.
@@ -374,14 +404,14 @@ Prerequisite: complete all component phases through Phase 13 and their documenta
 - [ ] Document the required Boost integration with copyable installation/update commands, agent activation examples, skill-selection guidance, and troubleshooting for an undiscovered or stale skill. Reference the [official third-party package skills documentation](https://github.com/laravel/docs/blob/13.x/boost.md#third-party-package-skills).
 - [ ] Complete the mandatory phase gate: run `composer test` in every changed project, then `composer test:browser` in docs after all project checks pass, and wait for completion.
 
-Acceptance: a consumer can install and refresh the bundled skill through Laravel Boost, and a tested agent can discover and activate that installed skill, understand the package structure, and produce working usage examples without relying on unpublished APIs or modifying vendor code. The standalone installation path must also work. Phase 14 is incomplete until both paths pass their integration checks.
+Acceptance: a consumer can install and refresh the bundled skill through Laravel Boost, and a tested agent can discover and activate that installed skill, understand the package structure, and produce working usage examples without relying on unpublished APIs or modifying vendor code. The standalone installation path must also work. Phase 15 is incomplete until both paths pass their integration checks.
 
-## Phase 15 — Cross-component validation and release readiness
+## Phase 16 — Cross-component validation and release readiness
 
 - [ ] Exercise representative forms combining label, helper, error, checkbox, radio, switch, currency, date, upload, richtext, and select inside a modal.
 - [ ] Verify repeated components, multiple instances, validation failures, form reset, conditional rendering, and Livewire navigation without state loss or leaked listeners.
 - [ ] Review keyboard access, focus, light/dark contrast, mobile layouts, and reduced-motion behavior across docs examples.
-- [ ] Verify an ordinary Blade form and a Livewire form submit the documented canonical values, including disabled/readonly behavior.
+- [ ] Verify the ordinary Blade `form` component and a separate Livewire form submit the documented canonical values, including disabled/readonly behavior. Cover the Blade form's GET default, non-GET CSRF, spoofed methods, and multipart file submissions.
 - [ ] Verify internal assets load with no runtime CDN requests and no duplicate Alpine/widget initialization.
 - [ ] Verify package distribution includes compiled assets and license notices; validate a clean docs installation against the local dependency instructions.
 - [ ] Verify the release also includes the version-matched AI agent skill and all references, and repeat a clean consumer installation using the documented skill setup.
@@ -399,7 +429,7 @@ For each phase, append its outcome here when it is actually executed:
 | 0 | Complete | Package and docs | Both passed: package 5 tests / 31 assertions; docs 6 tests / 21 assertions; lint, types, refactoring passed | Passed: 4 tests / 31 assertions | Both asset builds passed; isolated Laravel 12 suite passed (5 tests / 31 assertions); architecture negative control confirmed; npm/Composer audits passed. See PHASE_0.md. |
 | 1 | Complete | Package and docs | Both passed: package 17 tests / 95 assertions; docs 10 tests / 48 assertions; lint, types, refactoring passed | Passed: 8 tests / 59 assertions | Both asset builds passed; label and shared field docs completed. See PHASE_1.md. |
 | 2 | Complete | Package and docs | Both passed: package 32 tests / 179 assertions; docs 24 tests / 106 assertions; lint, types, refactoring passed | Passed: 15 tests / 168 assertions | Both asset builds passed; native and Livewire interaction, keyboard/readonly, reset, and mobile themes verified. See PHASE_2.md. |
-| 3–15 | Not started | None | Not run for implementation | Not run for implementation | Awaiting further implementation instruction |
+| 3–16 | Not started | None | Not run for implementation | Not run for implementation | Awaiting further implementation instruction |
 
 Planning-document verification on 2026-09-12: only this Markdown file was added. In docs, `composer test` passed (Pint, PHPStan, Rector, and 1 existing test with 4 assertions), followed by `composer test:browser` passing (1 existing test with 2 assertions). These baseline checks do not validate unimplemented components or complete any phase. The package was unchanged, so its suite was not run for this documentation-only change.
 

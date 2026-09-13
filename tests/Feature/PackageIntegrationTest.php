@@ -14,9 +14,9 @@ it('discovers the local package and renders its icon dependency', function (): v
 });
 
 it('provides navigation for completed components and identifies upcoming inputs', function (): void {
-    $this->get(route('components.index'))
-        ->assertSee('Sirius UI components')
-        ->assertSee('Form conventions')
+    $this->get(route('started'))
+        ->assertSee('Getting Started')
+        ->assertDontSee('Form Conventions')
         ->assertSee('Checkbox')
         ->assertSee('Currency and enhanced widgets follow in later phases.');
 });

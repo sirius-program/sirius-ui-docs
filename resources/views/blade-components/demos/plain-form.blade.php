@@ -1,4 +1,4 @@
-<form id="plain-basic-form" method="POST" action="{{ route('components.basic.store') }}" class="space-y-4" novalidate>
+<form id="plain-basic-form" method="POST" action="{{ route('blade-components.basic.store') }}" class="space-y-4" novalidate>
     @csrf
     <x-sirius::input id="plain-title" name="title" label="Title" helper="Required; no data is stored." required :value="old('title', 'Initial title')" error-bag="basic" prefix="Project" suffix="Example" />
     <x-sirius::input id="plain-quantity" name="quantity" type="number" label="Quantity" min="0" max="100" :value="old('quantity', 0)" error-bag="basic" />

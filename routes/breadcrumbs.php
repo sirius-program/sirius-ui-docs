@@ -14,28 +14,33 @@ Breadcrumbs::for('dashboard', function (BreadcrumbTrail $trail): void {
     $trail->push(__('Dashboard'), route('dashboard'));
 });
 
-Breadcrumbs::for('components.index', function (BreadcrumbTrail $trail): void {
+Breadcrumbs::for('started', function (BreadcrumbTrail $trail): void {
     $trail->parent('home');
-    $trail->push(__('Components'), route('components.index'));
+    $trail->push(__('Getting Started'), route('started'));
 });
 
-Breadcrumbs::for('components.label', function (BreadcrumbTrail $trail): void {
-    $trail->parent('components.index');
-    $trail->push(__('Label'), route('components.label'));
+Breadcrumbs::for('blade-components.index', function (BreadcrumbTrail $trail): void {
+    $trail->parent('home');
+    $trail->push(__('Blade Components'));
 });
 
-Breadcrumbs::for('components.forms', function (BreadcrumbTrail $trail): void {
-    $trail->parent('components.index');
-    $trail->push(__('Form conventions'), route('components.forms'));
+Breadcrumbs::for('blade-components.label', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.index');
+    $trail->push(__('Label'), route('blade-components.label'));
 });
 
-Breadcrumbs::for('components.control', function (BreadcrumbTrail $trail, string $control): void {
-    $trail->parent('components.index');
-    $trail->push($control === 'choices' ? 'Checkbox, Radio & Switch' : ucfirst($control), route('components.control', ['control' => $control]));
+Breadcrumbs::for('development.fields', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.index');
+    $trail->push(__('Field integration'), route('development.fields'));
+});
+
+Breadcrumbs::for('blade-components.control', function (BreadcrumbTrail $trail, string $control): void {
+    $trail->parent('blade-components.index');
+    $trail->push($control === 'choices' ? 'Checkbox, Radio & Switch' : ucfirst($control), route('blade-components.control', ['control' => $control]));
 });
 
 Breadcrumbs::for('development.basic-controls', function (BreadcrumbTrail $trail): void {
-    $trail->parent('components.index');
+    $trail->parent('blade-components.index');
     $trail->push('Basic control integration', route('development.basic-controls'));
 });
 

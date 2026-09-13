@@ -18,16 +18,16 @@ final class BasicControlController extends Controller
         };
 
         if ($destination !== null) {
-            return to_route('components.control', ['control' => $destination]);
+            return to_route('blade-components.control', ['control' => $destination]);
         }
 
-        return view('components.basic-control-docs', [
+        return view('blade-components.basic-control-docs', [
             'control'  => $control,
             'title'    => $control === 'choices' ? 'Checkbox, Radio & Switch' : ucfirst($control),
             'examples' => match ($control) {
-                'input'   => ['input', 'password'],
-                'choices' => ['checkbox', 'radio', 'switch'],
-                default   => ['textarea'],
+                'input'   => ['input' => 'Native', 'password' => 'Password'],
+                'choices' => ['checkbox' => 'Checkbox', 'radio' => 'Radio', 'switch' => 'Switch'],
+                default   => ['textarea' => 'Native'],
             },
         ]);
     }
