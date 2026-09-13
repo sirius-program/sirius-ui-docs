@@ -1,0 +1,15 @@
+<x-docs-props :rows="[
+    ['label', 'string|null', 'null', 'Label text shown above the currency field.', 'Optional'],
+    ['helper', 'string|null', 'null', 'Helper text shown below the currency field.', 'Optional'],
+    ['thousands-separator', ',|.| |\'', ',', 'Thousands separator for display, must differ from the decimal separator.', 'Optional'],
+    ['decimal-separator', '.|,', '.', 'Decimal separator for display, canonical values always use dot (.), must differ from the thousands separator.', 'Optional'],
+    ['precision', 'integer', '2', 'Maximum fractional digits, 0 through 20. Excess digits stay visible and canonical but fail client validity: never rounded or truncated. No automatic zero padding.', 'Optional'],
+    ['allow-negative', 'boolean', 'false', 'Allows a leading minus sign. A sign is rejected during editing when false.', 'Optional'],
+    ['prefix', 'string|slot|null', 'null', 'Text or named slot adornments in front of the currency input. Slots override strings.', 'Optional'],
+    ['suffix', 'string|slot|null', 'null', 'Text or named slot adornments in end of the currency input. Slots override strings.', 'Optional'],
+    ['size', 'sm|md|lg', 'md', 'Shared field sizing.', 'Optional'],
+    ['control-size', 'integer|null', 'null', 'Native input size attribute; separate from visual size.', 'Optional'],
+    ['error-key', 'string|null', 'null', 'Override the validation key; otherwise use the wire:model path, then normalized name.', 'Optional'],
+    ['error-bag / errors', 'string|ViewErrorBag|null', 'default / null', 'Named Laravel error bag and optional explicit errors.', 'Optional'],
+    ['wrapper-class', 'string', '', 'Customize the field wrapper class.', 'Optional'],
+]" note="Applicable HTML5, Alpine event directives, data-*, ARIA attributes, and supported Livewire directives (such as wire:model and its modifiers) are supported as expected and forwarded to the native control." />

@@ -53,3 +53,13 @@ Breadcrumbs::for('appearance.edit', function (BreadcrumbTrail $trail): void {
     $trail->parent('settings');
     $trail->push(__('Appearance'), route('appearance.edit'));
 });
+
+Breadcrumbs::for('blade-components.currency', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.index');
+    $trail->push('Currency', route('blade-components.currency'));
+});
+
+Breadcrumbs::for('development.currency-bindings', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.currency');
+    $trail->push('Currency binding integration', route('development.currency-bindings'));
+});

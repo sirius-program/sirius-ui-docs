@@ -4,7 +4,7 @@
 Package: `D:/Projects/sirius-ui`  
 Documentation and integration application: `D:/Projects/sirius-ui-docs`
 
-Phase 0, Phase 1, and Phase 2 checkboxes reflect executed work. The reusable phase gate remains an unchecked template. See PHASE_0.md, PHASE_1.md, and PHASE_2.md for architecture boundaries, decisions, verification scope, and maintenance notes.
+Phase 0 through Phase 3 checkboxes reflect executed work. The reusable phase gate remains an unchecked template. See PHASE_0.md, PHASE_1.md, PHASE_2.md, and PHASE_3.md for architecture boundaries, decisions, verification scope, and maintenance notes.
 
 ## 1. Agreed outcome and architecture
 
@@ -200,14 +200,16 @@ Verification: package `composer test` passed (32 tests, 179 assertions), docs `c
 
 ## Phase 3 — Currency input
 
-- [ ] Implement digits, decimal separator, grouping separator, paste normalization, and automatic thousand grouping. Default grouping is comma and decimal separator is dot.
-- [ ] Keep the display value separate from the submitted canonical decimal string: display `1,234.50`, submit `1234.50`.
-- [ ] Keep empty input empty; never coerce it to zero. Support configurable precision and opt-in negative values; reject a sign when negative values are disabled.
-- [ ] Reject conflicting separators and malformed input predictably; avoid binary floating-point conversion for monetary normalization.
-- [ ] Specify rounding/excess-precision behavior explicitly in docs before implementing it; default to validation rather than silently losing digits.
-- [ ] Preserve caret behavior during editing and grouping. Forward relevant min/max and other attributes while documenting enforcement for the formatted text input.
-- [ ] Test separator reversal, very large values, zero, fractions, invalid paste, leading/trailing separators, precision, empty values, negative opt-in, reset, and Livewire synchronization.
-- [ ] Add currency docs and complete the mandatory phase gate.
+- [x] Implement digits, decimal separator, grouping separator, paste normalization, and automatic thousand grouping. Default grouping is comma and decimal separator is dot.
+- [x] Keep the display value separate from the submitted canonical decimal string: display `1,234.50`, submit `1234.50`.
+- [x] Keep empty input empty; never coerce it to zero. Support configurable precision and opt-in negative values; reject a sign when negative values are disabled.
+- [x] Reject conflicting separators and malformed input predictably; avoid binary floating-point conversion for monetary normalization.
+- [x] Specify rounding/excess-precision behavior explicitly in docs before implementing it; default to validation rather than silently losing digits.
+- [x] Preserve caret behavior during editing and grouping. Forward relevant min/max and other attributes while documenting enforcement for the formatted text input.
+- [x] Test separator reversal, very large values, zero, fractions, invalid paste, leading/trailing separators, precision, empty values, negative opt-in, reset, and Livewire synchronization.
+- [x] Add currency docs and complete the mandatory phase gate.
+
+Verification: package `composer test` passed (56 tests, 277 assertions), docs `composer test` passed (59 tests, 262 assertions), followed by docs `composer test:browser` (34 tests, 367 assertions). Both asset builds passed. Currency rendering/configuration tests also passed on the existing Laravel 12 compatibility fixture (15 tests, 43 assertions). See PHASE_3.md for decimal semantics, integration coverage, and limitations.
 
 ## Phase 4 — Date, time, and datetime
 
@@ -429,7 +431,8 @@ For each phase, append its outcome here when it is actually executed:
 | 0 | Complete | Package and docs | Both passed: package 5 tests / 31 assertions; docs 6 tests / 21 assertions; lint, types, refactoring passed | Passed: 4 tests / 31 assertions | Both asset builds passed; isolated Laravel 12 suite passed (5 tests / 31 assertions); architecture negative control confirmed; npm/Composer audits passed. See PHASE_0.md. |
 | 1 | Complete | Package and docs | Both passed: package 17 tests / 95 assertions; docs 10 tests / 48 assertions; lint, types, refactoring passed | Passed: 8 tests / 59 assertions | Both asset builds passed; label and shared field docs completed. See PHASE_1.md. |
 | 2 | Complete | Package and docs | Both passed: package 32 tests / 179 assertions; docs 24 tests / 106 assertions; lint, types, refactoring passed | Passed: 15 tests / 168 assertions | Both asset builds passed; native and Livewire interaction, keyboard/readonly, reset, and mobile themes verified. See PHASE_2.md. |
-| 3–16 | Not started | None | Not run for implementation | Not run for implementation | Awaiting further implementation instruction |
+| 3 | Complete | Package and docs | Both passed: package 56 tests / 277 assertions; docs 59 tests / 262 assertions; lint, types, refactoring passed | Passed: 34 tests / 367 assertions | Both asset builds passed; Laravel 12 currency suite passed (15 tests / 43 assertions). Native/Livewire/Alpine values, editing, reset, and mobile themes verified. See PHASE_3.md. |
+| 4–16 | Not started | None | Not run for implementation | Not run for implementation | Awaiting further implementation instruction |
 
 Planning-document verification on 2026-09-12: only this Markdown file was added. In docs, `composer test` passed (Pint, PHPStan, Rector, and 1 existing test with 4 assertions), followed by `composer test:browser` passing (1 existing test with 2 assertions). These baseline checks do not validate unimplemented components or complete any phase. The package was unchanged, so its suite was not run for this documentation-only change.
 

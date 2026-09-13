@@ -26,6 +26,8 @@ Use `<x-sirius::label>` for standalone labels and `<x-sirius::field>` to compose
 
 Phase 2 provides **Input** (text, number, and password) at `/blade-components/input`, **Textarea** at `/blade-components/textarea`, and **Checkbox, Radio & Switch** at `/blade-components/choices`. Each control has its own example and options section within the combined page. Former Password, Checkbox, Radio, and Switch URLs redirect to the appropriate combined page. Pages include interactive Livewire examples, native Blade usage, props, errors, readonly/disabled semantics, and keyboard guidance. Each control has an ordinary POST demo with isolated validation and sample values. A combined native form remains in the development integration fixture.
 
+Phase 3 provides **Currency** at `/blade-components/currency`: configurable grouping/decimal separators, exact canonical decimal strings, maximum precision with validation (no rounding or truncation), optional negative amounts, and string-based min/max checks. The paired project-budget and invoice-adjustment demos share exact copyable Blade sources. No additional dependency is required. Currency JavaScript is bundled into the same `dist/sirius.js` entry point, including published-asset usage. The native `/development/currency` and `/development/currency-bindings` fixtures cover editing, resets, modifiers, Alpine, and multiple Livewire instances in local/testing environments.
+
 Development-only integration fixtures are available at `/development/integrations` and `/development/plain-blade` when the application environment is `local` or `testing`. These are experiments for later components, not public component APIs.
 
 Checkbox and radio options inside `<x-sirius::field group>` share the group's error key, error bag, and accessible descriptions. Put `required` on the group to show a single required marker alongside a single set of validation messages. Required radio groups preserve native validation; validate minimum checkbox selections on the server.
@@ -36,6 +38,7 @@ Phase 2 integration fixtures at `/development/basic-controls` and `/development/
 - [Phase 0 architecture, dependency decisions, and evidence](PHASE_0.md)
 - [Phase 1 form foundation and verification](PHASE_1.md)
 - [Phase 2 basic controls and verification](PHASE_2.md)
+- [Phase 3 currency contract and verification](PHASE_3.md)
 - [Bundled dependency notices](public/third-party-notices.txt)
 
 ## Verification

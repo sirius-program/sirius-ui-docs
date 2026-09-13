@@ -18,5 +18,5 @@ it('provides navigation for completed components and identifies upcoming inputs'
         ->assertSee('Getting Started')
         ->assertDontSee('Form Conventions')
         ->assertSee('Checkbox')
-        ->assertSee('Currency and enhanced widgets follow in later phases.');
+        ->assertSee('Currency is available; enhanced widgets follow in later phases.');
 });
