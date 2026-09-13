@@ -8,7 +8,6 @@
             </header>
             <section id="label-demo" class="space-y-5">
                 <h2 class="text-xl font-medium">Demo</h2>
-                <p>Collect a billing email and an optional purchase order for a workspace subscription.</p>
                 <div class="space-y-4 rounded-xl border border-zinc-200 p-6 dark:border-zinc-700" data-demo-mode="livewire">
                     <h3 class="font-medium">Livewire</h3>
                     <livewire:examples.field-example :label-only="true" />

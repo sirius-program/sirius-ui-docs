@@ -22,7 +22,7 @@
                     <x-sirius::input :id="($automaticIds ?? false) ? null : $demoId.'-quantity'" label="Team seats" helper="Reserve up to 100 seats for your team." required type="number" :attributes="$bind('quantity', '.number')" :error-bag="$demoBag" name="quantity" min="0" max="100" step="1" suffix="seats" :readonly="$locked" :data-basic-quantity="$livewire ? true : null" />
 @endif
 @if (in_array($kind, ['password', 'all'], true))
-                    <x-sirius::input :id="($automaticIds ?? false) ? null : $demoId.'-password'" label="Account password" type="password" :attributes="$bind('password', '')" :error-bag="$demoBag" name="password" helper="Example only; do not enter a real password." required minlength="8" autocomplete="new-password" :readonly="$locked" :data-basic-password="$livewire ? true : null" />
+                    <x-sirius::input :id="($automaticIds ?? false) ? null : $demoId.'-password'" label="Password" type="password" :attributes="$bind('password', '')" :error-bag="$demoBag" name="password" helper="Example only; do not enter a real password." required minlength="8" autocomplete="new-password" :readonly="$locked" :data-basic-password="$livewire ? true : null" />
 @endif
 @if (in_array($kind, ['textarea', 'all'], true))
                     <x-sirius::textarea :id="($automaticIds ?? false) ? null : $demoId.'-notes'" placeholder="Describe the next project milestone." label="Project brief" :attributes="$bind('notes', '')" :error-bag="$demoBag" name="notes" required rows="4" cols="40" maxlength="500" helper="Plain text, up to 500 characters." :readonly="$locked" :data-basic-notes="$livewire ? true : null" />

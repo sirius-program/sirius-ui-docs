@@ -1,1 +1,1 @@
-<x-docs-example title="Account password" view="blade-components.demos.password" />
+<x-docs-example title="Password" view="blade-components.demos.password" />

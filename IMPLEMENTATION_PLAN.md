@@ -64,7 +64,7 @@ All form controls implement the following contract, including enhanced controls:
 | `currency` | Configurable separators and precision; separate display and canonical submitted value |
 | `date-picker` | `mode=date|time|datetime`; display format, limits, locale, timezone configuration |
 | `file-upload` | Single/multiple upload, progress, cancellation, type and size limits |
-| `textarea` | Native textarea by default; `richtext=true` enables the editor |
+| `textarea` | Native textarea by default; `editor=true` enables the editor |
 | `select` | Single/multiple selection, local search, optional paginated server search |
 | `form` | Ordinary Blade submission; explicit `action`; `method=GET` by default; automatic CSRF for non-GET methods and method spoofing for PUT/PATCH/DELETE; `sending-file=false` by default |
 | `card`, `modal` | String shorthands, header/footer named slots, body default slot; stable section IDs |
@@ -123,7 +123,7 @@ The following are candidate categories, not claims of verified compatibility or 
 | Icons | Blade Icons and a free icon set | Rendering, license, internal assets |
 | Date/time | Flatpickr or equivalent | Supported modes, limits, keyboard use, Livewire synchronization |
 | File upload | FilePond, Dropzone, or equivalent | Free required features, temporary-upload bridge, cleanup/cancel behavior |
-| Richtext | A free self-hostable editor; evaluate TinyMCE or an alternative | Redistribution license, no unexpected paid requirement, sanitized HTML contract, bundled assets |
+| Editor | A free self-hostable editor; evaluate TinyMCE or an alternative | Redistribution license, no unexpected paid requirement, sanitized HTML contract, bundled assets |
 | Select | Select2 or a lighter alternative | Multiple values, remote pagination, accessibility, JS lifecycle |
 | Table/calendar | Native Livewire baseline; evaluate libraries only if needed | Clear reduction in complexity without conflicting ownership or paid features |
 
@@ -131,7 +131,7 @@ The following are candidate categories, not claims of verified compatibility or 
 - [x] Create narrowly scoped integration proofs for risky widget synchronization before implementing their full component phases.
 - [x] Choose the smallest suitable dependency set. jQuery is allowed if justified and bundled internally.
 - [x] Establish JS loading and teardown for both ordinary Blade and Livewire contexts, including deferred initialization and multiple instances.
-- [x] Define HTML sanitization ownership: richtext output is untrusted; application validation and server sanitization are required before rendering. The docs example must demonstrate a concrete, tested sanitization path.
+- [x] Define HTML sanitization ownership: editor output is untrusted; application validation and server sanitization are required before rendering. The docs example must demonstrate a concrete, tested sanitization path.
 
 Acceptance: architecture tests exist and pass before Phase 1; docs consumes the local package; dependency decisions and test baseline are recorded.
 
@@ -248,9 +248,9 @@ Verification: package `composer test` passed (56 tests, 277 assertions), docs `c
 - [ ] Browser-test real file selection, progress/result state, remove, re-render, and duplicate-request prevention.
 - [ ] Add upload docs with permanent-storage examples and complete the mandatory phase gate.
 
-## Phase 7 — Richtext textarea
+## Phase 7 — Textarea editor
 
-- [ ] Enable the verified editor through `textarea richtext=true`; preserve native textarea mode as the default.
+- [ ] Enable the verified editor through `textarea editor=true`; preserve native textarea mode as the default.
 - [ ] Expose toolbar, height, placeholder, readonly/disabled, locale, and compatible free editor options.
 - [ ] Synchronize HTML for ordinary form submission and Livewire, including initial content, empty content, validation errors, and resets.
 - [ ] Keep image upload outside version one. Ensure toolbar configuration does not imply an unsupported upload feature.
@@ -382,7 +382,7 @@ Prerequisite: complete all component phases through Phase 14 and their documenta
 - [ ] Explain package structure, configurable namespaces, configuration, assets, published resources, supported framework versions, and the distinction between package internals and consumer extension points.
 - [ ] Provide a component-selection guide and references for every shipped Blade and Livewire component, including props, slots, attributes, events, options, defaults, and supported customization points.
 - [ ] Include working ordinary Blade and Livewire examples covering bindings, validation/error bags, helper text, accessibility, stable IDs, reset, and widget lifecycle behavior. Explain the ordinary Blade `form` component's GET default, explicit action, CSRF/method spoofing, multipart contract, and separation from Livewire submission handling.
-- [ ] Explain application-owned responsibilities for table queries, authorization, bulk actions, CSV export, calendar day actions, richtext sanitization, and uploads. Preserve CRUD controller design and the invocable-controller rule for single actions.
+- [ ] Explain application-owned responsibilities for table queries, authorization, bulk actions, CSV export, calendar day actions, editor sanitization, and uploads. Preserve CRUD controller design and the invocable-controller rule for single actions.
 - [ ] Cover local asset installation/builds, Tailwind tokens and themes, Blade Icons, troubleshooting, and relevant test commands. Use only the selected free dependency features.
 - [ ] Instruct agents to inspect the installed package version and configuration, prefer existing components, and avoid inventing APIs or editing `vendor`. Use documented publishing and extension mechanisms; never access `.env` directly or expose secrets.
 - [ ] Bundle version-matched references and examples with each package release so essential usage guidance works without access to the docs repository or a hosted website. Document how to refresh an installed skill after a package upgrade.
@@ -410,7 +410,7 @@ Acceptance: a consumer can install and refresh the bundled skill through Laravel
 
 ## Phase 16 — Cross-component validation and release readiness
 
-- [ ] Exercise representative forms combining label, helper, error, checkbox, radio, switch, currency, date, upload, richtext, and select inside a modal.
+- [ ] Exercise representative forms combining label, helper, error, checkbox, radio, switch, currency, date, upload, editor, and select inside a modal.
 - [ ] Verify repeated components, multiple instances, validation failures, form reset, conditional rendering, and Livewire navigation without state loss or leaked listeners.
 - [ ] Review keyboard access, focus, light/dark contrast, mobile layouts, and reduced-motion behavior across docs examples.
 - [ ] Verify the ordinary Blade `form` component and a separate Livewire form submit the documented canonical values, including disabled/readonly behavior. Cover the Blade form's GET default, non-GET CSRF, spoofed methods, and multipart file submissions.

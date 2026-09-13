@@ -21,7 +21,7 @@
         </aside>
     </div>
     <footer class="flex flex-wrap items-center justify-between gap-3 border-t border-zinc-200 py-6 text-sm text-zinc-500 dark:border-zinc-700 dark:text-zinc-400">
-        <p>Sirius UI &middot; Reusable components for Laravel.</p>
+        <p>Sirius UI &middot; Reusable components for Laravel Blade and Livewire. Created with ❤️ by <a href="https://fathulhusnan.com/">Fathul Husnan</a>.</p>
         <a href="#docs-top" class="underline underline-offset-4">Back to top</a>
     </footer>
 </div>

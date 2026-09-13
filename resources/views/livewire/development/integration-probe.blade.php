@@ -16,7 +16,7 @@
                 </select>
             </div>
             <div wire:ignore x-data="integrationWidget('editor', $wire.entangle('html').live)">
-                <label for="probe-editor">Rich text</label>
+                <label for="probe-editor">Editor</label>
                 <div id="probe-editor" x-ref="control"></div>
             </div>
             <div wire:ignore x-data="integrationUpload($wire)">
