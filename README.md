@@ -36,6 +36,8 @@ Checkbox and radio options inside `<x-sirius::field group>` share the group's er
 
 Phase 2 integration fixtures at `/development/basic-controls` and `/development/standalone-controls` verify multiple Livewire instances and native controls without Livewire or Alpine. They are available only in local/testing environments.
 
+The expanded roadmap in the implementation checklist runs through Phase 24. Planned additions include single/range Slider, Message and Dialog naming, new display/navigation/overlay components, and Livewire Chart. Table phases also include custom row, bulk, and toolbar actions, with confirmation/input forms and explicit atomic or partial-result handling. The AI agent skill follows all component phases; replacing Flux throughout docs precedes final release validation. These are planned APIs, not shipped components.
+
 - [Implementation checklist](IMPLEMENTATION_PLAN.md)
 - [Phase 0 architecture, dependency decisions, and evidence](PHASE_0.md)
 - [Phase 1 form foundation and verification](PHASE_1.md)
