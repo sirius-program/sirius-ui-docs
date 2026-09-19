@@ -8,7 +8,7 @@
                     :readonly="$locked" :disabled="$disabled" data-currency-budget />
                 <x-sirius::currency :id="$this->getId().'-adjustment'" label="Invoice adjustment" name="adjustment"
                     wire:model.blur.live="adjustment" thousands-separator="." decimal-separator="," :precision="3" allow-negative
-                    suffix="EUR" required helper="Use a negative amount for a credit; up to 3 decimal places."
+                    suffix="IDR" required helper="Use a negative amount for a credit; up to 3 decimal places."
                     :readonly="$locked" :disabled="$disabled" data-currency-adjustment />
             </div>
         @endif

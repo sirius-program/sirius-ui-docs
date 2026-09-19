@@ -1,4 +1,4 @@
-<x-docs-code language="Shell">php artisan vendor:publish --tag=sirius-ui-config</x-docs-code>
+@include('blade-components.examples.publish-config')
 <x-docs-code language="PHP">// config/sirius-ui.php - unset environment overrides inherit app settings:
 'locale' => env('SIRIUS_UI_LOCALE'),
 'timezone' => env('SIRIUS_UI_TIMEZONE'),</x-docs-code>
