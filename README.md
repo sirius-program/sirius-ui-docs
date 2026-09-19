@@ -30,6 +30,8 @@ Textarea uses `editor=false` by default. The `editor=true` mode is reserved for 
 
 Phase 3 provides **Currency** at `/blade-components/currency`: configurable grouping/decimal separators, exact canonical decimal strings, maximum precision with validation (no rounding or truncation), optional negative amounts, and string-based min/max checks. The paired project-budget and invoice-adjustment demos share exact copyable Blade sources. No additional dependency is required. Currency JavaScript is bundled into the same `dist/sirius.js` entry point, including published-asset usage. The native `/development/currency` and `/development/currency-bindings` fixtures cover editing, resets, modifiers, Alpine, and multiple Livewire instances in local/testing environments.
 
+Phase 4 provides **Datetime Picker** at `/blade-components/datetime-picker` with `type="date|time|datetime"`, calendar/clock prefixes, and a Clear suffix using the shared input adornment styles. Display formats are separate from canonical wall-clock values (`Y-m-d`, `H:i`, and `Y-m-d H:i:s`). Flatpickr 4.6.13, locales, styles, and license notices are bundled in the package assets. The trip-planning demos cover date/time bounds, disabled dates, locale, server validation, reset, readonly/disabled behavior, and Livewire synchronization. Native-only and multiple-instance/Alpine fixtures live at `/development/datetime-picker` and `/development/date-bindings`. Global `locale` and `timezone` can be set in `config/sirius-ui.php` (publish with `php artisan vendor:publish --tag=sirius-ui-config`). Both default to null. At render time, timezone falls through `sirius-ui.timezone` → `app.timezone` → `UTC`, and locale through `sirius-ui.locale` → `app.locale` → `app.fallback_locale` → `en`; missing or null entries are skipped. Individual picker props may override them. Applications own timezone conversion and DST validation.
+
 Development-only integration fixtures are available at `/development/integrations` and `/development/plain-blade` when the application environment is `local` or `testing`. These are experiments for later components, not public component APIs.
 
 Checkbox and radio options inside `<x-sirius::field group>` share the group's error key, error bag, and accessible descriptions. Put `required` on the group to show a single required marker alongside a single set of validation messages. Required radio groups preserve native validation; validate minimum checkbox selections on the server.
@@ -43,6 +45,7 @@ The expanded roadmap in the implementation checklist runs through Phase 24. Plan
 - [Phase 1 form foundation and verification](PHASE_1.md)
 - [Phase 2 basic controls and verification](PHASE_2.md)
 - [Phase 3 currency contract and verification](PHASE_3.md)
+- [Phase 4 date/time contract and verification](PHASE_4.md)
 - [Bundled dependency notices](public/third-party-notices.txt)
 
 ## Verification

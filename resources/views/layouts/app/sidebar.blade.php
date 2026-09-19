@@ -23,6 +23,7 @@
                         <flux:sidebar.item :href="route('blade-components.control', ['control' => $control])" :current="request()->route('control') === $control" wire:navigate>{{ $controlLabel }}</flux:sidebar.item>
                     @endforeach
                     <flux:sidebar.item :href="route('blade-components.currency')" :current="request()->routeIs('blade-components.currency')" wire:navigate>Currency</flux:sidebar.item>
+                    <flux:sidebar.item :href="route('blade-components.datetime-picker')" :current="request()->routeIs('blade-components.datetime-picker')" wire:navigate>Datetime Picker</flux:sidebar.item>
                 </flux:sidebar.group>
             </flux:sidebar.nav>
         </flux:sidebar>

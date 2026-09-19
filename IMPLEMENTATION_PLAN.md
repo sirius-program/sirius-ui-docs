@@ -4,7 +4,7 @@
 Package: `D:/Projects/sirius-ui`  
 Documentation and integration application: `D:/Projects/sirius-ui-docs`
 
-Phase 0 through Phase 3 checkboxes reflect executed work. The reusable phase gate remains an unchecked template. The expanded roadmap runs through Phase 24; phases 0–3 retain their completed status, Slider precedes Form, the AI skill follows all component phases, and Flux migration immediately precedes final validation. See PHASE_0.md, PHASE_1.md, PHASE_2.md, and PHASE_3.md for architecture boundaries, decisions, verification scope, and maintenance notes.
+Phase 0 through Phase 4 checkboxes reflect executed work. The reusable phase gate remains an unchecked template. The expanded roadmap runs through Phase 24; phases 0–4 retain their completed status, Slider precedes Form, the AI skill follows all component phases, and Flux migration immediately precedes final validation. See PHASE_0.md, PHASE_1.md, PHASE_2.md, PHASE_3.md, and PHASE_4.md for architecture boundaries, decisions, verification scope, and maintenance notes.
 
 ## 1. Agreed outcome and architecture
 
@@ -62,7 +62,7 @@ All form controls implement the following contract, including enhanced controls:
 | `radio` | Native radio; shared group name/model, distinct option values, single selected value |
 | `switch` | Native checkbox styled as an on/off switch with switch semantics; boolean binding |
 | `currency` | Configurable separators and precision; separate display and canonical submitted value |
-| `date-picker` | `mode=date\|time\|datetime`; display format, limits, locale, timezone configuration |
+| `datetime-picker` | `type=date\|time\|datetime`; display format, limits, locale, timezone configuration |
 | `file-upload` | Single/multiple upload, progress, cancellation, type and size limits |
 | `textarea` | Native textarea by default; `editor=true` enables the editor |
 | `select` | Single/multiple selection, local search, optional paginated server search |
@@ -227,13 +227,14 @@ Verification: package `composer test` passed (56 tests, 277 assertions), docs `c
 
 ## Phase 4 — Date, time, and datetime
 
-- [ ] Implement `date-picker` using the verified library and modes date/time/datetime.
-- [ ] Use canonical values `Y-m-d`, `H:i`, and `Y-m-d H:i:s` respectively; configure display format separately.
-- [ ] Default timezone to application config and permit override. Do not silently convert submitted wall-clock values to UTC; application code owns persistence conversion and ambiguous/nonexistent DST-time validation.
-- [ ] Expose compatible min/max dates or times, locale, week start, minute increment, disabled dates, clearability, and supported additional options.
-- [ ] Test leap days, month/year boundaries, bounds, invalid typed input, clear/reset, disabled/readonly, and native Blade submission.
-- [ ] Browser-test selection and server updates through re-renders, conditional mounting, navigation, and multiple widget instances.
-- [ ] Add mode-specific examples under date-picker docs and complete the mandatory phase gate.
+- [x] Implement `datetime-picker` using the verified library and `type=date|time|datetime`.
+- [x] Render a calendar icon prefix for date/datetime and a clock icon prefix for time. Place Clear in the suffix and reuse the shared input adornment styles, including password-style action borders, hover/focus, and disabled behavior.
+- [x] Use canonical values `Y-m-d`, `H:i`, and `Y-m-d H:i:s` respectively; configure display format separately.
+- [x] Resolve global `sirius-ui.locale` and `sirius-ui.timezone`, defaulting to null with render-time fallback chains `sirius-ui.locale` → `app.locale` → `app.fallback_locale` → `en` and `sirius-ui.timezone` → `app.timezone` → `UTC`; permit per-component overrides. Do not silently convert submitted wall-clock values to UTC; application code owns persistence conversion and ambiguous/nonexistent DST-time validation.
+- [x] Expose compatible min/max dates or times, locale, week start, minute increment, disabled dates, clearability, and supported additional options.
+- [x] Test leap days, month/year boundaries, bounds, invalid typed input, clear/reset, disabled/readonly, and native Blade submission.
+- [x] Browser-test selection and server updates through re-renders, conditional mounting, navigation, and multiple widget instances.
+- [x] Add type-specific examples under datetime-picker docs and complete the mandatory phase gate.
 
 ## Phase 5 — Searchable select
 
@@ -580,7 +581,8 @@ For each phase, append its outcome here when it is actually executed:
 | 1 | Complete | Package and docs | Both passed: package 17 tests / 95 assertions; docs 10 tests / 48 assertions; lint, types, refactoring passed | Passed: 8 tests / 59 assertions | Both asset builds passed; label and shared field docs completed. See PHASE_1.md. |
 | 2 | Complete | Package and docs | Both passed: package 32 tests / 179 assertions; docs 24 tests / 106 assertions; lint, types, refactoring passed | Passed: 15 tests / 168 assertions | Both asset builds passed; native and Livewire interaction, keyboard/readonly, reset, and mobile themes verified. See PHASE_2.md. |
 | 3 | Complete | Package and docs | Both passed: package 56 tests / 277 assertions; docs 59 tests / 262 assertions; lint, types, refactoring passed | Passed: 34 tests / 367 assertions | Both asset builds passed; Laravel 12 currency suite passed (15 tests / 43 assertions). Native/Livewire/Alpine values, editing, reset, and mobile themes verified. See PHASE_3.md. |
-| 4–24 | Not started | None | Not run for implementation | Not run for implementation | Awaiting further implementation instruction |
+| 4 | Complete | Package and docs | Both passed: package 81 tests / 340 assertions; docs 73 tests / 325 assertions; lint, types, refactoring passed | Passed: 40 tests / 439 assertions | Both asset builds passed; date/time/datetime canonical values, Blade/Livewire/Alpine updates, bounds, keyboard, reset, remounts/navigation, and mobile themes verified. Public prop is `type`; calendar/clock prefixes and Clear suffix use shared input styling. See PHASE_4.md. |
+| 5–24 | Not started | None | Not run for implementation | Not run for implementation | Awaiting further implementation instruction |
 
 Planning-document verification on 2026-09-12: only this Markdown file was added. In docs, `composer test` passed (Pint, PHPStan, Rector, and 1 existing test with 4 assertions), followed by `composer test:browser` passing (1 existing test with 2 assertions). These baseline checks do not validate unimplemented components or complete any phase. The package was unchanged, so its suite was not run for this documentation-only change.
 

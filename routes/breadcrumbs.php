@@ -63,3 +63,13 @@ Breadcrumbs::for('development.currency-bindings', function (BreadcrumbTrail $tra
     $trail->parent('blade-components.currency');
     $trail->push('Currency binding integration', route('development.currency-bindings'));
 });
+
+Breadcrumbs::for('blade-components.datetime-picker', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.index');
+    $trail->push('Datetime Picker', route('blade-components.datetime-picker'));
+});
+
+Breadcrumbs::for('development.date-bindings', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.datetime-picker');
+    $trail->push('Date binding integration', route('development.date-bindings'));
+});
