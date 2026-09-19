@@ -2,18 +2,18 @@
     $rows = [
         ['label', 'string | null', 'null', 'Visible label; omitted when empty.'],
         ['helper', 'string | null', 'null', 'Supporting text below the control.'],
-        ['error-key', 'string | null', 'null', 'Overrides error lookup from the binding or normalized name.'],
-        ['error-bag', 'string', 'default', 'Laravel named validation bag. Choice groups share their parent bag.'],
-        ['errors', 'ViewErrorBag | null', 'null', 'Optional explicit error bag; otherwise supplied by Laravel/Livewire.'],
-        ['size', 'sm | md | lg', 'md', 'Visual sizing, independent from the native size attribute.'],
-        ['wrapper-class', 'string', "''", 'Additional classes for the field wrapper.'],
+        ['error-key', 'string | null', 'null', 'Override the validation key; otherwise use the wire:model path, then the normalized name.'],
+        ['error-bag', 'string', 'default', 'Named Laravel validation error bag.'],
+        ['errors', 'ViewErrorBag | null', 'null', 'Optional explicit error bags; otherwise supplied by Laravel or Livewire.'],
+        ['size', 'sm | md | lg', 'md', 'Visual size (font and padding), independent of the native HTML size attribute.'],
+        ['wrapper-class', 'string', 'empty string', 'Additional CSS classes for the field wrapper.'],
     ];
     if (in_array($kind, ['input', 'password'], true)) {
         $rows = array_merge($rows, [
             ['type', 'any valid html5 input type | password', 'text', 'Choose the native input mode; use password for the eye toggle.'],
-            ['prefix', 'string | null', 'null', 'Text or named slot adornments in front of the input excluded from submission.'],
-            ['suffix', 'string | null', 'null', 'Text or named slot adornments in end of the input excluded from submission.'],
-            ['control-size', 'integer | null', 'null', 'Native HTML size, separately from visual size.'],
+            ['prefix', 'string | null', 'null', 'Text or named slot before the input. The slot overrides the prop; adornments are excluded from submission.'],
+            ['suffix', 'string | null', 'null', 'Text or named slot after the input. The slot overrides the prop; adornments are excluded from submission.'],
+            ['control-size', 'integer | null', 'null', 'Native HTML size attribute: approximate width in characters, subject to CSS. Does not limit input length.'],
         ]);
         if ($kind === 'password') {
             $rows[] = ['show-label', 'string', 'Show', 'Translatable button text for showing the password value.'];

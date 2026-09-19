@@ -26,12 +26,14 @@
             </section>
             <section id="shared-field-contract" class="space-y-3">
                 <h2 class="text-xl font-medium">Shared field contract</h2>
-                <p>Labels, helpers, error keys, named error bags, and stable explicit IDs follow the shared field contract. The examples submit wall-clock strings: <code>2028-02-29</code>, <code>09:30</code>, and <code>2028-12-31 14:30:45</code>. Display formatting never converts these values to UTC.</p>
+                <p>Controls automatically associate labels, helpers, and validation errors. Laravel or Livewire supplies the error bags; application validation remains authoritative.</p>
+                <p>The examples submit wall-clock strings: <code>2028-02-29</code>, <code>09:30</code>, and <code>2028-12-31 14:30:45</code>. Display formatting never converts these values to UTC.</p>
                 <p>The native controller and Livewire action validate the canonical format, travel-year bounds, reminder, and unavailable departure date. Demos use <code>novalidate</code> to demonstrate server errors. Nothing is persisted. Applications own timezone conversion and validation of ambiguous or nonexistent daylight-saving times.</p>
             </section>
             <section id="assets-and-interaction" class="space-y-3">
                 <h2 class="text-xl font-medium">Assets and interaction</h2>
-                <p>Flatpickr 4.6.13 and its locales/styles are bundled internally in the package assets under the MIT license. Import assets once or publish <code>sirius-ui-assets</code>; retain the bundled third-party notices. No CDN, key, or second Alpine instance is required.</p>
+                <p>Import the package stylesheet and JavaScript once in your application build, or publish <code>sirius-ui-assets</code> and load the published CSS and JavaScript.</p>
+                <p>Flatpickr 4.6.13 and its locales/styles are bundled internally under the MIT license; retain the bundled third-party notices. No CDN, key, or second Alpine instance is required.</p>
                 @include('blade-components.examples.assets')
                 <p>Type in the displayed format or use the popup. Invalid input remains visible and fails client validity; it is passed unchanged to server validation rather than silently converted to another date. Native pages without JavaScript use a plain text field and must receive canonical values.</p>
                 <p>Input/change/blur/Enter events are forwarded to the canonical binding input. Livewire and Alpine string bindings support deferred, live/debounce, change/lazy, blur, and Enter timing; numeric/boolean casts are rejected. Consumer listeners on the visible input receive display text. Programmatic native updates set <code>[data-sir-date-value]</code> and dispatch input when a bound model must update.</p>

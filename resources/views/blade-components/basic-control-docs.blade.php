@@ -37,7 +37,7 @@
             @endforeach
             <section id="shared-field-contract" class="space-y-3">
                 <h2 class="text-xl font-medium">Shared field contract</h2>
-                <p>Application validation remains authoritative. Controls link labels, helpers, and errors automatically; Laravel or Livewire supplies the error bag.</p>
+                <p>Controls automatically associate labels, helpers, and validation errors. Laravel or Livewire supplies the error bags; application validation remains authoritative.</p>
                 @if ($control === 'choices')
                     <p>Wrap related checkboxes or radios in <code>&lt;x-sirius::field group&gt;</code> with a group label and error key. Validation messages and required markers appear once per group. For minimum checkbox selections, validate the array on the server instead of requiring every option.</p>
                 @endif
@@ -47,7 +47,7 @@
                 @if ($control === 'choices')
                     <p>Checkboxes and radios gently pop when selected; switches slide smoothly between states. Motion respects the system's reduced-motion preference. Customize <code>--sir-choice-duration</code> (default <code>180ms</code>); set it to <code>0ms</code> to disable these animations. No additional library is required.</p>
                 @endif
-                <p>Import the package stylesheet and JavaScript once in your application build, or publish the <code>sirius-ui-assets</code> tag and load the published CSS and JavaScript. Docs imports both from the locally installed package.</p>
+                <p>Import the package stylesheet and JavaScript once in your application build, or publish <code>sirius-ui-assets</code> and load the published CSS and JavaScript.</p>
                 @include('blade-components.examples.assets')
                 <p>The package script initializes controls once and supports Livewire navigation and remounts without an extra Alpine instance or runtime CDN.</p>
                 @if ($control === 'choices')

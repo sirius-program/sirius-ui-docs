@@ -6,7 +6,7 @@ use App\Livewire\Examples\DatetimePickerExample;
 use Livewire\Livewire;
 
 it('documents all three date modes using exact native demo sources', function (): void {
-    $response = $this->get(route('blade-components.datetime-picker'))->assertOk()->assertSee('Departure date')->assertSee('Reminder')->assertSee('Jadwal konsultasi');
+    $response = $this->get(route('blade-components.datetime-picker'))->assertOk()->assertSee('Departure date')->assertSee('Reminder')->assertSee('Consultation schedule');
     foreach (['date', 'time', 'datetime'] as $mode) {
         $response->assertSee(e(trim(file_get_contents(resource_path('views/blade-components/demos/datetime-picker-' . $mode . '.blade.php')))), false);
     }

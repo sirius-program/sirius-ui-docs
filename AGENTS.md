@@ -188,3 +188,12 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 - Use the shared docs-code component for highlighted, copyable usage examples, preserving exact code text and handling denied clipboard access. Use docs-props for minimal, responsive tables with attribute, type, default, and description columns. Keep attribute behavior in its table row; do not repeat it in Usage or other sections.
 - After each props table, explain supported HTML5, Alpine, data/ARIA, and Livewire forwarding for that component; do not imply unsupported directives or attributes work.
 - Reuse documentation components and paired-demo partials. Keep prop tables aligned with the shipped package API. Update the docs README and run the required project and browser test gates after changes.
+
+
+## Documentation wording consistency
+
+- Scope: `resources/views/blade-components/**` and documentation presentation components in `resources/views/components/docs-*.blade.php`.
+- Use identical English wording for descriptions that express the same behavior across component pages, including shared props such as `size`, `control-size`, error handling, adornments, wrapper classes, shared field behavior, and asset setup. Compare existing pages before adding or editing text, and update every equivalent description together.
+- Copy the agreed wording directly into each relevant file. Do not introduce `@include`, shared text partials, translation keys, or runtime text helpers to centralize these descriptions. Existing includes used to compose demos, examples, and attribute tables may remain.
+- Keep genuinely different component behavior explicit. Do not copy unsupported capabilities or erase component-specific restrictions just to make descriptions identical. Standardize equivalent type/default notation as well as prose.
+- Enforce wording consistency through this rule and review only. Do not add automated tests that assert matching descriptions or exact wording across pages; retain existing functional and rendering checks.

@@ -8,8 +8,8 @@
                 <x-sirius::datetime-picker :id="$this->getId().'-reminder'" name="reminder" label="Reminder"
                     type="time" min-time="08:00" max-time="20:00" :minute-increment="15" helper="Set your reminder time."
                     wire:model.live.debounce.150ms="reminder" :readonly="$locked" :disabled="$disabled" data-date-reminder />
-                <x-sirius::datetime-picker :id="$this->getId().'-appointment'" name="appointment" label="Jadwal konsultasi"
-                    type="datetime" min-date="2028-01-01 00:00:00" max-date="2029-12-31 23:59:59" timezone="Asia/Jakarta" locale="id" required helper="Jadwalkan konsultasi menggunakan zona waktu lokal Asia/Jakarta."
+                <x-sirius::datetime-picker :id="$this->getId().'-appointment'" name="appointment" label="Consultation schedule"
+                    type="datetime" min-date="2028-01-01 00:00:00" max-date="2029-12-31 23:59:59" timezone="Asia/Jakarta" locale="id" required helper="Schedule a consultation using the Asia/Jakarta time zone and Indonesian locale."
                     wire:model.live.debounce.150ms="appointment" display-format="d F Y H:i:S" :readonly="$locked" :disabled="$disabled" data-date-appointment />
             </div>
         @endif
