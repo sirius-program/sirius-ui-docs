@@ -4,7 +4,7 @@
 Package: `D:/Projects/sirius-ui`  
 Documentation and integration application: `D:/Projects/sirius-ui-docs`
 
-Phase 0 through Phase 4 checkboxes reflect executed work. The reusable phase gate remains an unchecked template. The expanded roadmap runs through Phase 24; phases 0–4 retain their completed status, Slider precedes Form, the AI skill follows all component phases, and Flux migration immediately precedes final validation. See PHASE_0.md, PHASE_1.md, PHASE_2.md, PHASE_3.md, and PHASE_4.md for architecture boundaries, decisions, verification scope, and maintenance notes.
+Phase 0 through Phase 4 checkboxes reflect executed work. The reusable phase gate remains an unchecked template. The expanded roadmap runs through Phase 25; phases 0–4 retain their completed status, Phone follows Datetime Picker; Phone and Slider precede Form, the AI skill follows all component phases, and Flux migration immediately precedes final validation. See PHASE_0.md, PHASE_1.md, PHASE_2.md, PHASE_3.md, and PHASE_4.md for architecture boundaries, decisions, verification scope, and maintenance notes.
 
 ## 1. Agreed outcome and architecture
 
@@ -63,6 +63,7 @@ All form controls implement the following contract, including enhanced controls:
 | `switch` | Native checkbox styled as an on/off switch with switch semantics; boolean binding |
 | `currency` | Configurable separators and precision; separate display and canonical submitted value |
 | `datetime-picker` | `type=date\|time\|datetime`; display format, limits, locale, timezone configuration |
+| `phone` | Country/region selection through `locale` (string, array, or `*`), country-code prefix, configurable display delimiter, canonical E.164 value |
 | `file-upload` | Single/multiple upload, progress, cancellation, type and size limits |
 | `textarea` | Native textarea by default; `editor=true` enables the editor |
 | `select` | Single/multiple selection, local search, optional paginated server search |
@@ -236,14 +237,50 @@ Verification: package `composer test` passed (56 tests, 277 assertions), docs `c
 - [x] Browser-test selection and server updates through re-renders, conditional mounting, navigation, and multiple widget instances.
 - [x] Add type-specific examples under datetime-picker docs and complete the mandatory phase gate.
 
-## Phase 5 — Searchable select
+## Phase 5 — Phone input
 
-### 5.1 Local options
+### 5.1 Component, dependency, and locale configuration
+
+- [ ] Implement `<x-sirius::phone>` using the shared form contract and a native `type="tel"` display input. Reuse Tailwind input/prefix styling, Blade Icons when needed, helper/errors, required, readonly/disabled behavior, HTML5/Alpine/data/ARIA attributes, and supported Livewire bindings.
+- [ ] Use `libphonenumber-js` for country metadata, parsing, formatting, and validation. Verify and pin a compatible release and metadata variant before implementation; bundle all required assets internally, preserve its MIT license, and require no hosted service, API key, or runtime CDN. Reference: https://github.com/catamphetamine/libphonenumber-js and its LICENSE file.
+- [ ] Accept `locale` as one supported country/region code (`ID`, `US`, `GB`), a regional locale (`en-GB`, `id-ID`), a non-empty array of these values, or the standalone string `*` for all supported countries. Normalize case and locale separators, deduplicate countries while preserving array order, and reject invalid values, empty arrays, or wildcard mixed into an array.
+- [ ] Distinguish numbering countries from UI languages: a country controls the calling code and numbering rules, not the language of all labels. Resolve regional locales to their country; resolve language-only values through an explicit, documented mapping, including `id → ID` and `en → US`. Reject unmapped or unsupported values rather than guessing a country.
+- [ ] Add global `sirius-ui.phone_locale` with an optional `env('SIRIUS_UI_PHONE_LOCALE')` override and null default in the publishable config. Document the fallback chain: explicit component `locale` → `sirius-ui.phone_locale` → `sirius-ui.locale` → `app.locale` → `app.fallback_locale` → `en`. Resolve fallbacks at render time. PHP configuration may hold a string, array, or `*`; document environment overrides as strings, without inventing implicit comma-separated array parsing. Never access `.env` directly.
+- [ ] Resolve the initial country from the single locale or the first country of an array. With `*`, use the global phone locale/default chain; if a global value is also `*`, continue to the next fallback for the initial country, and use the first country when a global array is selected. Do not use IP geolocation or require a network request.
+
+### 5.2 Prefix, display formatting, and canonical values
+
+- [ ] Show the selected calling code (for example `+62`) in the shared styled prefix. Use a fixed prefix for one resolved country; use an accessible country select for multiple countries or `*`. Include country names and calling codes in option labels so countries sharing a code can be distinguished.
+- [ ] Expose `delimiter`, defaulting to a space. Support space, hyphen, period, and the empty string. Derive digit grouping from each country's metadata; the delimiter replaces group separators rather than imposing fixed groups of three. Keep the calling code in the prefix rather than duplicating it in the editable national-number display.
+- [ ] Build a presentation adapter for custom delimiters; the library's conventional formatter does not supply an arbitrary delimiter option. Preserve caret position, selection, paste, deletion, and incomplete drafts. Normalize national trunk prefixes through the library rather than manually stripping leading zeroes.
+- [ ] Submit and bind only a valid international E.164 string such as `+6281234567890`, with the leading plus and country calling code and no display delimiters. Never submit a formatted national number as the canonical value. Keep display/draft state separate from canonical state.
+- [ ] Use a null canonical value for empty or incomplete/invalid input while preserving the typed draft visibly. Ordinary HTML submits an empty string for a null control value; document Laravel's empty-string-to-null normalization. Trigger user-facing validation on blur/submit instead of every keystroke; retain the draft through validation errors and Livewire re-renders. Define native failed-validation draft restoration without binding invalid text to the canonical field.
+- [ ] Treat the prefix alone as an empty number. Exclude phone extensions in the initial release and show clear validation feedback rather than silently dropping an extension. Application-side validation remains authoritative; syntactic numbering-plan validity does not prove ownership or that a number is reachable.
+- [ ] When a complete international value is pasted or supplied by the server, detect its country only when unambiguous and permitted by the configured list. Do not silently switch to a disallowed country or guess between countries sharing a calling code; keep ambiguous/unsupported input visible and request an allowed country selection or show an error.
+- [ ] On manual country changes, retain the national digits and then reformat/revalidate using the newly selected country's rules. Update the canonical value accordingly or set it to null if invalid; explain that changing country changes the interpretation of the number.
+
+### 5.3 Blade, Alpine, and Livewire integration
+
+- [ ] Define initial canonical values, programmatic updates, ordinary submission, native reset, and Livewire/Alpine two-way synchronization. Submit exactly one canonical field under the consumer's name; do not send an additional country or draft field as that same value.
+- [ ] Preserve draft text, caret, selected country, errors, and focus during in-flight Livewire updates. Explicit server loads/resets must still replace the appropriate state. Cover multiple controls, conditional removal/remount, and navigation without duplicate initialization or listeners.
+- [ ] Disable both number entry and country changes for disabled/readonly controls. Disabled controls are omitted from native submission; readonly controls retain canonical submission. Forward native attributes to their appropriate control and document which restrictions apply to the display rather than canonical value.
+
+### 5.4 Verification and documentation
+
+- [ ] Test locale resolution and precedence, string/array/wildcard configuration, initial country, deduplication, language mappings, regional locales, shared calling codes, invalid configuration, and globally configured fallback values.
+- [ ] Test national/international input, trunk prefixes, all supported delimiters, incomplete/invalid/empty values, extensions, country changes, allowed/disallowed international paste, and exact E.164 payloads. Include server-supplied values and required/optional validation without treating a calling code alone as a number.
+- [ ] Browser-test ordinary Blade, Alpine, and Livewire flows: typing/paste/deletion and caret behavior, prefix selection, keyboard accessibility, mobile input, light/dark themes, readonly/disabled, validation draft preservation, load/reset, re-renders, remount/navigation, and multiple instances. Confirm delayed updates do not erase typing.
+- [ ] Add a Phone docs menu/page with matching real-world Blade and Livewire demos for single-country, limited-country, and all-country modes. Include separate copyable Blade usage per demo, a minimal props/attributes table, shared field contract, assets/interaction notes, locale mapping and fallback documentation, canonical examples, and server-validation guidance.
+- [ ] Update the docs README/component index and applicable architecture tests; keep the package README as a docs pointer. Complete the mandatory phase gate: `composer test` in every changed project, then `composer test:browser` in docs after all project checks pass.
+
+## Phase 6 — Searchable select
+
+### 6.1 Local options
 
 - [ ] Implement single/multiple values, placeholder, clearability, disabled options, groups where supported, and local searching.
 - [ ] Define stable option value/label serialization, retaining values such as `0` and distinguishing empty single selection from an empty multiple array.
 
-### 5.2 Server search
+### 6.2 Server search
 
 - [ ] Add an opt-in consumer-provided search provider with debounce, pagination, loading/empty/error states, and resolution of labels for preselected values.
 - [ ] Ignore stale responses; preserve selected options when later search results omit them.
@@ -252,7 +289,7 @@ Verification: package `composer test` passed (56 tests, 277 assertions), docs `c
 - [ ] Test single/multiple submit/reset, keyboard selection, updates to options and values, paginated results, authorization boundaries, race conditions, and repeated mounting.
 - [ ] Add select docs and complete the mandatory phase gate.
 
-## Phase 6 — File upload
+## Phase 7 — File upload
 
 - [ ] Implement the verified upload widget with single/multiple mode, accept/type restrictions, size/count limits, progress, cancel, retry, and remove controls.
 - [ ] Connect Livewire temporary uploads and propagate loading, validation, completion, failure, and cancellation states.
@@ -263,7 +300,7 @@ Verification: package `composer test` passed (56 tests, 277 assertions), docs `c
 - [ ] Browser-test real file selection, progress/result state, remove, re-render, and duplicate-request prevention.
 - [ ] Add upload docs with permanent-storage examples and complete the mandatory phase gate.
 
-## Phase 7 — Textarea editor
+## Phase 8 — Textarea editor
 
 - [ ] Enable the verified editor through `textarea editor=true`; preserve native textarea mode as the default.
 - [ ] Expose toolbar, height, placeholder, readonly/disabled, locale, and compatible free editor options.
@@ -273,9 +310,9 @@ Verification: package `composer test` passed (56 tests, 277 assertions), docs `c
 - [ ] Browser-test editing, formatting, form submission, programmatic updates, teardown/remount, and multiple editors without duplicate initialization.
 - [ ] Extend textarea docs and complete the mandatory phase gate.
 
-## Phase 8 — Slider
+## Phase 9 — Slider
 
-### 8.1 Single-value and range contracts
+### 9.1 Single-value and range contracts
 
 - [ ] Implement `slider` using the shared field contract, with a single numeric `value` by default and numeric `min`, `max`, and positive `step`.
 - [ ] Enable two handles with `range=true`; require exactly two numeric values and exactly two numeric entries in each of `min`, `max`, and `step`. Index 0 configures the first handle; index 1 configures the second. Reject scalar limits/steps in range mode rather than silently expanding them.
@@ -296,17 +333,17 @@ Agreed range example:
 />
 ```
 
-### 8.2 Verification and documentation
+### 9.2 Verification and documentation
 
 - [ ] Test scalar/array shape validation, invalid bounds/steps, decimal steps, independent handle constraints, equal values, and crossing prevention. Cover canonical native submission and Livewire server/client updates.
 - [ ] Browser-test both modes, keyboard/touch/pointer movement, reset, readonly/disabled states, validation, and multiple instances. Verify debounce/re-renders do not erase an in-progress value.
 - [ ] Add matching real-world Blade/Livewire demos and separate copyable usage for single/range modes; document the per-handle array contract and complete the mandatory phase gate.
 
-## Phase 9 — Ordinary Blade form
+## Phase 10 — Ordinary Blade form
 
-Prerequisite: complete all form-control phases through Phase 8, including Slider. This component simplifies ordinary Blade form markup and browser submissions; it does not manage Livewire submissions.
+Prerequisite: complete all form-control phases through Phase 9, including Phone and Slider. This component simplifies ordinary Blade form markup and browser submissions; it does not manage Livewire submissions.
 
-### 9.1 Native form contract
+### 10.1 Native form contract
 
 - [ ] Implement `<x-sirius::form>` with a default slot for form contents and a required, explicit `action` URL. Keep route generation in the consuming application.
 - [ ] Default `method` to `GET`. Accept GET, POST, PUT, PATCH, and DELETE case-insensitively; reject unsupported methods with a clear configuration error.
@@ -318,7 +355,7 @@ Prerequisite: complete all form-control phases through Phase 8, including Slider
 - [ ] Keep submission native: no AJAX, automatic loading state, or Livewire submission integration. Document that native submit-button overrides retain their HTML meaning and must remain consistent with the configured form method and upload encoding.
 - [ ] Leave validation, authorization, redirects, `old()` values, error bags, and persistence to application controllers and existing field controls. Do not introduce form-owned model state, automatic error summaries, upload endpoints, or dependencies.
 
-### 9.2 Verification and documentation
+### 10.2 Verification and documentation
 
 - [ ] Add rendering tests for default GET, mixed-case methods, explicit action, missing action, unsupported methods, CSRF presence/absence and uniqueness, spoofed methods, slot content, escaped attributes, and attribute/class forwarding.
 - [ ] Test `sending-file` true/false, automatic multipart encoding, matching/conflicting explicit enctype, GET rejection, and absence of leaked component props.
@@ -330,7 +367,7 @@ Prerequisite: complete all form-control phases through Phase 8, including Slider
 
 Acceptance: consumers can compose a native form with an explicit action, receive GET behavior by default, submit other supported methods with automatic CSRF/method spoofing, and enable multipart file submission with `sending-file` without introducing Livewire or AJAX submission behavior.
 
-## Phase 10 — Icon, button, button group, badge, and message
+## Phase 11 — Icon, button, button group, badge, and message
 
 - [ ] Implement Message, Badge, and Button variants `info`, `success`, `danger`, `warning`, `secondary`, `ghost`, and `outline`. Preserve the four semantic color mappings; define secondary as a neutral treatment, ghost as a minimal background treatment, and outline as a bordered treatment using shared theme tokens.
 - [ ] Implement a reusable `icon` wrapper around the chosen Blade Icons set, with name, size, styling, and accessible/decorative semantics; use it across components and later docs migration.
@@ -343,7 +380,7 @@ Acceptance: consumers can compose a native form with an explicit action, receive
 - [ ] Test icon accessibility, button-group composition, every variant, link styling versus anchor semantics, escaped content, attributes, loading/disabled states, and Message dismissal through Livewire updates.
 - [ ] Add icon, button, button-group, badge, and message docs entries and complete the mandatory phase gate.
 
-## Phase 11 — Card and collapsible
+## Phase 12 — Card and collapsible
 
 - [ ] Implement card string shorthands, named header/footer slots, and default body slot. Slots override corresponding string shorthands; document precedence.
 - [ ] Give rendered sections `{id}-header`, `{id}-body`, and `{id}-footer` IDs; generate a random five-character root ID when omitted, following the shared ID contract; require explicit IDs when stable identity across server renders is needed.
@@ -352,7 +389,7 @@ Acceptance: consumers can compose a native form with an explicit action, receive
 - [ ] Test slot precedence, section IDs, multiple instances, keyboard toggling, hidden content focus behavior, and Livewire-driven state changes.
 - [ ] Add card and collapsible docs entries and complete the mandatory phase gate.
 
-## Phase 12 — Dialog
+## Phase 13 — Dialog
 
 - [ ] Reuse the agreed card-like content contract and section ID scheme for dialog header/body/footer.
 - [ ] Define open/close binding and events, sizing, initial focus, focus containment, focus return, body scroll handling, and accessible dialog naming. Preserve the originally planned Modal behavior under the public name `dialog`; do not add a parallel `modal` alias.
@@ -363,7 +400,7 @@ Acceptance: consumers can compose a native form with an explicit action, receive
 - [ ] Browser-test keyboard behavior, prevented close, focus restoration, Livewire-triggered opening/closing, widgets mounted inside a dialog, and unchanged page/fixed-content position with and without a scrollbar.
 - [ ] Add dialog docs and complete the mandatory phase gate.
 
-## Phase 13 — Alert and slideover
+## Phase 14 — Alert and slideover
 
 Prerequisite: Dialog and its shared focus/scroll-lock lifecycle are complete.
 
@@ -374,7 +411,7 @@ Prerequisite: Dialog and its shared focus/scroll-lock lifecycle are complete.
 - [ ] Test Alert content escaping and arbitrary footer actions; browser-test focus, Escape/backdrop options, every Slideover side, Livewire updates, cleanup, and lack of layout shift.
 - [ ] Add separate Alert and Slideover docs pages, distinguish Alert from inline Message, and complete the mandatory phase gate.
 
-## Phase 14 — Avatar, separator, and skeleton
+## Phase 15 — Avatar, separator, and skeleton
 
 - [ ] Implement Avatar with image source, `alt`, configurable `size`, `variant=rounded|circle`, and `fallback` string for initials. Show fallback when the source is absent or fails, reserve image space, and avoid repeated error handling loops.
 - [ ] Implement Separator as a theme-consistent horizontal rule by default with vertical orientation support and appropriate decorative/semantic behavior.
@@ -382,23 +419,23 @@ Prerequisite: Dialog and its shared focus/scroll-lock lifecycle are complete.
 - [ ] Test Avatar fallback and image recovery after updates, size/shape output, separator semantics, and Skeleton accessibility; verify themes, layout, and reduced-motion behavior in docs.
 - [ ] Add all three component docs entries and complete the mandatory phase gate.
 
-## Phase 15 — Breadcrumb, menu, and dropdown
+## Phase 16 — Breadcrumb, menu, and dropdown
 
-### 15.1 Shared navigation items
+### 16.1 Shared navigation items
 
 - [ ] Implement Breadcrumb with slotted items, configurable text/icon separator, navigation labeling, and current-page semantics. Decorative separators are hidden from assistive technology.
 - [ ] Establish a shared Menu/Dropdown item contract: optional `icon`, `name`, optional `link`, optional `trailing`, `disabled`, and `active`. `trailing` accepts a plain string or named slot for shortcuts/badges; the slot takes precedence.
 - [ ] Use links for navigation and non-submitting buttons for items without links that invoke Alpine/Livewire actions. Preserve consumer directives and prevent disabled mouse/keyboard activation.
 - [ ] Support nested submenus and consumer-supplied item content without duplicating the item API. Document navigation semantics for Menu and action-menu semantics for Dropdown, including any semantic differences.
 
-### 15.2 Interaction and verification
+### 16.2 Interaction and verification
 
 - [ ] Implement Dropdown trigger/open state, outside click and Escape dismissal, focus return, keyboard navigation, submenu navigation, and touch operation. Use simple entry/exit animations and reduced-motion support; nested items must not require hover.
 - [ ] Keep submenus within the viewport and support long/scrollable menus, active items, and multiple instances. Clean up listeners and synchronize state through Livewire updates/navigation.
 - [ ] Test names/links escaping, trailing string versus slot, nested structure, disabled/active states, action forwarding, and Breadcrumb separator/current item.
 - [ ] Browser-test keyboard and touch submenus, dismissal/focus return, shortcut/count content, and Livewire-driven changes. Add all three docs pages and complete the mandatory phase gate.
 
-## Phase 16 — Tooltip and popover
+## Phase 17 — Tooltip and popover
 
 - [ ] Share positioning behavior that keeps overlays visible within the viewport; expose `variant=default|primary|secondary|warning|success|danger` with theme tokens and accessible contrast.
 - [ ] Implement Tooltip with escaped text, hover/focus activation, Escape dismissal, and accessible trigger-description association. Do not place interactive content inside Tooltip.
@@ -407,7 +444,7 @@ Prerequisite: Dialog and its shared focus/scroll-lock lifecycle are complete.
 - [ ] Test attribute/content semantics; browser-test hover/focus versus click, keyboard use, viewport edges, HTML controls, multiple instances, Livewire lifecycle, and nested overlay interaction.
 - [ ] Add separate Tooltip and Popover docs pages and complete the mandatory phase gate.
 
-## Phase 17 — Tabs and timeline
+## Phase 18 — Tabs and timeline
 
 - [ ] Implement Tabs for local content panels with stable trigger/panel associations, active-tab binding, keyboard navigation, disabled tabs, and accessible selected/hidden states. Preserve child form values when switching panels and document rendering behavior.
 - [ ] Implement Timeline as a vertical sequence matching the supplied reference: connected markers, `completed`, `current`, and `upcoming` states, optional icons or numbers, title, description, and a content slot.
@@ -415,15 +452,15 @@ Prerequisite: Dialog and its shared focus/scroll-lock lifecycle are complete.
 - [ ] Test Tabs associations, state updates, and hidden panel focus; test Timeline states and escaping/slots. Browser-test keyboard tabs, Livewire state/value preservation, responsive rendering, and light/dark presentation.
 - [ ] Add separate Tabs and Timeline docs pages and complete the mandatory phase gate.
 
-## Phase 18 — Livewire table core
+## Phase 19 — Livewire table core
 
-### 18.1 Consumer extension contract and rendering
+### 19.1 Consumer extension contract and rendering
 
 - [ ] Implement the table base class and focused definitions for columns/filters, with typed extension points and consumer-owned scoped Eloquent queries.
 - [ ] Support stable row keys, escaped default cells, explicit custom cell views, empty/loading states, and responsive rendering.
 - [ ] Keep column identifiers server-allowlisted; never use an unchecked client string as a query column or expression.
 
-### 18.2 Search, filtering, ordering, and pagination
+### 19.2 Search, filtering, ordering, and pagination
 
 - [ ] Add debounced global search, per-column search/filter controls, ordering, configurable page sizes, and pagination.
 - [ ] Reset pagination when search/filter/page-size changes; specify deterministic ordering with a unique tie-breaker.
@@ -432,10 +469,10 @@ Prerequisite: Dialog and its shared focus/scroll-lock lifecycle are complete.
 - [ ] Test combined filters, sort allowlisting, stable pagination, query scoping, no-result states, and tampered public state.
 - [ ] Browser-test interactive searches, filters, ordering, pagination, and two tables on one page.
 
-### 18.3 Custom action definitions, row actions, and toolbar actions
+### 19.3 Custom action definitions, row actions, and toolbar actions
 
 - [ ] Provide typed action definitions registered server-side through the consumer's Table subclass. Each definition has a unique identifier within the table, label, optional icon, variant, visible/disabled conditions, and exactly one execution target: a link or an application handler.
-- [ ] Support row actions with one scoped record (for example Edit or Approve), toolbar actions without row selection (for example Create or Import), and a shared contract that Phase 19 extends to bulk actions. Do not make toolbar actions depend on selected rows.
+- [ ] Support row actions with one scoped record (for example Edit or Approve), toolbar actions without row selection (for example Create or Import), and a shared contract that Phase 20 extends to bulk actions. Do not make toolbar actions depend on selected rows.
 - [ ] Resolve links in application code and preserve navigation semantics; state-changing operations use handlers or appropriate application endpoints rather than mutation through GET links. Application endpoints retain CRUD/controller conventions.
 - [ ] Dispatch handler actions only through registered identifiers and the matching action scope. Never accept arbitrary class/method/callback names from the browser. Re-query row IDs through the consumer's authorized query; reject unknown actions, mismatched scopes, stale/inaccessible records, and tampered input.
 - [ ] Re-check action availability and authorization on the server at execution time, including after confirmation. Visible/disabled conditions improve presentation but never replace authorization; link destinations enforce their own authorization.
@@ -445,9 +482,9 @@ Prerequisite: Dialog and its shared focus/scroll-lock lifecycle are complete.
 - [ ] Browser-test custom row approval, a toolbar Create link, and a handler with additional input, including confirmation/cancellation, loading, failed validation, focus return, and multiple tables.
 - [ ] Add Table docs with copyable subclass/action definitions and realistic row/toolbar demos, document application responsibilities and the upcoming bulk extension, and complete the mandatory phase gate.
 
-## Phase 19 — Table selection, built-in/custom bulk actions, and CSV
+## Phase 20 — Table selection, built-in/custom bulk actions, and CSV
 
-### 19.1 Selection and mutations
+### 20.1 Selection and mutations
 
 - [ ] Reuse the shared checkbox component for per-row selection and the indeterminate header checkbox; add a visible selection count across pages.
 - [ ] Header selection applies to the current page; selection persists across page navigation and resets when search/filter changes. Selecting all matching results is outside version one.
@@ -457,9 +494,9 @@ Prerequisite: Dialog and its shared focus/scroll-lock lifecycle are complete.
 - [ ] Add confirmation UX for destructive actions, duplicate-submit protection, success/failure feedback, and selection cleanup.
 - [ ] Default built-in and custom bulk database mutations to atomic execution: validate and authorize the whole selection before changes, then execute mutations within one database transaction. Application handlers own domain operations; the action contract must make transaction ownership explicit. External effects such as email or remote API calls cannot be rolled back by that transaction and remain application-owned.
 
-### 19.2 Custom bulk actions and outcome handling
+### 20.2 Custom bulk actions and outcome handling
 
-- [ ] Extend the Phase 18 action definition and registration contract to selected rows. Allow consumers to add actions such as Approve or Reject independently of delete, restore, force delete, and CSV. Built-in actions remain independently opt-in.
+- [ ] Extend the Phase 19 action definition and registration contract to selected rows. Allow consumers to add actions such as Approve or Reject independently of delete, restore, force delete, and CSV. Built-in actions remain independently opt-in.
 - [ ] Require a non-empty selection for a bulk action; never reinterpret an empty selection as all rows. Preserve the existing current-page select-all and cross-page selection rules. Resolve selected IDs through the authorized/scoped query again at execution time, including after confirmation or additional input.
 - [ ] Reuse labels/icons/variants, visible/disabled conditions, allowlisted dispatch, server authorization, Alert confirmation, Dialog input, validation, loading, and duplicate-submit protection. Consumers supply handlers and input views; the package does not assume application model methods.
 - [ ] Permit partial success only when explicitly configured by the custom handler contract. Report a result for each selected record (success, failure, or skipped) and an aggregate summary. Do not silently switch an atomic action to partial mode or treat unauthorized records as authorized; return safe reasons without disclosing inaccessible record data.
@@ -469,7 +506,7 @@ Prerequisite: Dialog and its shared focus/scroll-lock lifecycle are complete.
 - [ ] Browser-test custom bulk Approve, Reject with a required reason, confirmation cancellation, atomic failure feedback, explicit partial success, and retry of remaining eligible rows. Include no-JavaScript-error assertions and multiple Table instances.
 - [ ] Extend Table docs with separate copyable custom bulk examples and document transaction/partial-result contracts alongside built-in actions.
 
-### 19.3 CSV export
+### 20.3 CSV export
 
 - [ ] Export selected authorized rows through configured exportable columns. Do not silently export all results when selection is empty.
 - [ ] Stream/chunk output where appropriate, escape CSV correctly, mitigate spreadsheet formula injection, and document encoding and selection limits.
@@ -478,7 +515,7 @@ Prerequisite: Dialog and its shared focus/scroll-lock lifecycle are complete.
 - [ ] Browser-test selection, confirmation, completion/failure feedback, and CSV download.
 - [ ] Extend table docs and complete the mandatory phase gate.
 
-## Phase 20 — Livewire calendar
+## Phase 21 — Livewire calendar
 
 - [ ] Implement the agreed month view using native Livewire unless Phase 0 demonstrates a clear benefit from a free library.
 - [ ] Default to the current month in the configured application timezone; provide previous/next month, month/year selectors, and return-to-today.
@@ -490,7 +527,7 @@ Prerequisite: Dialog and its shared focus/scroll-lock lifecycle are complete.
 - [ ] Browser-test navigation, selecting month/year, keyboard operation, day actions, and Livewire updates.
 - [ ] Add calendar docs and complete the mandatory phase gate.
 
-## Phase 21 — Livewire chart
+## Phase 22 — Livewire chart
 
 - [ ] Evaluate Chart.js or an equivalent against current official documentation during implementation. Verify the required features are free, record exact versions/licenses/notices, and prove Livewire integration before committing to a library; this plan does not claim a verified dependency selection.
 - [ ] Bundle the selected library and any approved plugins internally. Do not require a runtime CDN or paid service; read application settings through config and follow the existing key-handling rule if applicable.
@@ -501,18 +538,18 @@ Prerequisite: Dialog and its shared focus/scroll-lock lifecycle are complete.
 - [ ] Test option forwarding/precedence and server payloads; browser-test real rendering, callbacks/plugins, data/type updates, hidden-to-visible resizing in Tabs/Dialog, repeated mount/unmount, and no duplicate instances or JavaScript errors.
 - [ ] Add Chart docs with working data examples, copyable configuration and local callback examples, an options reference, lifecycle guidance, and complete the mandatory phase gate.
 
-## Phase 22 — AI agent skill for package consumers
+## Phase 23 — AI agent skill for package consumers
 
-Prerequisite: complete all component phases through Phase 21 and their documentation. This skill teaches agents how to use the installed Sirius UI release in a consuming application; it must describe implemented APIs rather than planned features.
+Prerequisite: complete all component phases through Phase 22 and their documentation. This skill teaches agents how to use the installed Sirius UI release in a consuming application; it must describe implemented APIs rather than planned features.
 
-### 22.1 Portable skill and supported agents
+### 23.1 Portable skill and supported agents
 
 - [ ] Create a portable `SKILL.md` entry point with a clear activation description and focused reference files. Keep the entry point concise and load component details only when relevant.
 - [ ] Target Codex and Claude Code initially. Verify their current project-local skill discovery and installation requirements during this phase; document tested agent versions and any differences. Claim support for other agents only after testing them.
 - [ ] Require Laravel Boost integration through its supported third-party package skill discovery. Ship the canonical entry point at `resources/boost/skills/sirius-ui-development/SKILL.md`, with valid `name` and `description` frontmatter and adjacent references. Include these files in the Composer distribution and verify the convention against the supported Boost version during implementation.
 - [ ] Ensure consumers can select and install the skill through `php artisan boost:install` and refresh it through `php artisan boost:update`. Verify the installed skill can be discovered, activated, and used by the selected agent; Boost installs/distributes the skill, while the agent executes its instructions. Keep standalone usage available without requiring Boost as a production dependency.
 
-### 22.2 Structure, component usage, and application boundaries
+### 23.2 Structure, component usage, and application boundaries
 
 - [ ] Explain package structure, configurable namespaces, configuration, assets, published resources, supported framework versions, and the distinction between package internals and consumer extension points.
 - [ ] Provide a component-selection guide and references for every shipped Blade and Livewire component, including props, slots, attributes, events, options, defaults, and supported customization points.
@@ -522,7 +559,7 @@ Prerequisite: complete all component phases through Phase 21 and their documenta
 - [ ] Instruct agents to inspect the installed package version and configuration, prefer existing components, and avoid inventing APIs or editing `vendor`. Use documented publishing and extension mechanisms; never access `.env` directly or expose secrets.
 - [ ] Bundle version-matched references and examples with each package release so essential usage guidance works without access to the docs repository or a hosted website. Document how to refresh an installed skill after a package upgrade.
 
-### 22.3 Explicit installation and updates
+### 23.3 Explicit installation and updates
 
 - [ ] Use the same canonical skill source for Boost and standalone installation. Provide an Artisan command to install or update project-local skill files for explicitly selected supported agents without Boost, plus documented manual installation instructions. Avoid duplicate skill names or conflicting ownership when Boost already manages the destination; direct users to the appropriate update mechanism.
 - [ ] Show destination paths and planned changes before applying them. Do not automatically write agent configuration or skill files during Composer installation or service-provider boot.
@@ -530,7 +567,7 @@ Prerequisite: complete all component phases through Phase 21 and their documenta
 - [ ] Restrict generated paths to the selected project-local skill destinations. Preserve unrelated skills and agent configuration, and provide a documented recovery/update procedure.
 - [ ] Extend applicable architecture checks for the console command and installer boundaries without coupling the package to a specific agent runtime.
 
-### 22.4 Verification and documentation
+### 23.4 Verification and documentation
 
 - [ ] Test clean installation, repeated installation, upgrades, modified-file conflicts, non-interactive behavior, unsupported targets, destination containment, and inclusion of every referenced file in the distribution.
 - [ ] In an isolated consumer project with Sirius UI and a supported Laravel Boost version, verify package discovery, selection through `boost:install`, refresh through `boost:update`, and preservation/resolution of customizations according to the documented ownership rules. Check that every reference survives installation and upgrades; record tested Boost versions and commands.
@@ -541,9 +578,9 @@ Prerequisite: complete all component phases through Phase 21 and their documenta
 - [ ] Document the required Boost integration with copyable installation/update commands, agent activation examples, skill-selection guidance, and troubleshooting for an undiscovered or stale skill. Reference the [official third-party package skills documentation](https://github.com/laravel/docs/blob/13.x/boost.md#third-party-package-skills).
 - [ ] Complete the mandatory phase gate: run `composer test` in every changed project, then `composer test:browser` in docs after all project checks pass, and wait for completion.
 
-Acceptance: a consumer can install and refresh the bundled skill through Laravel Boost, and a tested agent can discover and activate that installed skill, understand the package structure, and produce working usage examples without relying on unpublished APIs or modifying vendor code. The standalone installation path must also work. Phase 22 is incomplete until both paths pass their integration checks.
+Acceptance: a consumer can install and refresh the bundled skill through Laravel Boost, and a tested agent can discover and activate that installed skill, understand the package structure, and produce working usage examples without relying on unpublished APIs or modifying vendor code. The standalone installation path must also work. Phase 23 is incomplete until both paths pass their integration checks.
 
-## Phase 23 — Replace Flux throughout docs with Sirius UI
+## Phase 24 — Replace Flux throughout docs with Sirius UI
 
 Prerequisite: all component phases and the AI agent skill are complete. This is the final implementation phase before release validation.
 
@@ -555,7 +592,7 @@ Prerequisite: all component phases and the AI agent skill are complete. This is 
 - [ ] Audit remaining Flux references, distinguishing historical records from active code/dependencies. Verify clean installation/builds and no missing assets, duplicate initialization, or JavaScript errors.
 - [ ] Browser-test desktop/mobile navigation, theme switching, content navigation, copy controls, dialogs/menus, and representative native/Livewire form demos. Update the docs README and complete the mandatory phase gate.
 
-## Phase 24 — Cross-component validation and release readiness
+## Phase 25 — Cross-component validation and release readiness
 
 - [ ] Exercise representative forms combining label, helper, error, checkbox, radio, switch, currency, date, upload, editor, select, and both Slider modes inside a Dialog or Slideover.
 - [ ] Verify repeated components, multiple instances, validation failures, form reset, conditional rendering, and Livewire navigation without state loss or leaked listeners.
