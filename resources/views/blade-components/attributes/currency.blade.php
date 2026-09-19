@@ -1,7 +1,7 @@
 <x-docs-props :rows="[
     ['label', 'string | null', 'null', 'Visible label; omitted when empty.'],
     ['helper', 'string | null', 'null', 'Supporting text below the control.'],
-    ['thousands-separator', ', | . |   | \'', 'sirius-ui.currency.thousands_separator → ,', 'Explicit props override global configuration. Thousands separator for display, must differ from the decimal separator.'],
+    ['thousands-separator', ', | . | \' | space', 'sirius-ui.currency.thousands_separator → ,', 'Explicit props override global configuration. Thousands separator for display, must differ from the decimal separator.'],
     ['decimal-separator', '. | ,', 'sirius-ui.currency.decimal_separator → .', 'Explicit props override global configuration. Decimal separator for display, canonical values always use dot (.), must differ from the thousands separator.'],
     ['precision', 'integer', 'sirius-ui.currency.precision → 2', 'Explicit props override global configuration, including zero. Maximum fractional digits, 0 through 20. Excess digits stay visible and canonical but fail client validity: never rounded or truncated. No automatic zero padding.'],
     ['allow-negative', 'boolean', 'false', 'Allows a leading minus sign. A sign is rejected during editing when false.'],
