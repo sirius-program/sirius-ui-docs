@@ -4,7 +4,7 @@
             <header class="space-y-2">
                 <p class="text-sm text-zinc-500 dark:text-zinc-400">FORM CONTROLS</p>
                 <h1 class="text-3xl font-semibold">Datetime Picker</h1>
-                <p>Using <a href="https://flatpickr.js.org/" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline">flatpickr</a> as a base, the datetime picker is a form control that allows users to select a date and time.</p>
+                <p>Using <a href="https://flatpickr.js.org/" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline">flatpickr</a> under the hood, an input for date and time selection.</p>
             </header>
             <section id="datetime-picker-demo" class="space-y-5">
                 <h2 class="text-xl font-medium">Demo</h2>

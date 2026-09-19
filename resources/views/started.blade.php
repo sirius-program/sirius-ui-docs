@@ -14,8 +14,8 @@
                         <li><a class="underline" href="{{ route('blade-components.control', ['control' => $control]) }}" wire:navigate>{{ $controlLabel }}</a></li>
                     @endforeach
                     <li><a class="underline" href="{{ route('blade-components.currency') }}" wire:navigate>Currency</a></li>
+                    <li><a class="underline" href="{{ route('blade-components.datetime-picker') }}" wire:navigate>Datetime Picker</a></li>
                 </ul>
-                <p class="mt-4">Basic controls are available. Currency is available; enhanced widgets follow in later phases.</p>
             </section>
         </article>
     </x-docs-page>
