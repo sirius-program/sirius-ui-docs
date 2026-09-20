@@ -13,10 +13,10 @@ it('discovers the local package and renders its icon dependency', function (): v
         ->toContain('<svg', 'Show password');
 });
 
-it('provides navigation for completed components and identifies upcoming inputs', function (): void {
+it('provides navigation for completed components', function (): void {
     $this->get(route('started'))
         ->assertSee('Getting Started')
         ->assertDontSee('Form Conventions')
         ->assertSee('Checkbox')
-        ->assertSee('Currency is available; enhanced widgets follow in later phases.');
+        ->assertSee(route('blade-components.phone'));
 });

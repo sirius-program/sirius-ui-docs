@@ -15,6 +15,8 @@
                     @endforeach
                     <li><a class="underline" href="{{ route('blade-components.currency') }}" wire:navigate>Currency</a></li>
                     <li><a class="underline" href="{{ route('blade-components.datetime-picker') }}" wire:navigate>Datetime Picker</a></li>
+                    <li><a class="underline" href="{{ route('blade-components.phone') }}" wire:navigate>Phone</a></li>
+                    <li><a class="underline" href="{{ route('blade-components.phone') }}" wire:navigate>Phone</a></li>
                 </ul>
             </section>
         </article>

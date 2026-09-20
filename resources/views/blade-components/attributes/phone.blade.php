@@ -1,0 +1,18 @@
+<x-docs-props :rows="[
+    ['country', 'string | array', 'sirius-ui.phone_country → sirius-ui.locale → app.locale → app.fallback_locale → US', 'A country, regional locale, non-empty country list, or * for all supported countries. One country gives a fixed prefix; multiple countries give a fixed-width select with a five-character text area and ellipsis.'],
+    ['delimiter', 'space | - | . | empty string', 'space', 'Display separator between metadata-defined digit groups; never included in the canonical value.'],
+    ['value', 'string | null', 'null', 'Initial E.164 value. Canonical values contain a leading plus, country calling code, and digits only.'],
+    ['draft', 'array | null', 'null', 'Optional restored draft with text and an allowed country; used only for redisplay.'],
+    ['draft-name', 'string | null', 'null', 'Opt-in separate JSON field for restoring draft text and country after a native redirect. Must differ from name.'],
+    ['reset-key', 'string | integer', '0', 'Change this token when the server explicitly resets a draft whose canonical value is already null.'],
+    ['country-label', 'string', 'Country calling code', 'Accessible label for the country prefix or selector.'],
+    ['invalid-message', 'string', 'Enter a valid phone number for an allowed country.', 'Client validation feedback shown on blur or submit.'],
+    ['label', 'string | null', 'null', 'Visible label; omitted when empty.'],
+    ['helper', 'string | null', 'null', 'Supporting text below the control.'],
+    ['error-key', 'string | null', 'null', 'Override the validation key; otherwise use the wire:model path, then the normalized name.'],
+    ['error-bag', 'string', 'default', 'Named Laravel validation error bag.'],
+    ['errors', 'ViewErrorBag | null', 'null', 'Optional explicit error bags; otherwise supplied by Laravel or Livewire.'],
+    ['size', 'sm | md | lg', 'md', 'Visual size (font and padding), independent of the native HTML size attribute.'],
+    ['control-size', 'integer | null', 'null', 'Native HTML size attribute: approximate width in characters, subject to CSS. Does not limit input length.'],
+    ['wrapper-class', 'string', 'empty string', 'Additional CSS classes for the field wrapper.'],
+]" note="Applicable input HTML5, Alpine event directives, data-*, ARIA attributes, and supported Livewire directives (such as wire:model and its modifiers) are supported as expected and forwarded to the native control. Model directives bind the nullable canonical value through a separate bridge. Input length and pattern attributes apply to displayed text; input type and prefix rendering remain package-owned." />

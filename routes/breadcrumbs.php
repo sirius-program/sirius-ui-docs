@@ -73,3 +73,12 @@ Breadcrumbs::for('development.date-bindings', function (BreadcrumbTrail $trail):
     $trail->parent('blade-components.datetime-picker');
     $trail->push('Date binding integration', route('development.date-bindings'));
 });
+
+Breadcrumbs::for('blade-components.phone', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.index');
+    $trail->push('Phone', route('blade-components.phone'));
+});
+Breadcrumbs::for('development.phone-bindings', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.phone');
+    $trail->push('Phone binding integration', route('development.phone-bindings'));
+});

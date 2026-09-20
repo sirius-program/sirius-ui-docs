@@ -38,7 +38,7 @@ Checkbox and radio options inside `<x-sirius::field group>` share the group's er
 
 Phase 2 integration fixtures at `/development/basic-controls` and `/development/standalone-controls` verify multiple Livewire instances and native controls without Livewire or Alpine. They are available only in local/testing environments.
 
-The expanded roadmap in the implementation checklist runs through Phase 24. Planned additions include single/range Slider, Message and Dialog naming, new display/navigation/overlay components, and Livewire Chart. Table phases also include custom row, bulk, and toolbar actions, with confirmation/input forms and explicit atomic or partial-result handling. The AI agent skill follows all component phases; replacing Flux throughout docs precedes final release validation. These are planned APIs, not shipped components.
+The expanded roadmap in the implementation checklist runs through Phase 25. Planned additions include single/range Slider, Message and Dialog naming, new display/navigation/overlay components, and Livewire Chart. Table phases also include custom row, bulk, and toolbar actions, with confirmation/input forms and explicit atomic or partial-result handling. The AI agent skill follows all component phases; replacing Flux throughout docs precedes final release validation. These are planned APIs, not shipped components.
 
 - [Implementation checklist](IMPLEMENTATION_PLAN.md)
 - [Phase 0 architecture, dependency decisions, and evidence](PHASE_0.md)
@@ -46,6 +46,7 @@ The expanded roadmap in the implementation checklist runs through Phase 24. Plan
 - [Phase 2 basic controls and verification](PHASE_2.md)
 - [Phase 3 currency contract and verification](PHASE_3.md)
 - [Phase 4 date/time contract and verification](PHASE_4.md)
+- [Phase 5 phone contract and verification](PHASE_5.md)
 - [Bundled dependency notices](public/third-party-notices.txt)
 
 ## Verification
@@ -53,3 +54,10 @@ The expanded roadmap in the implementation checklist runs through Phase 24. Plan
 Run `composer test` in each changed project. Once all those checks pass, run `composer test:browser` in docs and wait for completion. Use `npm run build` after frontend changes; it also refreshes third-party license notices.
 
 Package architecture tests run under Pest 4/Testbench; docs feature/browser tests retain Pest 5. Tests use deterministic values, fake storage for file validation, and isolated browser contexts. They do not require production records or permanent file storage.
+
+
+Phase 5 provides **Phone** at `/blade-components/phone`: `<x-sirius::phone>` accepts `country` as one country/regional locale, a list, or `*`. The wildcard list is sorted by calling code; options use `+62 - Indonesia` labels and a fixed five-character prefix text area with ellipsis. `sirius-ui.phone_country` inherits `sirius-ui.locale`, `app.locale`, `app.fallback_locale`, then `US`; an explicit component country takes priority. Set `SIRIUS_UI_PHONE_COUNTRY` through the published config for an environment override. `delimiter` affects display only; models and submissions use E.164 or null. JavaScript and full libphonenumber-js 1.13.13 metadata are bundled locally with license notices. Native draft restoration is opt-in through `draft-name`/`draft`; explicit Livewire resets use `reset-key`. See PHASE_5.md for contracts, limits, and verification.
+
+The optional `Sirius\Ui\Rules\PhoneNumber` validation rule is provided by the package and used by the Phone demos. It checks international syntax and optional calling-code prefixes; see the Phone shared field contract for usage and limitations.
+
+PhoneNumber messages use `sirius::validation.phone_number` and `sirius::validation.phone_country`. Publish with `php artisan vendor:publish --tag=sirius-ui-translations`, then customize `lang/vendor/sirius/{locale}/validation.php`; messages support the `:attribute` placeholder.
