@@ -197,3 +197,10 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 - Copy the agreed wording directly into each relevant file. Do not introduce `@include`, shared text partials, translation keys, or runtime text helpers to centralize these descriptions. Existing includes used to compose demos, examples, and attribute tables may remain.
 - Keep genuinely different component behavior explicit. Do not copy unsupported capabilities or erase component-specific restrictions just to make descriptions identical. Standardize equivalent type/default notation as well as prose.
 - Enforce wording consistency through this rule and review only. Do not add automated tests that assert matching descriptions or exact wording across pages; retain existing functional and rendering checks.
+
+## Package translation convention
+
+- Component UI translations belong in the package's `resources/lang/{locale}/sirius-ui.php`, grouped by component name, such as `['select' => [...]]`; use `sirius::sirius-ui.{component}.{key}`.
+- Pass translated messages from Blade to JavaScript widgets. Do not hard-code widget UI strings in JavaScript.
+- Validation rule messages remain in `validation.php` under `sirius::validation.*`.
+- Document consumer overrides under `lang/vendor/sirius/{locale}/` and the existing `sirius-ui-translations` publish tag.

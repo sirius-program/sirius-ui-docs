@@ -82,3 +82,13 @@ Breadcrumbs::for('development.phone-bindings', function (BreadcrumbTrail $trail)
     $trail->parent('blade-components.phone');
     $trail->push('Phone binding integration', route('development.phone-bindings'));
 });
+
+Breadcrumbs::for('blade-components.select', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.index');
+    $trail->push('Select', route('blade-components.select'));
+});
+
+Breadcrumbs::for('development.select-bindings', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.select');
+    $trail->push('Select binding integration', route('development.select-bindings'));
+});

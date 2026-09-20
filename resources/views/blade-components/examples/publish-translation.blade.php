@@ -1,0 +1,1 @@
+<x-docs-code language="Shell">php artisan vendor:publish --tag=sirius-ui-translations</x-docs-code>

@@ -9,6 +9,8 @@ use App\Http\Controllers\CurrencyExampleController;
 use App\Http\Controllers\DatetimePickerExampleController;
 use App\Http\Controllers\FormValidationController;
 use App\Http\Controllers\PhoneExampleController;
+use App\Http\Controllers\SelectExampleController;
+use App\Http\Controllers\SelectOptionController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome')->name('home');
@@ -19,6 +21,9 @@ Route::view('blade-components/currency', 'blade-components.currency-docs')->name
 Route::post('blade-components/currency-example', CurrencyExampleController::class)->name('blade-components.currency.store');
 Route::view('blade-components/datetime-picker', 'blade-components.datetime-picker-docs')->name('blade-components.datetime-picker');
 Route::post('blade-components/datetime-picker-example', DatetimePickerExampleController::class)->name('blade-components.datetime-picker.store');
+Route::view('blade-components/select', 'blade-components.select-docs')->name('blade-components.select');
+Route::post('blade-components/select-example', SelectExampleController::class)->name('blade-components.select.store');
+Route::get('blade-components/select-options', SelectOptionController::class)->name('blade-components.select.options');
 Route::view('blade-components/phone', 'blade-components.phone-docs')->name('blade-components.phone');
 Route::post('blade-components/phone-example', PhoneExampleController::class)->name('blade-components.phone.store');
 Route::get('blade-components/{control}', BasicControlController::class)
@@ -28,6 +33,8 @@ Route::post('blade-components/examples/{kind}', ControlExampleController::class)
     ->whereIn('kind', ['input', 'password', 'textarea', 'checkbox', 'radio', 'switch', 'label'])->name('blade-components.examples.store');
 
 if (app()->environment(['local', 'testing'])) {
+    Route::view('development/select', 'development.select')->name('development.select');
+    Route::view('development/select-bindings', 'development.select-bindings')->name('development.select-bindings');
     Route::view('development/phone', 'development.phone')->name('development.phone');
     Route::view('development/phone-bindings', 'development.phone-bindings')->name('development.phone-bindings');
     Route::view('development/datetime-picker', 'development.datetime-picker')->name('development.datetime-picker');

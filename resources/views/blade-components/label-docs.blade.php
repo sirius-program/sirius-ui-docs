@@ -29,6 +29,7 @@
             <section id="assets-and-interaction" class="space-y-3">
                 <h2 class="text-xl font-medium">Assets and interaction</h2>
                 <p>Import the Sirius stylesheet for labels and the required marker. Label requires no JavaScript. Clicking a label focuses its associated control; the marker is hidden from assistive technology because required state belongs to the control.</p>
+                <p>Label adds no outer margin. Arrange each label and control in a wrapper with your own gap, as shown in the demos.</p>
                 <p>Customize <code>--sir-color-danger</code> to change the marker color consistently with field errors.</p>
             </section>
         </article>

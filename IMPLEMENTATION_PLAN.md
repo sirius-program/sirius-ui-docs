@@ -4,7 +4,7 @@
 Package: `D:/Projects/sirius-ui`  
 Documentation and integration application: `D:/Projects/sirius-ui-docs`
 
-Phase 0 through Phase 5 checkboxes reflect executed work. The reusable phase gate remains an unchecked template. The expanded roadmap runs through Phase 25; phases 0–5 retain their completed status, Phone follows Datetime Picker; Phone and Slider precede Form, the AI skill follows all component phases, and Flux migration immediately precedes final validation. See PHASE_0.md, PHASE_1.md, PHASE_2.md, PHASE_3.md, PHASE_4.md, and PHASE_5.md for architecture boundaries, decisions, verification scope, and maintenance notes.
+Phase 0 through Phase 6 checkboxes reflect executed work. The reusable phase gate remains an unchecked template. The expanded roadmap runs through Phase 25; phases 0–6 retain their completed status, Phone follows Datetime Picker; Phone and Slider precede Form, the AI skill follows all component phases, and Flux migration immediately precedes final validation. See PHASE_0.md, PHASE_1.md, PHASE_2.md, PHASE_3.md, PHASE_4.md, PHASE_5.md, and PHASE_6.md for architecture boundaries, decisions, verification scope, and maintenance notes.
 
 ## 1. Agreed outcome and architecture
 
@@ -277,17 +277,21 @@ Verification: package `composer test` passed (56 tests, 277 assertions), docs `c
 
 ### 6.1 Local options
 
-- [ ] Implement single/multiple values, placeholder, clearability, disabled options, groups where supported, and local searching.
-- [ ] Define stable option value/label serialization, retaining values such as `0` and distinguishing empty single selection from an empty multiple array.
+- [x] Implement single/multiple values, placeholder, clearability, disabled options, groups where supported, and local searching.
+- [x] Define stable option value/label serialization, retaining values such as `0` and distinguishing empty single selection from an empty multiple array.
 
 ### 6.2 Server search
 
-- [ ] Add an opt-in consumer-provided search provider with debounce, pagination, loading/empty/error states, and resolution of labels for preselected values.
-- [ ] Ignore stale responses; preserve selected options when later search results omit them.
-- [ ] Keep data access and authorization in the consuming application. Do not accept arbitrary client-provided model or query definitions.
-- [ ] Provide an ordinary-Blade remote integration contract when server search is used outside Livewire; document the host application's endpoint responsibility.
-- [ ] Test single/multiple submit/reset, keyboard selection, updates to options and values, paginated results, authorization boundaries, race conditions, and repeated mounting.
-- [ ] Add select docs and complete the mandatory phase gate.
+- [x] Add an opt-in consumer-provided search provider with debounce, pagination, loading/empty/error states, and resolution of labels for preselected values.
+- [x] Ignore stale responses; preserve selected options when later search results omit them.
+- [x] Keep data access and authorization in the consuming application. Do not accept arbitrary client-provided model or query definitions.
+- [x] Provide an ordinary-Blade remote integration contract when server search is used outside Livewire; document the host application's endpoint responsibility.
+- [x] Test single/multiple submit/reset, keyboard selection, updates to options and values, paginated results, authorization boundaries, race conditions, and repeated mounting.
+- [x] Add select docs and complete the mandatory phase gate.
+
+- [x] Keep enhanced native selects hidden through Livewire morphs and render optgroups explicitly.
+- [x] Place translated search status opposite the label through reusable Label status/status-id props; use Clear and Retry suffix icons.
+- [x] Group component UI translations under component keys in sirius-ui.php; keep validation translations in validation.php and record the convention in project rules.
 
 ## Phase 7 — File upload
 
