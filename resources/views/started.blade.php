@@ -5,7 +5,7 @@
                 <p class="text-sm text-zinc-500 dark:text-zinc-400">SIRIUS UI COMPONENTS</p>
                 <h1 class="text-3xl font-semibold">Getting Started</h1>
             </header>
-            <p>Reusable Blade and Livewire components. The local package is connected; public components will be added as their implementation phases are completed. Use the documentation README for local installation, assets, architecture rules, and the implementation checklist.</p>
+            <p>Reusable Blade and Livewire components. Choose a component below for demos, usage, and attributes. See the README for local setup.</p>
             <section id="blade-components" class="rounded-xl border border-zinc-200 p-6 dark:border-zinc-700">
                 <h2 class="text-lg font-medium">Blade Components</h2>
                 <ul class="list-disc pl-5 mt-3 space-y-3">

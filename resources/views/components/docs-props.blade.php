@@ -1,4 +1,4 @@
-@props(['rows', 'note' => 'Applicable HTML5, Alpine event directives, data-*, ARIA attributes, and supported Livewire directives (such as wire:model and its modifiers) are supported as expected and forwarded to the native control.'])
+@props(['rows', 'note' => 'Accepts HTML5 attributes, Alpine events, data-*, ARIA, and supported Livewire bindings.'])
 <section class="min-w-0 space-y-3" data-docs-props>
     <h3 class="text-xl font-medium">Attributes</h3>
     <div class="overflow-x-auto rounded-xl border border-zinc-200 dark:border-zinc-700">

@@ -4,7 +4,7 @@
             <header class="space-y-2">
                 <p class="text-sm text-zinc-500 dark:text-zinc-400">FORM CONTROLS</p>
                 <h1 class="text-3xl font-semibold">File Upload</h1>
-                <p>Using <a href="https://pqina.nl/filepond" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline">filepond</a> under the hood, an input file with great visualization, accessible, and silky smooth user experience.</p>
+                <p>File uploads with image and PDF previews, powered by <a href="https://pqina.nl/filepond/" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline">filepond</a>.</p>
             </header>
             <section id="upload-demo" class="space-y-5">
                 <h2 class="text-xl font-medium">Demo</h2>
@@ -24,30 +24,30 @@
             <section id="upload-attributes">@include('blade-components.attributes.file-upload')</section>
             <section id="shared-field-contract" class="space-y-3">
                 <h2 class="text-xl font-medium">Shared field contract</h2>
-                <p>Controls automatically associate labels, helpers, and validation errors. Laravel or Livewire supplies the error bags; application validation remains authoritative.</p>
-                <p>Use a nullable upload property for a single file, an array for multiple files, and Livewire's WithFileUploads trait. The adapter owns uploading; do not attach a second upload handler. Model modifiers do not delay temporary uploads. Use stable IDs and increment reset-key when resetting files from the server.</p>
-                <p>Load Value displays the sample PDF and image through value metadata. Previews do not become local uploads or Livewire temporary files. Server validation must check retained existing files against records owned by the current user, separately from new uploads. The default slot remains available for application-owned content. Newly selected files must be chosen again after a reload/remount.</p>
+                <p>Labels, helper text, and Laravel or Livewire validation errors are linked automatically.</p>
+                <p>With Livewire, use <code>WithFileUploads</code>, a nullable property for one file, or an array for multiple files. Do not add another upload handler. Uploads start immediately regardless of model modifiers. Use stable IDs and change <code>reset-key</code> for server resets.</p>
+                <p>Existing files are displayed without uploading them again. Validate retained files separately from new uploads. New selections must be chosen again after a reload.</p>
             </section>
             <section id="assets-and-interaction" class="space-y-3">
                 <h2 class="text-xl font-medium">Assets and interaction</h2>
-                <p>Import the package stylesheet and JavaScript once in your application build, or publish <code>sirius-ui-assets</code> and load the published CSS and JavaScript.</p>
+                <p>Import the package CSS and JavaScript, or publish and load <code>sirius-ui-assets</code>.</p>
                 @include('blade-components.examples.assets')
-                <p>FilePond 4.32.12, file-validate-type 1.2.9, file-validate-size 2.2.8, image-preview 4.6.12, and file-poster 2.5.2 are bundled internally with MIT notices. PDF previews use a package-owned native browser adapter; Open preview remains available when embedded PDF rendering is unsupported. Preview URLs must be accessible to the browser and permitted by the application CSP. Blob URLs created for new PDFs are revoked when their previews are destroyed. No CDN or key is required. Keyboard users can focus Browse and the file action buttons. The UI supports light/dark themes and reduced motion.</p>
-                <p>Blade uses a native file input and multipart/form-data. JavaScript synchronizes its FileList through DataTransfer; without that browser support, the native input remains available. Server validation still applies. After a redirect, browsers require files to be selected again. Blade uploads occur on form submission; per-file progress, cancellation, and retry belong to the Livewire temporary-upload flow.</p>
-                <p>Readonly prevents choosing/removing files but retains the native submission. Disabled controls are omitted. Readonly requires JavaScript because HTML file inputs have no native readonly behavior. Livewire serializes uploads per field to make cancellation deterministic. Do not bind two upload components to the same property.</p>
-                <p>Alpine event listeners can consume file-upload:start, progress, complete, error, cancel, and change. Progress detail contains progress (0–100); change detail contains file metadata. x-model is unsupported. value URLs are preview-only; they are never used as upload or deletion endpoints. Dynamic limits require remounting the component with a new wire:key; readonly/disabled, errors, and reset-key update in place.</p>
+                <p>FilePond and its preview plugins are bundled. PDF previews use the browser viewer, with an Open preview link as a fallback. Preview URLs must be accessible and allowed by your content security policy.</p>
+                <p>Blade uploads use <code>multipart/form-data</code> on submit. Livewire uploads support progress, cancellation, and retry. A native input is used when enhancement is unavailable.</p>
+                <p>Readonly blocks file changes but keeps files in the submission; disabled fields are omitted. Readonly needs JavaScript. Each Livewire upload component needs its own model property.</p>
+                <p>Listen for <code>file-upload:start</code>, <code>file-upload:progress</code>, <code>file-upload:complete</code>, <code>file-upload:error</code>, <code>file-upload:cancel</code>, or <code>file-upload:change</code>. Progress includes a 0-100 value; change includes file metadata. Change <code>wire:key</code> to apply new upload limits.</p>
             </section>
             <section id="storage" class="space-y-3">
                 <h2 class="text-xl font-medium">Storage and validation</h2>
-                <p>The demos validate public sample documents and never store permanent files. Applications must authorize uploads, validate MIME content and size server-side, and choose the disk/path. Client accept, size, and count restrictions are usability controls. Validate both the array count and each file for multiple uploads.</p>
+                <p>Validate file content, size, and count before storing uploads. The demos validate without saving files.</p>
                 @include('blade-components.examples.file-upload-storage')
-                <p>Keep private documents on a private disk and use authorized download routes. Do not trust client filenames or a client-provided path for deletion. Livewire controls temporary validation, upload limits, and cleanup. Its local cleanup removes old temporary uploads; configure the documented lifecycle cleanup for S3. Abandoned or failed uploads may remain until that cleanup runs. PHP/web-server request limits also apply.</p>
+                <p>Your application controls storage, downloads, and permanent deletion. Livewire manages temporary files; S3 requires a cleanup lifecycle rule. PHP and web-server upload limits still apply.</p>
             </section>
             <section id="global-configuration" class="space-y-3">
                 <h2 class="text-xl font-medium">Global configuration</h2>
-                <p>Override the <code>file_upload</code> array in <code>lang/vendor/sirius/{locale}/sirius-ui.php</code>. UI messages use the application's active locale and fallback locale.</p>
+                <p>Edit the <code>file_upload</code> array in <code>lang/vendor/sirius/{locale}/sirius-ui.php</code>. Messages follow the application locale and fallback locale.</p>
                 @include('blade-components.examples.file-upload-translations')
-                <p>Validation messages remain in <code>validation.php</code>. FilePond placeholders such as <code>{filesize}</code> and <code>{allTypes}</code> must remain intact.</p>
+                <p>Keep validation messages in <code>validation.php</code> and preserve placeholders such as <code>{filesize}</code> and <code>{allTypes}</code>.</p>
             </section>
         </article>
     </x-docs-page>

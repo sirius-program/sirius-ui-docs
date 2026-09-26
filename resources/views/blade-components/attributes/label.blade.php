@@ -1,6 +1,6 @@
 <x-docs-props :rows="[
     ['required', 'boolean', 'false', 'Append a red asterisk.'],
-    ['status', 'string | null', 'null', 'Optional live status aligned opposite the label. An empty string reserves a target for dynamic updates.'],
-    ['status-id', 'string | null', 'id → for → null', 'Override the status element ID. By default, append -label-status to the label id, falling back to for; omit the ID when neither is provided.'],
-    ['as', 'label | legend', 'label', 'Use legend to name a fieldset. Other tags are rejected.'],
+    ['status', 'string | null', 'null', 'Status text beside the label. Empty text reserves space for updates.'],
+    ['status-id', 'string | null', 'id → for → null', 'Status element ID. Defaults to id or for plus -label-status; omitted if both are missing.'],
+    ['as', 'label | legend', 'label', 'Use legend for a fieldset.'],
 ]" />

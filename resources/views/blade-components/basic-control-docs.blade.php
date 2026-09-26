@@ -11,7 +11,7 @@
             <header class="space-y-2">
                 <p class="text-sm text-zinc-500 dark:text-zinc-400">FORM CONTROLS</p>
                 <h1 class="text-3xl font-semibold">{{ $title }}</h1>
-                <p>Native and customized form behavior, with shared labels and validation.</p>
+                <p>Form controls with labels, helper text, and validation errors.</p>
                 @if (session('basic-result'))<p role="status">Blade sample received. Nothing was stored.</p>@endif
             </header>
             @foreach ($examples as $example => $label)
@@ -37,22 +37,19 @@
             @endforeach
             <section id="shared-field-contract" class="space-y-3">
                 <h2 class="text-xl font-medium">Shared field contract</h2>
-                <p>Controls automatically associate labels, helpers, and validation errors. Laravel or Livewire supplies the error bags; application validation remains authoritative.</p>
+                <p>Labels, helper text, and Laravel or Livewire validation errors are linked automatically.</p>
                 @if ($control === 'choices')
-                    <p>Wrap related checkboxes or radios in <code>&lt;x-sirius::field group&gt;</code> with a group label and error key. Validation messages and required markers appear once per group. For minimum checkbox selections, validate the array on the server instead of requiring every option.</p>
+                    <p>Use <code>&lt;x-sirius::field group&gt;</code> for checkboxes or radios to show one label, required marker, and error message. Validate selection counts on the server.</p>
                 @endif
             </section>
             <section id="assets-and-interaction" class="space-y-3">
                 <h2 class="text-xl font-medium">Assets and interaction</h2>
                 @if ($control === 'choices')
-                    <p>Checkboxes and radios gently pop when selected; switches slide smoothly between states. Motion respects the system's reduced-motion preference. Customize <code>--sir-choice-duration</code> (default <code>180ms</code>); set it to <code>0ms</code> to disable these animations. No additional library is required.</p>
+                    <p>Choice animations respect reduced-motion settings. Set <code>--sir-choice-duration</code> to change their speed, or <code>0ms</code> to disable them.</p>
                 @endif
-                <p>Import the package stylesheet and JavaScript once in your application build, or publish <code>sirius-ui-assets</code> and load the published CSS and JavaScript.</p>
+                <p>Import the package CSS and JavaScript, or publish and load <code>sirius-ui-assets</code>.</p>
                 @include('blade-components.examples.assets')
-                <p>The package script initializes controls once and supports Livewire navigation and remounts without an extra Alpine instance or runtime CDN.</p>
-                @if ($control === 'choices')
-                    <p>Tab moves focus. Space toggles checkboxes and switches; arrow keys navigate native radio groups. Labels activate their associated controls.</p>
-                @endif
+                <p>Controls support Livewire updates and navigation. No extra Alpine instance is needed.</p>
             </section>
         </article>
     </x-docs-page>

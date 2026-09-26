@@ -1,7 +1,7 @@
 @props(['navigation'])
 <div id="docs-top" class="mx-auto max-w-7xl space-y-12" data-docs-page>
     <div class="grid min-w-0 gap-8 xl:grid-cols-[minmax(0,1fr)_12rem] xl:gap-10">
-        <div class="min-w-0">{{ $slot }}</div>
+        <div class="min-w-0 [&_p_code]:wrap-anywhere">{{ $slot }}</div>
         <aside class="order-first min-w-0 xl:order-last">
             <nav aria-label="On this page" data-docs-toc class="rounded-xl border border-zinc-200 p-4 text-sm xl:sticky xl:top-24 xl:max-h-[calc(100vh-8rem)] xl:overflow-y-auto xl:rounded-none xl:border-0 xl:border-l xl:pl-5 dark:border-zinc-700">
                 <p class="mb-4 font-semibold">On this page</p>

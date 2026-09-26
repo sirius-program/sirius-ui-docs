@@ -4,7 +4,7 @@
             <header class="space-y-2">
                 <p class="text-sm text-zinc-500 dark:text-zinc-400">FORM CONTROLS</p>
                 <h1 class="text-3xl font-semibold">Datetime Picker</h1>
-                <p>Using <a href="https://flatpickr.js.org/" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline">flatpickr</a> under the hood, an input for date and time selection.</p>
+                <p>Date and time selection components, powered by <a href="https://flatpickr.js.org/" target="_blank" rel="noopener noreferrer" class="text-blue-500 dark:text-blue-400 hover:underline">flatpickr</a>.</p>
             </header>
             <section id="datetime-picker-demo" class="space-y-5">
                 <h2 class="text-xl font-medium">Demo</h2>
@@ -26,23 +26,23 @@
             </section>
             <section id="shared-field-contract" class="space-y-3">
                 <h2 class="text-xl font-medium">Shared field contract</h2>
-                <p>Controls automatically associate labels, helpers, and validation errors. Laravel or Livewire supplies the error bags; application validation remains authoritative.</p>
-                <p>The examples submit wall-clock strings: <code>2028-02-29</code>, <code>09:30</code>, and <code>2028-12-31 14:30:45</code>. Display formatting never converts these values to UTC.</p>
-                <p>The native controller and Livewire action validate the canonical format, travel-year bounds, reminder, and unavailable departure date. Demos use <code>novalidate</code> to demonstrate server errors. Nothing is persisted. Applications own timezone conversion and validation of ambiguous or nonexistent daylight-saving times.</p>
+                <p>Labels, helper text, and Laravel or Livewire validation errors are linked automatically.</p>
+                <p>Values are submitted as local date/time strings: <code>2028-02-29</code>, <code>09:30</code>, or <code>2028-12-31 14:30:45</code>. They are not converted to UTC.</p>
+                <p>Your application handles timezone conversion and daylight-saving validation.</p>
             </section>
             <section id="assets-and-interaction" class="space-y-3">
                 <h2 class="text-xl font-medium">Assets and interaction</h2>
-                <p>Import the package stylesheet and JavaScript once in your application build, or publish <code>sirius-ui-assets</code> and load the published CSS and JavaScript.</p>
-                <p>Flatpickr 4.6.13 and its locales/styles are bundled internally under the MIT license; retain the bundled third-party notices. No CDN, key, or second Alpine instance is required.</p>
+                <p>Import the package CSS and JavaScript, or publish and load <code>sirius-ui-assets</code>.</p>
+                <p>Flatpickr and its locales are bundled. No CDN or API key is needed.</p>
                 @include('blade-components.examples.assets')
-                <p>Type in the displayed format or use the popup. Invalid input remains visible and fails client validity; it is passed unchanged to server validation rather than silently converted to another date. Native pages without JavaScript use a plain text field and must receive canonical values.</p>
-                <p>Input/change/blur/Enter events are forwarded to the canonical binding input. Livewire and Alpine string bindings support deferred, live/debounce, change/lazy, blur, and Enter timing; numeric/boolean casts are rejected. Consumer listeners on the visible input receive display text. Programmatic native updates set <code>[data-sir-date-value]</code> and dispatch input when a bound model must update.</p>
-                <p>Each widget owns one instance and cleans it up after removal or navigation. Native reset, server updates, and readonly/disabled changes resynchronize the picker. Explicit IDs are recommended across Livewire renders. The custom picker also runs on mobile for consistent formatting and bounds.</p>
-                <p>Additional serializable options are listed in Attributes. Lifecycle callbacks, custom parsing, HTML arrows, plugins, range/multiple selection, DOM placement, and alternate-input ownership are not exposed in this release. The supplied timezone sets the initial calendar day; values remain wall-clock strings without an offset.</p>
+                <p>Choose from the popup or type in the display format. Invalid text stays visible for validation. Without JavaScript, enter the submitted format directly.</p>
+                <p>Livewire and Alpine bindings accept strings and support deferred, live/debounce, change/lazy, blur, and Enter updates. Number and boolean modifiers are unsupported. For JavaScript updates, set <code>[data-sir-date-value].value</code> and dispatch <code>input</code>. Visible-input events contain display text.</p>
+                <p>Form resets, server updates, and readonly/disabled changes refresh the picker. Use stable IDs with Livewire.</p>
+                <p>Only the Flatpickr options listed in Attributes are supported. Range and multiple selection are unavailable.</p>
             </section>
             <section id="global-configuration" class="space-y-3">
                 <h2 class="text-xl font-medium">Global configuration</h2>
-                <p>Publish the package configuration to customize defaults in your application. Missing or null values fall through at render time: timezone uses sirius-ui.timezone → app.timezone → UTC; locale uses sirius-ui.locale → app.locale → app.fallback_locale → en. Explicit invalid values still produce configuration errors. Keep the other existing configuration entries. After changing cached configuration, rebuild the application config cache.</p>
+                <p>Publish the config to set defaults. Timezone falls back through <code>sirius-ui.timezone &rarr; app.timezone &rarr; UTC</code>. Locale falls back through <code>sirius-ui.locale &rarr; app.locale &rarr; app.fallback_locale &rarr; en</code>. Invalid explicit values are rejected.</p>
                 @include('blade-components.examples.datetime-picker-config')
             </section>
         </article>

@@ -4,7 +4,7 @@
             <header class="space-y-2">
                 <p class="text-sm text-zinc-500 dark:text-zinc-400">FORM CONTROLS</p>
                 <h1 class="text-3xl font-semibold">Currency</h1>
-                <p>An input component for currency values with flexible formatting.</p>
+                <p>Currency input with configurable number formatting.</p>
             </header>
             <section id="currency-demo" class="space-y-5">
                 <h2 class="text-xl font-medium">Demo</h2>
@@ -26,22 +26,22 @@
             </section>
             <section id="shared-field-contract" class="space-y-3">
                 <h2 class="text-xl font-medium">Shared field contract</h2>
-                <p>Controls automatically associate labels, helpers, and validation errors. Laravel or Livewire supplies the error bags; application validation remains authoritative.</p>
-                <p>Keep monetary model values as strings: display <code>1,234.50</code>, bind and submit <code>1234.50</code>. Prefixes and suffixes are never submitted.</p>
-                <p>Validate canonical strings on the server. These demos use an anchored decimal regex and a string length limit; budget rejects negative amounts and more than two fractional digits, while adjustment allows a sign and three fractional digits. The demos deliberately use <code>novalidate</code> to show server errors. No amounts are persisted.</p>
+                <p>Labels, helper text, and Laravel or Livewire validation errors are linked automatically.</p>
+                <p>Use strings for amounts: <code>1,234.50</code> is displayed, while <code>1234.50</code> is submitted. Prefixes and suffixes are excluded.</p>
+                <p>Validate the submitted decimal string, including its sign, precision, and limits.</p>
             </section>
             <section id="assets-and-interaction" class="space-y-3">
                 <h2 class="text-xl font-medium">Assets and interaction</h2>
-                <p>Import the package stylesheet and JavaScript once in your application build, or publish <code>sirius-ui-assets</code> and load the published CSS and JavaScript.</p>
-                <p>No additional library is required.</p>
+                <p>Import the package CSS and JavaScript, or publish and load <code>sirius-ui-assets</code>.</p>
+
                 @include('blade-components.examples.assets')
-                <p>Typing inserts thousands separators and preserves the caret. Paste trims surrounding whitespace and validates the configured grouping; malformed groups, currency symbols, exponent notation, and mixed locale formats reject the entire paste without changing the previous amount. A leading decimal becomes <code>0.5</code>; a trailing decimal remains while editing and disappears on blur. A lone minus is an incomplete edit with an empty canonical value.</p>
-                <p>Native reset, Livewire updates, conditional remounts, and navigation resynchronize the display. JavaScript maintains one named canonical input; without JavaScript the visible input submits unformatted text. Server validation is required in both cases. Disabled controls are omitted and readonly amounts remain submitted.</p>
-                <p>For programmatic plain JavaScript updates, set the value of <code>[data-sir-currency-value]</code> inside the control wrapper; dispatch its input event when a model binding should also update. Input/change/blur events on the visible control are forwarded to that binding input. Consumer listeners on the visible control see formatted text.</p>
+                <p>Separators are added as you type. Pasted text must match the configured format; invalid pastes leave the value unchanged. A trailing decimal is removed on blur. A lone minus submits an empty value.</p>
+                <p>Form resets and Livewire updates refresh the display. Without JavaScript, the field submits text as entered. Readonly values are submitted; disabled values are omitted.</p>
+                <p>For JavaScript updates, set <code>[data-sir-currency-value].value</code> and dispatch <code>input</code>. Events on the visible input contain formatted text.</p>
             </section>
             <section id="global-configuration" class="space-y-3">
                 <h2 class="text-xl font-medium">Global configuration</h2>
-                <p>Publish the package configuration to customize defaults in your application. Missing or null settings use comma for thousands, dot for decimals, and precision 2. After changing cached configuration, rebuild the application config cache.</p>
+                <p>Publish the config to set default separators and precision. Missing or null settings use comma, dot, and 2 decimal places. Component props override these defaults.</p>
                 @include('blade-components.examples.currency-config')
             </section>
         </article>
