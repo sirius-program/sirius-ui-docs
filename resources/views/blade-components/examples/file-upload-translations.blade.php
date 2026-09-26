@@ -1,0 +1,25 @@
+@include('blade-components.examples.publish-translation')
+<x-docs-code language="PHP">// lang/vendor/sirius/id/sirius-ui.php
+'file_upload' =&gt; [
+    'open_preview' =&gt; 'Buka pratinjau',
+    'idle' =&gt; 'Tarik file atau telusuri',
+    'invalid' =&gt; 'File tidak valid',
+    'size' =&gt; 'File terlalu besar',
+    'max_size' =&gt; 'Ukuran file maksimal {filesize}',
+    'type' =&gt; 'Jenis file tidak diizinkan',
+    'types' =&gt; 'Jenis yang diizinkan: {allTypes}',
+    'loading' =&gt; 'Memuat',
+    'load_error' =&gt; 'Gagal memuat file',
+    'processing' =&gt; 'Mengunggah',
+    'complete' =&gt; 'Unggahan selesai',
+    'cancelled' =&gt; 'Unggahan dibatalkan',
+    'process_error' =&gt; 'Unggahan gagal',
+    'revert_error' =&gt; 'Gagal menghapus unggahan sementara',
+    'remove_error' =&gt; 'Gagal menghapus file',
+    'cancel' =&gt; 'Batal',
+    'retry' =&gt; 'Coba lagi',
+    'undo' =&gt; 'Urungkan',
+    'remove' =&gt; 'Hapus',
+    'upload' =&gt; 'Unggah',
+    'busy' =&gt; 'Tunggu hingga unggahan selesai atau hapus file yang gagal.',
+],</x-docs-code>

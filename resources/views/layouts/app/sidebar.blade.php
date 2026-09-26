@@ -26,6 +26,7 @@
                     <flux:sidebar.item :href="route('blade-components.datetime-picker')" :current="request()->routeIs('blade-components.datetime-picker')" wire:navigate>Datetime Picker</flux:sidebar.item>
                     <flux:sidebar.item :href="route('blade-components.phone')" :current="request()->routeIs('blade-components.phone')" wire:navigate>Phone</flux:sidebar.item>
                     <flux:sidebar.item :href="route('blade-components.select')" :current="request()->routeIs('blade-components.select')" wire:navigate>Select</flux:sidebar.item>
+                    <flux:sidebar.item :href="route('blade-components.file-upload')" :current="request()->routeIs('blade-components.file-upload')" wire:navigate>File Upload</flux:sidebar.item>
                 </flux:sidebar.group>
             </flux:sidebar.nav>
         </flux:sidebar>

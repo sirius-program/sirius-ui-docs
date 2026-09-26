@@ -7,6 +7,7 @@ use App\Http\Controllers\BasicFormController;
 use App\Http\Controllers\ControlExampleController;
 use App\Http\Controllers\CurrencyExampleController;
 use App\Http\Controllers\DatetimePickerExampleController;
+use App\Http\Controllers\FileUploadExampleController;
 use App\Http\Controllers\FormValidationController;
 use App\Http\Controllers\PhoneExampleController;
 use App\Http\Controllers\SelectExampleController;
@@ -22,6 +23,8 @@ Route::post('blade-components/currency-example', CurrencyExampleController::clas
 Route::view('blade-components/datetime-picker', 'blade-components.datetime-picker-docs')->name('blade-components.datetime-picker');
 Route::post('blade-components/datetime-picker-example', DatetimePickerExampleController::class)->name('blade-components.datetime-picker.store');
 Route::view('blade-components/select', 'blade-components.select-docs')->name('blade-components.select');
+Route::view('blade-components/file-upload', 'blade-components.file-upload-docs')->name('blade-components.file-upload');
+Route::post('blade-components/file-upload-example', FileUploadExampleController::class)->name('blade-components.file-upload.store');
 Route::post('blade-components/select-example', SelectExampleController::class)->name('blade-components.select.store');
 Route::get('blade-components/select-options', SelectOptionController::class)->name('blade-components.select.options');
 Route::view('blade-components/phone', 'blade-components.phone-docs')->name('blade-components.phone');

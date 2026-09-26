@@ -4,7 +4,7 @@
 Package: `D:/Projects/sirius-ui`  
 Documentation and integration application: `D:/Projects/sirius-ui-docs`
 
-Phase 0 through Phase 6 checkboxes reflect executed work. The reusable phase gate remains an unchecked template. The expanded roadmap runs through Phase 25; phases 0–6 retain their completed status, Phone follows Datetime Picker; Phone and Slider precede Form, the AI skill follows all component phases, and Flux migration immediately precedes final validation. See PHASE_0.md, PHASE_1.md, PHASE_2.md, PHASE_3.md, PHASE_4.md, PHASE_5.md, and PHASE_6.md for architecture boundaries, decisions, verification scope, and maintenance notes.
+Phase 0 through Phase 7 checkboxes reflect executed work. The reusable phase gate remains an unchecked template. The expanded roadmap runs through Phase 25; phases 0–7 retain their completed status, Phone follows Datetime Picker; Phone and Slider precede Form, the AI skill follows all component phases, and Flux migration immediately precedes final validation. See PHASE_0.md, PHASE_1.md, PHASE_2.md, PHASE_3.md, PHASE_4.md, PHASE_5.md, PHASE_6.md, and PHASE_7.md for architecture boundaries, decisions, verification scope, and maintenance notes.
 
 ## 1. Agreed outcome and architecture
 
@@ -295,14 +295,16 @@ Verification: package `composer test` passed (56 tests, 277 assertions), docs `c
 
 ## Phase 7 — File upload
 
-- [ ] Implement the verified upload widget with single/multiple mode, accept/type restrictions, size/count limits, progress, cancel, retry, and remove controls.
-- [ ] Connect Livewire temporary uploads and propagate loading, validation, completion, failure, and cancellation states.
-- [ ] Keep permanent storage, disk/path selection, authorization, and server validation in the application. Removing an existing file must never delete permanent data without an explicit application handler.
-- [ ] Support ordinary Blade multipart forms with a verified native file-input submission path. Do not silently require a Livewire upload endpoint on ordinary pages.
-- [ ] Expose applicable free widget options and document temporary file cleanup responsibility, existing-file representation, and browser limitations.
-- [ ] Test rejection of invalid/oversized files, upload failure, cancel/retry, multiple upload, reset, and server validation. Use isolated fake storage where appropriate.
-- [ ] Browser-test real file selection, progress/result state, remove, re-render, and duplicate-request prevention.
-- [ ] Add upload docs with permanent-storage examples and complete the mandatory phase gate.
+- [x] Implement the verified upload widget with single/multiple mode, accept/type restrictions, size/count limits, progress, cancel, retry, and remove controls.
+- [x] Connect Livewire temporary uploads and propagate loading, validation, completion, failure, and cancellation states.
+- [x] Keep permanent storage, disk/path selection, authorization, and server validation in the application. Removing an existing file must never delete permanent data without an explicit application handler.
+- [x] Support ordinary Blade multipart forms with a verified native file-input submission path. Do not silently require a Livewire upload endpoint on ordinary pages.
+- [x] Expose applicable free widget options and document temporary file cleanup responsibility, existing-file representation, and browser limitations.
+- [x] Test rejection of invalid/oversized files, upload failure, cancel/retry, multiple upload, reset, and server validation. Use isolated fake storage where appropriate.
+- [x] Browser-test real file selection, progress/result state, remove, re-render, and duplicate-request prevention.
+- [x] Add upload docs with permanent-storage examples and complete the mandatory phase gate.
+
+- [x] Add image/PDF previews, metadata-only value records, safe existing-file removal events, and sample image/PDF demos; verify native source remains hidden after Livewire updates.
 
 ## Phase 8 — Textarea editor
 

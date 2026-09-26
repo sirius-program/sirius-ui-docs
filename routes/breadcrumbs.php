@@ -92,3 +92,8 @@ Breadcrumbs::for('development.select-bindings', function (BreadcrumbTrail $trail
     $trail->parent('blade-components.select');
     $trail->push('Select binding integration', route('development.select-bindings'));
 });
+
+Breadcrumbs::for('blade-components.file-upload', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.index');
+    $trail->push('File Upload', route('blade-components.file-upload'));
+});

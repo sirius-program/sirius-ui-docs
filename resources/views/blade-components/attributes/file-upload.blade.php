@@ -1,0 +1,18 @@
+<x-docs-props :rows="[
+    ['value', 'array', '[]', 'Existing file records require only name and size in bytes. An optional url (root-relative or HTTP(S)) enables image/PDF previews; omit it or use null to display filename and size only. Single mode accepts at most one record. Existing files count toward max-files and client required, but are never uploaded again. Remove emits file-upload:remove-existing with the record; the application owns permanent deletion.'],
+    ['preview', 'boolean', 'true', 'Show image and PDF previews for new and existing files. Text files display their filename and size.'],
+    ['preview-height', 'integer', '240', 'Preview height in pixels, from 80 to 1000.'],
+    ['multiple', 'boolean', 'false', 'Allow multiple files; a native field name receives [] automatically.'],
+    ['accept', 'string | null', 'null', 'Comma-separated MIME types, wildcard MIME groups, or extensions such as .pdf. Browser restrictions do not replace server validation.'],
+    ['max-size', 'integer | null', 'null', 'Positive maximum size per file in KiB (1024 bytes); null is unlimited on the client.'],
+    ['max-files', 'integer | null', 'null', 'Positive maximum file count in multiple mode. Single mode allows one file.'],
+    ['reset-key', 'string | integer', '0', 'Change this value when the server explicitly resets the widget.'],
+    ['options', 'array', '[]', 'FilePond options: allowDrop, allowBrowse, allowPaste, allowReplace (booleans), and itemInsertLocation (before or after). Explicit props and lifecycle protection take priority. Server, files, callbacks, and remote loading options are rejected.'],
+    ['label', 'string | null', 'null', 'Visible label; omitted when empty.'],
+    ['helper', 'string | null', 'null', 'Supporting text below the control.'],
+    ['error-key', 'string | null', 'null', 'Override the validation key; otherwise use the wire:model path, then the normalized name.'],
+    ['error-bag', 'string', 'default', 'Named Laravel validation error bag.'],
+    ['errors', 'ViewErrorBag | null', 'null', 'Optional explicit error bags; otherwise supplied by Laravel or Livewire.'],
+    ['size', 'sm | md | lg', 'md', 'Visual size (font and padding), independent of the native HTML size attribute.'],
+    ['wrapper-class', 'string', 'empty string', 'Additional CSS classes for the field wrapper.'],
+]" note="Applicable file-input HTML5 attributes, Alpine event directives, data-*, ARIA attributes, and wire:model are supported. Native attributes belong to the submitted input; accessibility, accept, capture, readonly, and disabled state also reach the enhanced control. The package owns type, files, and upload lifecycle. x-model cannot bind local files; value describes existing preview metadata only." />
