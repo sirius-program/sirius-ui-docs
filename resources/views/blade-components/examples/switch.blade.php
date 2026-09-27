@@ -1,1 +1,1 @@
-<x-docs-example title="Security alerts" view="blade-components.demos.switch" />
+<x-docs-example view="blade-components.demos.switch" />

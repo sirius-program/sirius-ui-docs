@@ -2,7 +2,7 @@
     <form wire:submit="save" novalidate class="space-y-5">
         @if ($showControls)
             <div wire:key="basic-controls" class="space-y-5">
-                @include('blade-components.demos.basic-controls', ['livewire' => true, 'demoId' => $this->getId(), 'values' => []])
+                @include('blade-components.demos.input-livewire-fields', ['demoId' => $this->getId()])
             </div>
         @endif
         <div class="flex flex-wrap gap-2">

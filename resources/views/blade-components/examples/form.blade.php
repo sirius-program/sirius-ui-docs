@@ -1,18 +1,6 @@
-<div class="space-y-3" data-usage-example>
-    <x-docs-code language="Blade" :source="file_get_contents(resource_path('views/blade-components/demos/form-get.blade.php'))" />
-</div>
-<div class="space-y-3" data-usage-example>
-    <x-docs-code language="Blade" :source="file_get_contents(resource_path('views/blade-components/demos/form-post.blade.php'))" />
-</div>
-<div class="space-y-3" data-usage-example>
-    <x-docs-code language="Blade" :source="file_get_contents(resource_path('views/blade-components/demos/form-put.blade.php'))" />
-</div>
-<div class="space-y-3" data-usage-example>
-    <x-docs-code language="Blade" :source="file_get_contents(resource_path('views/blade-components/demos/form-patch.blade.php'))" />
-</div>
-<div class="space-y-3" data-usage-example>
-    <x-docs-code language="Blade" :source="file_get_contents(resource_path('views/blade-components/demos/form-delete.blade.php'))" />
-</div>
-<div class="space-y-3" data-usage-example>
-    <x-docs-code language="Blade" :source="file_get_contents(resource_path('views/blade-components/demos/form-upload.blade.php'))" />
-</div>
+<x-docs-example view="blade-components.demos.form-get" />
+<x-docs-example view="blade-components.demos.form-post" />
+<x-docs-example view="blade-components.demos.form-put" />
+<x-docs-example view="blade-components.demos.form-patch" />
+<x-docs-example view="blade-components.demos.form-delete" />
+<x-docs-example view="blade-components.demos.form-upload" />

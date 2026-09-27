@@ -45,7 +45,7 @@ final class BasicControlsExample extends Component
     {
         $this->saved = false;
         $rules = match ($this->kind) {
-            'input'    => ['title' => ['required', 'max:80'], 'quantity' => ['required', 'numeric', 'min:0', 'max:100']],
+            'input'    => ['title' => ['required', 'max:80'], 'quantity' => ['required', 'numeric', 'min:0', 'max:100'], 'password' => ['required', 'string', 'min:8']],
             'password' => ['password' => ['required', 'min:8']],
             'textarea' => ['notes' => ['required', 'max:500']],
             'checkbox' => ['agreed' => ['accepted'], 'roles' => ['required', 'array', 'min:1'], 'roles.*' => ['in:0,editor']],
@@ -80,6 +80,13 @@ final class BasicControlsExample extends Component
 
     public function render(): View
     {
-        return view('livewire.examples.basic-controls-example');
+        return match ($this->kind) {
+            'input'    => view('livewire.examples.input-example'),
+            'textarea' => view('livewire.examples.textarea-example'),
+            'checkbox' => view('livewire.examples.checkbox-example'),
+            'radio'    => view('livewire.examples.radio-example'),
+            'switch'   => view('livewire.examples.switch-example'),
+            default    => view('livewire.examples.basic-controls-example'),
+        };
     }
 }

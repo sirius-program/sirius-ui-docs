@@ -6,30 +6,31 @@ use App\Livewire\Examples\BasicControlsExample;
 use Livewire\Livewire;
 
 it('renders each basic control documentation page', function (string $control, array $examples): void {
-    $this->get(route('blade-components.control', ['control' => $control]))
+    $this->get(route('blade-components.' . $control))
+        ->assertViewIs('blade-components.' . $control . '-docs')
         ->assertSee(array_map(fn (string $example): string => 'data-blade-example="' . $example . '"', $examples), false)
         ->assertDontSee('Toggle sample controls')
         ->assertDontSee('data-basic-state', false);
 })->with([
-    ['input', ['input', 'password']],
+    ['input', ['input']],
     ['textarea', ['textarea']],
     ['choices', ['checkbox', 'radio', 'switch']],
 ]);
 
 it('redirects former component pages to their combined documentation', function (string $old, string $destination): void {
-    $this->get(route('blade-components.control', ['control' => $old]))
-        ->assertRedirect(route('blade-components.control', ['control' => $destination]));
+    $this->get(route('blade-components.' . $old))
+        ->assertRedirect(route('blade-components.' . $destination));
 })->with([['password', 'input'], ['checkbox', 'choices'], ['radio', 'choices'], ['switch', 'choices']]);
 
 it('renders validation failures through each reactive control', function (string $kind, string $key): void {
     Livewire::test(BasicControlsExample::class, ['kind' => $kind])->call('save')->assertHasErrors([$key])->assertSee('aria-invalid="true"', false)
         ->call('loadExample')->call('save')->assertHasNoErrors()->assertSee('Sample validated. Nothing was stored.')
         ->call('resetExample')->assertSet('saved', false);
-})->with([['input', 'title'], ['password', 'password'], ['textarea', 'notes'], ['checkbox', 'agreed'], ['radio', 'plan'], ['switch', 'enabled']]);
+})->with([['input', 'title'], ['input', 'password'], ['password', 'password'], ['textarea', 'notes'], ['checkbox', 'agreed'], ['radio', 'plan'], ['switch', 'enabled']]);
 
 it('validates ordinary submission and normalizes omitted boolean fields', function (): void {
     $this->post(route('blade-components.basic.store'), ['title' => 'Example', 'quantity' => '0', 'plan' => '0', 'roles' => ['0', 'editor']])
-        ->assertRedirect(route('blade-components.control', ['control' => 'input']))
+        ->assertRedirect(route('blade-components.input'))
         ->assertSessionHas('basic-result.enabled', false)
         ->assertSessionHas('basic-result.roles', ['0', 'editor']);
 });

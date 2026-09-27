@@ -10,7 +10,7 @@
 <body class="p-8" data-integration-probe>
     <h1>Plain Blade proof</h1>
     <a href="{{ route('development.integrations') }}" wire:navigate>Integration proofs</a>
-    <form x-data="{ submitted: '' }" @submit.prevent="submitted = JSON.stringify(Object.fromEntries(new FormData($el)))">
+    <x-sirius::form :action="url()->current()" x-data="{ submitted: '' }" @submit.prevent="submitted = JSON.stringify(Object.fromEntries(new FormData($el)))">
         @foreach (['first', 'second'] as $instance)
             <div x-data="integrationWidget('date', '2026-09-12')">
                 <label for="date-{{ $instance }}">Date {{ $instance }}</label>
@@ -33,7 +33,7 @@
         </div>
         <button type="submit">Inspect form values</button>
         <output id="form-values" x-text="submitted"></output>
-    </form>
+    </x-sirius::form>
     @livewireScripts
 </body>
 </html>

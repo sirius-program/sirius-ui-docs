@@ -1,5 +1,4 @@
-<form method="POST" action="{{ route('blade-components.select.store') }}" novalidate class="space-y-5" data-blade-select>
-    @csrf
+<x-sirius::form method="POST" action="{{ route('blade-components.select.store') }}" novalidate class="space-y-5" data-blade-select>
     @include('blade-components.demos.select-shipping')
     @include('blade-components.demos.select-topics')
     @include('blade-components.demos.select-venue')
@@ -9,4 +8,4 @@
         <flux:button type="submit" name="action" value="reset">Reset Sample</flux:button>
     </div>
     @if (session('select_saved'))<p role="status">Selections validated. Nothing was stored.</p>@endif
-</form>
+</x-sirius::form>

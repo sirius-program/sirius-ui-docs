@@ -91,7 +91,7 @@ it('submits canonical native values and resets Blade controls without hidden dup
 
 it('updates text number and textarea values and errors after Livewire reset', function (): void {
     $page = visit('/blade-components/input')->click('[data-control-demo="input"] [data-basic-example] button:has-text("Submit / Validate")')->assertAttribute('[data-basic-title]', 'aria-invalid', 'true')
-        ->type('[data-basic-title]', 'My project')->type('[data-basic-quantity]', '5')->click('[data-control-demo="input"] [data-basic-example] button:has-text("Submit / Validate")')
+        ->type('[data-basic-title]', 'My project')->type('[data-basic-quantity]', '5')->type('[data-basic-password]', 'Workspace-demo!42')->click('[data-control-demo="input"] [data-basic-example] button:has-text("Submit / Validate")')
         ->assertSee('Sample validated. Nothing was stored.')->assertAttribute('[data-basic-title]', 'aria-invalid', 'false')
         ->click('[data-control-demo="input"] [data-basic-example] button:has-text("Load Value")')->assertValue('[data-basic-title]', 'Website redesign')->assertValue('[data-basic-quantity]', '12')
         ->click('[data-control-demo="input"] [data-basic-example] button:has-text("Reset Sample")')->assertValue('[data-basic-title]', '')->assertValue('[data-basic-quantity]', '0')->assertNoJavaScriptErrors();

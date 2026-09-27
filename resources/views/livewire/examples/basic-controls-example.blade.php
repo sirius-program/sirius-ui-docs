@@ -1,1 +1,1 @@
-@include('blade-components.demos.basic-livewire')
+@include('development.basic-controls-livewire')

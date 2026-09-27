@@ -1,5 +1,4 @@
-<form id="plain-basic-form" method="POST" action="{{ route('blade-components.basic.store') }}" class="space-y-4" novalidate>
-    @csrf
+<x-sirius::form id="plain-basic-form" method="POST" action="{{ route('blade-components.basic.store') }}" class="space-y-4" novalidate>
     <x-sirius::input id="plain-title" name="title" label="Title" helper="Required; no data is stored." required :value="old('title', 'Initial title')" error-bag="basic" prefix="Project" suffix="Example" />
     <x-sirius::input id="plain-quantity" name="quantity" type="number" label="Quantity" min="0" max="100" :value="old('quantity', 0)" error-bag="basic" />
     <x-sirius::textarea id="plain-notes" name="notes" label="Notes" :value="old('notes', 'Initial notes')" error-bag="basic" />
@@ -19,7 +18,7 @@
         <flux:button type="submit">Submit Blade sample</flux:button>
         <flux:button type="reset">Reset Blade sample</flux:button>
     </div>
-</form>
+</x-sirius::form>
 @if (session('basic-result'))
     <p role="status">Blade sample received. Nothing was stored.</p>
 @endif

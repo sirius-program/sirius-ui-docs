@@ -64,7 +64,7 @@ Phase 6 provides **Select** at `/blade-components/select`: local single/multiple
 
 Phase 7 provides **File Upload** at `/blade-components/file-upload`: `<x-sirius::file-upload>` supports single/multiple files, MIME/extension restrictions, KiB limits, count limits, localized feedback, and application-owned existing-file content. Image/PDF previews support new files and existing name/size/url metadata, with safe removal events and no automatic permanent deletion. Blade submits native multipart files; Livewire uses temporary uploads with progress, cancellation, retry, and removal. FilePond 4.32.12 and its MIT validation plugins are bundled internally. The docs show private-storage examples but demos never persist permanent files. See [Phase 7](PHASE_7.md) for limits and verification.
 
-The File Upload Supporting documents demo loads existing PDF, TXT, and CSV metadata without preview URLs. Only name and size are required; an optional url enables image/PDF previews. Global configuration includes a copyable translation override and the translation publishing command.
+The File Upload Supporting documents demo loads existing PDF, TXT, and CSV metadata without preview URLs. Only name and size are required; an optional url enables image/PDF previews. The Translations section includes a copyable translation override and the translation publishing command.
 
 Component pages use concise usage notes and consistent attribute descriptions. Detailed implementation history remains in the phase reports.
 
@@ -75,3 +75,13 @@ See [Phase 8 contracts and verification](PHASE_8.md) for richtext lifecycle, upl
 Phase 9 provides **Slider** at `/blade-components/slider`: numeric single values or two ordered handles with independent min/max/step arrays. Native Blade payloads, Livewire/Alpine bindings, keyboard/pointer/touch, readonly/disabled, and reset are supported without a new dependency. See [Phase 9 contracts and verification](PHASE_9.md).
 
 Phase 10 provides **Form** at `/blade-components/form`: `<x-sirius::form>` defaults to GET, adds CSRF for non-GET requests, spoofs PUT/PATCH/DELETE, and enables multipart uploads with `sending-file`. Six Blade demos use controller-backed native submissions. See [Phase 10 contracts and verification](PHASE_10.md).
+
+Component docs share Demo, Usage, Attributes, Shared field contract, and Asset and interaction sections. Usage uses one copyable demo source per component; native Blade demos use the Form component. Attribute tables focus on package props and behavior that differs from HTML.
+
+Input, Textarea, and Checkbox/Radio/Switch use separate page views. The Input demo combines text, number, and password fields under one Usage and Attributes section.
+
+Input, Textarea, Checkbox, Radio, and Switch each have dedicated attribute tables and Blade/Livewire demo partials.
+
+These pages have explicit named routes (blade-components.input, blade-components.textarea, and blade-components.choices), with separate demo submission routes. Legacy password and individual choice URLs redirect to their combined pages.
+
+Global configuration and Translations have separate sections and navigator links where applicable.

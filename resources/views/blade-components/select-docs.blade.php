@@ -1,5 +1,5 @@
 <x-layouts::app title="Select">
-    <x-docs-page :navigation="['Select' => ['select-demo' => 'Demo', 'select-usage' => 'Usage', 'select-attributes' => 'Attributes'], 'Shared' => ['shared-field-contract' => 'Shared field contract', 'assets-and-interaction' => 'Assets and interaction', 'server-search' => 'Server search', 'global-configuration' => 'Global configuration']]">
+    <x-docs-page :navigation="['Select' => ['select-demo' => 'Demo', 'select-usage' => 'Usage', 'select-attributes' => 'Attributes'], 'Shared' => ['shared-field-contract' => 'Shared field contract', 'assets-and-interaction' => 'Assets and interaction', 'server-search' => 'Server search', 'translations' => 'Translations']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8" data-control-demo="select">
             <header class="space-y-2">
                 <p class="text-sm text-zinc-500 dark:text-zinc-400">FORM CONTROLS</p>
@@ -33,8 +33,8 @@
                 <h2 class="text-xl font-medium">Assets and interaction</h2>
                 <p>Import the package CSS and JavaScript, or publish and load <code>sirius-ui-assets</code>.</p>
                 @include('blade-components.examples.assets')
-                <p>Tom Select is bundled. Without JavaScript, local options use a native select; remote search and readonly need JavaScript.</p>
-                <p>Livewire/Alpine updates and form resets keep selections in sync. Readonly values are submitted; disabled values are omitted. Input/change events reach the original select.</p>
+                <p>Tom Select is bundled. Without JavaScript, local options use a native select; remote search needs JavaScript.</p>
+                <p>Livewire/Alpine updates and form resets keep selections in sync. Input/change events reach the original select.</p>
             </section>
             <section id="server-search" class="space-y-3">
                 <h2 class="text-xl font-medium">Server search</h2>
@@ -43,9 +43,9 @@
                 <p>Apply the same access rules to search, label lookup, and submitted IDs. Bound query inputs and rate-limit the endpoint. The demo uses a public venue list.</p>
                 <p>New searches replace pending requests and preserve selected values. Load more fetches the next page. Status appears beside the label; failed requests show a Retry button.</p>
             </section>
-            <section id="global-configuration" class="space-y-3">
-                <h2 class="text-xl font-medium">Global configuration</h2>
-                <p>Edit the <code>select</code> array in <code>lang/vendor/sirius/{locale}/sirius-ui.php</code>. Messages follow the application locale and fallback locale.</p>
+            <section id="translations" class="space-y-3">
+                <h2 class="text-xl font-medium">Translations</h2>
+                <p>Edit the <code>select</code> array in <code>lang/vendor/sirius/{locale}/sirius-ui.php</code>.</p>
                 @include('blade-components.examples.select-translations')
             </section>
         </article>

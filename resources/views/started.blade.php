@@ -11,7 +11,7 @@
                 <ul class="list-disc pl-5 mt-3 space-y-3">
                     <li><a class="underline" href="{{ route('blade-components.label') }}" wire:navigate>Label</a></li>
                     @foreach (['input' => 'Input', 'textarea' => 'Textarea', 'choices' => 'Checkbox, Radio & Switch'] as $control => $controlLabel)
-                        <li><a class="underline" href="{{ route('blade-components.control', ['control' => $control]) }}" wire:navigate>{{ $controlLabel }}</a></li>
+                        <li><a class="underline" href="{{ route('blade-components.' . $control) }}" wire:navigate>{{ $controlLabel }}</a></li>
                     @endforeach
                     <li><a class="underline" href="{{ route('blade-components.richtext') }}" wire:navigate>Richtext</a></li>
                     <li><a class="underline" href="{{ route('blade-components.slider') }}" wire:navigate>Slider</a></li>

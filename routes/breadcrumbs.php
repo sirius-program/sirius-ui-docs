@@ -34,9 +34,19 @@ Breadcrumbs::for('development.fields', function (BreadcrumbTrail $trail): void {
     $trail->push(__('Field integration'), route('development.fields'));
 });
 
-Breadcrumbs::for('blade-components.control', function (BreadcrumbTrail $trail, string $control): void {
+Breadcrumbs::for('blade-components.input', function (BreadcrumbTrail $trail): void {
     $trail->parent('blade-components.index');
-    $trail->push($control === 'choices' ? 'Checkbox, Radio & Switch' : ucfirst($control), route('blade-components.control', ['control' => $control]));
+    $trail->push('Input', route('blade-components.input'));
+});
+
+Breadcrumbs::for('blade-components.textarea', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.index');
+    $trail->push('Textarea', route('blade-components.textarea'));
+});
+
+Breadcrumbs::for('blade-components.choices', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.index');
+    $trail->push('Checkbox, Radio & Switch', route('blade-components.choices'));
 });
 
 Breadcrumbs::for('development.basic-controls', function (BreadcrumbTrail $trail): void {

@@ -1,5 +1,4 @@
-<form method="POST" action="{{ route('blade-components.file-upload.store') }}" enctype="multipart/form-data" novalidate class="space-y-5" data-blade-upload>
-    @csrf
+<x-sirius::form method="POST" action="{{ route('blade-components.file-upload.store') }}" sending-file novalidate class="space-y-5" data-blade-upload>
     <input type="hidden" name="keep_brief" value="{{ session('upload-existing') ? '1' : '0' }}">
     @if (session('upload-existing'))
         @foreach (['sample.pdf', 'sample.txt', 'sample.csv'] as $filename)
@@ -15,4 +14,4 @@
         <flux:button type="submit" name="action" value="reset" formnovalidate>Reset Sample</flux:button>
     </div>
     @if (session('upload-saved'))<p role="status">{{ session('upload-saved') }}</p>@endif
-</form>
+</x-sirius::form>

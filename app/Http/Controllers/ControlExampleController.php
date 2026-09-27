@@ -12,12 +12,12 @@ final class ControlExampleController extends Controller
 {
     public function __invoke(Request $request, string $kind): RedirectResponse
     {
-        $destination = $kind === 'label' ? route('blade-components.label') : route('blade-components.control', ['control' => match ($kind) {
+        $destination = route('blade-components.' . match ($kind) {
             'password'                    => 'input',
             'checkbox', 'radio', 'switch' => 'choices',
             default                       => $kind,
-        }]);
-        $destination .= '#' . $kind . '-blade';
+        });
+        $destination .= '#' . ($kind === 'password' ? 'input' : $kind) . '-blade';
         $action = $request->input('sample_action', 'validate');
         abort_unless(in_array($action, ['validate', 'load', 'reset'], true), 422);
 
@@ -34,7 +34,7 @@ final class ControlExampleController extends Controller
         }
 
         $rules = match ($kind) {
-            'input'    => ['title' => ['required', 'string', 'max:80'], 'quantity' => ['required', 'numeric', 'min:0', 'max:100']],
+            'input'    => ['title' => ['required', 'string', 'max:80'], 'quantity' => ['required', 'numeric', 'min:0', 'max:100'], 'password' => ['required', 'string', 'min:8']],
             'password' => ['password' => ['required', 'string', 'min:8']],
             'textarea' => ['notes' => ['required', 'string', 'max:500']],
             'checkbox' => ['agreed' => ['accepted'], 'roles' => ['required', 'array', 'min:1'], 'roles.*' => ['in:0,editor']],

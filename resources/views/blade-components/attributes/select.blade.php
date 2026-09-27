@@ -3,6 +3,7 @@
     ['value', 'string | integer | array | null', 'null', 'Initial selected ID or list of IDs in multiple mode. Empty single values bind null; empty multiple values bind an empty array.'],
     ['multiple', 'boolean', 'false', 'Allow multiple selected IDs; a native field name receives [] automatically.'],
     ['placeholder', 'string', 'Select an option', 'Prompt displayed when no value is selected.'],
+    ['readonly', 'boolean', 'false', 'Prevent changes while keeping the submitted value. Requires JavaScript.'],
     ['searchable', 'boolean', 'true', 'Allow typing to filter local options or search the configured endpoint.'],
     ['clearable', 'boolean | null', '!required', 'Allow clearing by button or keyboard. Defaults to !required; always enabled for multiple selection.'],
     ['search-url', 'string | null', 'null', 'Same-origin GET endpoint for remote search, pagination, and selected-label resolution.'],
@@ -16,4 +17,4 @@
     ['errors', 'ViewErrorBag | null', 'null', 'Custom error bags; defaults to Laravel or Livewire errors.'],
     ['size', 'sm | md | lg', 'md', 'Font and padding size; separate from HTML size.'],
     ['wrapper-class', 'string', 'empty string', 'CSS classes for the field wrapper.'],
-]" note="Accepts HTML5 select attributes, Alpine events, data-*, ARIA, and supported Livewire bindings. Models use string IDs or arrays; number, boolean, and trim modifiers are unsupported. Readonly needs JavaScript." />
+]" note="Accepts HTML5 select attributes, Alpine events, data-*, ARIA, and supported Livewire bindings. Models use string IDs or arrays; number, boolean, and trim modifiers are unsupported." />

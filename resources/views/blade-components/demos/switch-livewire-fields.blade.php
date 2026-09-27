@@ -1,0 +1,1 @@
+<x-sirius::switch :id="($automaticIds ?? false) ? null : $demoId.'-enabled'" label="Enable security alerts" error-bag="default" name="enabled" required wire:model.live="enabled" :readonly="$locked" helper="Security alerts must be enabled for this workspace." data-basic-enabled />

@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Http\Controllers\BasicControlController;
 use App\Http\Controllers\BasicFormController;
 use App\Http\Controllers\ControlExampleController;
 use App\Http\Controllers\CurrencyExampleController;
@@ -46,11 +45,21 @@ Route::post('blade-components/select-example', SelectExampleController::class)->
 Route::get('blade-components/select-options', SelectOptionController::class)->name('blade-components.select.options');
 Route::view('blade-components/phone', 'blade-components.phone-docs')->name('blade-components.phone');
 Route::post('blade-components/phone-example', PhoneExampleController::class)->name('blade-components.phone.store');
-Route::get('blade-components/{control}', BasicControlController::class)
-    ->whereIn('control', ['input', 'password', 'textarea', 'checkbox', 'radio', 'switch', 'choices'])->name('blade-components.control');
+Route::view('blade-components/input', 'blade-components.input-docs')->name('blade-components.input');
+Route::view('blade-components/textarea', 'blade-components.textarea-docs')->name('blade-components.textarea');
+Route::view('blade-components/choices', 'blade-components.choices-docs')->name('blade-components.choices');
+Route::redirect('blade-components/password', '/blade-components/input')->name('blade-components.password');
+Route::redirect('blade-components/checkbox', '/blade-components/choices')->name('blade-components.checkbox');
+Route::redirect('blade-components/radio', '/blade-components/choices')->name('blade-components.radio');
+Route::redirect('blade-components/switch', '/blade-components/choices')->name('blade-components.switch');
 Route::post('blade-components/basic-example', BasicFormController::class)->name('blade-components.basic.store');
-Route::post('blade-components/examples/{kind}', ControlExampleController::class)
-    ->whereIn('kind', ['input', 'password', 'textarea', 'checkbox', 'radio', 'switch', 'label'])->name('blade-components.examples.store');
+Route::post('blade-components/examples/input', ControlExampleController::class)->defaults('kind', 'input')->name('blade-components.input.store');
+Route::post('blade-components/examples/password', ControlExampleController::class)->defaults('kind', 'password')->name('blade-components.password.store');
+Route::post('blade-components/examples/textarea', ControlExampleController::class)->defaults('kind', 'textarea')->name('blade-components.textarea.store');
+Route::post('blade-components/examples/checkbox', ControlExampleController::class)->defaults('kind', 'checkbox')->name('blade-components.checkbox.store');
+Route::post('blade-components/examples/radio', ControlExampleController::class)->defaults('kind', 'radio')->name('blade-components.radio.store');
+Route::post('blade-components/examples/switch', ControlExampleController::class)->defaults('kind', 'switch')->name('blade-components.switch.store');
+Route::post('blade-components/examples/label', ControlExampleController::class)->defaults('kind', 'label')->name('blade-components.label.store');
 
 if (app()->environment(['local', 'testing'])) {
     Route::view('development/slider', 'development.slider')->name('development.slider');

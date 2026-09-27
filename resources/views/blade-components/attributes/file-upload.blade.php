@@ -1,9 +1,10 @@
 <x-docs-props :rows="[
     ['value', 'array', '[]', 'Existing files: name and size in bytes are required; url is optional for image/PDF previews (root-relative or HTTP(S)). Without url, show name and size only. Files count toward limits and required but are not re-uploaded. Remove emits file-upload:remove-existing; your app handles deletion.'],
+    ['readonly', 'boolean', 'false', 'Prevent changes while keeping the submitted value. Requires JavaScript.'],
     ['preview', 'boolean', 'true', 'Show image/PDF previews when available.'],
     ['preview-height', 'integer', '240', 'Preview height in pixels, from 80 to 1000.'],
     ['multiple', 'boolean', 'false', 'Allow multiple files; a native field name receives [] automatically.'],
-    ['accept', 'string | null', 'null', 'Allowed MIME types, wildcard groups, or extensions such as .pdf, separated by commas.'],
+    ['accept', 'string | null', 'null', 'Allowed MIME types or extensions, separated by commas. FilePond rejects other files before upload; validate them on the server too.'],
     ['max-size', 'integer | null', 'null', 'Maximum file size in KiB (1024 bytes). Null means no client limit.'],
     ['max-files', 'integer | null', 'null', 'Positive maximum file count in multiple mode. Single mode allows one file.'],
     ['reset-key', 'string | integer', '0', 'Change to reset the widget from the server.'],

@@ -27,7 +27,7 @@ it('loads validates and resets the paired native demo', function (string $kind, 
         'checkbox', 'radio', 'switch' => 'choices',
         default                       => $kind,
     };
-    $scope = '[data-blade-example="' . $kind . '"]';
+    $scope = '[data-blade-example="' . ($kind === 'password' ? 'input' : $kind) . '"]';
     $page = visit($path)->click($scope . ' button[value="validate"]');
     $page->assertAttribute($selector, 'aria-invalid', 'true')
         ->click($scope . ' button[value="load"]')->assertAttribute($selector, 'aria-invalid', 'false');
@@ -49,7 +49,7 @@ it('loads validates and resets the paired native demo', function (string $kind, 
     $page->assertMissing($scope . ' button:has-text("Toggle Readonly")')->assertNoJavaScriptErrors();
 })->with([
     ['input', '#blade-input-title', false],
-    ['password', '#blade-password-password', false],
+    ['password', '#blade-input-password', false],
     ['textarea', '#blade-textarea-notes', false],
     ['checkbox', '#blade-checkbox-agree', true],
     ['radio', '#blade-radio-plan-zero', true],
@@ -67,7 +67,7 @@ it('highlights and copies exact usage text after navigation and handles clipboar
 
     $page->click('Textarea')->assertPresent('[data-docs-code] .docs-token-tag');
     $page->script('Object.defineProperty(navigator, "clipboard", {configurable: true, value: {writeText: async () => { throw new Error("Denied"); }}})');
-    $page->click('[data-control-demo="textarea"] [data-copy-code]')->assertSee('Select & copy');
+    $page->click('#textarea-usage [data-copy-code]')->assertSee('Select & copy');
     expect($page->script('window.getSelection().toString()'))->toContain('<x-sirius::textarea');
     $page->assertNoJavaScriptErrors();
 });

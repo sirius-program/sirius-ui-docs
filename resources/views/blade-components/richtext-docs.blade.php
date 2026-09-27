@@ -1,5 +1,5 @@
 <x-layouts::app title="Richtext">
-    <x-docs-page :navigation="['Richtext' => ['richtext-demo' => 'Demo', 'richtext-usage' => 'Usage', 'richtext-attributes' => 'Attributes'], 'Shared' => ['shared-field-contract' => 'Shared field contract', 'assets-and-interaction' => 'Assets and interaction', 'richtext-upload' => 'Image upload', 'richtext-sanitization' => 'Sanitization', 'global-configuration' => 'Global configuration']]">
+    <x-docs-page :navigation="['Richtext' => ['richtext-demo' => 'Demo', 'richtext-usage' => 'Usage', 'richtext-attributes' => 'Attributes'], 'Shared' => ['shared-field-contract' => 'Shared field contract', 'assets-and-interaction' => 'Assets and interaction', 'richtext-upload' => 'Image upload', 'richtext-sanitization' => 'Sanitization', 'translations' => 'Translations']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8">
             <header class="space-y-2">
                 <p class="text-sm text-zinc-500 dark:text-zinc-400">FORM CONTROLS</p>
@@ -48,9 +48,9 @@
                 <x-docs-code language="PHP" :source="file_get_contents(app_path('Support/RichtextSample.php'))" />
                 <p>Render only the sanitized result with Blade's unescaped output syntax. Toolbar settings do not protect against forged requests.</p>
             </section>
-            <section id="global-configuration" class="space-y-3">
-                <h2 class="text-xl font-medium">Global configuration</h2>
-                <p>Edit the <code>richtext</code> array in <code>lang/vendor/sirius/{locale}/sirius-ui.php</code>. Messages follow the application locale and fallback locale.</p>
+            <section id="translations" class="space-y-3">
+                <h2 class="text-xl font-medium">Translations</h2>
+                <p>Edit the <code>richtext</code> array in <code>lang/vendor/sirius/{locale}/sirius-ui.php</code>.</p>
                 @include('blade-components.examples.richtext-translations')
             </section>
         </article>

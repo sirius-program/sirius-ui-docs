@@ -1,5 +1,5 @@
 <x-layouts::app title="Phone">
-    <x-docs-page :navigation="['Phone' => ['phone-demo' => 'Demo', 'phone-usage' => 'Usage', 'phone-attributes' => 'Attributes'], 'Shared' => ['shared-field-contract' => 'Shared field contract', 'validation-rules' => 'Validation rules', 'assets-and-interaction' => 'Assets and interaction', 'global-configuration' => 'Global configuration']]">
+    <x-docs-page :navigation="['Phone' => ['phone-demo' => 'Demo', 'phone-usage' => 'Usage', 'phone-attributes' => 'Attributes'], 'Shared' => ['shared-field-contract' => 'Shared field contract', 'assets-and-interaction' => 'Assets and interaction', 'validation-rules' => 'Validation rules', 'global-configuration' => 'Global configuration', 'translations' => 'Translations']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8" data-control-demo="phone">
             <header class="space-y-2">
                 <p class="text-sm text-zinc-500 dark:text-zinc-400">FORM CONTROLS</p>
@@ -22,12 +22,6 @@
                 <p>Labels, helper text, and Laravel or Livewire validation errors are linked automatically.</p>
                 <p>Bind a nullable string. Valid numbers produce E.164, such as <code>+6281234567890</code>; empty or invalid drafts produce <code>null</code>. Native forms submit an empty string instead. Draft text stays visible, with feedback on blur or submit.</p>
             </section>
-            <section id="validation-rules" class="space-y-3">
-                <h2 class="text-xl font-medium">Validation rules</h2>
-                <p>The optional <code>Sirius\Ui\Rules\PhoneNumber</code> rule checks international syntax (8-15 digits) and allowed calling codes. It does not verify national numbering plans or whether a number is reachable.</p>
-                <p>Pass calling codes without <code>+</code>, such as <code>62</code>. An empty list allows all codes. The rule is independent of the country prop and cannot distinguish countries sharing a calling code. Combine it with <code>required</code> or <code>nullable</code>.</p>
-                @include('blade-components.examples.phone-validation')
-            </section>
             <section id="assets-and-interaction" class="space-y-3">
                 <h2 class="text-xl font-medium">Assets and interaction</h2>
                 <p>Import the package CSS and JavaScript, or publish and load <code>sirius-ui-assets</code>.</p>
@@ -38,13 +32,21 @@
                 <p>Use string bindings without number, boolean, or trim modifiers. Change <code>reset-key</code> to clear partial drafts on server reset, and use stable IDs. For JavaScript updates, set <code>[data-sir-phone-model].value</code> and dispatch <code>input</code>. The <code>phone:change</code> event includes value and country.</p>
                 <p>For Blade redirects, set <code>draft-name</code> and restore the validated text/country object through <code>draft</code>. Use it for redisplay, not as the saved phone number.</p>
             </section>
+            <section id="validation-rules" class="space-y-3">
+                <h2 class="text-xl font-medium">Validation rules</h2>
+                <p>The optional <code>Sirius\Ui\Rules\PhoneNumber</code> rule checks international syntax (8-15 digits) and allowed calling codes. It does not verify national numbering plans or whether a number is reachable.</p>
+                <p>Pass calling codes without <code>+</code>, such as <code>62</code>. An empty list allows all codes. The rule is independent of the country prop and cannot distinguish countries sharing a calling code. Combine it with <code>required</code> or <code>nullable</code>.</p>
+                @include('blade-components.examples.phone-validation')
+            </section>
             <section id="global-configuration" class="space-y-3">
                 <h2 class="text-xl font-medium">Global configuration</h2>
                 <p>Country selects the numbering region, not the UI language. Regional locales use their region. Language mappings: <code>en: US, ja: JP, ko: KR, zh: CN, vi: VN, uk: UA, el: GR, ar: SA, he: IL</code>. Other supported country codes resolve directly, including <code>id: ID</code> and <code>ca: CA</code>. Use an explicit country when ambiguous.</p>
                 <p>Country falls back through <code>sirius-ui.phone_country &rarr; sirius-ui.locale &rarr; app.locale &rarr; app.fallback_locale &rarr; US</code>. Props take priority. <code>*</code> sorts countries by calling code and uses the fallback chain for its initial choice. Arrays keep their order and start with the first country. Comma-separated environment values are unsupported.</p>
                 @include('blade-components.examples.phone-config')
-                <h3 class="font-medium">Translations</h3>
-                <p>Publish translations and edit <code>lang/vendor/sirius/{locale}/validation.php</code>. Keys are <code>phone_number</code> and <code>phone_country</code>; preserve <code>:attribute</code> when used. Messages follow the application locale, independently of the selected country.</p>
+            </section>
+            <section id="translations" class="space-y-3">
+                <h2 class="text-xl font-medium">Translations</h2>
+                <p>If you use the <code>Sirius\Ui\Rules\PhoneNumber</code> rule, you can edit the validation messages. Publish translations and edit <code>lang/vendor/sirius/{locale}/validation.php</code>. Keys are <code>phone_number</code> and <code>phone_country</code>; preserve <code>:attribute</code> when used. Messages follow the application locale, independently of the selected country.</p>
                 @include('blade-components.examples.phone-translations')
             </section>
         </article>

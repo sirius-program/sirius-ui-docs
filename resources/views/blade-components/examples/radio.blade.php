@@ -1,1 +1,1 @@
-<x-docs-example title="Workspace subscription" view="blade-components.demos.radio" />
+<x-docs-example view="blade-components.demos.radio" />

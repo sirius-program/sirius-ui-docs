@@ -1,0 +1,1 @@
+<x-sirius::input :id="($automaticIds ?? false) ? null : $demoId.'-password'" label="Password" type="password" wire:model="password" error-bag="default" name="password" helper="Example only; do not enter a real password." required minlength="8" autocomplete="new-password" :readonly="$locked" data-basic-password />

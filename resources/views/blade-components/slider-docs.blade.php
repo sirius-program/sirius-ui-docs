@@ -1,5 +1,5 @@
 <x-layouts::app title="Slider">
-    <x-docs-page :navigation="['Slider' => ['slider-demo' => 'Demo', 'slider-usage' => 'Usage', 'slider-attributes' => 'Attributes'], 'Shared' => ['shared-field-contract' => 'Shared field contract', 'assets-and-interaction' => 'Assets and interaction', 'global-configuration' => 'Global configuration']]">
+    <x-docs-page :navigation="['Slider' => ['slider-demo' => 'Demo', 'slider-usage' => 'Usage', 'slider-attributes' => 'Attributes'], 'Shared' => ['shared-field-contract' => 'Shared field contract', 'assets-and-interaction' => 'Assets and interaction', 'translations' => 'Translations']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8">
             <header class="space-y-2"><p class="text-sm text-zinc-500 dark:text-zinc-400">FORM CONTROLS</p><h1 class="text-3xl font-semibold">Slider</h1><p>Choose a number or an ordered range.</p></header>
             <section id="slider-demo" class="space-y-5">
@@ -22,9 +22,9 @@
                 <p>Controls support Livewire updates and navigation. No extra Alpine instance is needed.</p>
                 <p>Drag a handle or click the track. Arrow keys move one step; Page Up/Down move ten. Home/End move to the current limits. Without JavaScript, the control provides numeric inputs.</p>
             </section>
-            <section id="global-configuration" class="space-y-3">
-                <h2 class="text-xl font-medium">Global configuration</h2>
-                <p>Edit the <code>slider</code> array in <code>lang/vendor/sirius/{locale}/sirius-ui.php</code>. This localization is used only for accessibility.</p>
+            <section id="translations" class="space-y-3">
+                <h2 class="text-xl font-medium">Translations</h2>
+                <p>Edit the <code>slider</code> array in <code>lang/vendor/sirius/{locale}/sirius-ui.php</code>. This translation is used only for accessibility.</p>
                 @include('blade-components.examples.slider-translations')
             </section>
         </article>

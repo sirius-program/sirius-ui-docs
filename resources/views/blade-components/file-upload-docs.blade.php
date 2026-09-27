@@ -1,5 +1,5 @@
 <x-layouts::app title="File Upload">
-    <x-docs-page :navigation="['File Upload' => ['upload-demo' => 'Demo', 'upload-usage' => 'Usage', 'upload-attributes' => 'Attributes'], 'Shared' => ['shared-field-contract' => 'Shared field contract', 'assets-and-interaction' => 'Assets and interaction', 'storage' => 'Storage and validation', 'global-configuration' => 'Global configuration']]">
+    <x-docs-page :navigation="['File Upload' => ['upload-demo' => 'Demo', 'upload-usage' => 'Usage', 'upload-attributes' => 'Attributes'], 'Shared' => ['shared-field-contract' => 'Shared field contract', 'assets-and-interaction' => 'Assets and interaction', 'storage' => 'Storage and validation', 'translations' => 'Translations']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8">
             <header class="space-y-2">
                 <p class="text-sm text-zinc-500 dark:text-zinc-400">FORM CONTROLS</p>
@@ -34,7 +34,6 @@
                 @include('blade-components.examples.assets')
                 <p>FilePond and its preview plugins are bundled. PDF previews use the browser viewer, with an Open preview link as a fallback. Preview URLs must be accessible and allowed by your content security policy.</p>
                 <p>Blade uploads use <code>multipart/form-data</code> on submit. Livewire uploads support progress, cancellation, and retry. A native input is used when enhancement is unavailable.</p>
-                <p>Readonly blocks file changes but keeps files in the submission; disabled fields are omitted. Readonly needs JavaScript. Each Livewire upload component needs its own model property.</p>
                 <p>Listen for <code>file-upload:start</code>, <code>file-upload:progress</code>, <code>file-upload:complete</code>, <code>file-upload:error</code>, <code>file-upload:cancel</code>, or <code>file-upload:change</code>. Progress includes a 0-100 value; change includes file metadata. Change <code>wire:key</code> to apply new upload limits.</p>
             </section>
             <section id="storage" class="space-y-3">
@@ -43,11 +42,10 @@
                 @include('blade-components.examples.file-upload-storage')
                 <p>Your application controls storage, downloads, and permanent deletion. Livewire manages temporary files; S3 requires a cleanup lifecycle rule. PHP and web-server upload limits still apply.</p>
             </section>
-            <section id="global-configuration" class="space-y-3">
-                <h2 class="text-xl font-medium">Global configuration</h2>
-                <p>Edit the <code>file_upload</code> array in <code>lang/vendor/sirius/{locale}/sirius-ui.php</code>. Messages follow the application locale and fallback locale.</p>
+            <section id="translations" class="space-y-3">
+                <h2 class="text-xl font-medium">Translations</h2>
+                <p>Edit the <code>file_upload</code> array in <code>lang/vendor/sirius/{locale}/sirius-ui.php</code>.</p>
                 @include('blade-components.examples.file-upload-translations')
-                <p>Keep validation messages in <code>validation.php</code> and preserve placeholders such as <code>{filesize}</code> and <code>{allTypes}</code>.</p>
             </section>
         </article>
     </x-docs-page>

@@ -1,0 +1,1 @@
+<x-sirius::textarea :id="($automaticIds ?? false) ? null : $demoId.'-notes'" placeholder="Describe the next project milestone." label="Project brief" wire:model="notes" error-bag="default" name="notes" required rows="4" cols="40" maxlength="500" helper="Plain text, up to 500 characters." :readonly="$locked" data-basic-notes />

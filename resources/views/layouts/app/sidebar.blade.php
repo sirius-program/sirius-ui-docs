@@ -19,16 +19,16 @@
                 </flux:sidebar.item>
                 <flux:sidebar.group :heading="__('Blade Components')" class="grid my-5">
                     <flux:sidebar.item :href="route('blade-components.label')" :current="request()->routeIs('blade-components.label')" wire:navigate>Label</flux:sidebar.item>
-                    @foreach (['input' => 'Input', 'textarea' => 'Textarea', 'choices' => 'Checkbox, Radio & Switch'] as $control => $controlLabel)
-                        <flux:sidebar.item :href="route('blade-components.control', ['control' => $control])" :current="request()->route('control') === $control" wire:navigate>{{ $controlLabel }}</flux:sidebar.item>
-                    @endforeach
-                    <flux:sidebar.item :href="route('blade-components.richtext')" :current="request()->routeIs('blade-components.richtext')" wire:navigate>Richtext</flux:sidebar.item>
+                    <flux:sidebar.item :href="route('blade-components.input')" :current="request()->routeIs('blade-components.input')" wire:navigate>Input</flux:sidebar.item>
+                    <flux:sidebar.item :href="route('blade-components.textarea')" :current="request()->routeIs('blade-components.textarea')" wire:navigate>Textarea</flux:sidebar.item>
+                    <flux:sidebar.item :href="route('blade-components.choices')" :current="request()->routeIs('blade-components.choices')" wire:navigate>Checkbox, Radio & Switch</flux:sidebar.item>
                     <flux:sidebar.item :href="route('blade-components.slider')" :current="request()->routeIs('blade-components.slider')" wire:navigate>Slider</flux:sidebar.item>
                     <flux:sidebar.item :href="route('blade-components.currency')" :current="request()->routeIs('blade-components.currency')" wire:navigate>Currency</flux:sidebar.item>
                     <flux:sidebar.item :href="route('blade-components.datetime-picker')" :current="request()->routeIs('blade-components.datetime-picker')" wire:navigate>Datetime Picker</flux:sidebar.item>
                     <flux:sidebar.item :href="route('blade-components.phone')" :current="request()->routeIs('blade-components.phone')" wire:navigate>Phone</flux:sidebar.item>
                     <flux:sidebar.item :href="route('blade-components.select')" :current="request()->routeIs('blade-components.select')" wire:navigate>Select</flux:sidebar.item>
                     <flux:sidebar.item :href="route('blade-components.file-upload')" :current="request()->routeIs('blade-components.file-upload')" wire:navigate>File Upload</flux:sidebar.item>
+                    <flux:sidebar.item :href="route('blade-components.richtext')" :current="request()->routeIs('blade-components.richtext')" wire:navigate>Richtext</flux:sidebar.item>
                     <flux:sidebar.item :href="route('blade-components.form')" :current="request()->routeIs('blade-components.form')" wire:navigate>Form</flux:sidebar.item>
                 </flux:sidebar.group>
             </flux:sidebar.nav>

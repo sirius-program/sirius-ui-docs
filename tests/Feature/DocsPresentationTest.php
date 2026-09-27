@@ -3,17 +3,17 @@
 declare(strict_types=1);
 
 it('validates each native demo independently and never flashes passwords', function (string $kind, string $key): void {
-    $this->post(route('blade-components.examples.store', ['kind' => $kind]), [])
+    $this->post(route('blade-components.' . $kind . '.store'), [])
         ->assertSessionHasErrorsIn('sample-' . $kind, [$key]);
-})->with([['input', 'title'], ['password', 'password'], ['textarea', 'notes'], ['checkbox', 'roles'], ['radio', 'plan'], ['switch', 'enabled'], ['label', 'email']]);
+})->with([['input', 'title'], ['input', 'password'], ['password', 'password'], ['textarea', 'notes'], ['checkbox', 'roles'], ['radio', 'plan'], ['switch', 'enabled'], ['label', 'email']]);
 
 it('accepts valid native demo values and flashes only non-password values', function (string $kind, array $values): void {
-    $response = $this->post(route('blade-components.examples.store', ['kind' => $kind]), $values);
+    $response = $this->post(route('blade-components.' . $kind . '.store'), $values);
 
     $response->assertSessionHasNoErrors()->assertSessionHas('sample-success-' . $kind, true)
         ->assertSessionMissing('sample-' . $kind . '.password')->assertSessionMissing('_old_input.password');
 })->with([
-    ['input', ['title' => 'Example', 'quantity' => '0']],
+    ['input', ['title' => 'Example', 'quantity' => '0', 'password' => 'example-only-password']],
     ['password', ['password' => 'example-only-password']],
     ['textarea', ['notes' => 'Example notes']],
     ['checkbox', ['agreed' => 'on', 'roles' => ['0']]],
@@ -23,9 +23,9 @@ it('accepts valid native demo values and flashes only non-password values', func
 ]);
 
 it('loads sample values and resets without validating stale input', function (string $action): void {
-    $response = $this->post(route('blade-components.examples.store', ['kind' => 'input']), ['sample_action' => $action, 'quantity' => 'invalid']);
+    $response = $this->post(route('blade-components.input.store'), ['sample_action' => $action, 'quantity' => 'invalid']);
 
-    $response->assertRedirect(route('blade-components.control', ['control' => 'input']) . '#input-blade')->assertSessionHasNoErrors();
+    $response->assertRedirect(route('blade-components.input') . '#input-blade')->assertSessionHasNoErrors();
     if ($action === 'load') {
         $response->assertSessionHas('sample-input.title', 'Website redesign')->assertSessionHas('sample-input.quantity', 12);
     } else {
@@ -35,7 +35,7 @@ it('loads sample values and resets without validating stale input', function (st
 
 it('rejects unrecognized demo kinds and actions', function (): void {
     $this->post('/blade-components/examples/unknown')->assertNotFound();
-    $this->post(route('blade-components.examples.store', ['kind' => 'input']), ['sample_action' => 'delete'])->assertUnprocessable();
+    $this->post(route('blade-components.input.store'), ['sample_action' => 'delete'])->assertUnprocessable();
 });
 
 it('removes the public form conventions page and keeps field fixtures in development', function (): void {
