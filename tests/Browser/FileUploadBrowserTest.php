@@ -29,8 +29,10 @@ it('uploads once survives livewire validation and respects readonly and reset', 
         $page->assertScript('getComputedStyle(document.querySelector("[data-upload-example] [data-upload-source]")).display', 'none');
         $page->click('[data-upload-example] button:has-text("Submit / Validate")')->assertSee('Project documents validated. Nothing was stored.')
             ->click('[data-upload-example] button:has-text("Toggle Readonly")');
-        $page->assertDisabled('[data-upload-example] [data-sir-file-upload]:has([name=brief]) .filepond--browser');
+        $page->assertPresent('[data-upload-example] [data-upload-source][name=brief][readonly]');
+        $page->assertNotPresent('[data-upload-example] [data-sir-file-upload]:has([name=brief]) .filepond--browser');
         $page->click('[data-upload-example] button:has-text("Reset Sample")')->assertMissing('[data-upload-example] .filepond--item');
+        $page->assertEnabled('[data-upload-example] [data-sir-file-upload]:has([name=brief]) .filepond--browser');
         $page->assertNoJavaScriptErrors();
     });
 });
