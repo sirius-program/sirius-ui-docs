@@ -117,3 +117,8 @@ Breadcrumbs::for('development.slider-bindings', function (BreadcrumbTrail $trail
     $trail->parent('blade-components.slider');
     $trail->push('Slider bindings', route('development.slider-bindings'));
 });
+
+Breadcrumbs::for('blade-components.form', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.index');
+    $trail->push('Form', route('blade-components.form'));
+});

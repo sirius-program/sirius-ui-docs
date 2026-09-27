@@ -73,3 +73,5 @@ Phase 8 provides the HTML richtext. **Richtext** has its own page at `/blade-com
 See [Phase 8 contracts and verification](PHASE_8.md) for richtext lifecycle, upload integration, and dependency details.
 
 Phase 9 provides **Slider** at `/blade-components/slider`: numeric single values or two ordered handles with independent min/max/step arrays. Native Blade payloads, Livewire/Alpine bindings, keyboard/pointer/touch, readonly/disabled, and reset are supported without a new dependency. See [Phase 9 contracts and verification](PHASE_9.md).
+
+Phase 10 provides **Form** at `/blade-components/form`: `<x-sirius::form>` defaults to GET, adds CSRF for non-GET requests, spoofs PUT/PATCH/DELETE, and enables multipart uploads with `sending-file`. Six Blade demos use controller-backed native submissions. See [Phase 10 contracts and verification](PHASE_10.md).

@@ -20,6 +20,7 @@
                     <li><a class="underline" href="{{ route('blade-components.phone') }}" wire:navigate>Phone</a></li>
                     <li><a class="underline" href="{{ route('blade-components.select') }}" wire:navigate>Select</a></li>
                     <li><a class="underline" href="{{ route('blade-components.file-upload') }}" wire:navigate>File Upload</a></li>
+                    <li><a class="underline" href="{{ route('blade-components.form') }}" wire:navigate>Form</a></li>
                 </ul>
             </section>
         </article>

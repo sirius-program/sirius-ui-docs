@@ -56,6 +56,7 @@ it('displays the exact native demo source in separate copyable usage blocks', fu
 })->with([
     ['/blade-components/input', ['input-title', 'input-quantity', 'password']],
     ['/blade-components/textarea', ['textarea']],
+    ['/blade-components/form', ['form-get', 'form-post', 'form-put', 'form-patch', 'form-delete', 'form-upload']],
     ['/blade-components/slider', ['slider-discount', 'slider-budget']],
     ['/blade-components/richtext', ['richtext-announcement', 'richtext-signature']],
     ['/blade-components/choices', ['checkbox-agreement', 'checkbox-roles', 'checkbox-mixed', 'radio', 'switch']],

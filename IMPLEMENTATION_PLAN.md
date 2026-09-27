@@ -4,7 +4,7 @@
 Package: `D:/Projects/sirius-ui`  
 Documentation and integration application: `D:/Projects/sirius-ui-docs`
 
-Phase 0 through Phase 9 checkboxes reflect executed work. The reusable phase gate remains an unchecked template. The expanded roadmap runs through Phase 25; phases 0–7 retain their completed status, Phone follows Datetime Picker; Phone and Slider precede Form, the AI skill follows all component phases, and Flux migration immediately precedes final validation. See PHASE_0.md, PHASE_1.md, PHASE_2.md, PHASE_3.md, PHASE_4.md, PHASE_5.md, PHASE_6.md, PHASE_7.md, PHASE_8.md, and PHASE_9.md for architecture boundaries, decisions, verification scope, and maintenance notes.
+Phase 0 through Phase 10 checkboxes reflect executed work. The reusable phase gate remains an unchecked template. The expanded roadmap runs through Phase 25; phases 0–7 retain their completed status, Phone follows Datetime Picker; Phone and Slider precede Form, the AI skill follows all component phases, and Flux migration immediately precedes final validation. See PHASE_0.md, PHASE_1.md, PHASE_2.md, PHASE_3.md, PHASE_4.md, PHASE_5.md, PHASE_6.md, PHASE_7.md, PHASE_8.md, PHASE_9.md, and PHASE_10.md for architecture boundaries, decisions, verification scope, and maintenance notes.
 
 ## 1. Agreed outcome and architecture
 
@@ -352,25 +352,25 @@ Prerequisite: complete all form-control phases through Phase 9, including Phone 
 
 ### 10.1 Native form contract
 
-- [ ] Implement `<x-sirius::form>` with a default slot for form contents and a required, explicit `action` URL. Keep route generation in the consuming application.
-- [ ] Default `method` to `GET`. Accept GET, POST, PUT, PATCH, and DELETE case-insensitively; reject unsupported methods with a clear configuration error.
-- [ ] Render GET and POST as native HTML form methods. Render PUT, PATCH, and DELETE as POST with exactly one hidden `_method` containing the requested method.
-- [ ] Automatically render exactly one CSRF field for every non-GET method; render no automatic CSRF or method-spoofing field for GET. Document that consumers should not add duplicate `@csrf` or `@method` directives inside the slot.
-- [ ] Accept boolean `sending-file`, defaulting to `false`, including explicit `:sending-file="false"`. When true, render `enctype="multipart/form-data"` and consume the prop rather than forwarding it as an HTML attribute.
-- [ ] Reject `sending-file=true` with GET or an explicitly conflicting `enctype`. Accept an explicitly matching multipart enctype. When `sending-file=false`, preserve native enctype behavior and any explicit HTML enctype.
-- [ ] Forward applicable HTML5 form attributes, including `id`, `name`, `target`, `autocomplete`, `novalidate`, `accept-charset`, and `rel`, plus `data-*` and `aria-*`. Merge consumer classes safely and prevent duplicated generated method/enctype attributes.
-- [ ] Keep submission native: no AJAX, automatic loading state, or Livewire submission integration. Document that native submit-button overrides retain their HTML meaning and must remain consistent with the configured form method and upload encoding.
-- [ ] Leave validation, authorization, redirects, `old()` values, error bags, and persistence to application controllers and existing field controls. Do not introduce form-owned model state, automatic error summaries, upload endpoints, or dependencies.
+- [x] Implement `<x-sirius::form>` with a default slot for form contents and a required, explicit `action` URL. Keep route generation in the consuming application.
+- [x] Default `method` to `GET`. Accept GET, POST, PUT, PATCH, and DELETE case-insensitively; reject unsupported methods with a clear configuration error.
+- [x] Render GET and POST as native HTML form methods. Render PUT, PATCH, and DELETE as POST with exactly one hidden `_method` containing the requested method.
+- [x] Automatically render exactly one CSRF field for every non-GET method; render no automatic CSRF or method-spoofing field for GET. Document that consumers should not add duplicate `@csrf` or `@method` directives inside the slot.
+- [x] Accept boolean `sending-file`, defaulting to `false`, including explicit `:sending-file="false"`. When true, render `enctype="multipart/form-data"` and consume the prop rather than forwarding it as an HTML attribute.
+- [x] Reject `sending-file=true` with GET or an explicitly conflicting `enctype`. Accept an explicitly matching multipart enctype. When `sending-file=false`, preserve native enctype behavior and any explicit HTML enctype.
+- [x] Forward applicable HTML5 form attributes, including `id`, `name`, `target`, `autocomplete`, `novalidate`, `accept-charset`, and `rel`, plus `data-*` and `aria-*`. Merge consumer classes safely and prevent duplicated generated method/enctype attributes.
+- [x] Keep submission native: no AJAX, automatic loading state, or Livewire submission integration. Document that native submit-button overrides retain their HTML meaning and must remain consistent with the configured form method and upload encoding.
+- [x] Leave validation, authorization, redirects, `old()` values, error bags, and persistence to application controllers and existing field controls. Do not introduce form-owned model state, automatic error summaries, upload endpoints, or dependencies.
 
 ### 10.2 Verification and documentation
 
-- [ ] Add rendering tests for default GET, mixed-case methods, explicit action, missing action, unsupported methods, CSRF presence/absence and uniqueness, spoofed methods, slot content, escaped attributes, and attribute/class forwarding.
-- [ ] Test `sending-file` true/false, automatic multipart encoding, matching/conflicting explicit enctype, GET rejection, and absence of leaked component props.
-- [ ] Add ordinary Blade docs examples for GET search, POST submission, PUT/PATCH/DELETE method spoofing, and multipart file submission using the package controls. Use CRUD-oriented controllers; use invocable controllers for single-action resources.
-- [ ] Test actual request methods and payloads, application validation redirects and error bags, restored `old()` values, and uploads using isolated test storage. Include valid and missing/invalid CSRF cases with CSRF protection explicitly active; default test middleware bypass is not sufficient evidence.
-- [ ] Browser-test native GET/POST submission, a spoofed update/delete request, file submission, and validation feedback without Livewire submission handling. Assert no JavaScript errors and verify canonical submitted control values.
-- [ ] Add a Form docs menu/page, document all defaults and rejected combinations, and update the docs README/index. Keep the package README as a minimal docs pointer.
-- [ ] Update applicable architecture tests only if necessary, then complete the mandatory phase gate: `composer test` in every changed project, followed by `composer test:browser` in docs after all checks pass, waiting for completion.
+- [x] Add rendering tests for default GET, mixed-case methods, explicit action, missing action, unsupported methods, CSRF presence/absence and uniqueness, spoofed methods, slot content, escaped attributes, and attribute/class forwarding.
+- [x] Test `sending-file` true/false, automatic multipart encoding, matching/conflicting explicit enctype, GET rejection, and absence of leaked component props.
+- [x] Add ordinary Blade docs examples for GET search, POST submission, PUT/PATCH/DELETE method spoofing, and multipart file submission using the package controls. Use CRUD-oriented controllers; use invocable controllers for single-action resources.
+- [x] Test actual request methods and payloads, application validation redirects and error bags, restored `old()` values, and uploads using isolated test storage. Include valid and missing/invalid CSRF cases with CSRF protection explicitly active; default test middleware bypass is not sufficient evidence.
+- [x] Browser-test native GET/POST submission, a spoofed update/delete request, file submission, and validation feedback without Livewire submission handling. Assert no JavaScript errors and verify canonical submitted control values.
+- [x] Add a Form docs menu/page, document all defaults and rejected combinations, and update the docs README/index. Keep the package README as a minimal docs pointer.
+- [x] Update applicable architecture tests only if necessary, then complete the mandatory phase gate: `composer test` in every changed project, followed by `composer test:browser` in docs after all checks pass, waiting for completion.
 
 Acceptance: consumers can compose a native form with an explicit action, receive GET behavior by default, submit other supported methods with automatic CSRF/method spoofing, and enable multipart file submission with `sending-file` without introducing Livewire or AJAX submission behavior.
 
