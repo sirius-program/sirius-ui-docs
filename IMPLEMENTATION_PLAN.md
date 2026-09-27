@@ -4,7 +4,7 @@
 Package: `D:/Projects/sirius-ui`  
 Documentation and integration application: `D:/Projects/sirius-ui-docs`
 
-Phase 0 through Phase 8 checkboxes reflect executed work. The reusable phase gate remains an unchecked template. The expanded roadmap runs through Phase 25; phases 0–7 retain their completed status, Phone follows Datetime Picker; Phone and Slider precede Form, the AI skill follows all component phases, and Flux migration immediately precedes final validation. See PHASE_0.md, PHASE_1.md, PHASE_2.md, PHASE_3.md, PHASE_4.md, PHASE_5.md, PHASE_6.md, PHASE_7.md, and PHASE_8.md for architecture boundaries, decisions, verification scope, and maintenance notes.
+Phase 0 through Phase 9 checkboxes reflect executed work. The reusable phase gate remains an unchecked template. The expanded roadmap runs through Phase 25; phases 0–7 retain their completed status, Phone follows Datetime Picker; Phone and Slider precede Form, the AI skill follows all component phases, and Flux migration immediately precedes final validation. See PHASE_0.md, PHASE_1.md, PHASE_2.md, PHASE_3.md, PHASE_4.md, PHASE_5.md, PHASE_6.md, PHASE_7.md, PHASE_8.md, and PHASE_9.md for architecture boundaries, decisions, verification scope, and maintenance notes.
 
 ## 1. Agreed outcome and architecture
 
@@ -321,12 +321,12 @@ Verification: package `composer test` passed (56 tests, 277 assertions), docs `c
 
 ### 9.1 Single-value and range contracts
 
-- [ ] Implement `slider` using the shared field contract, with a single numeric `value` by default and numeric `min`, `max`, and positive `step`.
-- [ ] Enable two handles with `range=true`; require exactly two numeric values and exactly two numeric entries in each of `min`, `max`, and `step`. Index 0 configures the first handle; index 1 configures the second. Reject scalar limits/steps in range mode rather than silently expanding them.
-- [ ] Use one visual scale spanning both configured handle domains. Each handle respects its own bounds and step grid anchored at its own minimum. Require finite numbers, positive steps, valid ordered bounds, and a configuration admitting at least one ordered pair; reject invalid configuration clearly.
-- [ ] Keep the first value less than or equal to the second. Handles cannot cross; constrain movement to the nearest permitted step without crossing the other value. Reject invalid supplied/programmatic values with clear feedback rather than silently swapping handles.
-- [ ] Support keyboard, pointer, and touch interaction, accessible names for both handles, value announcements, visible focus, disabled/readonly semantics, and responsive light/dark styling.
-- [ ] Define ordinary Blade names/payloads for a scalar and an ordered pair, array binding in Livewire/Alpine, server updates, native reset, and single group-level label/helper/error output.
+- [x] Implement `slider` using the shared field contract, with a single numeric `value` by default and numeric `min`, `max`, and positive `step`.
+- [x] Enable two handles with `range=true`; require exactly two numeric values and exactly two numeric entries in each of `min`, `max`, and `step`. Index 0 configures the first handle; index 1 configures the second. Reject scalar limits/steps in range mode rather than silently expanding them.
+- [x] Use one visual scale spanning both configured handle domains. Each handle respects its own bounds and step grid anchored at its own minimum. Require finite numbers, positive steps, valid ordered bounds, and a configuration admitting at least one ordered pair; reject invalid configuration clearly.
+- [x] Keep the first value less than or equal to the second. Handles cannot cross; constrain movement to the nearest permitted step without crossing the other value. Reject invalid supplied/programmatic values with clear feedback rather than silently swapping handles.
+- [x] Support keyboard, pointer, and touch interaction, accessible names for both handles, value announcements, visible focus, disabled/readonly semantics, and responsive light/dark styling.
+- [x] Define ordinary Blade names/payloads for a scalar and an ordered pair, array binding in Livewire/Alpine, server updates, native reset, and single group-level label/helper/error output.
 
 Agreed range example:
 
@@ -342,9 +342,9 @@ Agreed range example:
 
 ### 9.2 Verification and documentation
 
-- [ ] Test scalar/array shape validation, invalid bounds/steps, decimal steps, independent handle constraints, equal values, and crossing prevention. Cover canonical native submission and Livewire server/client updates.
-- [ ] Browser-test both modes, keyboard/touch/pointer movement, reset, readonly/disabled states, validation, and multiple instances. Verify debounce/re-renders do not erase an in-progress value.
-- [ ] Add matching real-world Blade/Livewire demos and separate copyable usage for single/range modes; document the per-handle array contract and complete the mandatory phase gate.
+- [x] Test scalar/array shape validation, invalid bounds/steps, decimal steps, independent handle constraints, equal values, and crossing prevention. Cover canonical native submission and Livewire server/client updates.
+- [x] Browser-test both modes, keyboard/touch/pointer movement, reset, readonly/disabled states, validation, and multiple instances. Verify debounce/re-renders do not erase an in-progress value.
+- [x] Add matching real-world Blade/Livewire demos and separate copyable usage for single/range modes; document the per-handle array contract and complete the mandatory phase gate.
 
 ## Phase 10 — Ordinary Blade form
 

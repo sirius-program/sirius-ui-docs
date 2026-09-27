@@ -15,11 +15,14 @@ use App\Http\Controllers\RichtextImageShowController;
 use App\Http\Controllers\RichtextImageStoreController;
 use App\Http\Controllers\SelectExampleController;
 use App\Http\Controllers\SelectOptionController;
+use App\Http\Controllers\SliderExampleController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome')->name('home');
 Route::view('dashboard', 'dashboard')->name('dashboard');
 Route::view('getting-started', 'started')->name('started');
+Route::view('blade-components/slider', 'blade-components.slider-docs')->name('blade-components.slider');
+Route::post('blade-components/slider-example', SliderExampleController::class)->name('blade-components.slider.store');
 Route::view('blade-components/label', 'blade-components.label-docs')->name('blade-components.label');
 Route::post('blade-components/richtext-example', RichtextExampleController::class)->name('blade-components.richtext.store');
 Route::view('blade-components/richtext', 'blade-components.richtext-docs')->name('blade-components.richtext');
@@ -43,6 +46,8 @@ Route::post('blade-components/examples/{kind}', ControlExampleController::class)
     ->whereIn('kind', ['input', 'password', 'textarea', 'checkbox', 'radio', 'switch', 'label'])->name('blade-components.examples.store');
 
 if (app()->environment(['local', 'testing'])) {
+    Route::view('development/slider', 'development.slider')->name('development.slider');
+    Route::view('development/slider-bindings', 'development.slider-bindings')->name('development.slider-bindings');
     Route::view('development/richtext', 'development.richtext')->name('development.richtext');
     Route::view('development/richtext-bindings', 'development.richtext-bindings')->name('development.richtext-bindings');
     Route::view('development/select', 'development.select')->name('development.select');

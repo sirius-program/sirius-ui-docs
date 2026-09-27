@@ -107,3 +107,13 @@ Breadcrumbs::for('development.richtext-bindings', function (BreadcrumbTrail $tra
     $trail->parent('blade-components.richtext');
     $trail->push('Richtext binding integration', route('development.richtext-bindings'));
 });
+
+Breadcrumbs::for('blade-components.slider', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.index');
+    $trail->push('Slider', route('blade-components.slider'));
+});
+
+Breadcrumbs::for('development.slider-bindings', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.slider');
+    $trail->push('Slider bindings', route('development.slider-bindings'));
+});
