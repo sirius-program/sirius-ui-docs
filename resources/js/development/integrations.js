@@ -37,7 +37,7 @@ function integrationWidget(kind, initialValue) {
                 if (disposed) return;
                 instance = new Editor({
                     element: control, extensions: [StarterKit], content: this.value,
-                    editorProps: { attributes: { 'aria-label': 'Editor', role: 'textbox' } },
+                    editorProps: { attributes: { 'aria-label': 'Richtext', role: 'textbox' } },
                     onUpdate: ({ editor }) => changed(editor.getHTML()),
                 });
                 update = (value) => {

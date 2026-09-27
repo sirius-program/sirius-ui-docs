@@ -6,7 +6,8 @@
             "navlist",
             "svg",
             "authenticator",
-            "integrations"
+            "integrations",
+            "richtext"
         ],
         "paths": []
     }

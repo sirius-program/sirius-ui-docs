@@ -24,7 +24,7 @@
                 <option value="beta">Beta</option>
             </select>
         </div>
-        <div x-data="integrationWidget('editor', '<p>Initial content</p>')">
+        <div x-data="integrationWidget('richtext', '<p>Initial content</p>')">
             <div x-ref="control"></div>
             <input type="hidden" name="html" :value="value">
         </div>

@@ -15,9 +15,9 @@
                     <option value="beta">Beta</option>
                 </select>
             </div>
-            <div wire:ignore x-data="integrationWidget('editor', $wire.entangle('html').live)">
-                <label for="probe-editor">Editor</label>
-                <div id="probe-editor" x-ref="control"></div>
+            <div wire:ignore x-data="integrationWidget('richtext', $wire.entangle('html').live)">
+                <label for="probe-richtext">Richtext</label>
+                <div id="probe-richtext" x-ref="control"></div>
             </div>
             <div wire:ignore x-data="integrationUpload($wire)">
                 <label for="probe-upload">Text file</label>

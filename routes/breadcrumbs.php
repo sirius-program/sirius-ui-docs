@@ -97,3 +97,13 @@ Breadcrumbs::for('blade-components.file-upload', function (BreadcrumbTrail $trai
     $trail->parent('blade-components.index');
     $trail->push('File Upload', route('blade-components.file-upload'));
 });
+
+Breadcrumbs::for('blade-components.richtext', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.index');
+    $trail->push('Richtext', route('blade-components.richtext'));
+});
+
+Breadcrumbs::for('development.richtext-bindings', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.richtext');
+    $trail->push('Richtext binding integration', route('development.richtext-bindings'));
+});

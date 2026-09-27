@@ -10,6 +10,9 @@ use App\Http\Controllers\DatetimePickerExampleController;
 use App\Http\Controllers\FileUploadExampleController;
 use App\Http\Controllers\FormValidationController;
 use App\Http\Controllers\PhoneExampleController;
+use App\Http\Controllers\RichtextExampleController;
+use App\Http\Controllers\RichtextImageShowController;
+use App\Http\Controllers\RichtextImageStoreController;
 use App\Http\Controllers\SelectExampleController;
 use App\Http\Controllers\SelectOptionController;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +21,10 @@ Route::view('/', 'welcome')->name('home');
 Route::view('dashboard', 'dashboard')->name('dashboard');
 Route::view('getting-started', 'started')->name('started');
 Route::view('blade-components/label', 'blade-components.label-docs')->name('blade-components.label');
+Route::post('blade-components/richtext-example', RichtextExampleController::class)->name('blade-components.richtext.store');
+Route::view('blade-components/richtext', 'blade-components.richtext-docs')->name('blade-components.richtext');
+Route::post('blade-components/richtext-images', RichtextImageStoreController::class)->middleware('throttle:20,1')->name('blade-components.richtext.images.store');
+Route::get('blade-components/richtext-images/{file}', RichtextImageShowController::class)->where('file', '[A-Za-z0-9]+\.(jpg|jpeg|png|webp)')->name('blade-components.richtext.images.show');
 Route::view('blade-components/currency', 'blade-components.currency-docs')->name('blade-components.currency');
 Route::post('blade-components/currency-example', CurrencyExampleController::class)->name('blade-components.currency.store');
 Route::view('blade-components/datetime-picker', 'blade-components.datetime-picker-docs')->name('blade-components.datetime-picker');
@@ -36,6 +43,8 @@ Route::post('blade-components/examples/{kind}', ControlExampleController::class)
     ->whereIn('kind', ['input', 'password', 'textarea', 'checkbox', 'radio', 'switch', 'label'])->name('blade-components.examples.store');
 
 if (app()->environment(['local', 'testing'])) {
+    Route::view('development/richtext', 'development.richtext')->name('development.richtext');
+    Route::view('development/richtext-bindings', 'development.richtext-bindings')->name('development.richtext-bindings');
     Route::view('development/select', 'development.select')->name('development.select');
     Route::view('development/select-bindings', 'development.select-bindings')->name('development.select-bindings');
     Route::view('development/phone', 'development.phone')->name('development.phone');

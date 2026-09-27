@@ -22,7 +22,6 @@
     } elseif ($kind === 'textarea') {
         $rows = array_merge($rows, [
             ['resize', 'none | vertical | horizontal | both', 'vertical', 'Allowed resize directions.'],
-            ['editor', 'boolean', 'false', 'Not available yet; true is rejected.'],
         ]);
     } else {
         if ($kind === 'checkbox') {

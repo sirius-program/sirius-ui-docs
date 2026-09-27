@@ -4,7 +4,7 @@
 Package: `D:/Projects/sirius-ui`  
 Documentation and integration application: `D:/Projects/sirius-ui-docs`
 
-Phase 0 through Phase 7 checkboxes reflect executed work. The reusable phase gate remains an unchecked template. The expanded roadmap runs through Phase 25; phases 0–7 retain their completed status, Phone follows Datetime Picker; Phone and Slider precede Form, the AI skill follows all component phases, and Flux migration immediately precedes final validation. See PHASE_0.md, PHASE_1.md, PHASE_2.md, PHASE_3.md, PHASE_4.md, PHASE_5.md, PHASE_6.md, and PHASE_7.md for architecture boundaries, decisions, verification scope, and maintenance notes.
+Phase 0 through Phase 8 checkboxes reflect executed work. The reusable phase gate remains an unchecked template. The expanded roadmap runs through Phase 25; phases 0–7 retain their completed status, Phone follows Datetime Picker; Phone and Slider precede Form, the AI skill follows all component phases, and Flux migration immediately precedes final validation. See PHASE_0.md, PHASE_1.md, PHASE_2.md, PHASE_3.md, PHASE_4.md, PHASE_5.md, PHASE_6.md, PHASE_7.md, and PHASE_8.md for architecture boundaries, decisions, verification scope, and maintenance notes.
 
 ## 1. Agreed outcome and architecture
 
@@ -65,7 +65,8 @@ All form controls implement the following contract, including enhanced controls:
 | `datetime-picker` | `type=date\|time\|datetime`; display format, limits, locale, timezone configuration |
 | `phone` | Country/region selection through `country` (string, array, or `*`), country-code prefix, configurable display delimiter, canonical E.164 value |
 | `file-upload` | Single/multiple upload, progress, cancellation, type and size limits |
-| `textarea` | Native textarea by default; `editor=true` enables the editor |
+| `textarea` | Native multiline text input |
+| `richtext` | Formatted HTML with Tiptap UI and optional image upload |
 | `select` | Single/multiple selection, local search, optional paginated server search |
 | `slider` | Single numeric value by default; `range=true` uses two values and exactly two numeric entries in each of `min`, `max`, and `step` |
 | `form` | Ordinary Blade submission; explicit `action`; `method=GET` by default; automatic CSRF for non-GET methods and method spoofing for PUT/PATCH/DELETE; `sending-file=false` by default |
@@ -138,7 +139,7 @@ The following are candidate categories, not claims of verified compatibility or 
 | Icons | Blade Icons and a free icon set | Rendering, license, internal assets |
 | Date/time | Flatpickr or equivalent | Supported modes, limits, keyboard use, Livewire synchronization |
 | File upload | FilePond, Dropzone, or equivalent | Free required features, temporary-upload bridge, cleanup/cancel behavior |
-| Editor | A free self-hostable editor; evaluate TinyMCE or an alternative | Redistribution license, no unexpected paid requirement, sanitized HTML contract, bundled assets |
+| Richtext | A free self-hostable richtext; evaluate TinyMCE or an alternative | Redistribution license, no unexpected paid requirement, sanitized HTML contract, bundled assets |
 | Select | Select2 or a lighter alternative | Multiple values, remote pagination, accessibility, JS lifecycle |
 | Table/calendar | Native Livewire baseline; evaluate libraries only if needed | Clear reduction in complexity without conflicting ownership or paid features |
 
@@ -146,7 +147,7 @@ The following are candidate categories, not claims of verified compatibility or 
 - [x] Create narrowly scoped integration proofs for risky widget synchronization before implementing their full component phases.
 - [x] Choose the smallest suitable dependency set. jQuery is allowed if justified and bundled internally.
 - [x] Establish JS loading and teardown for both ordinary Blade and Livewire contexts, including deferred initialization and multiple instances.
-- [x] Define HTML sanitization ownership: editor output is untrusted; application validation and server sanitization are required before rendering. The docs example must demonstrate a concrete, tested sanitization path.
+- [x] Define HTML sanitization ownership: richtext output is untrusted; application validation and server sanitization are required before rendering. The docs example must demonstrate a concrete, tested sanitization path.
 
 Acceptance: architecture tests exist and pass before Phase 1; docs consumes the local package; dependency decisions and test baseline are recorded.
 
@@ -306,15 +307,15 @@ Verification: package `composer test` passed (56 tests, 277 assertions), docs `c
 
 - [x] Add image/PDF previews, metadata-only value records, safe existing-file removal events, and sample image/PDF demos; verify native source remains hidden after Livewire updates.
 
-## Phase 8 — Textarea editor
+## Phase 8 — Richtext
 
-- [ ] Enable the verified editor through `textarea editor=true`; preserve native textarea mode as the default.
-- [ ] Expose toolbar, height, placeholder, readonly/disabled, locale, and compatible free editor options.
-- [ ] Synchronize HTML for ordinary form submission and Livewire, including initial content, empty content, validation errors, and resets.
-- [ ] Keep image upload outside version one. Ensure toolbar configuration does not imply an unsupported upload feature.
-- [ ] Demonstrate server-side sanitization and safe output rendering in docs; test malicious markup and unsafe URLs through that integration.
-- [ ] Browser-test editing, formatting, form submission, programmatic updates, teardown/remount, and multiple editors without duplicate initialization.
-- [ ] Extend textarea docs and complete the mandatory phase gate.
+- [x] Implement standalone `richtext`; keep native `textarea` separate.
+- [x] Expose toolbar, height, placeholder, readonly/disabled, and compatible free richtext options. Use application translation strings without a locale prop.
+- [x] Synchronize HTML for ordinary form submission and Livewire, including initial content, empty content, validation errors, and resets.
+- [x] Support optional image upload through a consumer-owned same-origin endpoint, multipart image, CSRF, and JSON url response. Default to JPEG/PNG/WebP up to 2 MiB; applications own authorization and cleanup.
+- [x] Demonstrate server-side sanitization and safe output rendering in docs; test malicious markup and unsafe URLs through that integration.
+- [x] Browser-test editing, formatting, form submission, programmatic updates, teardown/remount, and multiple richtexts without duplicate initialization.
+- [x] Provide separate Textarea and Richtext docs with per-field usage, shared sections, translations, and complete the mandatory phase gate.
 
 ## Phase 9 — Slider
 
@@ -560,7 +561,7 @@ Prerequisite: complete all component phases through Phase 22 and their documenta
 - [ ] Explain package structure, configurable namespaces, configuration, assets, published resources, supported framework versions, and the distinction between package internals and consumer extension points.
 - [ ] Provide a component-selection guide and references for every shipped Blade and Livewire component, including props, slots, attributes, events, options, defaults, and supported customization points.
 - [ ] Include working ordinary Blade and Livewire examples covering bindings, validation/error bags, helper text, accessibility, stable IDs, reset, and widget lifecycle behavior. Explain the ordinary Blade `form` component's GET default, explicit action, CSRF/method spoofing, multipart contract, and separation from Livewire submission handling.
-- [ ] Explain application-owned responsibilities for table queries, authorization, custom row/bulk/toolbar action registration, confirmation/input views, transaction and partial-result handling, CSV export, calendar day actions, editor sanitization, and uploads. Preserve CRUD controller design and the invocable-controller rule for single actions.
+- [ ] Explain application-owned responsibilities for table queries, authorization, custom row/bulk/toolbar action registration, confirmation/input views, transaction and partial-result handling, CSV export, calendar day actions, richtext sanitization, and uploads. Preserve CRUD controller design and the invocable-controller rule for single actions.
 - [ ] Cover local asset installation/builds, Tailwind tokens and themes, Blade Icons, troubleshooting, and relevant test commands. Use only the selected free dependency features.
 - [ ] Instruct agents to inspect the installed package version and configuration, prefer existing components, and avoid inventing APIs or editing `vendor`. Use documented publishing and extension mechanisms; never access `.env` directly or expose secrets.
 - [ ] Bundle version-matched references and examples with each package release so essential usage guidance works without access to the docs repository or a hosted website. Document how to refresh an installed skill after a package upgrade.
@@ -600,7 +601,7 @@ Prerequisite: all component phases and the AI agent skill are complete. This is 
 
 ## Phase 25 — Cross-component validation and release readiness
 
-- [ ] Exercise representative forms combining label, helper, error, checkbox, radio, switch, currency, date, upload, editor, select, and both Slider modes inside a Dialog or Slideover.
+- [ ] Exercise representative forms combining label, helper, error, checkbox, radio, switch, currency, date, upload, richtext, select, and both Slider modes inside a Dialog or Slideover.
 - [ ] Verify repeated components, multiple instances, validation failures, form reset, conditional rendering, and Livewire navigation without state loss or leaked listeners.
 - [ ] Review keyboard access, focus, light/dark contrast, mobile layouts, and reduced-motion behavior across docs examples, including nested menus, Tabs, Timeline, Skeleton, Tooltip/Popover, and Chart. Confirm Dialog/Slideover preserve scrollbar space.
 - [ ] Verify custom row, toolbar, and bulk Table actions alongside built-ins, including confirmation/input, authorization changes, atomic rollback, explicit partial outcomes, and selection cleanup.

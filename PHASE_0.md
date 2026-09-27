@@ -22,7 +22,7 @@ The docs CSS imports the package's compiled `dist/sirius.css`. Rebuild package C
 
 ## Selected libraries and exact versions
 
-Versions below were resolved from package metadata and installed locally. The selected features require no API key, paid editor, cloud service, or jQuery dependency. This is an engineering selection based on the checked license files and integration behavior; retain license notices when redistributing.
+Versions below were resolved from package metadata and installed locally. The selected features require no API key, paid richtext service, cloud service, or jQuery dependency. This is an engineering selection based on the checked license files and integration behavior; retain license notices when redistributing.
 
 | Purpose | Selection | License | Scope and rationale |
 | --- | --- | --- | --- |
@@ -30,7 +30,7 @@ Versions below were resolved from package metadata and installed locally. The se
 | Date/time | `flatpickr` 4.6.13 | MIT | Docs proof now; package adapter in Phase 4. Explicit value updates and teardown, no jQuery. Old release cadence is a maintenance consideration; recheck before promotion. |
 | Upload | `filepond` 4.32.12 | MIT | Docs proof now; Phase 6 owns full validation, cancellation/retry UX, and multiple uploads. No Pintura or paid image-editing features. |
 | Searchable select | `tom-select` 2.6.2 | Apache-2.0 | Docs proof now; replaces the proposed Select2 category without introducing jQuery. Full remote pagination belongs to Phase 5. |
-| Editor | `@tiptap/core` and `@tiptap/starter-kit` 3.31.3 | MIT | Open-source editor only. Fits custom Tailwind styling; no Pro, cloud, AI, or image-upload feature. |
+| Richtext | `@tiptap/core` and `@tiptap/starter-kit` 3.31.3 | MIT | Open-source richtext proof. Fits custom Tailwind styling; no Pro, cloud, or AI feature. Phase 8 adds consumer-owned image uploads. |
 | HTML sanitization example | `symfony/html-sanitizer` 7.4.18; `masterminds/html5` 2.11.0 | MIT | Docs application dependency. The consuming application owns validation and sanitization. |
 | Table/calendar | Native Livewire 4.4.4 baseline | MIT | No additional datatable/calendar JS engine. Server-owned table state and the agreed simple month grid do not justify a second rendering engine. |
 
@@ -50,9 +50,9 @@ Vite emits local chunks and CSS. `scripts/build-notices.mjs` runs before every b
 
 ## HTML trust boundary
 
-`IntegrationProbe::save()` validates inputs and sanitizes editor HTML on the server with `HtmlSanitizerConfig::allowSafeElements()`. Only the resulting locked `sanitized` property is rendered unescaped. The submitted HTML remains escaped in diagnostics. A feature test covers script elements, unsafe link URLs, and preservation of permitted formatting.
+`IntegrationProbe::save()` validates inputs and sanitizes richtext HTML on the server with `HtmlSanitizerConfig::allowSafeElements()`. Only the resulting locked `sanitized` property is rendered unescaped. The submitted HTML remains escaped in diagnostics. A feature test covers script elements, unsafe link URLs, and preservation of permitted formatting.
 
-The example does not persist content. Applications must sanitize before displaying stored or submitted editor content; disabling a toolbar button or sanitizing only in JavaScript is insufficient. Future application-specific allowed HTML must be documented and tested.
+The example does not persist content. Applications must sanitize before displaying stored or submitted richtext content; disabling a toolbar button or sanitizing only in JavaScript is insufficient. Future application-specific allowed HTML must be documented and tested.
 
 ## Test environment and compatibility
 

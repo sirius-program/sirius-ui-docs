@@ -7,7 +7,7 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Livewire;
 
-it('sanitizes editor HTML on the server and preserves safe formatting', function (): void {
+it('sanitizes richtext HTML on the server and preserves safe formatting', function (): void {
     Livewire::test(IntegrationProbe::class)
         ->set('html', '<p><strong>Safe</strong><script>alert(1)</script><a href="javascript:alert(1)">link</a></p>')
         ->call('save')

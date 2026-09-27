@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 use Tests\TestCase;
 
+require_once __DIR__ . '/UploadBrowser.php';
+
 /*
 |--------------------------------------------------------------------------
 | Test Case

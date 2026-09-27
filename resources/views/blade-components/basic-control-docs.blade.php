@@ -5,6 +5,7 @@
             $navigation[$label] = [$example.'-demo' => 'Demo', $example.'-usage' => 'Usage', $example.'-attributes' => 'Attributes'];
         }
         $navigation['Shared'] = ['shared-field-contract' => 'Shared field contract', 'assets-and-interaction' => 'Assets and interaction'];
+
     @endphp
     <x-docs-page :navigation="$navigation">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8">
