@@ -6,7 +6,7 @@ This phase implements `input` (text, number, password), plain `textarea`, `check
 
 All five public components are anonymous Blade views. A shared internal control partial composes the existing class-backed `Field` through a static internal alias, preserving configurable public namespaces. The partial reuses label, helper, errors, IDs, and attribute routing. No business services or application model dependencies were added to the package.
 
-Provide an explicit stable unique ID. All controls support the shared field props and forward remaining native HTML, data, ARIA, Alpine, and Livewire attributes to the real control. Visual sizing uses `size=sm|md|lg`; `control-size` maps the native size attribute. Classes customize the control; `wrapper-class` customizes the field.
+Provide an explicit stable unique ID. All controls support the shared field props and forward remaining native HTML, data, ARIA, Alpine, and Livewire attributes to the real control. Visual sizing uses `size=sm | md | lg`; `control-size` maps the native size attribute. Classes customize the control; `wrapper-class` customizes the field.
 
 Input adornments accept strings or named slots, with slots taking precedence. Adornments never alter the submitted value. Password visibility uses Blade Heroicons and an accessible non-submit button. The native textarea accepts rows, cols, wrapping, length limits, resize direction, and initial value/slot content.
 

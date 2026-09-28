@@ -132,3 +132,33 @@ Breadcrumbs::for('blade-components.form', function (BreadcrumbTrail $trail): voi
     $trail->parent('blade-components.index');
     $trail->push('Form', route('blade-components.form'));
 });
+
+Breadcrumbs::for('blade-components.icon', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.index');
+    $trail->push('Icon', route('blade-components.icon'));
+});
+
+Breadcrumbs::for('blade-components.button', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.index');
+    $trail->push('Button', route('blade-components.button'));
+});
+
+Breadcrumbs::for('blade-components.button-group', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.index');
+    $trail->push('Button Group', route('blade-components.button-group'));
+});
+
+Breadcrumbs::for('blade-components.badge', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.index');
+    $trail->push('Badge', route('blade-components.badge'));
+});
+
+Breadcrumbs::for('blade-components.message', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.index');
+    $trail->push('Message', route('blade-components.message'));
+});
+
+Breadcrumbs::for('development.presentation', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.index');
+    $trail->push('Presentation integration', route('development.presentation'));
+});

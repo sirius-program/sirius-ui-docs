@@ -4,7 +4,7 @@
 Package: `D:/Projects/sirius-ui`  
 Documentation and integration application: `D:/Projects/sirius-ui-docs`
 
-Phase 0 through Phase 10 checkboxes reflect executed work. The reusable phase gate remains an unchecked template. The expanded roadmap runs through Phase 25; phases 0–7 retain their completed status, Phone follows Datetime Picker; Phone and Slider precede Form, the AI skill follows all component phases, and Flux migration immediately precedes final validation. See PHASE_0.md, PHASE_1.md, PHASE_2.md, PHASE_3.md, PHASE_4.md, PHASE_5.md, PHASE_6.md, PHASE_7.md, PHASE_8.md, PHASE_9.md, and PHASE_10.md for architecture boundaries, decisions, verification scope, and maintenance notes.
+Phase 0 through Phase 11 checkboxes reflect executed work. The reusable phase gate remains an unchecked template. The expanded roadmap runs through Phase 25; phases 0–7 retain their completed status, Phone follows Datetime Picker; Phone and Slider precede Form, the AI skill follows all component phases, and Flux migration immediately precedes final validation. See PHASE_0.md, PHASE_1.md, PHASE_2.md, PHASE_3.md, PHASE_4.md, PHASE_5.md, PHASE_6.md, PHASE_7.md, PHASE_8.md, PHASE_9.md, PHASE_10.md, and PHASE_11.md for architecture boundaries, decisions, verification scope, and maintenance notes.
 
 ## 1. Agreed outcome and architecture
 
@@ -17,7 +17,7 @@ Deliver reusable Tailwind-styled Blade components and class-based Livewire compo
 - Extract focused PHP helpers and JS adapters only when they remove real duplication or establish a necessary integration boundary. Avoid a generic repository/service layer for presentation components.
 - Make Blade controls work on ordinary Blade pages and inside Livewire. The `form` component is specifically for ordinary browser submissions to application controllers, without Livewire submission handling. Livewire remains a package dependency; ordinary Blade usage must not require wrapping every input in a Livewire component.
 - Preserve existing `sir-` styling and `--sir-` token conventions; support responsive layouts, light/dark themes, keyboard navigation, and visible focus.
-- Use Blade Icons with a selected free icon set. Map `info` to Tailwind sky, `success` to emerald, `danger` to red, and `warning` to amber through customizable tokens.
+- Use Blade Icons with a selected free icon set. Map `primary` to Tailwind sky, `info` to neutral, `secondary` to indigo, `success` to emerald, `danger` to red, and `warning` to amber through customizable tokens.
 - The table uses a consumer-defined subclass for query, columns, filters, and optional actions. Queries and authorization belong to the application; package code handles reusable interaction and presentation. Consumers can register custom row, bulk, and toolbar actions alongside the optional built-in actions.
 - Version-one calendar is a month grid with month/year navigation, today indication, date selection, and day actions. Event management, drag-and-drop, and range selection are outside this release.
 
@@ -32,7 +32,7 @@ Deliver reusable Tailwind-styled Blade components and class-based Livewire compo
 - Supply named props for common supported library options and a documented options bag for additional compatible options. Define precedence: component defaults, options bag, then explicit props. Protect lifecycle and value-synchronization callbacks from accidental replacement.
 - Document unsupported options or differences between HTML and widget behavior instead of silently ignoring them.
 - Add a docs menu entry and a working component page as each component is completed. Update the docs README/component index in the same phase.
-- Use the same component documentation pattern: Demo, Usage, Props and attributes, followed by Shared field contract and Assets and interaction when applicable. Stack Livewire and Blade demos with matching controls and values; share Submit / Validate, Load Value, and Reset Sample buttons, with Toggle Readonly only in Livewire. Render props in minimal responsive tables (name, type, mandatory, default, description), followed by accurate HTML5/Alpine/data/ARIA/Livewire support notes. Highlight usage syntax and provide copy controls using the shared docs presentation components.
+- Use the same component documentation pattern: Demo, Usage, Props and attributes, followed by Shared field contract and Assets and interaction when applicable. For form controls, stack Livewire and Blade demos with matching controls and values; non-form controls use Blade demos only and demonstrate every supported variant; share Submit / Validate, Load Value, and Reset Sample buttons, with Toggle Readonly only in Livewire. Render props in minimal responsive tables (name, type, mandatory, default, description), followed by accurate HTML5/Alpine/data/ARIA/Livewire support notes. Highlight usage syntax and provide copy controls using the shared docs presentation components.
 - Keep the package README minimal: direct readers to the docs for usage details. Resolve the actual docs location before adding a published URL; do not invent one.
 - Install `sirius/ui` into docs through a Composer path repository pointing to `../sirius-ui`, with local linking when supported and a documented mirror/update fallback. Never copy package components into docs.
 - Keep docs demonstration models, factories, routes, and fixtures inside docs or package test fixtures; never make them production package dependencies.
@@ -71,7 +71,7 @@ All form controls implement the following contract, including enhanced controls:
 | `slider` | Single numeric value by default; `range=true` uses two values and exactly two numeric entries in each of `min`, `max`, and `step` |
 | `form` | Ordinary Blade submission; explicit `action`; `method=GET` by default; automatic CSRF for non-GET methods and method spoofing for PUT/PATCH/DELETE; `sending-file=false` by default |
 | `card`, `dialog` | String shorthands, header/footer named slots, body default slot; stable section IDs |
-| `message`, `badge`, `button` | `variant=info\|success\|danger\|warning\|secondary\|ghost\|outline`; Button also supports `link` and optional `icon`; Message preserves the former inline Alert behavior and `closable` |
+| `message`, `badge`, `button` | `variant=primary\|info\|success\|danger\|warning\|secondary\|ghost\|outline`; Button also supports `link` and optional `icon`; Message preserves the former inline Alert behavior and `dismissible` |
 | `icon`, `button-group` | Blade Icons wrapper; visual button grouping without selection state |
 | `alert` | Dialog-based prompt with optional icon, escaped text, and a free-form footer slot |
 | `avatar` | Image with string fallback for initials; `size`, `variant=rounded\|circle`, `fallback`, `alt` |
@@ -376,16 +376,16 @@ Acceptance: consumers can compose a native form with an explicit action, receive
 
 ## Phase 11 — Icon, button, button group, badge, and message
 
-- [ ] Implement Message, Badge, and Button variants `info`, `success`, `danger`, `warning`, `secondary`, `ghost`, and `outline`. Preserve the four semantic color mappings; define secondary as a neutral treatment, ghost as a minimal background treatment, and outline as a bordered treatment using shared theme tokens.
-- [ ] Implement a reusable `icon` wrapper around the chosen Blade Icons set, with name, size, styling, and accessible/decorative semantics; use it across components and later docs migration.
-- [ ] Give Button an optional `icon` prop and an accessible name requirement for icon-only buttons. Add `variant="link"` as a visual style independent of `tag="a"`; preserve focus and disabled semantics.
-- [ ] Implement `button-group` as a visual grouping of buttons with shared borders/radii and appropriate group labeling. Do not introduce selection state or toggle behavior.
-- [ ] Implement button `tag=button|a`, validating the allowed tag list. Default real buttons to `type=button`; require explicit submit behavior.
-- [ ] Support icons, sizes, loading, focus, and disabled behavior. A disabled anchor must prevent mouse and keyboard activation and expose an accessible disabled state.
-- [ ] Implement badge content and variants, with readable contrast in light/dark themes.
-- [ ] Implement message content, variants, appropriate announcement semantics, and `closable` with an accessible dismiss control and documented dismissal state.
-- [ ] Test icon accessibility, button-group composition, every variant, link styling versus anchor semantics, escaped content, attributes, loading/disabled states, and Message dismissal through Livewire updates.
-- [ ] Add icon, button, button-group, badge, and message docs entries and complete the mandatory phase gate.
+- [x] Implement Message, Badge, and Button variants `primary`, `info`, `success`, `danger`, `warning`, `secondary`, `ghost`, and `outline`. Use primary sky, info neutral, secondary indigo, success emerald, danger red, and warning amber; define ghost as a minimal background treatment, and outline as a bordered treatment using shared theme tokens.
+- [x] Implement a reusable `icon` wrapper around the chosen Blade Icons set, with name, size, styling, and accessible/decorative semantics; use it across components and later docs migration.
+- [x] Give Button an optional `icon` prop and an accessible name requirement for icon-only buttons. Add `variant="link"` as a visual style independent of `as="a"`; preserve focus and disabled semantics.
+- [x] Implement `button-group` as a visual grouping of buttons with shared borders/radii and appropriate group labeling. Do not introduce selection state or toggle behavior.
+- [x] Implement button `as=button|a`, validating the allowed tag list. Default real buttons to `type=button`; require explicit submit behavior.
+- [x] Support icons, sizes, loading, focus, and disabled behavior. A disabled anchor must prevent mouse and keyboard activation and expose an accessible disabled state.
+- [x] Implement badge content and variants, with readable contrast in light/dark themes.
+- [x] Implement message content, variants, appropriate announcement semantics, and `dismissible` with an accessible dismiss control and documented dismissal state.
+- [x] Test icon accessibility, button-group composition, every variant, link styling versus anchor semantics, escaped content, attributes, loading/disabled states, and Message dismissal through Livewire updates.
+- [x] Add icon, button, button-group, badge, and message docs entries and complete the mandatory phase gate.
 
 ## Phase 12 — Card and collapsible
 

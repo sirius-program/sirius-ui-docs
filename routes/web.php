@@ -62,6 +62,7 @@ Route::post('blade-components/examples/switch', ControlExampleController::class)
 Route::post('blade-components/examples/label', ControlExampleController::class)->defaults('kind', 'label')->name('blade-components.label.store');
 
 if (app()->environment(['local', 'testing'])) {
+    Route::view('development/presentation', 'development.presentation')->name('development.presentation');
     Route::view('development/slider', 'development.slider')->name('development.slider');
     Route::view('development/slider-bindings', 'development.slider-bindings')->name('development.slider-bindings');
     Route::view('development/richtext', 'development.richtext')->name('development.richtext');
@@ -83,3 +84,9 @@ if (app()->environment(['local', 'testing'])) {
 }
 
 require __DIR__ . '/settings.php';
+
+Route::view('blade-components/icon', 'blade-components.icon-docs')->name('blade-components.icon');
+Route::view('blade-components/button', 'blade-components.button-docs')->name('blade-components.button');
+Route::view('blade-components/button-group', 'blade-components.button-group-docs')->name('blade-components.button-group');
+Route::view('blade-components/badge', 'blade-components.badge-docs')->name('blade-components.badge');
+Route::view('blade-components/message', 'blade-components.message-docs')->name('blade-components.message');

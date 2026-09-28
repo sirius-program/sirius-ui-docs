@@ -21,6 +21,11 @@
                     <li><a class="underline" href="{{ route('blade-components.select') }}" wire:navigate>Select</a></li>
                     <li><a class="underline" href="{{ route('blade-components.file-upload') }}" wire:navigate>File Upload</a></li>
                     <li><a class="underline" href="{{ route('blade-components.form') }}" wire:navigate>Form</a></li>
+                    <li><a class="underline" href="{{ route('blade-components.icon') }}" wire:navigate>Icon</a></li>
+                    <li><a class="underline" href="{{ route('blade-components.button') }}" wire:navigate>Button</a></li>
+                    <li><a class="underline" href="{{ route('blade-components.button-group') }}" wire:navigate>Button Group</a></li>
+                    <li><a class="underline" href="{{ route('blade-components.badge') }}" wire:navigate>Badge</a></li>
+                    <li><a class="underline" href="{{ route('blade-components.message') }}" wire:navigate>Message</a></li>
                 </ul>
             </section>
         </article>

@@ -30,6 +30,11 @@
                     <flux:sidebar.item :href="route('blade-components.file-upload')" :current="request()->routeIs('blade-components.file-upload')" wire:navigate>File Upload</flux:sidebar.item>
                     <flux:sidebar.item :href="route('blade-components.richtext')" :current="request()->routeIs('blade-components.richtext')" wire:navigate>Richtext</flux:sidebar.item>
                     <flux:sidebar.item :href="route('blade-components.form')" :current="request()->routeIs('blade-components.form')" wire:navigate>Form</flux:sidebar.item>
+                    <flux:sidebar.item :href="route('blade-components.icon')" :current="request()->routeIs('blade-components.icon')" wire:navigate>Icon</flux:sidebar.item>
+                    <flux:sidebar.item :href="route('blade-components.button')" :current="request()->routeIs('blade-components.button')" wire:navigate>Button</flux:sidebar.item>
+                    <flux:sidebar.item :href="route('blade-components.button-group')" :current="request()->routeIs('blade-components.button-group')" wire:navigate>Button Group</flux:sidebar.item>
+                    <flux:sidebar.item :href="route('blade-components.badge')" :current="request()->routeIs('blade-components.badge')" wire:navigate>Badge</flux:sidebar.item>
+                    <flux:sidebar.item :href="route('blade-components.message')" :current="request()->routeIs('blade-components.message')" wire:navigate>Message</flux:sidebar.item>
                 </flux:sidebar.group>
             </flux:sidebar.nav>
         </flux:sidebar>
