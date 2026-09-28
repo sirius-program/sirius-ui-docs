@@ -190,6 +190,7 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 - Use x-docs-example with a view prop for every component Usage example, one block per demo. It delegates highlighting and copying to x-docs-code. Use x-docs-code directly only for supplemental PHP, configuration, translation, or shell snippets. Preserve exact demo source and clipboard error handling. Use docs-props for minimal, responsive tables with attribute, type, default, and description columns. Keep attribute behavior in its table row; do not repeat it in Usage or other sections.
 - Attribute tables describe package props, not ordinary HTML5 attributes such as disabled, readonly, or placeholder. Include native-looking attributes only when their behavior differs (such as size or readonly on select), or when a custom control such as currency or richtext needs an explicit contract. Explain the difference; do not repeat standard HTML documentation.
 - After each props table, explain supported HTML5, Alpine, data/ARIA, and Livewire forwarding for that component; do not imply unsupported directives or attributes work.
+- Give every attribute its own table row, with its own type, default, and description. Never combine attributes in one row, even when their behavior is similar (for example, header, body, footer, and their class props).
 - Reuse documentation components and paired-demo partials. Keep prop tables aligned with the shipped package API. Update the docs README and run the required project and browser test gates after changes.
 
 

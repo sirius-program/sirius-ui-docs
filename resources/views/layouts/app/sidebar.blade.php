@@ -35,6 +35,8 @@
                     <flux:sidebar.item :href="route('blade-components.button-group')" :current="request()->routeIs('blade-components.button-group')" wire:navigate>Button Group</flux:sidebar.item>
                     <flux:sidebar.item :href="route('blade-components.badge')" :current="request()->routeIs('blade-components.badge')" wire:navigate>Badge</flux:sidebar.item>
                     <flux:sidebar.item :href="route('blade-components.message')" :current="request()->routeIs('blade-components.message')" wire:navigate>Message</flux:sidebar.item>
+                    <flux:sidebar.item :href="route('blade-components.card')" :current="request()->routeIs('blade-components.card')" wire:navigate>Card</flux:sidebar.item>
+                    <flux:sidebar.item :href="route('blade-components.accordion')" :current="request()->routeIs('blade-components.accordion')" wire:navigate>Accordion</flux:sidebar.item>
                 </flux:sidebar.group>
             </flux:sidebar.nav>
         </flux:sidebar>

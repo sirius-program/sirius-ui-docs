@@ -26,6 +26,8 @@
                     <li><a class="underline" href="{{ route('blade-components.button-group') }}" wire:navigate>Button Group</a></li>
                     <li><a class="underline" href="{{ route('blade-components.badge') }}" wire:navigate>Badge</a></li>
                     <li><a class="underline" href="{{ route('blade-components.message') }}" wire:navigate>Message</a></li>
+                    <li><a class="underline" href="{{ route('blade-components.card') }}" wire:navigate>Card</a></li>
+                    <li><a class="underline" href="{{ route('blade-components.accordion') }}" wire:navigate>Accordion</a></li>
                 </ul>
             </section>
         </article>

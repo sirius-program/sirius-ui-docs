@@ -4,7 +4,7 @@
 Package: `D:/Projects/sirius-ui`  
 Documentation and integration application: `D:/Projects/sirius-ui-docs`
 
-Phase 0 through Phase 11 checkboxes reflect executed work. The reusable phase gate remains an unchecked template. The expanded roadmap runs through Phase 25; phases 0–7 retain their completed status, Phone follows Datetime Picker; Phone and Slider precede Form, the AI skill follows all component phases, and Flux migration immediately precedes final validation. See PHASE_0.md, PHASE_1.md, PHASE_2.md, PHASE_3.md, PHASE_4.md, PHASE_5.md, PHASE_6.md, PHASE_7.md, PHASE_8.md, PHASE_9.md, PHASE_10.md, and PHASE_11.md for architecture boundaries, decisions, verification scope, and maintenance notes.
+Phase 0 through Phase 12 checkboxes reflect executed work. The reusable phase gate remains an unchecked template. The expanded roadmap runs through Phase 25; phases 0–7 retain their completed status, Phone follows Datetime Picker; Phone and Slider precede Form, the AI skill follows all component phases, and Flux migration immediately precedes final validation. See PHASE_0.md, PHASE_1.md, PHASE_2.md, PHASE_3.md, PHASE_4.md, PHASE_5.md, PHASE_6.md, PHASE_7.md, PHASE_8.md, PHASE_9.md, PHASE_10.md, PHASE_11.md, and PHASE_12.md for architecture boundaries, decisions, verification scope, and maintenance notes.
 
 ## 1. Agreed outcome and architecture
 
@@ -83,7 +83,7 @@ All form controls implement the following contract, including enhanced controls:
 | `tabs` | Local panels, keyboard navigation, and active-tab binding |
 | `timeline` | Vertical sequence with numbered/icon markers, title, description, content slot, and completed/current/upcoming states |
 | Livewire `chart` | Library-backed chart with serializable options and a local JavaScript callback/plugin extension point |
-| `collapsible` | Expandable content and accessible trigger; documented initial/open state |
+| `accordion` | Expandable content and accessible trigger; documented initial/open state |
 | Livewire `table` | Consumer subclass with query, columns, filters, optional built-in actions, and custom row/bulk/toolbar actions |
 | Livewire `calendar` | Month grid with selectable/actionable days |
 
@@ -387,14 +387,15 @@ Acceptance: consumers can compose a native form with an explicit action, receive
 - [x] Test icon accessibility, button-group composition, every variant, link styling versus anchor semantics, escaped content, attributes, loading/disabled states, and Message dismissal through Livewire updates.
 - [x] Add icon, button, button-group, badge, and message docs entries and complete the mandatory phase gate.
 
-## Phase 12 — Card and collapsible
+## Phase 12 — Card and accordion
 
-- [ ] Implement card string shorthands, named header/footer slots, and default body slot. Slots override corresponding string shorthands; document precedence.
-- [ ] Give rendered sections `{id}-header`, `{id}-body`, and `{id}-footer` IDs; generate a random five-character root ID when omitted, following the shared ID contract; require explicit IDs when stable identity across server renders is needed.
-- [ ] Allow section-specific styling without overwriting stable IDs. Omit empty optional header/footer sections with documented behavior.
-- [ ] Implement `collapsible` with accessible trigger, controlled open state, expanded/controls attributes, optional transition, and reduced-motion support.
-- [ ] Test slot precedence, section IDs, multiple instances, keyboard toggling, hidden content focus behavior, and Livewire-driven state changes.
-- [ ] Add card and collapsible docs entries and complete the mandatory phase gate.
+- [x] Implement card string shorthands, named header/footer slots, and default body slot. Slots override corresponding string shorthands; document precedence.
+- [x] Give rendered sections `{id}-header`, `{id}-body`, and `{id}-footer` IDs; generate a random five-character root ID when omitted, following the shared ID contract; require explicit IDs when stable identity across server renders is needed.
+- [x] Allow section-specific styling without overwriting stable IDs. Omit empty optional header/footer sections with documented behavior.
+- [x] Implement `accordion` with accessible trigger, controlled open state, expanded/controls attributes, optional transition, and reduced-motion support.
+- [x] Support exclusive groups through a shared `name`, with a grouped demo and keyboard regression coverage.
+- [x] Test slot precedence, section IDs, multiple instances, keyboard toggling, hidden content focus behavior, and Livewire-driven state changes.
+- [x] Add card and accordion docs entries and complete the mandatory phase gate.
 
 ## Phase 13 — Dialog
 

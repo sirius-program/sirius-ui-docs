@@ -62,6 +62,7 @@ Route::post('blade-components/examples/switch', ControlExampleController::class)
 Route::post('blade-components/examples/label', ControlExampleController::class)->defaults('kind', 'label')->name('blade-components.label.store');
 
 if (app()->environment(['local', 'testing'])) {
+    Route::view('development/layout-components', 'development.layout-components')->name('development.layout-components');
     Route::view('development/presentation', 'development.presentation')->name('development.presentation');
     Route::view('development/slider', 'development.slider')->name('development.slider');
     Route::view('development/slider-bindings', 'development.slider-bindings')->name('development.slider-bindings');
@@ -90,3 +91,6 @@ Route::view('blade-components/button', 'blade-components.button-docs')->name('bl
 Route::view('blade-components/button-group', 'blade-components.button-group-docs')->name('blade-components.button-group');
 Route::view('blade-components/badge', 'blade-components.badge-docs')->name('blade-components.badge');
 Route::view('blade-components/message', 'blade-components.message-docs')->name('blade-components.message');
+
+Route::view('blade-components/card', 'blade-components.card-docs')->name('blade-components.card');
+Route::view('blade-components/accordion', 'blade-components.accordion-docs')->name('blade-components.accordion');

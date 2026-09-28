@@ -162,3 +162,18 @@ Breadcrumbs::for('development.presentation', function (BreadcrumbTrail $trail): 
     $trail->parent('blade-components.index');
     $trail->push('Presentation integration', route('development.presentation'));
 });
+
+Breadcrumbs::for('blade-components.card', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.index');
+    $trail->push('Card', route('blade-components.card'));
+});
+
+Breadcrumbs::for('blade-components.accordion', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.index');
+    $trail->push('Accordion', route('blade-components.accordion'));
+});
+
+Breadcrumbs::for('development.layout-components', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.index');
+    $trail->push('Layout integration', route('development.layout-components'));
+});
