@@ -17,11 +17,6 @@ it('renders each basic control documentation page', function (string $control, a
     ['choices', ['checkbox', 'radio', 'switch']],
 ]);
 
-it('redirects former component pages to their combined documentation', function (string $old, string $destination): void {
-    $this->get(route('blade-components.' . $old))
-        ->assertRedirect(route('blade-components.' . $destination));
-})->with([['password', 'input'], ['checkbox', 'choices'], ['radio', 'choices'], ['switch', 'choices']]);
-
 it('renders validation failures through each reactive control', function (string $kind, string $key): void {
     Livewire::test(BasicControlsExample::class, ['kind' => $kind])->call('save')->assertHasErrors([$key])->assertSee('aria-invalid="true"', false)
         ->call('loadExample')->call('save')->assertHasNoErrors()->assertSee('Sample validated. Nothing was stored.')

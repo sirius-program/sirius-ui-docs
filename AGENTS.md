@@ -194,6 +194,12 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 - Reuse documentation components and paired-demo partials. Keep prop tables aligned with the shipped package API. Update the docs README and run the required project and browser test gates after changes.
 
 
+## Documentation menu ordering
+
+- Keep component menu items in alphabetical order by their displayed labels within each group. When adding or renaming a menu item in any future phase, place it in its correct alphabetical position rather than appending it.
+- Preserve the existing menu groups and place new components in the appropriate group. Add a new group when it improves organization, keeping its component items alphabetically ordered as well.
+- Update the group's active-route and expanded-state checks when adding or moving items so the current component remains visible in navigation.
+
 ## Documentation wording consistency
 
 - Scope: `resources/views/blade-components/**` and documentation presentation components in `resources/views/components/docs-*.blade.php`.
