@@ -2,7 +2,7 @@
     <x-docs-page :navigation="['Input' => ['input-demo' => 'Demo', 'input-usage' => 'Usage', 'input-attributes' => 'Attributes'], 'Shared' => ['shared-field-contract' => 'Shared field contract', 'assets-and-interaction' => 'Asset and interaction']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8" data-control-demo="input">
             <header class="space-y-2">
-                <p class="text-sm text-zinc-500 dark:text-zinc-400">FORM CONTROLS</p>
+                <p class="text-sm text-zinc-500 dark:text-zinc-400">FORM CONTROL</p>
                 <h1 class="text-3xl font-semibold">Input</h1>
                 <p>Text, number, and password inputs.</p>
                 @if (session('basic-result'))<p role="status">Blade sample received. Nothing was stored.</p>@endif

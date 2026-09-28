@@ -2,7 +2,7 @@
     <x-docs-page :navigation="['Select' => ['select-demo' => 'Demo', 'select-usage' => 'Usage', 'select-attributes' => 'Attributes'], 'Shared' => ['shared-field-contract' => 'Shared field contract', 'assets-and-interaction' => 'Assets and interaction', 'server-search' => 'Server search', 'translations' => 'Translations']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8" data-control-demo="select">
             <header class="space-y-2">
-                <p class="text-sm text-zinc-500 dark:text-zinc-400">FORM CONTROLS</p>
+                <p class="text-sm text-zinc-500 dark:text-zinc-400">FORM CONTROL</p>
                 <h1 class="text-3xl font-semibold">Select</h1>
                 <p>Searchable single or multiple selections, powered by <a href="https://tom-select.js.org/" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline">Tom Select</a>.</p>
             </header>

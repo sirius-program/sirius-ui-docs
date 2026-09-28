@@ -11,7 +11,7 @@
     <x-docs-page :navigation="$navigation">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8">
             <header class="space-y-2">
-                <p class="text-sm text-zinc-500 dark:text-zinc-400">FORM CONTROLS</p>
+                <p class="text-sm text-zinc-500 dark:text-zinc-400">FORM CONTROL</p>
                 <h1 class="text-3xl font-semibold">Checkbox, Radio &amp; Switch</h1>
                 <p>Form controls with labels, helper text, and validation errors.</p>
                 @if (session('basic-result'))<p role="status">Blade sample received. Nothing was stored.</p>@endif

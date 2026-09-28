@@ -2,7 +2,7 @@
     <x-docs-page :navigation="['Datetime Picker' => ['datetime-picker-demo' => 'Demo', 'datetime-picker-usage' => 'Usage', 'datetime-picker-attributes' => 'Attributes'], 'Shared' => ['shared-field-contract' => 'Shared field contract', 'assets-and-interaction' => 'Assets and interaction', 'global-configuration' => 'Global configuration']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8" data-control-demo="datetime-picker">
             <header class="space-y-2">
-                <p class="text-sm text-zinc-500 dark:text-zinc-400">FORM CONTROLS</p>
+                <p class="text-sm text-zinc-500 dark:text-zinc-400">FORM CONTROL</p>
                 <h1 class="text-3xl font-semibold">Datetime Picker</h1>
                 <p>Date and time selection components, powered by <a href="https://flatpickr.js.org/" target="_blank" rel="noopener noreferrer" class="text-blue-500 dark:text-blue-400 hover:underline">flatpickr</a>.</p>
             </header>

@@ -1,7 +1,11 @@
 <x-layouts::app title="Form">
     <x-docs-page :navigation="['Form' => ['form-demo' => 'Demo', 'form-usage' => 'Usage', 'form-attributes' => 'Attributes'], 'Shared' => ['shared-field-contract' => 'Shared field contract', 'assets-and-interaction' => 'Assets and interaction']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8">
-            <header class="space-y-2"><p class="text-sm text-zinc-500 dark:text-zinc-400">FORM CONTROLS</p><h1 class="text-3xl font-semibold">Form</h1><p>Native Blade forms with automatic CSRF and method spoofing.</p></header>
+            <header class="space-y-2">
+                <p class="text-sm text-zinc-500 dark:text-zinc-400">FORM CONTROL</p>
+                <h1 class="text-3xl font-semibold">Form</h1>
+                <p>Native Blade forms with automatic CSRF and method spoofing.</p>
+            </header>
             <section id="form-demo" class="space-y-5">
                 <h2 class="text-xl font-medium">Demo</h2>
                 @if (session('form-result'))<p role="status" data-form-result>{{ session('form-result') }}</p>@endif

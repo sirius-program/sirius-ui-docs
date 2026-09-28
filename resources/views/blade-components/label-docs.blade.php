@@ -2,7 +2,7 @@
     <x-docs-page :navigation="['Label' => ['label-demo' => 'Demo', 'label-usage' => 'Usage', 'label-attributes' => 'Attributes'], 'Shared' => ['shared-field-contract' => 'Shared field contract', 'assets-and-interaction' => 'Assets and interaction']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8" data-control-demo="label">
             <header class="space-y-2">
-                <p class="text-sm text-zinc-500 dark:text-zinc-400">FORM CONTROLS</p>
+                <p class="text-sm text-zinc-500 dark:text-zinc-400">FORM CONTROL</p>
                 <h1 class="text-3xl font-semibold">Label</h1>
                 <p>A label with an optional required marker.</p>
             </header>

@@ -1,7 +1,11 @@
 <x-layouts::app title="Accordion">
     <x-docs-page :navigation="['Accordion' => ['accordion-demo' => 'Demo', 'accordion-usage' => 'Usage', 'accordion-attributes' => 'Attributes'], 'Shared' => ['assets-and-interaction' => 'Assets and interaction']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8">
-            <header class="space-y-2"><p class="text-sm text-zinc-500 dark:text-zinc-400">LAYOUT</p><h1 class="text-3xl font-semibold">Accordion</h1><p>Show supporting information on demand.</p></header>
+            <header class="space-y-2">
+                <p class="text-sm text-zinc-500 dark:text-zinc-400">LAYOUT</p>
+                <h1 class="text-3xl font-semibold">Accordion</h1>
+                <p>Show supporting information on demand.</p>
+            </header>
             <section id="accordion-demo" class="space-y-5">
                 <h2 class="text-xl font-medium">Demo</h2>
                 <div class="rounded-xl border border-zinc-200 p-6 dark:border-zinc-700" data-demo-mode="blade">
