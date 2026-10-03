@@ -36,6 +36,8 @@ Dialog, Alert, and Slideover integration fixtures share `/development/overlays`.
 Their integration checks are grouped in the browser and feature `OverlayTest.php` files.
 Dialog and Slideover scroll within their body, keeping the header and footer visible.
 
+Phase 15 adds **Avatar**, **Separator**, and **Skeleton**, with Blade demos and copyable examples. Avatar supports images and initials with recovery after source changes. Separator supports horizontal, vertical, and decorative lines. Skeleton reserves loading space and respects reduced motion. The development Avatar fixture verifies Livewire updates, removal, and remounting. See [Phase 15](PHASE_15.md) for contracts and verification.
+
 Checkbox and radio options inside `<x-sirius::field group>` share the group's error key, error bag, and accessible descriptions. Put `required` on the group to show a single required marker alongside a single set of validation messages. Required radio groups preserve native validation; validate minimum checkbox selections on the server.
 
 Phase 2 integration fixtures at `/development/basic-controls` and `/development/standalone-controls` verify multiple Livewire instances and native controls without Livewire or Alpine. They are available only in local/testing environments.

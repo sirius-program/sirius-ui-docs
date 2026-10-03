@@ -29,11 +29,13 @@
                     <h3 class="font-medium">Presentation</h3>
                     <ul class="list-disc pl-5 mt-3 space-y-3">
                         <li><a class="underline" href="{{ route('blade-components.alert') }}" wire:navigate>Alert</a></li>
+                        <li><a class="underline" href="{{ route('blade-components.avatar') }}" wire:navigate>Avatar</a></li>
                         <li><a class="underline" href="{{ route('blade-components.badge') }}" wire:navigate>Badge</a></li>
                         <li><a class="underline" href="{{ route('blade-components.button') }}" wire:navigate>Button</a></li>
                         <li><a class="underline" href="{{ route('blade-components.button-group') }}" wire:navigate>Button Group</a></li>
                         <li><a class="underline" href="{{ route('blade-components.icon') }}" wire:navigate>Icon</a></li>
                         <li><a class="underline" href="{{ route('blade-components.message') }}" wire:navigate>Message</a></li>
+                        <li><a class="underline" href="{{ route('blade-components.skeleton') }}" wire:navigate>Skeleton</a></li>
                     </ul>
                 </section>
                 <section id="blade-components-layouts" class="rounded-xl border border-zinc-200 p-6 dark:border-zinc-700">
@@ -42,6 +44,7 @@
                         <li><a class="underline" href="{{ route('blade-components.accordion') }}" wire:navigate>Accordion</a></li>
                         <li><a class="underline" href="{{ route('blade-components.card') }}" wire:navigate>Card</a></li>
                         <li><a class="underline" href="{{ route('blade-components.dialog') }}" wire:navigate>Dialog</a></li>
+                        <li><a class="underline" href="{{ route('blade-components.separator') }}" wire:navigate>Separator</a></li>
                         <li><a class="underline" href="{{ route('blade-components.slideover') }}" wire:navigate>Slideover</a></li>
                     </ul>
                 </section>

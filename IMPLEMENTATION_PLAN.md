@@ -4,7 +4,7 @@
 Package: `D:/Projects/sirius-ui`  
 Documentation and integration application: `D:/Projects/sirius-ui-docs`
 
-Phase 0 through Phase 14 checkboxes reflect executed work. The reusable phase gate remains an unchecked template. The expanded roadmap runs through Phase 25; phases 0–7 retain their completed status, Phone follows Datetime Picker; Phone and Slider precede Form, the AI skill follows all component phases, and Flux migration immediately precedes final validation. See PHASE_0.md, PHASE_1.md, PHASE_2.md, PHASE_3.md, PHASE_4.md, PHASE_5.md, PHASE_6.md, PHASE_7.md, PHASE_8.md, PHASE_9.md, PHASE_10.md, PHASE_11.md, PHASE_12.md, PHASE_13.md, and PHASE_14.md for architecture boundaries, decisions, verification scope, and maintenance notes.
+Phase 0 through Phase 15 checkboxes reflect executed work. The reusable phase gate remains an unchecked template. The expanded roadmap runs through Phase 25; phases 0–7 retain their completed status, Phone follows Datetime Picker; Phone and Slider precede Form, the AI skill follows all component phases, and Flux migration immediately precedes final validation. See PHASE_0.md, PHASE_1.md, PHASE_2.md, PHASE_3.md, PHASE_4.md, PHASE_5.md, PHASE_6.md, PHASE_7.md, PHASE_8.md, PHASE_9.md, PHASE_10.md, PHASE_11.md, PHASE_12.md, PHASE_13.md, PHASE_14.md, and PHASE_15.md for architecture boundaries, decisions, verification scope, and maintenance notes.
 
 ## 1. Agreed outcome and architecture
 
@@ -421,11 +421,11 @@ Prerequisite: Dialog and its shared focus/scroll-lock lifecycle are complete.
 
 ## Phase 15 — Avatar, separator, and skeleton
 
-- [ ] Implement Avatar with image source, `alt`, configurable `size`, `variant=rounded|circle`, and `fallback` string for initials. Show fallback when the source is absent or fails, reserve image space, and avoid repeated error handling loops.
-- [ ] Implement Separator as a theme-consistent horizontal rule by default with vertical orientation support and appropriate decorative/semantic behavior.
-- [ ] Implement Skeleton with configurable dimensions/shape and a gentle flashing/fading effect; respect reduced motion and keep placeholders out of accessible content while allowing the parent to announce loading.
-- [ ] Test Avatar fallback and image recovery after updates, size/shape output, separator semantics, and Skeleton accessibility; verify themes, layout, and reduced-motion behavior in docs.
-- [ ] Add all three component docs entries and complete the mandatory phase gate.
+- [x] Implement Avatar with image source, `alt`, configurable `size`, `variant=rounded|circle`, and `fallback` string for initials. Show fallback when the source is absent or fails, reserve image space, and avoid repeated error handling loops.
+- [x] Implement Separator as a theme-consistent horizontal rule by default with vertical orientation support and appropriate decorative/semantic behavior.
+- [x] Implement Skeleton with configurable dimensions/shape and a gentle flashing/fading effect; respect reduced motion and keep placeholders out of accessible content while allowing the parent to announce loading.
+- [x] Test Avatar fallback and image recovery after updates, size/shape output, separator semantics, and Skeleton accessibility; verify themes, layout, and reduced-motion behavior in docs.
+- [x] Add all three component docs entries and complete the mandatory phase gate.
 
 ## Phase 16 — Breadcrumb, menu, and dropdown
 

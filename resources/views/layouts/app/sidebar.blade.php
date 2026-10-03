@@ -33,19 +33,22 @@
                         <flux:sidebar.item :href="route('blade-components.textarea')" :current="request()->routeIs('blade-components.textarea')" wire:navigate>Textarea</flux:sidebar.item>
                     </flux:sidebar.group>
 
-                    <flux:sidebar.group expandable heading="Presentation" class="grid" :expanded="request()->routeIs('blade-components.alert', 'blade-components.icon', 'blade-components.button', 'blade-components.button-group', 'blade-components.badge', 'blade-components.message')">
+                    <flux:sidebar.group expandable heading="Presentation" class="grid" :expanded="request()->routeIs('blade-components.alert', 'blade-components.avatar', 'blade-components.skeleton', 'blade-components.icon', 'blade-components.button', 'blade-components.button-group', 'blade-components.badge', 'blade-components.message')">
                         <flux:sidebar.item :href="route('blade-components.alert')" :current="request()->routeIs('blade-components.alert')" wire:navigate>Alert</flux:sidebar.item>
+                        <flux:sidebar.item :href="route('blade-components.avatar')" :current="request()->routeIs('blade-components.avatar')" wire:navigate>Avatar</flux:sidebar.item>
                         <flux:sidebar.item :href="route('blade-components.badge')" :current="request()->routeIs('blade-components.badge')" wire:navigate>Badge</flux:sidebar.item>
                         <flux:sidebar.item :href="route('blade-components.button')" :current="request()->routeIs('blade-components.button')" wire:navigate>Button</flux:sidebar.item>
                         <flux:sidebar.item :href="route('blade-components.button-group')" :current="request()->routeIs('blade-components.button-group')" wire:navigate>Button Group</flux:sidebar.item>
                         <flux:sidebar.item :href="route('blade-components.icon')" :current="request()->routeIs('blade-components.icon')" wire:navigate>Icon</flux:sidebar.item>
                         <flux:sidebar.item :href="route('blade-components.message')" :current="request()->routeIs('blade-components.message')" wire:navigate>Message</flux:sidebar.item>
+                        <flux:sidebar.item :href="route('blade-components.skeleton')" :current="request()->routeIs('blade-components.skeleton')" wire:navigate>Skeleton</flux:sidebar.item>
                     </flux:sidebar.group>
                     
-                    <flux:sidebar.group expandable heading="Layout" class="grid" :expanded="request()->routeIs('blade-components.card', 'blade-components.accordion', 'blade-components.dialog', 'blade-components.slideover')">
+                    <flux:sidebar.group expandable heading="Layout" class="grid" :expanded="request()->routeIs('blade-components.card', 'blade-components.accordion', 'blade-components.dialog', 'blade-components.separator', 'blade-components.slideover')">
                         <flux:sidebar.item :href="route('blade-components.accordion')" :current="request()->routeIs('blade-components.accordion')" wire:navigate>Accordion</flux:sidebar.item>
                         <flux:sidebar.item :href="route('blade-components.card')" :current="request()->routeIs('blade-components.card')" wire:navigate>Card</flux:sidebar.item>
                         <flux:sidebar.item :href="route('blade-components.dialog')" :current="request()->routeIs('blade-components.dialog')" wire:navigate>Dialog</flux:sidebar.item>
+                        <flux:sidebar.item :href="route('blade-components.separator')" :current="request()->routeIs('blade-components.separator')" wire:navigate>Separator</flux:sidebar.item>
                         <flux:sidebar.item :href="route('blade-components.slideover')" :current="request()->routeIs('blade-components.slideover')" wire:navigate>Slideover</flux:sidebar.item>
                     </flux:sidebar.group>
                 </flux:sidebar.group>

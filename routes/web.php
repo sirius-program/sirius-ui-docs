@@ -67,6 +67,7 @@ if (app()->environment(['local', 'testing'])) {
     Route::view('development/integrations', 'development.integrations')->name('development.integrations');
     Route::view('development/plain-blade', 'development.plain-blade')->name('development.plain-blade');
     Route::view('development/standalone-controls', 'development.standalone-controls')->name('development.standalone-controls');
+    Route::view('development/avatar', 'development.avatar')->name('development.avatar');
     Route::view('development/basic-controls', 'development.basic-controls')->name('development.basic-controls');
     Route::view('development/currency', 'development.currency')->name('development.currency');
     Route::view('development/currency-bindings', 'development.currency-bindings')->name('development.currency-bindings');
@@ -90,6 +91,8 @@ if (app()->environment(['local', 'testing'])) {
 
 Route::view('blade-components/badge', 'blade-components.badge-docs')->name('blade-components.badge');
 Route::view('blade-components/alert', 'blade-components.alert-docs')->name('blade-components.alert');
+Route::view('blade-components/avatar', 'blade-components.avatar-docs')->name('blade-components.avatar');
+Route::view('blade-components/skeleton', 'blade-components.skeleton-docs')->name('blade-components.skeleton');
 Route::view('blade-components/button', 'blade-components.button-docs')->name('blade-components.button');
 Route::view('blade-components/button-group', 'blade-components.button-group-docs')->name('blade-components.button-group');
 Route::view('blade-components/icon', 'blade-components.icon-docs')->name('blade-components.icon');
@@ -99,6 +102,7 @@ Route::view('blade-components/card', 'blade-components.card-docs')->name('blade-
 Route::view('blade-components/accordion', 'blade-components.accordion-docs')->name('blade-components.accordion');
 Route::view('blade-components/dialog', 'blade-components.dialog-docs')->name('blade-components.dialog');
 Route::view('blade-components/slideover', 'blade-components.slideover-docs')->name('blade-components.slideover');
+Route::view('blade-components/separator', 'blade-components.separator-docs')->name('blade-components.separator');
 
 Route::post('blade-components/dialog-example', DialogFormExampleController::class)->name('blade-components.dialog.store');
 Route::post('blade-components/slideover-example', SlideoverFormExampleController::class)->name('blade-components.slideover.store');

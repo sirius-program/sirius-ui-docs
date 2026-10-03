@@ -5,7 +5,12 @@ declare(strict_types=1);
 use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 
-// Development Menu
+// Fixtures
+
+Breadcrumbs::for('development.avatar', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.presentation');
+    $trail->push('Avatar integration', route('development.avatar'));
+});
 
 Breadcrumbs::for('development.basic-control', function (BreadcrumbTrail $trail): void {
     $trail->parent('blade-components.index');
@@ -186,6 +191,11 @@ Breadcrumbs::for('blade-components.alert', function (BreadcrumbTrail $trail): vo
     $trail->push('Alert', route('blade-components.alert'));
 });
 
+Breadcrumbs::for('blade-components.avatar', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.presentation');
+    $trail->push('Avatar', route('blade-components.avatar'));
+});
+
 Breadcrumbs::for('blade-components.button', function (BreadcrumbTrail $trail): void {
     $trail->parent('blade-components.presentation');
     $trail->push('Button', route('blade-components.button'));
@@ -204,6 +214,11 @@ Breadcrumbs::for('blade-components.icon', function (BreadcrumbTrail $trail): voi
 Breadcrumbs::for('blade-components.message', function (BreadcrumbTrail $trail): void {
     $trail->parent('blade-components.presentation');
     $trail->push('Message', route('blade-components.message'));
+});
+
+Breadcrumbs::for('blade-components.skeleton', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.presentation');
+    $trail->push('Skeleton', route('blade-components.skeleton'));
 });
 
 // Layout
@@ -231,4 +246,9 @@ Breadcrumbs::for('blade-components.dialog', function (BreadcrumbTrail $trail): v
 Breadcrumbs::for('blade-components.slideover', function (BreadcrumbTrail $trail): void {
     $trail->parent('blade-components.layout');
     $trail->push('Slideover', route('blade-components.slideover'));
+});
+
+Breadcrumbs::for('blade-components.separator', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.layout');
+    $trail->push('Separator', route('blade-components.separator'));
 });
