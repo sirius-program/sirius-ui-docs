@@ -63,12 +63,15 @@ it('fits dialogs and their scrollable content within a mobile viewport in both t
         $page->assertScript('(() => { const r = document.querySelector("#native-dialog").getBoundingClientRect(); return r.left >= 0 && r.right <= innerWidth && r.top >= 0 && r.bottom <= innerHeight; })()');
         $page->screenshot(fullPage: false, filename: $dark ? 'dialog-mobile-dark' : 'dialog-mobile-light');
     }
-    $page->script('document.querySelector("#native-dialog-body").style.height = "1800px"');
-    $page->assertScript('document.querySelector("#native-dialog").scrollHeight > document.querySelector("#native-dialog").clientHeight');
+    $page->script('const spacer = document.createElement("div"); spacer.style.height = "1800px"; document.querySelector("#native-dialog-body").append(spacer)');
+    $page->assertScript('document.querySelector("#native-dialog-body").scrollHeight > document.querySelector("#native-dialog-body").clientHeight');
+    $page->assertScript('getComputedStyle(document.querySelector("#native-dialog")).overflow', 'hidden');
+    $page->assertScript('getComputedStyle(document.querySelector("#native-dialog-body")).overflowY', 'auto');
     foreach ([false, true] as $dark) {
         $page->script('document.documentElement.classList.toggle("dark", ' . ($dark ? 'true' : 'false') . ')');
         foreach ([0, 900, 1800] as $offset) {
-            $page->script('document.querySelector("#native-dialog").scrollTop = ' . $offset);
+            $page->script('document.querySelector("#native-dialog-body").scrollTop = ' . $offset);
+            $page->assertScript('document.querySelector("#native-dialog").scrollTop', 0);
             $page->assertScript('(() => { const d = document.querySelector("#native-dialog"); const r = d.getBoundingClientRect(); const h = d.querySelector(".sir-dialog-heading").getBoundingClientRect(); const f = d.querySelector(".sir-dialog-footer").getBoundingClientRect(); return Math.abs(h.top - r.top - d.clientTop) < 1 && Math.abs(f.bottom - r.top - d.clientTop - d.clientHeight) < 1; })()');
         }
     }

@@ -7,7 +7,7 @@ it('edits and submits all kinds of package controls inside a project overlay', f
         $prefix = ($mode === 'Livewire' ? '' : 'blade-') . $component . '-form';
         $root = '#' . $prefix;
         $trigger = $mode === 'Blade' ? '[data-sir-dialog-open="' . $prefix . '"]' : '[data-' . $component . '-form="livewire"] > button';
-        $scrollRoot = $root . ($component === 'slideover' ? ' .sir-dialog-body' : '');
+        $scrollRoot = $root . ' .sir-dialog-body';
         $page = visit(str_replace('/file-upload', '/' . $component, $url));
         $page->click($trigger)->assertPresent($root . ':modal');
         $page->script('const source = document.querySelector("' . $root . ' [data-richtext-source]"); source.removeAttribute("hidden"); source.removeAttribute("data-richtext-enhanced")');
@@ -73,7 +73,7 @@ it('anchors datetime pickers to their fields while scrolling and resizing an ove
         $prefix = ($mode === 'Livewire' ? '' : 'blade-') . $component . '-form';
         $root = '#' . $prefix;
         $trigger = $mode === 'Blade' ? '[data-sir-dialog-open="' . $prefix . '"]' : '[data-' . $component . '-form="livewire"] > button';
-        $scrollRoot = $root . ($component === 'slideover' ? ' .sir-dialog-body' : '');
+        $scrollRoot = $root . ' .sir-dialog-body';
         $page = visit(str_replace('/file-upload', '/' . $component, $url))->resize(1280, 900)
             ->click($trigger);
         foreach (['date', 'time', 'appointment'] as $field) {

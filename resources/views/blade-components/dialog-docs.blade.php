@@ -31,6 +31,7 @@
                 @include('blade-components.examples.assets')
                 <p>Uses native <code>dialog</code> for focus containment and inactive background content. Background scrolling is locked without removing scrollbar space; previous scroll styles and focus are restored on close or removal.</p>
                 <p>The dialog and backdrop fade in and out. Reduced-motion preferences disable the animation. Focus and scroll lock remain active until the closing fade finishes.</p>
+                <p>The body scrolls independently while the header and footer remain visible.</p>
                 <p>The header supplies the accessible name. Without a header, provide <code>aria-label</code> or <code>aria-labelledby</code>. Section IDs use the root ID plus <code>-header</code>, <code>-body</code>, or <code>-footer</code>. Use an explicit ID and <code>wire:key</code> for stable Livewire identity.</p>
                 <p>One Dialog, Alert, or Slideover can be active at a time. Opening another closes the previous one. Nested overlays are unsupported.</p>
             </section>

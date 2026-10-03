@@ -1,5 +1,5 @@
 @php($sample = array_replace(\App\Support\DialogFormSample::values(), session('dialog-sample', [])))
-<div data-dialog-form="blade">
+<div data-dialog-form="blade" class="inline-block">
     <x-sirius::button data-sir-dialog-open="blade-dialog-form">Create project</x-sirius::button>
     <x-sirius::dialog id="blade-dialog-form" size="xl" header="Create a project" initial-focus="#blade-dialog-form-title"
         :open="(bool) session('dialog-form-open', false)">

@@ -34,6 +34,7 @@ Development-only integration fixtures are available at `/development/integration
 
 Dialog, Alert, and Slideover integration fixtures share `/development/overlays`.
 Their integration checks are grouped in the browser and feature `OverlayTest.php` files.
+Dialog and Slideover scroll within their body, keeping the header and footer visible.
 
 Checkbox and radio options inside `<x-sirius::field group>` share the group's error key, error bag, and accessible descriptions. Put `required` on the group to show a single required marker alongside a single set of validation messages. Required radio groups preserve native validation; validate minimum checkbox selections on the server.
 
