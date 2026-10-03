@@ -91,3 +91,5 @@ Phase 11 provides **Icon**, **Button**, **Button Group**, **Badge**, and **Messa
 Presentation variants use primary (sky), info (neutral), and secondary (indigo). Button chooses its element with `as`; Message enables dismissal with `dismissible`.
 
 Phase 12 provides **Card** and **Accordion**, with Blade-only demos and separate copyable examples. Card supports text or slots and stable section IDs. Accordion supports independent items or exclusive groups using a shared `name`, optional opening animation, and Alpine/Livewire state synchronization. Attribute tables list each attribute separately. See [Phase 12](PHASE_12.md) for contracts and verification.
+
+Phase 13 provides **Dialog**, with Card-style content slots, sizing, initial focus, configurable dismissal, simple fades, and Alpine/Livewire state updates. Its Blade and Livewire project forms demonstrate every shipped form control, including file and richtext image uploads. One dialog is active at a time. Scroll locking preserves page and fixed-element positions and restores prior styles on close, removal, or navigation. See [Phase 13](PHASE_13.md) for the interaction contract and verification.

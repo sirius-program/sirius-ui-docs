@@ -62,6 +62,11 @@ Breadcrumbs::for('development.layout-components', function (BreadcrumbTrail $tra
     $trail->push('Layout integration', route('development.layout-components'));
 });
 
+Breadcrumbs::for('development.dialog', function (BreadcrumbTrail $trail): void {
+    $trail->parent('started');
+    $trail->push('Dialog integration', route('development.dialog'));
+});
+
 // User Menu
 
 Breadcrumbs::for('settings', function (BreadcrumbTrail $trail): void {
@@ -211,4 +216,9 @@ Breadcrumbs::for('blade-components.accordion', function (BreadcrumbTrail $trail)
 Breadcrumbs::for('blade-components.card', function (BreadcrumbTrail $trail): void {
     $trail->parent('blade-components.layout');
     $trail->push('Card', route('blade-components.card'));
+});
+
+Breadcrumbs::for('blade-components.dialog', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.layout');
+    $trail->push('Dialog', route('blade-components.dialog'));
 });

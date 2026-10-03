@@ -40,6 +40,7 @@
                     <ul class="list-disc pl-5 mt-3 space-y-3">
                         <li><a class="underline" href="{{ route('blade-components.accordion') }}" wire:navigate>Accordion</a></li>
                         <li><a class="underline" href="{{ route('blade-components.card') }}" wire:navigate>Card</a></li>
+                        <li><a class="underline" href="{{ route('blade-components.dialog') }}" wire:navigate>Dialog</a></li>
                     </ul>
                 </section>
             </div>

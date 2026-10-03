@@ -41,9 +41,10 @@
                         <flux:sidebar.item :href="route('blade-components.message')" :current="request()->routeIs('blade-components.message')" wire:navigate>Message</flux:sidebar.item>
                     </flux:sidebar.group>
                     
-                    <flux:sidebar.group expandable heading="Layout" class="grid" :expanded="request()->routeIs('blade-components.card', 'blade-components.accordion')">
+                    <flux:sidebar.group expandable heading="Layout" class="grid" :expanded="request()->routeIs('blade-components.card', 'blade-components.accordion', 'blade-components.dialog')">
                         <flux:sidebar.item :href="route('blade-components.accordion')" :current="request()->routeIs('blade-components.accordion')" wire:navigate>Accordion</flux:sidebar.item>
                         <flux:sidebar.item :href="route('blade-components.card')" :current="request()->routeIs('blade-components.card')" wire:navigate>Card</flux:sidebar.item>
+                        <flux:sidebar.item :href="route('blade-components.dialog')" :current="request()->routeIs('blade-components.dialog')" wire:navigate>Dialog</flux:sidebar.item>
                     </flux:sidebar.group>
                 </flux:sidebar.group>
             </flux:sidebar.nav>

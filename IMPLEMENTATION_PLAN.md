@@ -4,7 +4,7 @@
 Package: `D:/Projects/sirius-ui`  
 Documentation and integration application: `D:/Projects/sirius-ui-docs`
 
-Phase 0 through Phase 12 checkboxes reflect executed work. The reusable phase gate remains an unchecked template. The expanded roadmap runs through Phase 25; phases 0–7 retain their completed status, Phone follows Datetime Picker; Phone and Slider precede Form, the AI skill follows all component phases, and Flux migration immediately precedes final validation. See PHASE_0.md, PHASE_1.md, PHASE_2.md, PHASE_3.md, PHASE_4.md, PHASE_5.md, PHASE_6.md, PHASE_7.md, PHASE_8.md, PHASE_9.md, PHASE_10.md, PHASE_11.md, and PHASE_12.md for architecture boundaries, decisions, verification scope, and maintenance notes.
+Phase 0 through Phase 13 checkboxes reflect executed work. The reusable phase gate remains an unchecked template. The expanded roadmap runs through Phase 25; phases 0–7 retain their completed status, Phone follows Datetime Picker; Phone and Slider precede Form, the AI skill follows all component phases, and Flux migration immediately precedes final validation. See PHASE_0.md, PHASE_1.md, PHASE_2.md, PHASE_3.md, PHASE_4.md, PHASE_5.md, PHASE_6.md, PHASE_7.md, PHASE_8.md, PHASE_9.md, PHASE_10.md, PHASE_11.md, PHASE_12.md, and PHASE_13.md for architecture boundaries, decisions, verification scope, and maintenance notes.
 
 ## 1. Agreed outcome and architecture
 
@@ -399,14 +399,14 @@ Acceptance: consumers can compose a native form with an explicit action, receive
 
 ## Phase 13 — Dialog
 
-- [ ] Reuse the agreed card-like content contract and section ID scheme for dialog header/body/footer.
-- [ ] Define open/close binding and events, sizing, initial focus, focus containment, focus return, body scroll handling, and accessible dialog naming. Preserve the originally planned Modal behavior under the public name `dialog`; do not add a parallel `modal` alias.
-- [ ] Preserve scrollbar space while locking background scrolling, using a stable gutter and an appropriate fallback where needed. Opening/closing must not shift page or fixed-position content; restore previous styles after close/removal/navigation. Share this behavior with Slideover.
-- [ ] Support Escape and backdrop dismissal with explicit options to prevent each; prevent unintended form submission by close controls.
-- [ ] Preserve state correctly during validation and re-renders; clean up listeners and scroll locks after removal/navigation.
-- [ ] Cover multiple dialog instances; scope version one to one active dialog at a time and document nested/stacked dialogs as unsupported.
-- [ ] Browser-test keyboard behavior, prevented close, focus restoration, Livewire-triggered opening/closing, widgets mounted inside a dialog, and unchanged page/fixed-content position with and without a scrollbar.
-- [ ] Add dialog docs and complete the mandatory phase gate.
+- [x] Reuse the agreed card-like content contract and section ID scheme for dialog header/body/footer.
+- [x] Define open/close binding and events, sizing, initial focus, focus containment, focus return, body scroll handling, and accessible dialog naming. Preserve the originally planned Modal behavior under the public name `dialog`; do not add a parallel `modal` alias.
+- [x] Preserve scrollbar space while locking background scrolling, using a stable gutter and an appropriate fallback where needed. Opening/closing must not shift page or fixed-position content; restore previous styles after close/removal/navigation. Share this behavior with Slideover.
+- [x] Support Escape and backdrop dismissal with explicit options to prevent each; prevent unintended form submission by close controls.
+- [x] Preserve state correctly during validation and re-renders; clean up listeners and scroll locks after removal/navigation.
+- [x] Cover multiple dialog instances; scope version one to one active dialog at a time and document nested/stacked dialogs as unsupported.
+- [x] Browser-test keyboard behavior, prevented close, focus restoration, Livewire-triggered opening/closing, widgets mounted inside a dialog, and unchanged page/fixed-content position with and without a scrollbar.
+- [x] Add dialog docs with Blade and Livewire project-form demos covering every shipped form control, and complete the mandatory phase gate.
 
 ## Phase 14 — Alert and slideover
 

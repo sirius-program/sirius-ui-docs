@@ -6,6 +6,7 @@ use App\Http\Controllers\BasicFormController;
 use App\Http\Controllers\ControlExampleController;
 use App\Http\Controllers\CurrencyExampleController;
 use App\Http\Controllers\DatetimePickerExampleController;
+use App\Http\Controllers\DialogFormExampleController;
 use App\Http\Controllers\FileUploadExampleController;
 use App\Http\Controllers\FormExampleController;
 use App\Http\Controllers\FormUploadStoreController;
@@ -70,6 +71,8 @@ if (app()->environment(['local', 'testing'])) {
     Route::view('development/currency-bindings', 'development.currency-bindings')->name('development.currency-bindings');
     Route::view('development/date-bindings', 'development.date-bindings')->name('development.date-bindings');
     Route::view('development/datetime-picker', 'development.datetime-picker')->name('development.datetime-picker');
+    Route::view('development/dialog', 'development.dialog')->name('development.dialog');
+    Route::view('development/dialog-native', 'development.dialog-native')->name('development.dialog-native');
     Route::view('development/fields', 'development.fields')->name('development.fields');
     Route::post('development/fields', FormValidationController::class)->name('development.fields.validate');
     Route::view('development/phone', 'development.phone')->name('development.phone');
@@ -93,3 +96,4 @@ Route::view('blade-components/message', 'blade-components.message-docs')->name('
 Route::view('blade-components/card', 'blade-components.card-docs')->name('blade-components.card');
 Route::view('blade-components/accordion', 'blade-components.accordion-docs')->name('blade-components.accordion');
 Route::view('blade-components/dialog', 'blade-components.dialog-docs')->name('blade-components.dialog');
+Route::post('blade-components/dialog-example', DialogFormExampleController::class)->name('blade-components.dialog.store');

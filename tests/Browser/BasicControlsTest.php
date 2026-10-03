@@ -24,16 +24,19 @@ it('preserves password selection and independent visibility through server updat
     $first = 'main > [data-basic-example]:first-of-type';
     $input = $first . ' [data-basic-password]';
     $toggle = $first . ' [data-sir-password-toggle]';
+    $page->assertPresent($toggle . ' .sir-eye')->assertMissing($toggle . ' .sir-eye-slash');
     $page->click($first . ' button:has-text("Load Value")')->assertValue($input, 'Workspace-demo!42')->assertAttributeMissing($toggle, 'hidden')
         ->assertAttribute($toggle, 'title', 'Show')->assertAttribute($toggle, 'aria-label', 'Show');
     $page->type($input, 'typed-secret');
     $page->script('document.querySelector("[data-basic-password]").setSelectionRange(2, 5)');
     $page->click($toggle)->assertAttribute($input, 'type', 'text')->assertValue($input, 'typed-secret')
-        ->assertAttribute($toggle, 'title', 'Hide')->assertAttribute($toggle, 'aria-label', 'Hide');
+        ->assertAttribute($toggle, 'title', 'Hide')->assertAttribute($toggle, 'aria-label', 'Hide')
+        ->assertMissing($toggle . ' .sir-eye')->assertPresent($toggle . ' .sir-eye-slash');
     expect($page->script('document.querySelector("[data-basic-password]").selectionStart'))->toBe(2);
     expect($page->script('document.querySelector("[data-basic-password]").selectionEnd'))->toBe(5);
     expect($page->script('document.querySelectorAll("[data-basic-password]")[1].type'))->toBe('password');
     $page->click($first . ' button:has-text("Load Value")')->assertValue($input, 'Workspace-demo!42')->assertAttribute($input, 'type', 'text')->assertAttribute($toggle, 'title', 'Hide')
+        ->assertMissing($toggle . ' .sir-eye')->assertPresent($toggle . ' .sir-eye-slash')
         ->click($first . ' button:has-text("Reset Sample")')->assertValue($input, '');
     $page->script('Livewire.find(document.querySelector("[data-basic-example]").getAttribute("wire:id")).$set("showControls", false)');
     $page->assertMissing($input);
