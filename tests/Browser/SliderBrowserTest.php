@@ -58,7 +58,7 @@ it('handles Alpine updates rejects invalid pairs and survives navigation in mobi
     $page->click('Load Alpine value')->assertValue('#alpine-slider', '60')->assertValue('#alpine-range', '40')->assertValue('#alpine-range-upper', '90');
     expect($page->script('document.querySelector("#alpine-range").validity.valid'))->toBeTrue();
     $page->click('Toggle Alpine readonly')->assertAttribute('#alpine-slider-handle', 'aria-readonly', 'true')->keys('#alpine-slider-handle', 'End')->assertValue('#alpine-slider', '60');
-    $page->click('Slider')->assertPresent('#discount-handle')->click('Input')->assertMissing('#discount-handle')->click('Slider')->assertPresent('#discount-handle');
+    $page->click('Form Control')->click('Slider')->assertPresent('#discount-handle')->click('Input')->assertMissing('#discount-handle')->click('Slider')->assertPresent('#discount-handle');
     $page->resize(390, 844);
     foreach ([false, true] as $dark) {
         $page->script('document.documentElement.classList.toggle("dark", ' . ($dark ? 'true' : 'false') . ')');

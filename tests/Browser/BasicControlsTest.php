@@ -43,7 +43,7 @@ it('preserves password selection and independent visibility through server updat
 });
 
 it('binds checkbox booleans and arrays including zero and protects readonly state', function (): void {
-    $page = visit('/blade-components/checkbox')->assertPresent('[data-basic-agree]');
+    $page = visit('/blade-components/choices')->assertPresent('[data-basic-agree]');
     expect($page->script('document.querySelector("[data-basic-mixed]").indeterminate'))->toBeTrue();
     $page->click('[data-basic-agree]')->assertChecked('[data-basic-agree]')
         ->click('[data-basic-role-zero]')->assertChecked('[data-basic-role-zero]')
@@ -61,14 +61,14 @@ it('binds checkbox booleans and arrays including zero and protects readonly stat
 });
 
 it('updates radio and switch states from the server while readonly blocks user changes', function (): void {
-    $radio = visit('/blade-components/radio')->assertNotChecked('[data-basic-plan-zero]')->assertNotChecked('[data-basic-plan-pro]');
+    $radio = visit('/blade-components/choices')->assertNotChecked('[data-basic-plan-zero]')->assertNotChecked('[data-basic-plan-pro]');
     $radio->click('[data-basic-plan-pro]')->assertChecked('[data-basic-plan-pro]')
         ->click('[data-control-demo="radio"] [data-basic-example] button:has-text("Toggle Readonly")')->assertSeeIn('[data-control-demo="radio"] [data-basic-lock-status]', 'Readonly: on')
         ->click('[data-basic-plan-zero]')->assertNotChecked('[data-basic-plan-zero]')->assertChecked('[data-basic-plan-pro]')
         ->click('[data-control-demo="radio"] [data-basic-example] button:has-text("Load Value")')->assertChecked('[data-basic-plan-zero]')->assertNotChecked('[data-basic-plan-pro]')
         ->click('[data-control-demo="radio"] [data-basic-example] button:has-text("Reset Sample")')->assertNotChecked('[data-basic-plan-zero]')->assertNoJavaScriptErrors();
 
-    $switch = visit('/blade-components/switch')->click('[data-basic-enabled]')->assertChecked('[data-basic-enabled]')
+    $switch = visit('/blade-components/choices')->click('[data-basic-enabled]')->assertChecked('[data-basic-enabled]')
         ->click('[data-control-demo="switch"] [data-basic-example] button:has-text("Toggle Readonly")')->assertSeeIn('[data-control-demo="switch"] [data-basic-lock-status]', 'Readonly: on')
         ->click('[data-basic-enabled]')->assertChecked('[data-basic-enabled]')
         ->click('[data-control-demo="switch"] [data-basic-example] button:has-text("Reset Sample")')->assertNotChecked('[data-basic-enabled]')->assertNoJavaScriptErrors();
@@ -101,16 +101,16 @@ it('updates text number and textarea values and errors after Livewire reset', fu
 });
 
 it('supports native keyboard and label interactions with readonly choices', function (): void {
-    $checkbox = visit('/blade-components/checkbox')->keys('[data-basic-agree]', 'Space')->assertChecked('[data-basic-agree]')
+    $checkbox = visit('/blade-components/choices')->keys('[data-basic-agree]', 'Space')->assertChecked('[data-basic-agree]')
         ->click('[data-control-demo="checkbox"] [data-basic-example] button:has-text("Toggle Readonly")')->assertSeeIn('[data-control-demo="checkbox"] [data-basic-lock-status]', 'Readonly: on')
         ->keys('[data-basic-agree]', 'Space')->assertChecked('[data-basic-agree]')->assertNoJavaScriptErrors();
 
-    $radio = visit('/blade-components/radio')->click('[data-basic-plan-zero]')->keys('[data-basic-plan-zero]', 'ArrowRight')
+    $radio = visit('/blade-components/choices')->click('[data-basic-plan-zero]')->keys('[data-basic-plan-zero]', 'ArrowRight')
         ->assertChecked('[data-basic-plan-pro]')
         ->click('[data-control-demo="radio"] [data-basic-example] button:has-text("Toggle Readonly")')->assertSeeIn('[data-control-demo="radio"] [data-basic-lock-status]', 'Readonly: on')
         ->keys('[data-basic-plan-pro]', 'ArrowLeft')->assertChecked('[data-basic-plan-pro]')->assertNoJavaScriptErrors();
 
-    $switch = visit('/blade-components/switch')->click('[data-basic-example] label:has-text("Enable security alerts")')->assertChecked('[data-basic-enabled]')
+    $switch = visit('/blade-components/choices')->click('[data-basic-example] label:has-text("Enable security alerts")')->assertChecked('[data-basic-enabled]')
         ->keys('[data-basic-enabled]', 'Space')->assertNotChecked('[data-basic-enabled]')->assertNoJavaScriptErrors();
 });
 

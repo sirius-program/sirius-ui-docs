@@ -92,3 +92,4 @@ Route::view('blade-components/message', 'blade-components.message-docs')->name('
 
 Route::view('blade-components/card', 'blade-components.card-docs')->name('blade-components.card');
 Route::view('blade-components/accordion', 'blade-components.accordion-docs')->name('blade-components.accordion');
+Route::view('blade-components/dialog', 'blade-components.dialog-docs')->name('blade-components.dialog');

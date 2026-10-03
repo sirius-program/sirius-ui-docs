@@ -26,7 +26,7 @@ it('updates helper and error associations without changing the field identity', 
 });
 
 it('navigates to label examples and focuses their associated native controls', function (): void {
-    $page = visit('/development/fields')->click('Label')->assertPresent('[data-docs-props]');
+    $page = visit('/development/fields')->click('Form Control')->click('Label')->assertPresent('[data-docs-props]');
     $page->click('label[for="label-required"]');
 
     expect($page->script('document.activeElement.id'))->toBe('label-required');

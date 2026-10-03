@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 it('toggles independent disclosures with the keyboard and restores focus from closed content', function (): void {
     $page = visit('/blade-components/accordion');
-    $page->assertAttribute('#shipping-details-trigger', 'aria-expanded', 'false')
-        ->keys('#shipping-details-trigger', 'Space')->assertAttribute('#shipping-details-trigger', 'aria-expanded', 'true')
-        ->assertAttribute('#returns-policy-trigger', 'aria-expanded', 'true')
-        ->keys('#shipping-details-trigger', 'Enter')->assertAttribute('#shipping-details-trigger', 'aria-expanded', 'false');
-    $page->script('document.querySelector("#shipping-details-content a").focus()');
-    expect($page->script('document.activeElement.closest("#shipping-details-content") === null'))->toBeTrue();
-    $page->keys('#shipping-details-trigger', 'Enter')->assertAttribute('#shipping-details-trigger', 'aria-expanded', 'true');
-    $page->script('document.querySelector("#shipping-details-content a").focus(); document.querySelector("#shipping-details").open = false');
-    $page->assertAttribute('#shipping-details-trigger', 'aria-expanded', 'false');
-    expect($page->script('document.activeElement.id'))->toBe('shipping-details-trigger');
+    $page->script('const link = document.createElement("a"); link.href = "#accordion-usage"; link.textContent = "Read usage"; document.querySelector("#returns-policy-content").append(link)');
+    $page->assertAttribute('#returns-policy-trigger', 'aria-expanded', 'true')
+        ->keys('#returns-policy-trigger', 'Space')->assertAttribute('#returns-policy-trigger', 'aria-expanded', 'false')
+        ->assertAttribute('#order-payment-trigger', 'aria-expanded', 'true');
+    $page->script('document.querySelector("#returns-policy-content a").focus()');
+    expect($page->script('document.activeElement.closest("#returns-policy-content") === null'))->toBeTrue();
+    $page->keys('#returns-policy-trigger', 'Enter')->assertAttribute('#returns-policy-trigger', 'aria-expanded', 'true');
+    $page->script('document.querySelector("#returns-policy-content a").focus(); document.querySelector("#returns-policy").open = false');
+    $page->assertAttribute('#returns-policy-trigger', 'aria-expanded', 'false');
+    expect($page->script('document.activeElement.id'))->toBe('returns-policy-trigger');
     $page->assertNoJavaScriptErrors();
 });
 
@@ -46,12 +46,12 @@ it('opens one accordion item per group and allows every item to close', function
 });
 
 it('supports bound open state and emits one state change per actual toggle', function (): void {
-    $page = visit('/blade-components/accordion');
-    $page->script('window.disclosureEvents = []; document.addEventListener("accordion:toggle", event => window.disclosureEvents.push(event.detail)); document.querySelector("#shipping-details").open = true');
-    $page->assertAttribute('#shipping-details-trigger', 'aria-expanded', 'true');
-    expect($page->script('window.disclosureEvents'))->toBe([['id' => 'shipping-details', 'open' => true]]);
-    $page->script('document.querySelector("#shipping-details").open = false');
-    $page->assertAttribute('#shipping-details-trigger', 'aria-expanded', 'false');
+    $page = visit('/blade-components/accordion')->keys('#returns-policy-trigger', 'Enter')->assertAttribute('#returns-policy-trigger', 'aria-expanded', 'false');
+    $page->script('window.disclosureEvents = []; document.addEventListener("accordion:toggle", event => window.disclosureEvents.push(event.detail)); document.querySelector("#returns-policy").open = true');
+    $page->assertAttribute('#returns-policy-trigger', 'aria-expanded', 'true');
+    expect($page->script('window.disclosureEvents'))->toBe([['id' => 'returns-policy', 'open' => true]]);
+    $page->script('document.querySelector("#returns-policy").open = false');
+    $page->assertAttribute('#returns-policy-trigger', 'aria-expanded', 'false');
     expect($page->script('window.disclosureEvents.length'))->toBe(2);
     $page->assertNoJavaScriptErrors();
 });

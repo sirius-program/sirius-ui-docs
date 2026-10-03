@@ -12,6 +12,11 @@ Breadcrumbs::for('development.basic-control', function (BreadcrumbTrail $trail):
     $trail->push('Basic control integration', route('development.basic-control'));
 });
 
+Breadcrumbs::for('development.basic-controls', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.index');
+    $trail->push('Basic control integration', route('development.basic-controls'));
+});
+
 Breadcrumbs::for('development.currency-bindings', function (BreadcrumbTrail $trail): void {
     $trail->parent('blade-components.currency');
     $trail->push('Currency binding integration', route('development.currency-bindings'));

@@ -62,7 +62,7 @@ it('synchronizes Alpine and independent livewire instances through remount and n
     $page->assertMissing('[data-phone-instance="first"] [data-phone-delivery]');
     $page->script($wire . '.$set("showControls", true)');
     $page->assertValue('[data-phone-instance="first"] [data-phone-delivery]', '812 3456 7890');
-    $page->click('Currency')->assertPresent('[data-currency-budget]')->click('Phone')->assertPresent('[data-phone-delivery]')->assertNoJavaScriptErrors();
+    $page->click('Form Control')->click('Currency')->assertPresent('[data-currency-budget]')->click('Phone')->assertPresent('[data-phone-delivery]')->assertNoJavaScriptErrors();
 });
 
 it('keeps keyboard editing accessible and the phone layout within mobile light and dark screens', function (): void {

@@ -67,7 +67,7 @@ it('synchronizes Alpine arrays and independent Livewire controls through remount
     $page->assertMissing('[data-select-instance="first"] .ts-wrapper');
     $page->script($wire . '.$set("showControls", true)');
     $page->assertSeeIn('[data-select-instance="first"] [data-sir-select]:has([data-select-shipping]) .item', 'Collect from store');
-    $page->click('Phone')->assertPresent('[data-phone-delivery]')->click('Select')->assertPresent('[data-select-shipping]')->assertNoJavaScriptErrors();
+    $page->click('Form Control')->click('Phone')->assertPresent('[data-phone-delivery]')->click('Select')->assertPresent('[data-select-shipping]')->assertNoJavaScriptErrors();
 });
 
 it('ignores stale search responses and offers retry after remote failures', function (): void {

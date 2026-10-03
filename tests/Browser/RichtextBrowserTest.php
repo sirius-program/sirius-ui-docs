@@ -57,7 +57,7 @@ it('binds Alpine HTML and restores richtexts after navigation without duplicate 
     $page = visit('/development/richtext-bindings')->assertSeeIn('#alpine-richtext-richtext', 'Initial note');
     $page->type('#alpine-richtext-richtext', 'Alpine update')->assertSeeIn('[data-alpine-richtext]', '<p>Alpine update</p>')->click('Load Alpine value')->assertSeeIn('#alpine-richtext-richtext', 'Updated from Alpine');
     $page->click('Toggle Alpine readonly')->assertAttribute('#alpine-richtext-richtext', 'contenteditable', 'false')->click('Toggle Alpine readonly')->assertAttribute('#alpine-richtext-richtext', 'contenteditable', 'true');
-    $page->click('Richtext')->assertPresent('#announcement-richtext')->click('Input')->assertMissing('#announcement-richtext')->click('Richtext')->assertPresent('#announcement-richtext');
+    $page->click('Form Control')->click('Richtext')->assertPresent('#announcement-richtext')->click('Input')->assertMissing('#announcement-richtext')->click('Richtext')->assertPresent('#announcement-richtext');
     expect($page->script('document.querySelectorAll(".tiptap").length'))->toBe(4);
     $page->resize(390, 844);
     foreach ([false, true] as $dark) {

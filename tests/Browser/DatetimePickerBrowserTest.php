@@ -55,7 +55,7 @@ it('cleans up remounted datetime pickers and synchronizes Alpine and independent
     $page->assertPresent('[data-date-instance="first"] [data-date-departure]');
     $page->click('[data-date-instance="first"] button:has-text("Reset Sample")')->assertValue('[data-date-instance="first"] [data-date-departure]', '');
     expect($page->script('document.querySelectorAll(".sir-date-calendar").length'))->toBe(7);
-    $page->click('Currency')->assertPresent('[data-currency-budget]')->assertMissing('[data-date-example]');
+    $page->click('Form Control')->click('Currency')->assertPresent('[data-currency-budget]')->assertMissing('[data-date-example]');
     expect($page->script('document.querySelectorAll(".sir-date-calendar").length'))->toBe(0);
     $page->click('Datetime Picker')->assertPresent('[data-date-departure]');
     expect($page->script('document.querySelectorAll(".sir-date-calendar").length'))->toBe(6);
