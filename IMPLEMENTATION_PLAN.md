@@ -4,7 +4,7 @@
 Package: `D:/Projects/sirius-ui`  
 Documentation and integration application: `D:/Projects/sirius-ui-docs`
 
-Phase 0 through Phase 13 checkboxes reflect executed work. The reusable phase gate remains an unchecked template. The expanded roadmap runs through Phase 25; phases 0–7 retain their completed status, Phone follows Datetime Picker; Phone and Slider precede Form, the AI skill follows all component phases, and Flux migration immediately precedes final validation. See PHASE_0.md, PHASE_1.md, PHASE_2.md, PHASE_3.md, PHASE_4.md, PHASE_5.md, PHASE_6.md, PHASE_7.md, PHASE_8.md, PHASE_9.md, PHASE_10.md, PHASE_11.md, PHASE_12.md, and PHASE_13.md for architecture boundaries, decisions, verification scope, and maintenance notes.
+Phase 0 through Phase 14 checkboxes reflect executed work. The reusable phase gate remains an unchecked template. The expanded roadmap runs through Phase 25; phases 0–7 retain their completed status, Phone follows Datetime Picker; Phone and Slider precede Form, the AI skill follows all component phases, and Flux migration immediately precedes final validation. See PHASE_0.md, PHASE_1.md, PHASE_2.md, PHASE_3.md, PHASE_4.md, PHASE_5.md, PHASE_6.md, PHASE_7.md, PHASE_8.md, PHASE_9.md, PHASE_10.md, PHASE_11.md, PHASE_12.md, PHASE_13.md, and PHASE_14.md for architecture boundaries, decisions, verification scope, and maintenance notes.
 
 ## 1. Agreed outcome and architecture
 
@@ -73,7 +73,7 @@ All form controls implement the following contract, including enhanced controls:
 | `card`, `dialog` | String shorthands, header/footer named slots, body default slot; stable section IDs |
 | `message`, `badge`, `button` | `variant=primary\|info\|success\|danger\|warning\|secondary\|ghost\|outline`; Button also supports `link` and optional `icon`; Message preserves the former inline Alert behavior and `dismissible` |
 | `icon`, `button-group` | Blade Icons wrapper; visual button grouping without selection state |
-| `alert` | Dialog-based prompt with optional icon, escaped text, and a free-form footer slot |
+| `alert` | Dialog-based prompt with optional icon and title, escaped text, a free-form footer slot, eight standard presentation variants, and fade–bounce entry/exit |
 | `avatar` | Image with string fallback for initials; `size`, `variant=rounded\|circle`, `fallback`, `alt` |
 | `breadcrumb` | Item slots, configurable `separator`, and current-page semantics |
 | `menu`, `dropdown` | Shared nested item contract: optional `icon`, `name`, optional `link`, optional `trailing` string/slot, `disabled`, `active` |
@@ -412,12 +412,12 @@ Acceptance: consumers can compose a native form with an explicit action, receive
 
 Prerequisite: Dialog and its shared focus/scroll-lock lifecycle are complete.
 
-- [ ] Implement the new `alert` as a Dialog-based prompt inspired by SweetAlert presentation, without installing that library. Content consists only of optional `icon`, escaped `text`, and a consumer-controlled `footer` slot.
-- [ ] Reuse Dialog open/close bindings, focus management, dismissal options, and scrollbar preservation. Do not add toast, timer, queue, or automatic business actions; footer actions belong to the consumer.
-- [ ] Implement `slideover` with `side=top|right|bottom|left`, reusable header/body/footer composition, and simple reduced-motion-aware entry/exit transitions.
-- [ ] Preserve scrollbar space for every side, restore focus and scroll styles on dismissal/removal/navigation, and share the one-active-overlay rule across Dialog, Alert, and Slideover. Nested/stacked overlays remain outside version one.
-- [ ] Test Alert content escaping and arbitrary footer actions; browser-test focus, Escape/backdrop options, every Slideover side, Livewire updates, cleanup, and lack of layout shift.
-- [ ] Add separate Alert and Slideover docs pages, distinguish Alert from inline Message, and complete the mandatory phase gate.
+- [x] Implement the new `alert` as a Dialog-based prompt inspired by SweetAlert presentation, without installing that library. Content consists only of optional `icon`, optional escaped `title`, escaped `text`, and a consumer-controlled `footer` slot. Support the eight standard presentation variants and reduced-motion-aware fade–bounce entry/exit animations.
+- [x] Reuse Dialog open/close bindings, focus management, dismissal options, and scrollbar preservation. Do not add toast, timer, queue, or automatic business actions; footer actions belong to the consumer.
+- [x] Implement `slideover` with `side=top|right|bottom|left`, reusable header/body/footer composition, and simple reduced-motion-aware entry/exit transitions.
+- [x] Preserve scrollbar space for every side, restore focus and scroll styles on dismissal/removal/navigation, and share the one-active-overlay rule across Dialog, Alert, and Slideover. Nested/stacked overlays remain outside version one.
+- [x] Test Alert content escaping and arbitrary footer actions; browser-test focus, Escape/backdrop options, every Slideover side, Livewire updates, cleanup, and lack of layout shift.
+- [x] Add separate Alert and Slideover docs pages, distinguish Alert from inline Message, demonstrate every Alert variant, and show all shipped form controls in matching Blade/Livewire right-side Slideover demos. Complete the mandatory phase gate.
 
 ## Phase 15 — Avatar, separator, and skeleton
 

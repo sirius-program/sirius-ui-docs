@@ -7,7 +7,8 @@
             "svg",
             "authenticator",
             "integrations",
-            "richtext"
+            "richtext",
+            "slideover"
         ],
         "paths": []
     }

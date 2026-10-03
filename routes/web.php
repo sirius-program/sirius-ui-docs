@@ -17,6 +17,7 @@ use App\Http\Controllers\RichtextImageShowController;
 use App\Http\Controllers\RichtextImageStoreController;
 use App\Http\Controllers\SelectExampleController;
 use App\Http\Controllers\SelectOptionController;
+use App\Http\Controllers\SlideoverFormExampleController;
 use App\Http\Controllers\SliderExampleController;
 use Illuminate\Support\Facades\Route;
 
@@ -71,7 +72,6 @@ if (app()->environment(['local', 'testing'])) {
     Route::view('development/currency-bindings', 'development.currency-bindings')->name('development.currency-bindings');
     Route::view('development/date-bindings', 'development.date-bindings')->name('development.date-bindings');
     Route::view('development/datetime-picker', 'development.datetime-picker')->name('development.datetime-picker');
-    Route::view('development/dialog', 'development.dialog')->name('development.dialog');
     Route::view('development/dialog-native', 'development.dialog-native')->name('development.dialog-native');
     Route::view('development/fields', 'development.fields')->name('development.fields');
     Route::post('development/fields', FormValidationController::class)->name('development.fields.validate');
@@ -85,9 +85,11 @@ if (app()->environment(['local', 'testing'])) {
     Route::view('development/slider-bindings', 'development.slider-bindings')->name('development.slider-bindings');
     Route::view('development/layout-components', 'development.layout-components')->name('development.layout-components');
     Route::view('development/presentation', 'development.presentation')->name('development.presentation');
+    Route::view('development/overlays', 'development.overlays')->name('development.overlays');
 }
 
 Route::view('blade-components/badge', 'blade-components.badge-docs')->name('blade-components.badge');
+Route::view('blade-components/alert', 'blade-components.alert-docs')->name('blade-components.alert');
 Route::view('blade-components/button', 'blade-components.button-docs')->name('blade-components.button');
 Route::view('blade-components/button-group', 'blade-components.button-group-docs')->name('blade-components.button-group');
 Route::view('blade-components/icon', 'blade-components.icon-docs')->name('blade-components.icon');
@@ -96,4 +98,7 @@ Route::view('blade-components/message', 'blade-components.message-docs')->name('
 Route::view('blade-components/card', 'blade-components.card-docs')->name('blade-components.card');
 Route::view('blade-components/accordion', 'blade-components.accordion-docs')->name('blade-components.accordion');
 Route::view('blade-components/dialog', 'blade-components.dialog-docs')->name('blade-components.dialog');
+Route::view('blade-components/slideover', 'blade-components.slideover-docs')->name('blade-components.slideover');
+
 Route::post('blade-components/dialog-example', DialogFormExampleController::class)->name('blade-components.dialog.store');
+Route::post('blade-components/slideover-example', SlideoverFormExampleController::class)->name('blade-components.slideover.store');

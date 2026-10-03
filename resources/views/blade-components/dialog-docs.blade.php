@@ -32,7 +32,7 @@
                 <p>Uses native <code>dialog</code> for focus containment and inactive background content. Background scrolling is locked without removing scrollbar space; previous scroll styles and focus are restored on close or removal.</p>
                 <p>The dialog and backdrop fade in and out. Reduced-motion preferences disable the animation. Focus and scroll lock remain active until the closing fade finishes.</p>
                 <p>The header supplies the accessible name. Without a header, provide <code>aria-label</code> or <code>aria-labelledby</code>. Section IDs use the root ID plus <code>-header</code>, <code>-body</code>, or <code>-footer</code>. Use an explicit ID and <code>wire:key</code> for stable Livewire identity.</p>
-                <p>One dialog can be active at a time. Opening another closes the previous one. Nested dialogs are unsupported. Keep an explicit close action when disabling dismissal. JavaScript is required to open the dialog.</p>
+                <p>One Dialog, Alert, or Slideover can be active at a time. Opening another closes the previous one. Nested overlays are unsupported.</p>
             </section>
             <section id="state-and-events" class="space-y-3">
                 <h2 class="text-xl font-medium">State and events</h2>

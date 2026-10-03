@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Livewire\Examples\DialogExample;
 use App\Livewire\Examples\DialogFormExample;
 use App\Support\DialogFormSample;
 use Illuminate\Http\UploadedFile;
@@ -41,12 +40,4 @@ it('loads and resets the Blade project sample and rejects unsupported actions', 
     $this->post(route('blade-components.dialog.store'), ['sample_action' => 'reset'])
         ->assertSessionHas('dialog-sample.title', '')->assertSessionHas('dialog-sample.agreed', false);
     $this->post(route('blade-components.dialog.store'), ['sample_action' => 'unknown'])->assertUnprocessable();
-});
-
-it('keeps the delivery dialog open during validation and closes it after successful validation', function (): void {
-    Livewire::test(DialogExample::class)->set('reviewing', true)
-        ->call('save')->assertHasErrors(['address' => 'required'])->assertSet('reviewing', true)
-        ->set('revision', 1)->assertSee('Delivery revision 1')
-        ->set('address', 'Bandung studio')->call('save')->assertHasNoErrors()->assertSet('reviewing', false)
-        ->set('visible', false)->assertDontSee('id="livewire-dialog"', false);
 });

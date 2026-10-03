@@ -32,6 +32,9 @@ Phase 4 provides **Datetime Picker** at `/blade-components/datetime-picker` with
 
 Development-only integration fixtures are available at `/development/integrations` and `/development/plain-blade` when the application environment is `local` or `testing`. These are experiments for later components, not public component APIs.
 
+Dialog, Alert, and Slideover integration fixtures share `/development/overlays`.
+Their integration checks are grouped in the browser and feature `OverlayTest.php` files.
+
 Checkbox and radio options inside `<x-sirius::field group>` share the group's error key, error bag, and accessible descriptions. Put `required` on the group to show a single required marker alongside a single set of validation messages. Required radio groups preserve native validation; validate minimum checkbox selections on the server.
 
 Phase 2 integration fixtures at `/development/basic-controls` and `/development/standalone-controls` verify multiple Livewire instances and native controls without Livewire or Alpine. They are available only in local/testing environments.
@@ -93,3 +96,5 @@ Presentation variants use primary (sky), info (neutral), and secondary (indigo).
 Phase 12 provides **Card** and **Accordion**, with Blade-only demos and separate copyable examples. Card supports text or slots and stable section IDs. Accordion supports independent items or exclusive groups using a shared `name`, optional opening animation, and Alpine/Livewire state synchronization. Attribute tables list each attribute separately. See [Phase 12](PHASE_12.md) for contracts and verification.
 
 Phase 13 provides **Dialog**, with Card-style content slots, sizing, initial focus, configurable dismissal, simple fades, and Alpine/Livewire state updates. Its Blade and Livewire project forms demonstrate every shipped form control, including file and richtext image uploads. One dialog is active at a time. Scroll locking preserves page and fixed-element positions and restores prior styles on close, removal, or navigation. See [Phase 13](PHASE_13.md) for the interaction contract and verification.
+
+Phase 14 adds **Alert** for focused prompts with an optional icon and title, text, eight standard variants, fade–bounce animations, and your own footer actions. **Slideover** opens from all four viewport edges; its right-side Blade and Livewire project forms demonstrate every shipped form control. Both reuse Dialog focus, dismissal, events, and scroll locking, with one active overlay across all three components. Usage provides copyable Blade examples; lifecycle fixtures remain in development routes. No dependency was added. See [Phase 14](PHASE_14.md) for contracts and verification.

@@ -42,7 +42,7 @@ it('supports native form validity reset disabled fields and external form associ
     expect($page->script('typeof window.Livewire'))->toBe('undefined');
     expect($page->script('Object.fromEntries(new FormData(document.querySelector("form")))'))->toBe(['body' => '<p>Initial note</p>', 'readonly' => '<p>Locked</p>', 'external' => '<p>External</p>']);
     $page->type('#native-richtext-richtext', 'Changed')->type('#external-richtext-richtext', 'Changed external')->click('Native reset')->assertSeeIn('#native-richtext-richtext', 'Initial note')->assertSeeIn('#external-richtext-richtext', 'External');
-    $page->type('#native-richtext-richtext', '')->assertValue('#native-richtext', '');
+    $page->keys('#native-richtext-richtext', ['ControlOrMeta+A', 'Backspace'])->assertValue('#native-richtext', '');
     expect($page->script('document.querySelector("form").checkValidity()'))->toBeFalse();
     expect($page->script('document.activeElement.id'))->toBe('native-richtext-richtext');
     $page->type('#native-richtext-richtext', 'Text exceeding twenty characters');

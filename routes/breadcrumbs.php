@@ -62,9 +62,9 @@ Breadcrumbs::for('development.layout-components', function (BreadcrumbTrail $tra
     $trail->push('Layout integration', route('development.layout-components'));
 });
 
-Breadcrumbs::for('development.dialog', function (BreadcrumbTrail $trail): void {
-    $trail->parent('started');
-    $trail->push('Dialog integration', route('development.dialog'));
+Breadcrumbs::for('development.overlays', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.index');
+    $trail->push('Overlay integration', route('development.overlays'));
 });
 
 // User Menu
@@ -181,6 +181,11 @@ Breadcrumbs::for('blade-components.badge', function (BreadcrumbTrail $trail): vo
     $trail->push('Badge', route('blade-components.badge'));
 });
 
+Breadcrumbs::for('blade-components.alert', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.presentation');
+    $trail->push('Alert', route('blade-components.alert'));
+});
+
 Breadcrumbs::for('blade-components.button', function (BreadcrumbTrail $trail): void {
     $trail->parent('blade-components.presentation');
     $trail->push('Button', route('blade-components.button'));
@@ -221,4 +226,9 @@ Breadcrumbs::for('blade-components.card', function (BreadcrumbTrail $trail): voi
 Breadcrumbs::for('blade-components.dialog', function (BreadcrumbTrail $trail): void {
     $trail->parent('blade-components.layout');
     $trail->push('Dialog', route('blade-components.dialog'));
+});
+
+Breadcrumbs::for('blade-components.slideover', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.layout');
+    $trail->push('Slideover', route('blade-components.slideover'));
 });
