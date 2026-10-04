@@ -7,7 +7,7 @@ use Sirius\Ui\SiriusUiServiceProvider;
 
 it('discovers the local package and renders its icon dependency', function (): void {
     expect(app()->getProvider(SiriusUiServiceProvider::class))->not->toBeNull()
-        ->and(config('sirius-ui.blade_namespace'))->toBe('sirius');
+        ->and(config('sirius-ui.namespace.blade'))->toBe('sirius');
 
     expect(Blade::render('<x-heroicon-o-eye aria-label="Show password" />'))
         ->toContain('<svg', 'Show password');
