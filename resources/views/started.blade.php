@@ -9,7 +9,7 @@
             <h2 class="text-lg font-medium">Blade Components</h2>
             <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
                 <section id="blade-components-form-controls" class="rounded-xl border border-zinc-200 p-6 dark:border-zinc-700">
-                    <h3 class="font-medium">Form Controls</h3>
+                    <h3 class="font-medium">Form Control</h3>
                     <ul class="list-disc pl-5 mt-3 space-y-3">
                         <li><a class="underline" href="{{ route('blade-components.choices') }}" wire:navigate>Checkbox, Radio &amp; Switch</a></li>
                         <li><a class="underline" href="{{ route('blade-components.currency') }}" wire:navigate>Currency</a></li>
@@ -42,7 +42,7 @@
                     </ul>
                 </section>
                 <section id="blade-components-layouts" class="rounded-xl border border-zinc-200 p-6 dark:border-zinc-700">
-                    <h3 class="font-medium">Layouts</h3>
+                    <h3 class="font-medium">Layout</h3>
                     <ul class="list-disc pl-5 mt-3 space-y-3">
                         <li><a class="underline" href="{{ route('blade-components.accordion') }}" wire:navigate>Accordion</a></li>
                         <li><a class="underline" href="{{ route('blade-components.card') }}" wire:navigate>Card</a></li>
