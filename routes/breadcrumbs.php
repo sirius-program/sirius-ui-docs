@@ -220,9 +220,19 @@ Breadcrumbs::for('blade-components.message', function (BreadcrumbTrail $trail): 
     $trail->push('Message', route('blade-components.message'));
 });
 
+Breadcrumbs::for('blade-components.popover', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.presentation');
+    $trail->push('Popover', route('blade-components.popover'));
+});
+
 Breadcrumbs::for('blade-components.skeleton', function (BreadcrumbTrail $trail): void {
     $trail->parent('blade-components.presentation');
     $trail->push('Skeleton', route('blade-components.skeleton'));
+});
+
+Breadcrumbs::for('blade-components.tooltip', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.presentation');
+    $trail->push('Tooltip', route('blade-components.tooltip'));
 });
 
 // Navigation

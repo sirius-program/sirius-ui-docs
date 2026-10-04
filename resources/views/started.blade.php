@@ -35,7 +35,9 @@
                         <li><a class="underline" href="{{ route('blade-components.button-group') }}" wire:navigate>Button Group</a></li>
                         <li><a class="underline" href="{{ route('blade-components.icon') }}" wire:navigate>Icon</a></li>
                         <li><a class="underline" href="{{ route('blade-components.message') }}" wire:navigate>Message</a></li>
+                        <li><a class="underline" href="{{ route('blade-components.popover') }}" wire:navigate>Popover</a></li>
                         <li><a class="underline" href="{{ route('blade-components.skeleton') }}" wire:navigate>Skeleton</a></li>
+                        <li><a class="underline" href="{{ route('blade-components.tooltip') }}" wire:navigate>Tooltip</a></li>
                     </ul>
                 </section>
                 <section id="blade-components-layouts" class="rounded-xl border border-zinc-200 p-6 dark:border-zinc-700">

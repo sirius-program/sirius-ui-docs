@@ -39,6 +39,7 @@
             <template x-if="archived"><p data-archive-status>Project archived in this sample. Nothing was stored.</p></template>
         </div>
     </section>
+    @include('development.floating')
     <div data-dialog-layout data-overlay-layout style="height:1800px">Scroll-lock fixture</div>
     <div data-dialog-fixed data-overlay-fixed style="position:fixed;right:10px;top:10px;width:20px;height:20px;pointer-events:none"></div>
 </x-layouts::app>

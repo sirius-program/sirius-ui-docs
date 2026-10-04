@@ -4,7 +4,7 @@
 Package: `D:/Projects/sirius-ui`  
 Documentation and integration application: `D:/Projects/sirius-ui-docs`
 
-Phase 0 through Phase 16 checkboxes reflect executed work. The reusable phase gate remains an unchecked template. The expanded roadmap runs through Phase 25; phases 0–7 retain their completed status, Phone follows Datetime Picker; Phone and Slider precede Form, the AI skill follows all component phases, and Flux migration immediately precedes final validation. See PHASE_0.md, PHASE_1.md, PHASE_2.md, PHASE_3.md, PHASE_4.md, PHASE_5.md, PHASE_6.md, PHASE_7.md, PHASE_8.md, PHASE_9.md, PHASE_10.md, PHASE_11.md, PHASE_12.md, PHASE_13.md, PHASE_14.md, PHASE_15.md, and PHASE_16.md for architecture boundaries, decisions, verification scope, and maintenance notes.
+Phase 0 through Phase 17 checkboxes reflect executed work. The reusable phase gate remains an unchecked template. The expanded roadmap runs through Phase 25; phases 0–7 retain their completed status, Phone follows Datetime Picker; Phone and Slider precede Form, the AI skill follows all component phases, and Flux migration immediately precedes final validation. See PHASE_0.md, PHASE_1.md, PHASE_2.md, PHASE_3.md, PHASE_4.md, PHASE_5.md, PHASE_6.md, PHASE_7.md, PHASE_8.md, PHASE_9.md, PHASE_10.md, PHASE_11.md, PHASE_12.md, PHASE_13.md, PHASE_14.md, PHASE_15.md, PHASE_16.md, and PHASE_17.md for architecture boundaries, decisions, verification scope, and maintenance notes.
 
 ## 1. Agreed outcome and architecture
 
@@ -77,7 +77,7 @@ All form controls implement the following contract, including enhanced controls:
 | `avatar` | Image with string fallback for initials; `size`, `variant=rounded\|circle`, `fallback`, `alt` |
 | `breadcrumb` | Item slots, configurable `separator`, and current-page semantics |
 | `menu`, `dropdown` | Shared nested item contract: optional `icon`, `name`, optional `link`, optional `trailing` string/slot, `disabled`, `active` |
-| `tooltip`, `popover` | `variant=default\|primary\|secondary\|warning\|success\|danger`; text tooltip versus HTML-slot popover |
+| `tooltip`, `popover` | `variant=info\|primary\|secondary\|warning\|success\|danger` (default: `info`); text tooltip versus HTML-slot popover |
 | `separator`, `skeleton` | Horizontal/vertical styled separator; fading loading placeholder with reduced-motion support |
 | `slideover` | Dialog interaction contract with `side=top\|right\|bottom\|left`; preserve scrollbar space |
 | `tabs` | Local panels, keyboard navigation, and active-tab binding |
@@ -445,12 +445,12 @@ Prerequisite: Dialog and its shared focus/scroll-lock lifecycle are complete.
 
 ## Phase 17 — Tooltip and popover
 
-- [ ] Share positioning behavior that keeps overlays visible within the viewport; expose `variant=default|primary|secondary|warning|success|danger` with theme tokens and accessible contrast.
-- [ ] Implement Tooltip with escaped text, hover/focus activation, Escape dismissal, and accessible trigger-description association. Do not place interactive content inside Tooltip.
-- [ ] Implement Popover with an HTML content slot, click activation, Escape/outside-click dismissal, and support for interactive controls. Define focus entry/return without trapping focus as a modal dialog would.
-- [ ] Preserve trigger attributes/events and handle overlays inside Dialog/Slideover without clipping, broken focus, or conflicting dismissal. Use one lifecycle owner and reduced-motion-aware transitions.
-- [ ] Test attribute/content semantics; browser-test hover/focus versus click, keyboard use, viewport edges, HTML controls, multiple instances, Livewire lifecycle, and nested overlay interaction.
-- [ ] Add separate Tooltip and Popover docs pages and complete the mandatory phase gate.
+- [x] Share positioning behavior that keeps overlays visible within the viewport; expose `variant=info|primary|secondary|warning|success|danger` (default: `info`) with theme tokens and accessible contrast.
+- [x] Implement Tooltip with escaped text, hover/focus activation, Escape dismissal, and accessible trigger-description association. Do not place interactive content inside Tooltip.
+- [x] Implement Popover with an HTML content slot, click activation, Escape/outside-click dismissal, and support for interactive controls. Define focus entry/return without trapping focus as a modal dialog would.
+- [x] Preserve trigger attributes/events and handle overlays inside Dialog/Slideover without clipping, broken focus, or conflicting dismissal. Use one lifecycle owner and reduced-motion-aware transitions.
+- [x] Test attribute/content semantics; browser-test hover/focus versus click, keyboard use, viewport edges, HTML controls, multiple instances, Livewire lifecycle, and nested overlay interaction.
+- [x] Add separate Tooltip and Popover docs pages and complete the mandatory phase gate.
 
 ## Phase 18 — Tabs and timeline
 

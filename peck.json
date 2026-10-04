@@ -9,7 +9,8 @@
             "integrations",
             "richtext",
             "slideover",
-            "dropdown"
+            "dropdown",
+            "tooltip"
         ],
         "paths": []
     }

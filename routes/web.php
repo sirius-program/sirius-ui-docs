@@ -90,14 +90,16 @@ if (app()->environment(['local', 'testing'])) {
     Route::view('development/overlays', 'development.overlays')->name('development.overlays');
 }
 
-Route::view('blade-components/badge', 'blade-components.badge-docs')->name('blade-components.badge');
 Route::view('blade-components/alert', 'blade-components.alert-docs')->name('blade-components.alert');
 Route::view('blade-components/avatar', 'blade-components.avatar-docs')->name('blade-components.avatar');
-Route::view('blade-components/skeleton', 'blade-components.skeleton-docs')->name('blade-components.skeleton');
+Route::view('blade-components/badge', 'blade-components.badge-docs')->name('blade-components.badge');
 Route::view('blade-components/button', 'blade-components.button-docs')->name('blade-components.button');
 Route::view('blade-components/button-group', 'blade-components.button-group-docs')->name('blade-components.button-group');
 Route::view('blade-components/icon', 'blade-components.icon-docs')->name('blade-components.icon');
 Route::view('blade-components/message', 'blade-components.message-docs')->name('blade-components.message');
+Route::view('blade-components/popover', 'blade-components.popover-docs')->name('blade-components.popover');
+Route::view('blade-components/skeleton', 'blade-components.skeleton-docs')->name('blade-components.skeleton');
+Route::view('blade-components/tooltip', 'blade-components.tooltip-docs')->name('blade-components.tooltip');
 
 Route::view('blade-components/card', 'blade-components.card-docs')->name('blade-components.card');
 Route::view('blade-components/accordion', 'blade-components.accordion-docs')->name('blade-components.accordion');
