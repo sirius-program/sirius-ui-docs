@@ -6,6 +6,10 @@ use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 
 // Fixtures
+Breadcrumbs::for('development.navigation', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.navigation');
+    $trail->push('Navigation integration', route('development.navigation'));
+});
 
 Breadcrumbs::for('development.avatar', function (BreadcrumbTrail $trail): void {
     $trail->parent('blade-components.presentation');
@@ -219,6 +223,28 @@ Breadcrumbs::for('blade-components.message', function (BreadcrumbTrail $trail): 
 Breadcrumbs::for('blade-components.skeleton', function (BreadcrumbTrail $trail): void {
     $trail->parent('blade-components.presentation');
     $trail->push('Skeleton', route('blade-components.skeleton'));
+});
+
+// Navigation
+
+Breadcrumbs::for('blade-components.navigation', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.index');
+    $trail->push('Navigation');
+});
+
+Breadcrumbs::for('blade-components.breadcrumb', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.navigation');
+    $trail->push('Breadcrumb', route('blade-components.breadcrumb'));
+});
+
+Breadcrumbs::for('blade-components.dropdown', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.navigation');
+    $trail->push('Dropdown', route('blade-components.dropdown'));
+});
+
+Breadcrumbs::for('blade-components.menu', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.navigation');
+    $trail->push('Menu', route('blade-components.menu'));
 });
 
 // Layout

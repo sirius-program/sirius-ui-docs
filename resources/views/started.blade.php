@@ -48,6 +48,14 @@
                         <li><a class="underline" href="{{ route('blade-components.slideover') }}" wire:navigate>Slideover</a></li>
                     </ul>
                 </section>
+                <section id="blade-components-navigation" class="rounded-xl border border-zinc-200 p-6 dark:border-zinc-700">
+                    <h3 class="font-medium">Navigation</h3>
+                    <ul class="list-disc pl-5 mt-3 space-y-3">
+                        <li><a class="underline" href="{{ route('blade-components.breadcrumb') }}" wire:navigate>Breadcrumb</a></li>
+                        <li><a class="underline" href="{{ route('blade-components.dropdown') }}" wire:navigate>Dropdown</a></li>
+                        <li><a class="underline" href="{{ route('blade-components.menu') }}" wire:navigate>Menu</a></li>
+                    </ul>
+                </section>
             </div>
         </article>
     </x-docs-page>

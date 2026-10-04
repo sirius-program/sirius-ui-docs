@@ -8,7 +8,8 @@
             "authenticator",
             "integrations",
             "richtext",
-            "slideover"
+            "slideover",
+            "dropdown"
         ],
         "paths": []
     }

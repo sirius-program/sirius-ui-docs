@@ -51,6 +51,11 @@
                         <flux:sidebar.item :href="route('blade-components.separator')" :current="request()->routeIs('blade-components.separator')" wire:navigate>Separator</flux:sidebar.item>
                         <flux:sidebar.item :href="route('blade-components.slideover')" :current="request()->routeIs('blade-components.slideover')" wire:navigate>Slideover</flux:sidebar.item>
                     </flux:sidebar.group>
+                    <flux:sidebar.group expandable heading="Navigation" class="grid" :expanded="request()->routeIs('blade-components.breadcrumb', 'blade-components.dropdown', 'blade-components.menu')">
+                        <flux:sidebar.item :href="route('blade-components.breadcrumb')" :current="request()->routeIs('blade-components.breadcrumb')" wire:navigate>Breadcrumb</flux:sidebar.item>
+                        <flux:sidebar.item :href="route('blade-components.dropdown')" :current="request()->routeIs('blade-components.dropdown')" wire:navigate>Dropdown</flux:sidebar.item>
+                        <flux:sidebar.item :href="route('blade-components.menu')" :current="request()->routeIs('blade-components.menu')" wire:navigate>Menu</flux:sidebar.item>
+                    </flux:sidebar.group>
                 </flux:sidebar.group>
             </flux:sidebar.nav>
         </flux:sidebar>

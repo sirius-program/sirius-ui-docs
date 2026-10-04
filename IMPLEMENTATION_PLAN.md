@@ -4,7 +4,7 @@
 Package: `D:/Projects/sirius-ui`  
 Documentation and integration application: `D:/Projects/sirius-ui-docs`
 
-Phase 0 through Phase 15 checkboxes reflect executed work. The reusable phase gate remains an unchecked template. The expanded roadmap runs through Phase 25; phases 0–7 retain their completed status, Phone follows Datetime Picker; Phone and Slider precede Form, the AI skill follows all component phases, and Flux migration immediately precedes final validation. See PHASE_0.md, PHASE_1.md, PHASE_2.md, PHASE_3.md, PHASE_4.md, PHASE_5.md, PHASE_6.md, PHASE_7.md, PHASE_8.md, PHASE_9.md, PHASE_10.md, PHASE_11.md, PHASE_12.md, PHASE_13.md, PHASE_14.md, and PHASE_15.md for architecture boundaries, decisions, verification scope, and maintenance notes.
+Phase 0 through Phase 16 checkboxes reflect executed work. The reusable phase gate remains an unchecked template. The expanded roadmap runs through Phase 25; phases 0–7 retain their completed status, Phone follows Datetime Picker; Phone and Slider precede Form, the AI skill follows all component phases, and Flux migration immediately precedes final validation. See PHASE_0.md, PHASE_1.md, PHASE_2.md, PHASE_3.md, PHASE_4.md, PHASE_5.md, PHASE_6.md, PHASE_7.md, PHASE_8.md, PHASE_9.md, PHASE_10.md, PHASE_11.md, PHASE_12.md, PHASE_13.md, PHASE_14.md, PHASE_15.md, and PHASE_16.md for architecture boundaries, decisions, verification scope, and maintenance notes.
 
 ## 1. Agreed outcome and architecture
 
@@ -431,17 +431,17 @@ Prerequisite: Dialog and its shared focus/scroll-lock lifecycle are complete.
 
 ### 16.1 Shared navigation items
 
-- [ ] Implement Breadcrumb with slotted items, configurable text/icon separator, navigation labeling, and current-page semantics. Decorative separators are hidden from assistive technology.
-- [ ] Establish a shared Menu/Dropdown item contract: optional `icon`, `name`, optional `link`, optional `trailing`, `disabled`, and `active`. `trailing` accepts a plain string or named slot for shortcuts/badges; the slot takes precedence.
-- [ ] Use links for navigation and non-submitting buttons for items without links that invoke Alpine/Livewire actions. Preserve consumer directives and prevent disabled mouse/keyboard activation.
-- [ ] Support nested submenus and consumer-supplied item content without duplicating the item API. Document navigation semantics for Menu and action-menu semantics for Dropdown, including any semantic differences.
+- [x] Implement Breadcrumb with slotted items, configurable text/icon separator, navigation labeling, and current-page semantics. Decorative separators are hidden from assistive technology.
+- [x] Establish a shared Menu/Dropdown item contract: optional `icon`, `name`, optional `link`, optional `trailing`, `disabled`, and `active`. `trailing` accepts a plain string or named slot for shortcuts/badges; the slot takes precedence.
+- [x] Use links for navigation and non-submitting buttons for items without links that invoke Alpine/Livewire actions. Preserve consumer directives and prevent disabled mouse/keyboard activation.
+- [x] Support nested submenus and consumer-supplied item content without duplicating the item API. Document navigation semantics for Menu and action-menu semantics for Dropdown, including any semantic differences.
 
 ### 16.2 Interaction and verification
 
-- [ ] Implement Dropdown trigger/open state, outside click and Escape dismissal, focus return, keyboard navigation, submenu navigation, and touch operation. Use simple entry/exit animations and reduced-motion support; nested items must not require hover.
-- [ ] Keep submenus within the viewport and support long/scrollable menus, active items, and multiple instances. Clean up listeners and synchronize state through Livewire updates/navigation.
-- [ ] Test names/links escaping, trailing string versus slot, nested structure, disabled/active states, action forwarding, and Breadcrumb separator/current item.
-- [ ] Browser-test keyboard and touch submenus, dismissal/focus return, shortcut/count content, and Livewire-driven changes. Add all three docs pages and complete the mandatory phase gate.
+- [x] Implement Dropdown trigger/open state, outside click and Escape dismissal, focus return, keyboard navigation, submenu navigation, and touch operation. Use simple entry/exit animations and reduced-motion support; nested items must not require hover.
+- [x] Keep submenus within the viewport and support long/scrollable menus, active items, and multiple instances. Clean up listeners and synchronize state through Livewire updates/navigation.
+- [x] Test names/links escaping, trailing string versus slot, nested structure, disabled/active states, action forwarding, and Breadcrumb separator/current item.
+- [x] Browser-test keyboard and touch submenus, dismissal/focus return, shortcut/count content, and Livewire-driven changes. Add all three docs pages and complete the mandatory phase gate.
 
 ## Phase 17 — Tooltip and popover
 

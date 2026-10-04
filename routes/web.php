@@ -26,6 +26,9 @@ require __DIR__ . '/settings.php';
 Route::view('/', 'welcome')->name('home');
 Route::view('dashboard', 'dashboard')->name('dashboard');
 Route::view('getting-started', 'started')->name('started');
+Route::view('blade-components/breadcrumb', 'blade-components.breadcrumb-docs')->name('blade-components.breadcrumb');
+Route::view('blade-components/dropdown', 'blade-components.dropdown-docs')->name('blade-components.dropdown');
+Route::view('blade-components/menu', 'blade-components.menu-docs')->name('blade-components.menu');
 
 Route::view('blade-components/choices', 'blade-components.choices-docs')->name('blade-components.choices');
 Route::view('blade-components/currency', 'blade-components.currency-docs')->name('blade-components.currency');
@@ -68,6 +71,7 @@ if (app()->environment(['local', 'testing'])) {
     Route::view('development/plain-blade', 'development.plain-blade')->name('development.plain-blade');
     Route::view('development/standalone-controls', 'development.standalone-controls')->name('development.standalone-controls');
     Route::view('development/avatar', 'development.avatar')->name('development.avatar');
+    Route::view('development/navigation', 'development.navigation')->name('development.navigation');
     Route::view('development/basic-controls', 'development.basic-controls')->name('development.basic-controls');
     Route::view('development/currency', 'development.currency')->name('development.currency');
     Route::view('development/currency-bindings', 'development.currency-bindings')->name('development.currency-bindings');
