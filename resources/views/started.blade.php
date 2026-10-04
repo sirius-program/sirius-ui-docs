@@ -37,6 +37,7 @@
                         <li><a class="underline" href="{{ route('blade-components.message') }}" wire:navigate>Message</a></li>
                         <li><a class="underline" href="{{ route('blade-components.popover') }}" wire:navigate>Popover</a></li>
                         <li><a class="underline" href="{{ route('blade-components.skeleton') }}" wire:navigate>Skeleton</a></li>
+                        <li><a class="underline" href="{{ route('blade-components.timeline') }}" wire:navigate>Timeline</a></li>
                         <li><a class="underline" href="{{ route('blade-components.tooltip') }}" wire:navigate>Tooltip</a></li>
                     </ul>
                 </section>
@@ -48,6 +49,7 @@
                         <li><a class="underline" href="{{ route('blade-components.dialog') }}" wire:navigate>Dialog</a></li>
                         <li><a class="underline" href="{{ route('blade-components.separator') }}" wire:navigate>Separator</a></li>
                         <li><a class="underline" href="{{ route('blade-components.slideover') }}" wire:navigate>Slideover</a></li>
+                        <li><a class="underline" href="{{ route('blade-components.tabs') }}" wire:navigate>Tabs</a></li>
                     </ul>
                 </section>
                 <section id="blade-components-navigation" class="rounded-xl border border-zinc-200 p-6 dark:border-zinc-700">

@@ -86,6 +86,7 @@ if (app()->environment(['local', 'testing'])) {
     Route::view('development/slider', 'development.slider')->name('development.slider');
     Route::view('development/slider-bindings', 'development.slider-bindings')->name('development.slider-bindings');
     Route::view('development/layout-components', 'development.layout-components')->name('development.layout-components');
+    Route::view('development/tabs-timeline', 'development.tabs-timeline')->name('development.tabs-timeline');
     Route::view('development/presentation', 'development.presentation')->name('development.presentation');
     Route::view('development/overlays', 'development.overlays')->name('development.overlays');
 }
@@ -100,12 +101,14 @@ Route::view('blade-components/message', 'blade-components.message-docs')->name('
 Route::view('blade-components/popover', 'blade-components.popover-docs')->name('blade-components.popover');
 Route::view('blade-components/skeleton', 'blade-components.skeleton-docs')->name('blade-components.skeleton');
 Route::view('blade-components/tooltip', 'blade-components.tooltip-docs')->name('blade-components.tooltip');
+Route::view('blade-components/timeline', 'blade-components.timeline-docs')->name('blade-components.timeline');
 
 Route::view('blade-components/card', 'blade-components.card-docs')->name('blade-components.card');
 Route::view('blade-components/accordion', 'blade-components.accordion-docs')->name('blade-components.accordion');
 Route::view('blade-components/dialog', 'blade-components.dialog-docs')->name('blade-components.dialog');
 Route::view('blade-components/slideover', 'blade-components.slideover-docs')->name('blade-components.slideover');
 Route::view('blade-components/separator', 'blade-components.separator-docs')->name('blade-components.separator');
+Route::view('blade-components/tabs', 'blade-components.tabs-docs')->name('blade-components.tabs');
 
 Route::post('blade-components/dialog-example', DialogFormExampleController::class)->name('blade-components.dialog.store');
 Route::post('blade-components/slideover-example', SlideoverFormExampleController::class)->name('blade-components.slideover.store');

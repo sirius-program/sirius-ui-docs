@@ -71,6 +71,11 @@ Breadcrumbs::for('development.layout-components', function (BreadcrumbTrail $tra
     $trail->push('Layout integration', route('development.layout-components'));
 });
 
+Breadcrumbs::for('development.tabs-timeline', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.layout');
+    $trail->push('Tabs and Timeline integration', route('development.tabs-timeline'));
+});
+
 Breadcrumbs::for('development.overlays', function (BreadcrumbTrail $trail): void {
     $trail->parent('blade-components.index');
     $trail->push('Overlay integration', route('development.overlays'));
@@ -235,6 +240,11 @@ Breadcrumbs::for('blade-components.tooltip', function (BreadcrumbTrail $trail): 
     $trail->push('Tooltip', route('blade-components.tooltip'));
 });
 
+Breadcrumbs::for('blade-components.timeline', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.presentation');
+    $trail->push('Timeline', route('blade-components.timeline'));
+});
+
 // Navigation
 
 Breadcrumbs::for('blade-components.navigation', function (BreadcrumbTrail $trail): void {
@@ -287,4 +297,9 @@ Breadcrumbs::for('blade-components.slideover', function (BreadcrumbTrail $trail)
 Breadcrumbs::for('blade-components.separator', function (BreadcrumbTrail $trail): void {
     $trail->parent('blade-components.layout');
     $trail->push('Separator', route('blade-components.separator'));
+});
+
+Breadcrumbs::for('blade-components.tabs', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.layout');
+    $trail->push('Tabs', route('blade-components.tabs'));
 });

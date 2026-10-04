@@ -4,7 +4,7 @@
 Package: `D:/Projects/sirius-ui`  
 Documentation and integration application: `D:/Projects/sirius-ui-docs`
 
-Phase 0 through Phase 17 checkboxes reflect executed work. The reusable phase gate remains an unchecked template. The expanded roadmap runs through Phase 25; phases 0–7 retain their completed status, Phone follows Datetime Picker; Phone and Slider precede Form, the AI skill follows all component phases, and Flux migration immediately precedes final validation. See PHASE_0.md, PHASE_1.md, PHASE_2.md, PHASE_3.md, PHASE_4.md, PHASE_5.md, PHASE_6.md, PHASE_7.md, PHASE_8.md, PHASE_9.md, PHASE_10.md, PHASE_11.md, PHASE_12.md, PHASE_13.md, PHASE_14.md, PHASE_15.md, PHASE_16.md, and PHASE_17.md for architecture boundaries, decisions, verification scope, and maintenance notes.
+Phase 0 through Phase 18 checkboxes reflect executed work. The reusable phase gate remains an unchecked template. The expanded roadmap runs through Phase 25; phases 0–7 retain their completed status, Phone follows Datetime Picker; Phone and Slider precede Form, the AI skill follows all component phases, and Flux migration immediately precedes final validation. See PHASE_0.md, PHASE_1.md, PHASE_2.md, PHASE_3.md, PHASE_4.md, PHASE_5.md, PHASE_6.md, PHASE_7.md, PHASE_8.md, PHASE_9.md, PHASE_10.md, PHASE_11.md, PHASE_12.md, PHASE_13.md, PHASE_14.md, PHASE_15.md, PHASE_16.md, PHASE_17.md, and PHASE_18.md for architecture boundaries, decisions, verification scope, and maintenance notes.
 
 ## 1. Agreed outcome and architecture
 
@@ -454,11 +454,11 @@ Prerequisite: Dialog and its shared focus/scroll-lock lifecycle are complete.
 
 ## Phase 18 — Tabs and timeline
 
-- [ ] Implement Tabs for local content panels with stable trigger/panel associations, active-tab binding, keyboard navigation, disabled tabs, and accessible selected/hidden states. Preserve child form values when switching panels and document rendering behavior.
-- [ ] Implement Timeline as a vertical sequence matching the supplied reference: connected markers, `completed`, `current`, and `upcoming` states, optional icons or numbers, title, description, and a content slot.
-- [ ] Keep Timeline presentational: it does not own form validation, step progression, or automatic workflow actions. Consumer markup may provide links/actions without changing this responsibility.
-- [ ] Test Tabs associations, state updates, and hidden panel focus; test Timeline states and escaping/slots. Browser-test keyboard tabs, Livewire state/value preservation, responsive rendering, and light/dark presentation.
-- [ ] Add separate Tabs and Timeline docs pages and complete the mandatory phase gate.
+- [x] Implement Tabs for local content panels with stable trigger/panel associations, active-tab binding, keyboard navigation, disabled tabs, and accessible selected/hidden states. Preserve child form values when switching panels and document rendering behavior.
+- [x] Implement Timeline as a vertical sequence matching the supplied reference: connected markers, `completed`, `current`, and `upcoming` states, optional icons or numbers, title, description, and a content slot.
+- [x] Keep Timeline presentational: it does not own form validation, step progression, or automatic workflow actions. Consumer markup may provide links/actions without changing this responsibility.
+- [x] Test Tabs associations, state updates, and hidden panel focus; test Timeline states and escaping/slots. Browser-test keyboard tabs, Livewire state/value preservation, responsive rendering, and light/dark presentation.
+- [x] Add separate Tabs and Timeline docs pages and complete the mandatory phase gate.
 
 ## Phase 19 — Livewire table core
 
