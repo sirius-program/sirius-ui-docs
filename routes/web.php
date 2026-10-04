@@ -89,6 +89,7 @@ if (app()->environment(['local', 'testing'])) {
     Route::view('development/tabs-timeline', 'development.tabs-timeline')->name('development.tabs-timeline');
     Route::view('development/presentation', 'development.presentation')->name('development.presentation');
     Route::view('development/overlays', 'development.overlays')->name('development.overlays');
+    Route::view('development/toast', 'development.toast')->name('development.toast');
 }
 
 Route::view('blade-components/alert', 'blade-components.alert-docs')->name('blade-components.alert');
@@ -100,8 +101,9 @@ Route::view('blade-components/icon', 'blade-components.icon-docs')->name('blade-
 Route::view('blade-components/message', 'blade-components.message-docs')->name('blade-components.message');
 Route::view('blade-components/popover', 'blade-components.popover-docs')->name('blade-components.popover');
 Route::view('blade-components/skeleton', 'blade-components.skeleton-docs')->name('blade-components.skeleton');
-Route::view('blade-components/tooltip', 'blade-components.tooltip-docs')->name('blade-components.tooltip');
 Route::view('blade-components/timeline', 'blade-components.timeline-docs')->name('blade-components.timeline');
+Route::view('blade-components/toast', 'blade-components.toast-docs')->name('blade-components.toast');
+Route::view('blade-components/tooltip', 'blade-components.tooltip-docs')->name('blade-components.tooltip');
 
 Route::view('blade-components/card', 'blade-components.card-docs')->name('blade-components.card');
 Route::view('blade-components/accordion', 'blade-components.accordion-docs')->name('blade-components.accordion');

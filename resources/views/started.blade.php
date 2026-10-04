@@ -38,6 +38,7 @@
                         <li><a class="underline" href="{{ route('blade-components.popover') }}" wire:navigate>Popover</a></li>
                         <li><a class="underline" href="{{ route('blade-components.skeleton') }}" wire:navigate>Skeleton</a></li>
                         <li><a class="underline" href="{{ route('blade-components.timeline') }}" wire:navigate>Timeline</a></li>
+                        <li><a class="underline" href="{{ route('blade-components.toast') }}" wire:navigate>Toast</a></li>
                         <li><a class="underline" href="{{ route('blade-components.tooltip') }}" wire:navigate>Tooltip</a></li>
                     </ul>
                 </section>

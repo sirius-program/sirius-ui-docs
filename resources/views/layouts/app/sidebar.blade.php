@@ -33,7 +33,7 @@
                         <flux:sidebar.item :href="route('blade-components.textarea')" :current="request()->routeIs('blade-components.textarea')" wire:navigate>Textarea</flux:sidebar.item>
                     </flux:sidebar.group>
 
-                    <flux:sidebar.group expandable heading="Presentation" class="grid" :expanded="request()->routeIs('blade-components.alert', 'blade-components.avatar', 'blade-components.skeleton', 'blade-components.icon', 'blade-components.button', 'blade-components.button-group', 'blade-components.badge', 'blade-components.message', 'blade-components.popover', 'blade-components.timeline', 'blade-components.tooltip')">
+                    <flux:sidebar.group expandable heading="Presentation" class="grid" :expanded="request()->routeIs('blade-components.alert', 'blade-components.avatar', 'blade-components.skeleton', 'blade-components.icon', 'blade-components.button', 'blade-components.button-group', 'blade-components.badge', 'blade-components.message', 'blade-components.popover', 'blade-components.timeline', 'blade-components.toast', 'blade-components.tooltip')">
                         <flux:sidebar.item :href="route('blade-components.alert')" :current="request()->routeIs('blade-components.alert')" wire:navigate>Alert</flux:sidebar.item>
                         <flux:sidebar.item :href="route('blade-components.avatar')" :current="request()->routeIs('blade-components.avatar')" wire:navigate>Avatar</flux:sidebar.item>
                         <flux:sidebar.item :href="route('blade-components.badge')" :current="request()->routeIs('blade-components.badge')" wire:navigate>Badge</flux:sidebar.item>
@@ -44,6 +44,7 @@
                         <flux:sidebar.item :href="route('blade-components.popover')" :current="request()->routeIs('blade-components.popover')" wire:navigate>Popover</flux:sidebar.item>
                         <flux:sidebar.item :href="route('blade-components.skeleton')" :current="request()->routeIs('blade-components.skeleton')" wire:navigate>Skeleton</flux:sidebar.item>
                         <flux:sidebar.item :href="route('blade-components.timeline')" :current="request()->routeIs('blade-components.timeline')" wire:navigate>Timeline</flux:sidebar.item>
+                        <flux:sidebar.item :href="route('blade-components.toast')" :current="request()->routeIs('blade-components.toast')" wire:navigate>Toast</flux:sidebar.item>
                         <flux:sidebar.item :href="route('blade-components.tooltip')" :current="request()->routeIs('blade-components.tooltip')" wire:navigate>Tooltip</flux:sidebar.item>
                     </flux:sidebar.group>
                     

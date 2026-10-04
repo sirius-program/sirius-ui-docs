@@ -16,11 +16,6 @@ Breadcrumbs::for('development.avatar', function (BreadcrumbTrail $trail): void {
     $trail->push('Avatar integration', route('development.avatar'));
 });
 
-Breadcrumbs::for('development.basic-control', function (BreadcrumbTrail $trail): void {
-    $trail->parent('blade-components.index');
-    $trail->push('Basic control integration', route('development.basic-control'));
-});
-
 Breadcrumbs::for('development.basic-controls', function (BreadcrumbTrail $trail): void {
     $trail->parent('blade-components.index');
     $trail->push('Basic control integration', route('development.basic-controls'));
@@ -79,6 +74,11 @@ Breadcrumbs::for('development.tabs-timeline', function (BreadcrumbTrail $trail):
 Breadcrumbs::for('development.overlays', function (BreadcrumbTrail $trail): void {
     $trail->parent('blade-components.index');
     $trail->push('Overlay integration', route('development.overlays'));
+});
+
+Breadcrumbs::for('development.toast', function (BreadcrumbTrail $trail): void {
+    $trail->parent('home');
+    $trail->push('Toast integration', route('development.toast'));
 });
 
 // User Menu
@@ -235,14 +235,19 @@ Breadcrumbs::for('blade-components.skeleton', function (BreadcrumbTrail $trail):
     $trail->push('Skeleton', route('blade-components.skeleton'));
 });
 
-Breadcrumbs::for('blade-components.tooltip', function (BreadcrumbTrail $trail): void {
-    $trail->parent('blade-components.presentation');
-    $trail->push('Tooltip', route('blade-components.tooltip'));
-});
-
 Breadcrumbs::for('blade-components.timeline', function (BreadcrumbTrail $trail): void {
     $trail->parent('blade-components.presentation');
     $trail->push('Timeline', route('blade-components.timeline'));
+});
+
+Breadcrumbs::for('blade-components.toast', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.presentation');
+    $trail->push('Toast', route('blade-components.toast'));
+});
+
+Breadcrumbs::for('blade-components.tooltip', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.presentation');
+    $trail->push('Tooltip', route('blade-components.tooltip'));
 });
 
 // Navigation
