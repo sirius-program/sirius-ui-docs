@@ -26,9 +26,6 @@ require __DIR__ . '/settings.php';
 Route::view('/', 'welcome')->name('home');
 Route::view('dashboard', 'dashboard')->name('dashboard');
 Route::view('getting-started', 'started')->name('started');
-Route::view('blade-components/breadcrumb', 'blade-components.breadcrumb-docs')->name('blade-components.breadcrumb');
-Route::view('blade-components/dropdown', 'blade-components.dropdown-docs')->name('blade-components.dropdown');
-Route::view('blade-components/menu', 'blade-components.menu-docs')->name('blade-components.menu');
 
 Route::view('blade-components/choices', 'blade-components.choices-docs')->name('blade-components.choices');
 Route::view('blade-components/currency', 'blade-components.currency-docs')->name('blade-components.currency');
@@ -110,3 +107,7 @@ Route::view('blade-components/separator', 'blade-components.separator-docs')->na
 
 Route::post('blade-components/dialog-example', DialogFormExampleController::class)->name('blade-components.dialog.store');
 Route::post('blade-components/slideover-example', SlideoverFormExampleController::class)->name('blade-components.slideover.store');
+
+Route::view('blade-components/breadcrumb', 'blade-components.breadcrumb-docs')->name('blade-components.breadcrumb');
+Route::view('blade-components/dropdown', 'blade-components.dropdown-docs')->name('blade-components.dropdown');
+Route::view('blade-components/menu', 'blade-components.menu-docs')->name('blade-components.menu');

@@ -1,19 +1,22 @@
-<x-docs-props :rows="[
-    ['value', 'array', '[]', 'Existing files: name and size in bytes are required; url is optional for image/PDF previews (root-relative or HTTP(S)). Without url, show name and size only. Files count toward limits and required but are not re-uploaded. Remove emits file-upload:remove-existing; your app handles deletion.'],
-    ['readonly', 'boolean', 'false', 'Prevent changes while keeping the submitted value. Requires JavaScript.'],
-    ['preview', 'boolean', 'true', 'Show image/PDF previews when available.'],
-    ['preview-height', 'integer', '240', 'Preview height in pixels, from 80 to 1000.'],
-    ['multiple', 'boolean', 'false', 'Allow multiple files; a native field name receives [] automatically.'],
-    ['accept', 'string | null', 'null', 'Allowed MIME types or extensions, separated by commas. FilePond rejects other files before upload; validate them on the server too.'],
-    ['max-size', 'integer | null', 'null', 'Maximum file size in KiB (1024 bytes). Null means no client limit.'],
-    ['max-files', 'integer | null', 'null', 'Positive maximum file count in multiple mode. Single mode allows one file.'],
-    ['reset-key', 'string | integer', '0', 'Change to reset the widget from the server.'],
-    ['options', 'array', '[]', 'FilePond options: allowDrop, allowBrowse, allowPaste, allowReplace (booleans), and itemInsertLocation (before or after). Explicit props and lifecycle protection take priority. Server, files, callbacks, and remote loading options are rejected.'],
-    ['label', 'string | null', 'null', 'Label text; hidden when empty.'],
-    ['helper', 'string | null', 'null', 'Helper text below the control.'],
-    ['error-key', 'string | null', 'null', 'Validation key. Defaults to wire:model, then the field name.'],
-    ['error-bag', 'string', 'default', 'Laravel validation error bag.'],
-    ['errors', 'ViewErrorBag | null', 'null', 'Custom error bags; defaults to Laravel or Livewire errors.'],
-    ['size', 'sm | md | lg', 'md', 'Font and padding size; separate from HTML size.'],
-    ['wrapper-class', 'string', 'empty string', 'CSS classes for the field wrapper.'],
-]" note="Accepts HTML5 file-input attributes, Alpine events, data-*, ARIA, and wire:model. Type and upload lifecycle are managed by the package. x-model is unsupported; value is for existing-file metadata." />
+<section class="min-w-0 space-y-3" data-docs-props>
+    <h3 class="text-xl font-medium">Attributes</h3>
+    <x-docs-props :rows="[
+        ['value', 'array', '[]', 'Existing files: name and size in bytes are required; url is optional for image/PDF previews (root-relative or HTTP(S)). Without url, show name and size only. Files count toward limits and required but are not re-uploaded. Remove emits file-upload:remove-existing; your app handles deletion.'],
+        ['readonly', 'boolean', 'false', 'Prevent changes while keeping the submitted value. Requires JavaScript.'],
+        ['preview', 'boolean', 'true', 'Show image/PDF previews when available.'],
+        ['preview-height', 'integer', '240', 'Preview height in pixels, from 80 to 1000.'],
+        ['multiple', 'boolean', 'false', 'Allow multiple files; a native field name receives [] automatically.'],
+        ['accept', 'string | null', 'null', 'Allowed MIME types or extensions, separated by commas. FilePond rejects other files before upload; validate them on the server too.'],
+        ['max-size', 'integer | null', 'null', 'Maximum file size in KiB (1024 bytes). Null means no client limit.'],
+        ['max-files', 'integer | null', 'null', 'Positive maximum file count in multiple mode. Single mode allows one file.'],
+        ['reset-key', 'string | integer', '0', 'Change to reset the widget from the server.'],
+        ['options', 'array', '[]', 'FilePond options: allowDrop, allowBrowse, allowPaste, allowReplace (booleans), and itemInsertLocation (before or after). Explicit props and lifecycle protection take priority. Server, files, callbacks, and remote loading options are rejected.'],
+        ['label', 'string | null', 'null', 'Label text; hidden when empty.'],
+        ['helper', 'string | null', 'null', 'Helper text below the control.'],
+        ['error-key', 'string | null', 'null', 'Validation key. Defaults to wire:model, then the field name.'],
+        ['error-bag', 'string', 'default', 'Laravel validation error bag.'],
+        ['errors', 'ViewErrorBag | null', 'null', 'Custom error bags; defaults to Laravel or Livewire errors.'],
+        ['size', 'sm | md | lg', 'md', 'Font and padding size; separate from HTML size.'],
+        ['wrapper-class', 'string', 'empty string', 'CSS classes for the field wrapper.'],
+    ]" note="Accepts HTML5 file-input attributes, Alpine events, data-*, ARIA, and wire:model. Type and upload lifecycle are managed by the package. x-model is unsupported; value is for existing-file metadata." />
+</section>

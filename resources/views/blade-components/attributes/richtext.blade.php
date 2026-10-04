@@ -1,17 +1,20 @@
-<x-docs-props :rows="[
-    ['value', 'string | null', 'null', 'Initial HTML; falls back to the slot content. Empty richtexts submit an empty string.'],
-    ['toolbar', 'array | null', 'null', 'Ordered buttons: bold, italic, underline, strike, heading, bulletList, orderedList, blockquote, codeBlock, link, image, undo, redo. Null shows all except image; [] hides the toolbar.'],
-    ['upload-url', 'string | null', 'null', 'Same-origin image upload endpoint. Required when image is in the toolbar.'],
-    ['upload-max-size', 'integer', '2048', 'Maximum image size in KiB, from 1 to 102400. Match the server limit.'],
-    ['upload-accept', 'array', '[image/jpeg, image/png, image/webp]', 'Allowed image MIME types. JPEG, PNG, WebP, GIF, and AVIF are supported.'],
-    ['reset-key', 'string | integer | null', 'null', 'Change this value to cancel pending uploads and rebuild the richtext, including when the bound value is already empty.'],
-    ['height', 'integer', '240', 'Minimum editing height in pixels, from 80 to 2000.'],
-    ['options', 'array', '[]', 'Free richtext settings: headingLevels (default [2, 3]), undoDepth (100), newGroupDelay (500 ms), autolink (true), linkOnPaste (true).'],
-    ['label', 'string | null', 'null', 'Label text; hidden when empty.'],
-    ['helper', 'string | null', 'null', 'Helper text below the control.'],
-    ['error-key', 'string | null', 'null', 'Validation key. Defaults to wire:model, then the field name.'],
-    ['error-bag', 'string', 'default', 'Laravel validation error bag.'],
-    ['errors', 'ViewErrorBag | null', 'null', 'Custom error bags; defaults to Laravel or Livewire errors.'],
-    ['size', 'sm | md | lg', 'md', 'Font and padding size; separate from HTML size.'],
-    ['wrapper-class', 'string', 'empty string', 'CSS classes for the field wrapper.'],
-]" note="Accepts HTML5 textarea attributes, Alpine events, data-*, ARIA, and supported Livewire bindings. Bind an HTML string; number, boolean, and trim modifiers are not supported. Textarea's native rows, cols, and resize are not supported." />
+<section class="min-w-0 space-y-3" data-docs-props>
+    <h3 class="text-xl font-medium">Attributes</h3>
+    <x-docs-props :rows="[
+        ['value', 'string | null', 'null', 'Initial HTML; falls back to the slot content. Empty richtexts submit an empty string.'],
+        ['toolbar', 'array | null', 'null', 'Ordered buttons: bold, italic, underline, strike, heading, bulletList, orderedList, blockquote, codeBlock, link, image, undo, redo. Null shows all except image; [] hides the toolbar.'],
+        ['upload-url', 'string | null', 'null', 'Same-origin image upload endpoint. Required when image is in the toolbar.'],
+        ['upload-max-size', 'integer', '2048', 'Maximum image size in KiB, from 1 to 102400. Match the server limit.'],
+        ['upload-accept', 'array', '[image/jpeg, image/png, image/webp]', 'Allowed image MIME types. JPEG, PNG, WebP, GIF, and AVIF are supported.'],
+        ['reset-key', 'string | integer | null', 'null', 'Change this value to cancel pending uploads and rebuild the richtext, including when the bound value is already empty.'],
+        ['height', 'integer', '240', 'Minimum editing height in pixels, from 80 to 2000.'],
+        ['options', 'array', '[]', 'Free richtext settings: headingLevels (default [2, 3]), undoDepth (100), newGroupDelay (500 ms), autolink (true), linkOnPaste (true).'],
+        ['label', 'string | null', 'null', 'Label text; hidden when empty.'],
+        ['helper', 'string | null', 'null', 'Helper text below the control.'],
+        ['error-key', 'string | null', 'null', 'Validation key. Defaults to wire:model, then the field name.'],
+        ['error-bag', 'string', 'default', 'Laravel validation error bag.'],
+        ['errors', 'ViewErrorBag | null', 'null', 'Custom error bags; defaults to Laravel or Livewire errors.'],
+        ['size', 'sm | md | lg', 'md', 'Font and padding size; separate from HTML size.'],
+        ['wrapper-class', 'string', 'empty string', 'CSS classes for the field wrapper.'],
+    ]" note="Accepts HTML5 textarea attributes, Alpine events, data-*, ARIA, and supported Livewire bindings. Bind an HTML string; number, boolean, and trim modifiers are not supported. Textarea's native rows, cols, and resize are not supported." />
+</section>

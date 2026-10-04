@@ -1,17 +1,20 @@
-<x-docs-props :rows="[
-    ['range', 'boolean', 'false', 'Enable two handles on a shared scale.'],
-    ['value', 'number | array | null', 'null', 'Initial value. Single mode defaults to min; range mode requires two ordered numbers.'],
-    ['min', 'number | array', '0', 'Minimum value; range mode requires one minimum per handle.'],
-    ['max', 'number | array', '100', 'Maximum value; range mode requires one maximum per handle.'],
-    ['step', 'number | array', '1', 'Positive increment anchored at min; range mode requires one step per handle.'],
-    ['name', 'string | null', 'null', 'Native field name. Range mode submits two ordered entries using name[].'],
-    ['id', 'string | null', 'random 5-character string', 'Control ID; connects the label, helper, and errors.'],
-    ['label', 'string | null', 'null', 'Label text; hidden when empty.'],
-    ['helper', 'string | null', 'null', 'Helper text below the control.'],
-    ['required', 'boolean', 'false', 'Show the required indicator and require a value. Sliders always have a value.'],
-    ['error-key', 'string | null', 'null', 'Validation key. Defaults to wire:model, then the field name.'],
-    ['error-bag', 'string', 'default', 'Laravel validation error bag.'],
-    ['errors', 'ViewErrorBag | null', 'null', 'Custom error bags; defaults to Laravel or Livewire errors.'],
-    ['size', 'sm | md | lg', 'md', 'Font and padding size; separate from HTML size.'],
-    ['wrapper-class', 'string', 'empty string', 'CSS classes for the field wrapper.'],
-]" note="Accepts HTML5 range-input attributes, Alpine events, data-*, ARIA, and supported Livewire bindings. Bind a number or a two-number array; number, boolean, and trim modifiers are not supported." />
+<section class="min-w-0 space-y-3" data-docs-props>
+    <h3 class="text-xl font-medium">Attributes</h3>
+    <x-docs-props :rows="[
+        ['range', 'boolean', 'false', 'Enable two handles on a shared scale.'],
+        ['value', 'number | array | null', 'null', 'Initial value. Single mode defaults to min; range mode requires two ordered numbers.'],
+        ['min', 'number | array', '0', 'Minimum value; range mode requires one minimum per handle.'],
+        ['max', 'number | array', '100', 'Maximum value; range mode requires one maximum per handle.'],
+        ['step', 'number | array', '1', 'Positive increment anchored at min; range mode requires one step per handle.'],
+        ['name', 'string | null', 'null', 'Native field name. Range mode submits two ordered entries using name[].'],
+        ['id', 'string | null', 'random 5-character string', 'Control ID; connects the label, helper, and errors.'],
+        ['label', 'string | null', 'null', 'Label text; hidden when empty.'],
+        ['helper', 'string | null', 'null', 'Helper text below the control.'],
+        ['required', 'boolean', 'false', 'Show the required indicator and require a value. Sliders always have a value.'],
+        ['error-key', 'string | null', 'null', 'Validation key. Defaults to wire:model, then the field name.'],
+        ['error-bag', 'string', 'default', 'Laravel validation error bag.'],
+        ['errors', 'ViewErrorBag | null', 'null', 'Custom error bags; defaults to Laravel or Livewire errors.'],
+        ['size', 'sm | md | lg', 'md', 'Font and padding size; separate from HTML size.'],
+        ['wrapper-class', 'string', 'empty string', 'CSS classes for the field wrapper.'],
+    ]" note="Accepts HTML5 range-input attributes, Alpine events, data-*, ARIA, and supported Livewire bindings. Bind a number or a two-number array; number, boolean, and trim modifiers are not supported." />
+</section>

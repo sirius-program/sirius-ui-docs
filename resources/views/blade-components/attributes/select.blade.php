@@ -1,20 +1,23 @@
-<x-docs-props :rows="[
-    ['options', 'array', '[]', 'List of records with a unique non-empty value and a label; optional disabled boolean and group label. Integer values become strings.'],
-    ['value', 'string | integer | array | null', 'null', 'Initial selected ID or list of IDs in multiple mode. Empty single values bind null; empty multiple values bind an empty array.'],
-    ['multiple', 'boolean', 'false', 'Allow multiple selected IDs; a native field name receives [] automatically.'],
-    ['placeholder', 'string', 'Select an option', 'Prompt displayed when no value is selected.'],
-    ['readonly', 'boolean', 'false', 'Prevent changes while keeping the submitted value. Requires JavaScript.'],
-    ['searchable', 'boolean', 'true', 'Allow typing to filter local options or search the configured endpoint.'],
-    ['clearable', 'boolean | null', '!required', 'Allow clearing by button or keyboard. Defaults to !required; always enabled for multiple selection.'],
-    ['search-url', 'string | null', 'null', 'Same-origin GET endpoint for remote search, pagination, and selected-label resolution.'],
-    ['debounce', 'integer', '300', 'Remote search delay in milliseconds, from 0 to 10000.'],
-    ['min-search-length', 'integer', '0', 'Minimum query length for remote search, from 0 to 100.'],
-    ['max-items', 'integer | null', 'null', 'Positive maximum number of selected items in multiple mode; null is unlimited.'],
-    ['label', 'string | null', 'null', 'Label text; hidden when empty.'],
-    ['helper', 'string | null', 'null', 'Helper text below the control.'],
-    ['error-key', 'string | null', 'null', 'Validation key. Defaults to wire:model, then the field name.'],
-    ['error-bag', 'string', 'default', 'Laravel validation error bag.'],
-    ['errors', 'ViewErrorBag | null', 'null', 'Custom error bags; defaults to Laravel or Livewire errors.'],
-    ['size', 'sm | md | lg', 'md', 'Font and padding size; separate from HTML size.'],
-    ['wrapper-class', 'string', 'empty string', 'CSS classes for the field wrapper.'],
-]" note="Accepts HTML5 select attributes, Alpine events, data-*, ARIA, and supported Livewire bindings. Models use string IDs or arrays; number, boolean, and trim modifiers are unsupported." />
+<section class="min-w-0 space-y-3" data-docs-props>
+    <h3 class="text-xl font-medium">Attributes</h3>
+    <x-docs-props :rows="[
+        ['options', 'array', '[]', 'List of records with a unique non-empty value and a label; optional disabled boolean and group label. Integer values become strings.'],
+        ['value', 'string | integer | array | null', 'null', 'Initial selected ID or list of IDs in multiple mode. Empty single values bind null; empty multiple values bind an empty array.'],
+        ['multiple', 'boolean', 'false', 'Allow multiple selected IDs; a native field name receives [] automatically.'],
+        ['placeholder', 'string', 'Select an option', 'Prompt displayed when no value is selected.'],
+        ['readonly', 'boolean', 'false', 'Prevent changes while keeping the submitted value. Requires JavaScript.'],
+        ['searchable', 'boolean', 'true', 'Allow typing to filter local options or search the configured endpoint.'],
+        ['clearable', 'boolean | null', '!required', 'Allow clearing by button or keyboard. Defaults to !required; always enabled for multiple selection.'],
+        ['search-url', 'string | null', 'null', 'Same-origin GET endpoint for remote search, pagination, and selected-label resolution.'],
+        ['debounce', 'integer', '300', 'Remote search delay in milliseconds, from 0 to 10000.'],
+        ['min-search-length', 'integer', '0', 'Minimum query length for remote search, from 0 to 100.'],
+        ['max-items', 'integer | null', 'null', 'Positive maximum number of selected items in multiple mode; null is unlimited.'],
+        ['label', 'string | null', 'null', 'Label text; hidden when empty.'],
+        ['helper', 'string | null', 'null', 'Helper text below the control.'],
+        ['error-key', 'string | null', 'null', 'Validation key. Defaults to wire:model, then the field name.'],
+        ['error-bag', 'string', 'default', 'Laravel validation error bag.'],
+        ['errors', 'ViewErrorBag | null', 'null', 'Custom error bags; defaults to Laravel or Livewire errors.'],
+        ['size', 'sm | md | lg', 'md', 'Font and padding size; separate from HTML size.'],
+        ['wrapper-class', 'string', 'empty string', 'CSS classes for the field wrapper.'],
+    ]" note="Accepts HTML5 select attributes, Alpine events, data-*, ARIA, and supported Livewire bindings. Models use string IDs or arrays; number, boolean, and trim modifiers are unsupported." />
+</section>

@@ -1,18 +1,21 @@
-<x-docs-props :rows="[
-    ['country', 'string | array', 'sirius-ui.phone_country → sirius-ui.locale → app.locale → app.fallback_locale → US', 'A country, regional locale, non-empty country list, or * for all supported countries. One country gives a fixed prefix; multiple countries give a fixed-width select with a five-character text area and ellipsis.'],
-    ['delimiter', 'space | - | . | empty string', 'space', 'Display separator between metadata-defined digit groups; never included in the canonical value.'],
-    ['value', 'string | null', 'null', 'Initial E.164 value. Canonical values contain a leading plus, country calling code, and digits only.'],
-    ['draft', 'array | null', 'null', 'Optional restored draft with text and an allowed country; used only for redisplay.'],
-    ['draft-name', 'string | null', 'null', 'Opt-in separate JSON field for restoring draft text and country after a native redirect. Must differ from name.'],
-    ['reset-key', 'string | integer', '0', 'Change this token when the server explicitly resets a draft whose canonical value is already null.'],
-    ['country-label', 'string', 'Country calling code', 'Accessible label for the country prefix or selector.'],
-    ['invalid-message', 'string', 'Enter a valid phone number for an allowed country.', 'Client validation feedback shown on blur or submit.'],
-    ['label', 'string | null', 'null', 'Label text; hidden when empty.'],
-    ['helper', 'string | null', 'null', 'Helper text below the control.'],
-    ['error-key', 'string | null', 'null', 'Validation key. Defaults to wire:model, then the field name.'],
-    ['error-bag', 'string', 'default', 'Laravel validation error bag.'],
-    ['errors', 'ViewErrorBag | null', 'null', 'Custom error bags; defaults to Laravel or Livewire errors.'],
-    ['size', 'sm | md | lg', 'md', 'Font and padding size; separate from HTML size.'],
-    ['control-size', 'integer | null', 'null', 'HTML size: approximate width in characters. Does not limit text length.'],
-    ['wrapper-class', 'string', 'empty string', 'CSS classes for the field wrapper.'],
-]" note="Accepts HTML5 input attributes, Alpine events, data-*, ARIA, and supported Livewire bindings. Models receive the international value; maxlength and pattern apply to displayed text. Type and country-prefix rendering are managed by the package." />
+<section class="min-w-0 space-y-3" data-docs-props>
+    <h3 class="text-xl font-medium">Attributes</h3>
+    <x-docs-props :rows="[
+        ['country', 'string | array', 'sirius-ui.phone_country → sirius-ui.locale → app.locale → app.fallback_locale → US', 'A country, regional locale, non-empty country list, or * for all supported countries. One country gives a fixed prefix; multiple countries give a fixed-width select with a five-character text area and ellipsis.'],
+        ['delimiter', 'space | - | . | empty string', 'space', 'Display separator between metadata-defined digit groups; never included in the canonical value.'],
+        ['value', 'string | null', 'null', 'Initial E.164 value. Canonical values contain a leading plus, country calling code, and digits only.'],
+        ['draft', 'array | null', 'null', 'Optional restored draft with text and an allowed country; used only for redisplay.'],
+        ['draft-name', 'string | null', 'null', 'Opt-in separate JSON field for restoring draft text and country after a native redirect. Must differ from name.'],
+        ['reset-key', 'string | integer', '0', 'Change this token when the server explicitly resets a draft whose canonical value is already null.'],
+        ['country-label', 'string', 'Country calling code', 'Accessible label for the country prefix or selector.'],
+        ['invalid-message', 'string', 'Enter a valid phone number for an allowed country.', 'Client validation feedback shown on blur or submit.'],
+        ['label', 'string | null', 'null', 'Label text; hidden when empty.'],
+        ['helper', 'string | null', 'null', 'Helper text below the control.'],
+        ['error-key', 'string | null', 'null', 'Validation key. Defaults to wire:model, then the field name.'],
+        ['error-bag', 'string', 'default', 'Laravel validation error bag.'],
+        ['errors', 'ViewErrorBag | null', 'null', 'Custom error bags; defaults to Laravel or Livewire errors.'],
+        ['size', 'sm | md | lg', 'md', 'Font and padding size; separate from HTML size.'],
+        ['control-size', 'integer | null', 'null', 'HTML size: approximate width in characters. Does not limit text length.'],
+        ['wrapper-class', 'string', 'empty string', 'CSS classes for the field wrapper.'],
+    ]" note="Accepts HTML5 input attributes, Alpine events, data-*, ARIA, and supported Livewire bindings. Models receive the international value; maxlength and pattern apply to displayed text. Type and country-prefix rendering are managed by the package." />
+</section>
