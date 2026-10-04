@@ -31,6 +31,7 @@
                 <h2 class="text-xl font-medium">State and events</h2>
                 <p>Uses the Dialog controls and events: <code>data-sir-dialog-open="id"</code>, <code>data-sir-dialog-close</code>, and <code>dialog:show</code>/<code>dialog:hide</code> with <code>detail: { id }</code>.</p>
                 <p><code>dialog:open</code> and <code>dialog:close</code> bubble from the root with <code>detail.id</code> and <code>detail.reason</code>. Alpine can bind <code>x-bind:data-open</code>; Livewire can pass <code>:open</code> and synchronize its state on close.</p>
+                @include('blade-components.examples.alert-binding')
                 <p>IDs default to five random characters. Use an explicit ID and <code>wire:key</code> for stable Livewire identity. Title and text use <code>id-title</code> and <code>id-text</code>; body and footer use <code>id-body</code> and <code>id-footer</code>.</p>
             </section>
             <section id="translations" class="space-y-3">
