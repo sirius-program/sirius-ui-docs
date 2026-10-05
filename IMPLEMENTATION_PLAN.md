@@ -18,7 +18,7 @@ Deliver reusable Tailwind-styled Blade components and class-based Livewire compo
 - Make Blade controls work on ordinary Blade pages and inside Livewire. The `form` component is specifically for ordinary browser submissions to application controllers, without Livewire submission handling. Livewire remains a package dependency; ordinary Blade usage must not require wrapping every input in a Livewire component.
 - Preserve existing `sir-` styling and `--sir-` token conventions; support responsive layouts, light/dark themes, keyboard navigation, and visible focus.
 - Use Blade Icons with a selected free icon set. Map `primary` to Tailwind sky, `info` to neutral, `secondary` to indigo, `success` to emerald, `danger` to red, and `warning` to amber through customizable tokens.
-- The table uses a consumer-defined subclass for query, columns, filters, and optional actions. Queries and authorization belong to the application; package code handles reusable interaction and presentation. Consumers can register custom row, bulk, and toolbar actions alongside the optional built-in actions.
+- The table uses a consumer-defined subclass for queries, columns, filters, and optional row/bulk action views. The package handles rendering, search, filtering, ordering, pagination, selection, and loading presentation. Action views receive `$record` for a row or `$selectedIds` for bulk buttons/links; the application creates its own Dialog/Alert/Slideover and owns action execution, authorization, validation, feedback, transactions, and exports. Table provides no action handler registry, built-in operations, automatic action overlays, or arbitrary toolbar actions.
 - Version-one calendar is a month grid with month/year navigation, today indication, date selection, and day actions. Event management, drag-and-drop, and range selection are outside this release.
 
 ## 2. Standing constraints
@@ -85,7 +85,7 @@ All form controls implement the following contract, including enhanced controls:
 | `timeline` | Vertical sequence with numbered/icon markers, title, description, content slot, and completed/current/upcoming states |
 | Livewire `chart` | Library-backed chart with serializable options and a local JavaScript callback/plugin extension point |
 | `accordion` | Expandable content and accessible trigger; documented initial/open state |
-| Livewire `table` | Consumer subclass with query, columns, filters, optional built-in actions, and custom row/bulk/toolbar actions |
+| Livewire `table` | Consumer subclass with query, columns, filters, row action views receiving `$record`, and bulk action views receiving `$selectedIds`; application-owned actions and overlays; `loading` state and translated `record-label` |
 | Livewire `calendar` | Month grid with selectable/actionable days |
 
 The former inline Alert is named `message` without changing its planned behavior; the new `alert` is a distinct Dialog-based prompt. The former Modal is named `dialog` without changing its planned behavior, with explicit scrollbar-space preservation.
@@ -498,66 +498,69 @@ Prerequisite: Alert's content contract and overlay integration are complete. Toa
 
 ## Phase 20 — Livewire table core
 
+The rejected Phase 20 implementation does not count as completed work. Implement the revised boundaries below; Phase 21 adds selection and the external bulk-action context.
+
 ### 20.1 Consumer extension contract and rendering
 
 - [ ] Implement the table base class and focused definitions for columns/filters, with typed extension points and consumer-owned scoped Eloquent queries.
 - [ ] Support stable row keys, escaped default cells, explicit custom cell views, empty/loading states, and responsive rendering.
 - [ ] Keep column identifiers server-allowlisted; never use an unchecked client string as a query column or expression.
+- [ ] Render borders between columns as well as rows, including optional selection and row-action columns. Keep borders consistent in light/dark themes and preserve readable horizontal scrolling on narrow screens.
 
 ### 20.2 Search, filtering, ordering, and pagination
 
-- [ ] Add debounced global search, per-column search/filter controls, ordering, configurable page sizes, and pagination.
+- [ ] Add debounced global search, registered filters, ordering, configurable page sizes, and server pagination. Put all filter controls, including any column-specific search filters, inside the filter dropdown rather than adding inline toolbar fields.
 - [ ] Reset pagination when search/filter/page-size changes; specify deterministic ordering with a unique tie-breaker.
 - [ ] Use server pagination and eager-loading guidance to avoid loading entire tables or hidden per-row queries.
 - [ ] Isolate state for multiple table instances. Document searchable/filterable/orderable column configuration and query responsibilities.
-- [ ] Test combined filters, sort allowlisting, stable pagination, query scoping, no-result states, and tampered public state.
-- [ ] Browser-test interactive searches, filters, ordering, pagination, and two tables on one page.
 
-### 20.3 Custom action definitions, row actions, and toolbar actions
+### 20.3 External row-action context
 
-- [ ] Provide typed action definitions registered server-side through the consumer's Table subclass. Each definition has a unique identifier within the table, label, optional icon, variant, visible/disabled conditions, and exactly one execution target: a link or an application handler.
-- [ ] Support row actions with one scoped record (for example Edit or Approve), toolbar actions without row selection (for example Create or Import), and a shared contract that Phase 21 extends to bulk actions. Do not make toolbar actions depend on selected rows.
-- [ ] Resolve links in application code and preserve navigation semantics; state-changing operations use handlers or appropriate application endpoints rather than mutation through GET links. Application endpoints retain CRUD/controller conventions.
-- [ ] Dispatch handler actions only through registered identifiers and the matching action scope. Never accept arbitrary class/method/callback names from the browser. Re-query row IDs through the consumer's authorized query; reject unknown actions, mismatched scopes, stale/inaccessible records, and tampered input.
-- [ ] Re-check action availability and authorization on the server at execution time, including after confirmation. Visible/disabled conditions improve presentation but never replace authorization; link destinations enforce their own authorization.
-- [ ] Support optional simple confirmation through Alert and additional input through a consumer-supplied slot/view in Dialog. Expose the action/record context; the application owns form fields, validation, authorization, and business logic. Reuse overlay focus/dismissal behavior and avoid stacking Alert over Dialog.
-- [ ] Provide loading/duplicate-submit protection, validation and success/failure feedback, cancellation, and table refresh after successful handler completion. Preserve table search/filter/order state and keep pagination valid after changes. Clear action-specific input/errors on close or action switch; isolate multiple Table instances.
-- [ ] Test action registration and invalid definitions, link versus handler semantics, visibility/disabled enforcement, identifier/scope tampering, row re-querying, revoked authorization between opening and execution, validation failures, and result refresh.
-- [ ] Browser-test custom row approval, a toolbar Create link, and a handler with additional input, including confirmation/cancellation, loading, failed validation, focus return, and multiple tables.
-- [ ] Add Table docs with copyable subclass/action definitions and realistic row/toolbar demos, document application responsibilities and the upcoming bulk extension, and complete the mandatory phase gate.
+- [ ] Allow a consumer-owned Blade view to render a collection of row action buttons/links. Pass the scoped row record as `$record` so the programmer can construct links and payloads for Dialog, Alert, or Slideover triggers.
+- [ ] Keep the full record in the server-side view context. Do not automatically serialize the Eloquent model, hidden attributes, or relationships into browser state. Consumer markup explicitly selects the fields needed for an overlay/event and safely encodes them.
+- [ ] Require programmers to instantiate and initialize their own Dialog/Alert/Slideover outside the Table's action rendering. Reuse existing overlay invocation APIs; Table does not generate confirmations, forms, or overlays.
+- [ ] Keep application handlers, authorization, input validation, duplicate-submit protection, success/failure feedback, transactions, deletion/restoration, and exports outside the reusable Table. Do not introduce a handler registry, action dispatcher, built-in operations, or automatic result/selection cleanup.
+- [ ] Let the application resolve navigation links and enforce authorization at their destinations. For mutations, application handlers re-query and authorize records at execution time; visible/disabled buttons and a rendered `$record` are not authorization guarantees.
+- [ ] Provide an explicit consumer-triggered Table refresh contract after external changes. Preserve search/filter/order state and clamp pagination when records disappear; do not automatically infer action completion or its business outcome.
 
-## Phase 21 — Table selection, built-in/custom bulk actions, and CSV
+### 20.4 Toolbar, footer, translations, and loading
 
-### 21.1 Selection and mutations
+- [ ] Arrange the toolbar left to right: an ellipsis icon dropdown for bulk buttons added in Phase 21, a filter icon dropdown containing all registered filters and Reset filters, then global search filling the remaining width. Omit the bulk dropdown when no bulk actions are supplied and the filter dropdown when no filters exist; search adapts to the available space. Do not offer arbitrary toolbar action views, buttons, or action registration.
+- [ ] Use the existing Dropdown, Icon, Button, and appropriate form controls. Support keyboard operation, accessible icon-button names, and filter interaction without closing the dropdown on every field change. Reset filters clears registered filters and resets pagination; global search remains a separate control.
+- [ ] Put matching-record totals, the visible range, and the displayed count at the footer's left; the per-page selector in the center; and numeric pagination at the right. Use a bounded page-number window with first/last pages and ellipses as needed. Stack these areas on narrow screens while preserving their order; empty results report zero counts without an invalid range.
+- [ ] Add a string `record-label` attribute. Default it from the Table translation's `record_label` text (`data` in English), and use its literal value in count information and empty states without automatic pluralization. Consumers can supply translated labels such as invoice/invoices.
+- [ ] Store Table UI strings in package `resources/lang/{locale}/sirius-ui.php` under `table`, resolving through `sirius::sirius-ui.table.*`. Count and empty-state messages include the `:label` token; count messages also expose their range, displayed-count, and total tokens. Pass translations from Blade to any JavaScript, and document published overrides under `lang/vendor/sirius/{locale}/`.
+- [ ] Show a loading overlay with a backdrop over the entire Table, including toolbar, rows/actions, and footer. Activate it during Table requests and when the application's explicit `loading` state is true; overlapping sources keep it active until all have finished.
+- [ ] Block mouse and keyboard interaction with the covered Table, expose its busy state accessibly, and restore usable focus when loading ends. Keep external Dialog/Alert/Slideover controls usable and unrelated Table instances interactive. The application sets/clears external loading on success, failure, and cancellation; Table does not execute or monitor its handlers.
 
-- [ ] Reuse the shared checkbox component for per-row selection and the indeterminate header checkbox; add a visible selection count across pages.
-- [ ] Header selection applies to the current page; selection persists across page navigation and resets when search/filter changes. Selecting all matching results is outside version one.
-- [ ] Make delete, restore, force delete, and CSV independently opt-in. Provide no implicit write permissions.
-- [ ] Re-query selected IDs through the consumer's authorized/scoped query and authorize every row at execution time. Reject tampered, stale, or inaccessible IDs without expanding scope.
-- [ ] Enable restore/force-delete only for supported soft-deleted records. Application handlers own domain side effects and transactions.
-- [ ] Add confirmation UX for destructive actions, duplicate-submit protection, success/failure feedback, and selection cleanup.
-- [ ] Default built-in and custom bulk database mutations to atomic execution: validate and authorize the whole selection before changes, then execute mutations within one database transaction. Application handlers own domain operations; the action contract must make transaction ownership explicit. External effects such as email or remote API calls cannot be rolled back by that transaction and remain application-owned.
+### 20.5 Documentation and acceptance
 
-### 21.2 Custom bulk actions and outcome handling
+- [ ] Test combined filters, reset behavior, sort allowlisting, deterministic pagination, query scoping, empty results, custom labels/translations, row-view record context, explicit refresh, and tampered public query state. Verify the package exposes no action execution or arbitrary toolbar-action contract.
+- [ ] Browser-test search, filter dropdown/reset, sorting, per-page selection, numeric pagination, row buttons opening separately created Dialog/Alert/Slideover, and a navigation link. Include whole-Table loading during local and external requests, keyboard blocking, error recovery, two isolated tables, mobile layout, light/dark borders, and no JavaScript errors.
+- [ ] Add Table docs with realistic demos and copyable query/column/filter definitions and row-action views. Explain `$record`, application-owned overlays/handlers, external loading and refresh, `record-label`, and separate Translations. Document the Phase 21 bulk extension without claiming it is already implemented. Update docs navigation/index and complete the mandatory phase gate.
 
-- [ ] Extend the Phase 20 action definition and registration contract to selected rows. Allow consumers to add actions such as Approve or Reject independently of delete, restore, force delete, and CSV. Built-in actions remain independently opt-in.
-- [ ] Require a non-empty selection for a bulk action; never reinterpret an empty selection as all rows. Preserve the existing current-page select-all and cross-page selection rules. Resolve selected IDs through the authorized/scoped query again at execution time, including after confirmation or additional input.
-- [ ] Reuse labels/icons/variants, visible/disabled conditions, allowlisted dispatch, server authorization, Alert confirmation, Dialog input, validation, loading, and duplicate-submit protection. Consumers supply handlers and input views; the package does not assume application model methods.
-- [ ] Permit partial success only when explicitly configured by the custom handler contract. Report a result for each selected record (success, failure, or skipped) and an aggregate summary. Do not silently switch an atomic action to partial mode or treat unauthorized records as authorized; return safe reasons without disclosing inaccessible record data.
-- [ ] Define selection cleanup by outcome: clear successfully processed IDs, retain eligible failed/skipped IDs for review or retry, and remove stale/inaccessible IDs. Atomic failure preserves still-eligible selection; cancellation leaves selection unchanged. Refresh table data and selection counts after completion without losing filters/order.
-- [ ] Document application-owned handling of external effects, retries, and idempotency. Do not claim an all-or-nothing guarantee for external services or multiple database connections.
-- [ ] Test custom action coexistence with optional built-ins, empty selection, cross-page selected IDs, tampering, scoped authorization, authorization changes after confirmation, atomic rollback, explicit partial results, input validation, repeated submission, and selection cleanup.
-- [ ] Browser-test custom bulk Approve, Reject with a required reason, confirmation cancellation, atomic failure feedback, explicit partial success, and retry of remaining eligible rows. Include no-JavaScript-error assertions and multiple Table instances.
-- [ ] Extend Table docs with separate copyable custom bulk examples and document transaction/partial-result contracts alongside built-in actions.
+## Phase 21 — Table selection and external bulk-action context
 
-### 21.3 CSV export
+### 21.1 Selection state
 
-- [ ] Export selected authorized rows through configured exportable columns. Do not silently export all results when selection is empty.
-- [ ] Stream/chunk output where appropriate, escape CSV correctly, mitigate spreadsheet formula injection, and document encoding and selection limits.
-- [ ] Keep queued exports and exports of all matching results outside version one.
-- [ ] Test cross-page selection, filter reset, unauthorized rows, stale selections, soft-delete/restore/force-delete behavior, transaction failure, CSV escaping, and formula-like cells.
-- [ ] Browser-test selection, confirmation, completion/failure feedback, and CSV download.
-- [ ] Extend table docs and complete the mandatory phase gate.
+- [ ] Reuse the shared checkbox component for per-row selection and the indeterminate header checkbox; show a selection count across pages.
+- [ ] Header selection applies only to the current page. Preserve selected IDs across pagination, page-size changes, and ordering; clear selection when global search or registered filters change, including Reset filters. Selecting all matching results is outside version one.
+- [ ] Normalize and deduplicate checked IDs with stable key types. Scope interactive selection to rows supplied by the consumer query and isolate each Table's selection state. IDs sent to application actions remain untrusted input, not proof of authorization.
+- [ ] Expose a documented way for the application to clear all selection or remove chosen IDs after its own action, alongside the Phase 20 refresh contract. Do not infer per-record success, failure, or skipped outcomes. Cancellation leaves selection intact unless the application explicitly changes it.
+
+### 21.2 Consumer bulk buttons and links
+
+- [ ] Render a consumer-owned bulk action Blade view inside the toolbar's leftmost ellipsis dropdown. Pass the current checked IDs as `$selectedIds`, including selections from other pages; never pass all query results or silently reinterpret an empty selection as all records.
+- [ ] Omit the bulk dropdown when no bulk action view is supplied; otherwise disable it when selection is empty. Search fills the space freed by an omitted dropdown. Bulk buttons remain the only action collection permitted in the toolbar.
+- [ ] Let consumer markup pass `$selectedIds` to its own Dialog/Alert/Slideover or construct an application navigation link. Require programmers to instantiate these overlays themselves and use existing overlay APIs. Do not add a bulk action dispatcher or built-in delete/restore/force-delete/CSV implementation.
+- [ ] Keep selected-ID validation, scoped re-querying, fresh authorization, confirmation/input forms, execution, transactions, exports, retries, feedback, and selection cleanup in application code. Document this boundary with examples rather than a package transaction or partial-result protocol.
+- [ ] Demonstrate application-controlled `loading` while an external bulk action runs, followed by explicit refresh and selection updates. The Table backdrop blocks further Table actions while the application-owned overlay remains usable.
+
+### 21.3 Documentation and acceptance
+
+- [ ] Test current-page/indeterminate selection, cross-page persistence, search/filter resets, ID normalization, per-instance isolation, exact `$selectedIds` view context, empty-selection behavior, and explicit selection updates/refresh. Keep application-specific execution tests in docs fixtures.
+- [ ] Browser-test bulk buttons opening separately created Dialog, Alert, and Slideover, plus an application navigation link carrying selected IDs. Cover cancellation, application success/failure, loading recovery, explicit selection cleanup, multiple tables, and keyboard operation with no JavaScript errors.
+- [ ] Extend Table docs with separate copyable bulk action views and external application handler/overlay examples. Explain that mutations and CSV exports are application-owned and validate/authorize received IDs there. Carry this contract into the later AI skill/release phases and complete the mandatory phase gate.
 
 ## Phase 22 — Livewire calendar
 
@@ -599,7 +602,7 @@ Prerequisite: complete all component phases through Phase 23 and their documenta
 - [ ] Provide a component-selection guide and references for every shipped Blade and Livewire component, including props, slots, attributes, events, options, defaults, and supported customization points.
 - [ ] Include working ordinary Blade and Livewire examples covering bindings, validation/error bags, helper text, accessibility, stable IDs, reset, and widget lifecycle behavior. Explain the ordinary Blade `form` component's GET default, explicit action, CSRF/method spoofing, multipart contract, and separation from Livewire submission handling.
 - [ ] Include Toast's pre-rendered ID-based invocation, close-state synchronization, duration/queue contract, and footer actions above Dialog/Slideover in the component references and integration examples.
-- [ ] Explain application-owned responsibilities for table queries, authorization, custom row/bulk/toolbar action registration, confirmation/input views, transaction and partial-result handling, CSV export, calendar day actions, richtext sanitization, and uploads. Preserve CRUD controller design and the invocable-controller rule for single actions.
+- [ ] Explain application-owned responsibilities for table queries, row/bulk action views using `$record`/`$selectedIds`, separately instantiated Dialog/Alert/Slideover, authorization, validation, execution, transactions, CSV export, external loading, and explicit refresh/selection updates. Document the fixed toolbar without arbitrary actions and the translated `record-label` contract. Also cover calendar day actions, richtext sanitization, and uploads. Preserve CRUD controller design and the invocable-controller rule for single actions.
 - [ ] Cover local asset installation/builds, Tailwind tokens and themes, Blade Icons, troubleshooting, and relevant test commands. Use only the selected free dependency features.
 - [ ] Instruct agents to inspect the installed package version and configuration, prefer existing components, and avoid inventing APIs or editing `vendor`. Use documented publishing and extension mechanisms; never access `.env` directly or expose secrets.
 - [ ] Bundle version-matched references and examples with each package release so essential usage guidance works without access to the docs repository or a hosted website. Document how to refresh an installed skill after a package upgrade.
@@ -643,7 +646,7 @@ Prerequisite: all component phases and the AI agent skill are complete. This is 
 - [ ] Verify repeated components, multiple instances, validation failures, form reset, conditional rendering, and Livewire navigation without state loss or leaked listeners.
 - [ ] Review keyboard access, focus, light/dark contrast, mobile layouts, and reduced-motion behavior across docs examples, including nested menus, Tabs, Timeline, Skeleton, Tooltip/Popover, Toast, and Chart. Confirm Dialog/Slideover preserve scrollbar space.
 - [ ] Verify Toast timing, queue limits, close-state synchronization, lifecycle cleanup, and interaction above Dialog/Slideover without moving focus or changing the active overlay.
-- [ ] Verify custom row, toolbar, and bulk Table actions alongside built-ins, including confirmation/input, authorization changes, atomic rollback, explicit partial outcomes, and selection cleanup.
+- [ ] Verify Table row views receive the correct `$record` and bulk views receive exactly the checked `$selectedIds`; application-created Dialog/Alert/Slideover and navigation links use these contexts correctly. Cover selection persistence/reset, explicit refresh/cleanup, whole-Table loading without blocking external overlays or other tables, fixed toolbar/filter dropdown, column borders, numeric pagination/footer, and `record-label` count/empty-state translations. Keep authorization and action execution in consumer fixtures; confirm there is no package action engine, built-in operation, or arbitrary toolbar action API.
 - [ ] Confirm the completed Flux migration covers the entire docs application and any migration-driven additions are included in the AI skill references.
 - [ ] Verify the ordinary Blade `form` component and a separate Livewire form submit the documented canonical values, including disabled/readonly behavior. Cover the Blade form's GET default, non-GET CSRF, spoofed methods, and multipart file submissions.
 - [ ] Verify internal assets load with no runtime CDN requests and no duplicate Alpine/widget initialization.
