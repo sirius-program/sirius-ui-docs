@@ -13,6 +13,27 @@ it('selects native local options with keyboard and submits stable single and mul
     $page->assertNoJavaScriptErrors();
 });
 
+it('keeps multiple selections on one scrollable line with an accessible search input and remove buttons', function (): void {
+    $page = visit('/blade-components/select')->resize(390, 844);
+    $root = '[data-sir-select]:has(#blade-select-topics)';
+    $input = $root . ' .ts-control input';
+    $page->script('window.multipleHeight = document.querySelector("[data-sir-select]:has(#blade-select-topics) .sir-select-shell").getBoundingClientRect().height;');
+
+    foreach (['Design', 'Engineering', 'Research'] as $label) {
+        $page->click($input)->type($input, $label)->keys($input, 'Enter')->assertSeeIn($root . ' .ts-control', $label)
+            ->assertScript('(() => { const control = document.querySelector("[data-sir-select]:has(#blade-select-topics) .ts-control"); const bounds = control.getBoundingClientRect(); const input = control.querySelector("input").getBoundingClientRect(); return input.left >= bounds.left && input.right <= bounds.right; })()', true);
+    }
+    $page->assertScript('new FormData(document.querySelector("[data-blade-select]")).getAll("topics[]")', ['design', 'engineering', 'research'])
+        ->assertScript('document.querySelector("[data-sir-select]:has(#blade-select-topics) .sir-select-shell").getBoundingClientRect().height === window.multipleHeight', true)
+        ->assertScript('(() => { const control = document.querySelector("[data-sir-select]:has(#blade-select-topics) .ts-control"); return control.scrollWidth > control.clientWidth; })()', true);
+    $page->script('document.querySelector("[data-sir-select]:has(#blade-select-topics) .ts-control").scrollLeft = 0;');
+    $page->click($root . ' .item[data-value="design"] .remove')
+        ->assertScript('new FormData(document.querySelector("[data-blade-select]")).getAll("topics[]")', ['engineering', 'research'])
+        ->type($input, 'Design')->keys($input, 'Enter')
+        ->assertScript('new FormData(document.querySelector("[data-blade-select]")).getAll("topics[]")', ['design', 'engineering', 'research'])
+        ->assertNoJavaScriptErrors();
+});
+
 it('loads Livewire selections resolves remote labels and preserves values across validation and readonly changes', function (): void {
     $page = visit('/blade-components/select')->click('[data-select-example] button:has-text("Load Value")')
         ->assertSeeIn('[data-select-example] [data-sir-select]:has([data-select-venue]) .ts-control .item', 'Bali garden pavilion')->assertSeeIn('[data-select-example] [data-sir-select]:has([data-select-shipping]) .ts-control .item', 'Collect from store')

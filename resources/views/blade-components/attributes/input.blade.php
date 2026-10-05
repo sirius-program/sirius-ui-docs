@@ -8,7 +8,7 @@
         ['errors', 'ViewErrorBag | null', 'null', 'Custom error bags; defaults to Laravel or Livewire errors.'],
         ['size', 'sm | md | lg', 'md', 'Font and padding size; separate from HTML size.'],
         ['wrapper-class', 'string', 'empty string', 'CSS classes for the field wrapper.'],
-        ['type', 'any valid HTML5 input type', 'text', 'Choose the native input mode; use password for the eye toggle.'],
+        ['type', 'text | search | number | password', 'text', 'Choose the native input mode; use password for the eye toggle.'],
         ['prefix', 'string | null', 'null', 'Text or slot before the input. The slot takes priority; neither is submitted.'],
         ['suffix', 'string | null', 'null', 'Text or slot after the input. The slot takes priority; neither is submitted.'],
         ['control-size', 'integer | null', 'null', 'HTML size: approximate width in characters. Does not limit text length.'],

@@ -62,6 +62,15 @@
                         <flux:sidebar.item :href="route('blade-components.menu')" :current="request()->routeIs('blade-components.menu')" wire:navigate>Menu</flux:sidebar.item>
                     </flux:sidebar.group>
                 </flux:sidebar.group>
+                <flux:sidebar.group :heading="__('Livewire Components')" class="grid my-5">
+                    <flux:sidebar.group expandable heading="Table" class="grid" :expanded="request()->routeIs('livewire-components.table', 'livewire-components.table.*', 'development.table')">
+                        <flux:sidebar.item :href="route('livewire-components.table')" :current="request()->routeIs('livewire-components.table')" wire:navigate>Overview</flux:sidebar.item>
+                        <flux:sidebar.item :href="route('livewire-components.table.columns')" :current="request()->routeIs('livewire-components.table.columns')" wire:navigate>Columns</flux:sidebar.item>
+                        <flux:sidebar.item :href="route('livewire-components.table.filters')" :current="request()->routeIs('livewire-components.table.filters')" wire:navigate>Filters</flux:sidebar.item>
+                        <flux:sidebar.item :href="route('livewire-components.table.query')" :current="request()->routeIs('livewire-components.table.query')" wire:navigate>Query</flux:sidebar.item>
+                        <flux:sidebar.item :href="route('livewire-components.table.row-actions')" :current="request()->routeIs('livewire-components.table.row-actions', 'development.table')" wire:navigate>Row Actions</flux:sidebar.item>
+                    </flux:sidebar.group>
+                </flux:sidebar.group>
             </flux:sidebar.nav>
         </flux:sidebar>
 

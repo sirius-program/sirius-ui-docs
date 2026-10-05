@@ -44,7 +44,7 @@
                 </section>
                 <section id="blade-components-layouts" class="rounded-xl border border-zinc-200 p-6 dark:border-zinc-700">
                     <h3 class="font-medium">Layout</h3>
-                    <ul class="list-disc pl-5 mt-3 space-y-3">
+                    <ul class="list-disc pl-5 mt-3 space-y-3 mb-4">
                         <li><a class="underline" href="{{ route('blade-components.accordion') }}" wire:navigate>Accordion</a></li>
                         <li><a class="underline" href="{{ route('blade-components.card') }}" wire:navigate>Card</a></li>
                         <li><a class="underline" href="{{ route('blade-components.dialog') }}" wire:navigate>Dialog</a></li>
@@ -52,13 +52,25 @@
                         <li><a class="underline" href="{{ route('blade-components.slideover') }}" wire:navigate>Slideover</a></li>
                         <li><a class="underline" href="{{ route('blade-components.tabs') }}" wire:navigate>Tabs</a></li>
                     </ul>
-                </section>
-                <section id="blade-components-navigation" class="rounded-xl border border-zinc-200 p-6 dark:border-zinc-700">
                     <h3 class="font-medium">Navigation</h3>
                     <ul class="list-disc pl-5 mt-3 space-y-3">
                         <li><a class="underline" href="{{ route('blade-components.breadcrumb') }}" wire:navigate>Breadcrumb</a></li>
                         <li><a class="underline" href="{{ route('blade-components.dropdown') }}" wire:navigate>Dropdown</a></li>
                         <li><a class="underline" href="{{ route('blade-components.menu') }}" wire:navigate>Menu</a></li>
+                    </ul>
+                </section>
+            </div>
+            <h2 class="text-lg font-medium">Livewire Components</h2>
+            
+            <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+                <section id="livewire-components-table" class="rounded-xl border border-zinc-200 p-6 dark:border-zinc-700">
+                    <h3 class="font-medium">Table</h3>
+                    <ul class="list-disc pl-5 mt-3 space-y-3">
+                        <li><a class="underline" href="{{ route('livewire-components.table') }}" wire:navigate>Overview</a></li>
+                        <li><a class="underline" href="{{ route('livewire-components.table.columns') }}" wire:navigate>Columns</a></li>
+                        <li><a class="underline" href="{{ route('livewire-components.table.filters') }}" wire:navigate>Filters</a></li>
+                        <li><a class="underline" href="{{ route('livewire-components.table.query') }}" wire:navigate>Query</a></li>
+                        <li><a class="underline" href="{{ route('livewire-components.table.row-actions') }}" wire:navigate>Row Actions</a></li>
                     </ul>
                 </section>
             </div>

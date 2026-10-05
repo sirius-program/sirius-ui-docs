@@ -6,6 +6,7 @@ use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 
 // Fixtures
+
 Breadcrumbs::for('development.navigation', function (BreadcrumbTrail $trail): void {
     $trail->parent('blade-components.navigation');
     $trail->push('Navigation integration', route('development.navigation'));
@@ -79,6 +80,11 @@ Breadcrumbs::for('development.overlays', function (BreadcrumbTrail $trail): void
 Breadcrumbs::for('development.toast', function (BreadcrumbTrail $trail): void {
     $trail->parent('home');
     $trail->push('Toast integration', route('development.toast'));
+});
+
+Breadcrumbs::for('development.table', function (BreadcrumbTrail $trail): void {
+    $trail->parent('livewire-components.t');
+    $trail->push('Table integration', route('development.table'));
 });
 
 // User Menu
@@ -308,3 +314,29 @@ Breadcrumbs::for('blade-components.tabs', function (BreadcrumbTrail $trail): voi
     $trail->parent('blade-components.layout');
     $trail->push('Tabs', route('blade-components.tabs'));
 });
+
+// Livewire Components
+
+Breadcrumbs::for('livewire-components.index', function (BreadcrumbTrail $trail): void {
+    $trail->parent('home');
+    $trail->push(__('Livewire Components'));
+});
+
+// Table
+
+Breadcrumbs::for('livewire-components.t', function (BreadcrumbTrail $trail): void {
+    $trail->parent('livewire-components.index');
+    $trail->push('Table', route('livewire-components.table'));
+});
+
+Breadcrumbs::for('livewire-components.table', function (BreadcrumbTrail $trail): void {
+    $trail->parent('livewire-components.t');
+    $trail->push('Overview', route('livewire-components.table'));
+});
+
+foreach (['columns' => 'Columns', 'filters' => 'Filters', 'query' => 'Query', 'row-actions' => 'Row Actions'] as $topic => $label) {
+    Breadcrumbs::for('livewire-components.table.' . $topic, function (BreadcrumbTrail $trail) use ($topic, $label): void {
+        $trail->parent('livewire-components.t');
+        $trail->push($label, route('livewire-components.table.' . $topic));
+    });
+}

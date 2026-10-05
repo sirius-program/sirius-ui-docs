@@ -197,6 +197,7 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 ## Documentation menu ordering
 
 - Keep component menu items in alphabetical order by their displayed labels within each group. When adding or renaming a menu item in any future phase, place it in its correct alphabetical position rather than appending it.
+- Exception: when a component group has an Overview submenu, always place Overview first. Keep all remaining submenus in alphabetical order.
 - Preserve the existing menu groups and place new components in the appropriate group. Add a new group when it improves organization, keeping its component items alphabetically ordered as well.
 - Update the group's active-route and expanded-state checks when adding or moving items so the current component remains visible in navigation.
 

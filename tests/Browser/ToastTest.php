@@ -100,7 +100,7 @@ it('handles Alpine state persistent notices and navigation without leaking queue
     $page->script('for (let i = 1; i <= 5; i++) document.dispatchEvent(new CustomEvent("toast:show", { detail: { id: `queued-toast-${i}` } }));');
     $page->click('#toast-navigation')->assertPathIs('/blade-components/toast')->assertMissing('[data-sir-toast-panel]:popover-open');
     $page->script('window.toastEvents = 0; document.addEventListener("toast:open", () => window.toastEvents++);');
-    $page->click('[data-sir-toast-open="draft-toast"]')->assertPresent('#draft-toast-panel')->assertScript('window.toastEvents', 1)
+    $page->click('[data-sir-toast-open="report-toast"]')->assertPresent('#report-toast-panel')->assertScript('window.toastEvents', 1)
         ->assertNoJavaScriptErrors();
 });
 

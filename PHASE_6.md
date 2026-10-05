@@ -31,3 +31,11 @@ Package `composer test` passed with 183 tests / 557 assertions. Docs `composer t
 Local verification uses PHP 8.5 / Laravel 13; existing CI retains coverage responsibility for other supported runtime combinations. Native local selection works without JavaScript; remote search and readonly enforcement require JavaScript. A selected remote ID may appear temporarily until the provider resolves its label; supplying initial options avoids that placeholder.
 
 References: [Tom Select usage](https://tom-select.js.org/docs/), [Tom Select API](https://tom-select.js.org/docs/api/), and the installed 2.6.2 source and dependency notices.
+
+## Single-line selection follow-up
+
+Single selections and the search input share one line, including resolved remote labels. Long single labels truncate instead of pushing the cursor down. Multiple selections use a horizontal scroll region; adding or removing a choice scrolls that region to keep the focused search input visible without moving the page. Suffix actions and option lists remain outside that scroll region.
+
+Regression coverage checks remote Table filter labels, cursor alignment, mobile multiple-select height and overflow, continued typing, removal, and submitted IDs. The remote cursor and multiple-select height assertions failed before the fix. Focused Table/Select/Phone browser coverage passed **30 tests / 310 assertions**.
+
+Both asset builds and `composer test` gates passed: package **553 tests / 1,771 assertions**, docs **173 tests / 1,013 assertions**, including formatting, static analysis, and refactoring checks. The full browser suite passed **192 tests / 2,209 assertions** using one process. `git diff --check` passed in both projects.

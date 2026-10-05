@@ -11,6 +11,7 @@ use App\Http\Controllers\FileUploadExampleController;
 use App\Http\Controllers\FormExampleController;
 use App\Http\Controllers\FormUploadStoreController;
 use App\Http\Controllers\FormValidationController;
+use App\Http\Controllers\InvoiceCustomerOptionController;
 use App\Http\Controllers\PhoneExampleController;
 use App\Http\Controllers\RichtextExampleController;
 use App\Http\Controllers\RichtextImageShowController;
@@ -90,6 +91,7 @@ if (app()->environment(['local', 'testing'])) {
     Route::view('development/presentation', 'development.presentation')->name('development.presentation');
     Route::view('development/overlays', 'development.overlays')->name('development.overlays');
     Route::view('development/toast', 'development.toast')->name('development.toast');
+    Route::view('development/table', 'development.table')->name('development.table');
 }
 
 Route::view('blade-components/alert', 'blade-components.alert-docs')->name('blade-components.alert');
@@ -118,3 +120,10 @@ Route::post('blade-components/slideover-example', SlideoverFormExampleController
 Route::view('blade-components/breadcrumb', 'blade-components.breadcrumb-docs')->name('blade-components.breadcrumb');
 Route::view('blade-components/dropdown', 'blade-components.dropdown-docs')->name('blade-components.dropdown');
 Route::view('blade-components/menu', 'blade-components.menu-docs')->name('blade-components.menu');
+
+Route::view('livewire-components/table', 'livewire-components.table-docs')->name('livewire-components.table');
+Route::view('livewire-components/table/query', 'livewire-components.table-query-docs')->name('livewire-components.table.query');
+Route::view('livewire-components/table/columns', 'livewire-components.table-columns-docs')->name('livewire-components.table.columns');
+Route::view('livewire-components/table/filters', 'livewire-components.table-filters-docs')->name('livewire-components.table.filters');
+Route::view('livewire-components/table/row-actions', 'livewire-components.table-row-actions-docs')->name('livewire-components.table.row-actions');
+Route::get('livewire-components/table/customers', InvoiceCustomerOptionController::class)->name('livewire-components.table.customers');

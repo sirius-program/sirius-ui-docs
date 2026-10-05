@@ -35,6 +35,7 @@
                 @include('blade-components.examples.assets')
                 <p>Tom Select is bundled. Without JavaScript, local options use a native select; remote search needs JavaScript.</p>
                 <p>Livewire/Alpine updates and form resets keep selections in sync. Input/change events reach the original select.</p>
+                <p>Selections and search stay on one line. Multiple selections scroll horizontally.</p>
             </section>
             <section id="server-search" class="space-y-3">
                 <h2 class="text-xl font-medium">Server search</h2>

@@ -4,6 +4,7 @@
     <x-docs-props :rows="[
         ['trigger', 'string | slot', 'Required', 'Trigger text or content. A named slot takes precedence; do not nest another button.'],
         ['open', 'boolean', 'false', 'Initial open state. Changing this prop from Livewire updates the open state.'],
+        ['content-role', 'menu | dialog', 'menu', 'Use dialog for a dropdown containing form controls. Tab moves between controls; Escape closes it.'],
         ['align', 'start | end', 'start', 'Preferred horizontal alignment. The panel stays inside the viewport.']
     ]" />
     <h4 class="mt-5 text-lg font-medium">Item</h4>
