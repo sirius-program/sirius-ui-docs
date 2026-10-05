@@ -67,6 +67,7 @@
                     <h3 class="font-medium">Table</h3>
                     <ul class="list-disc pl-5 mt-3 space-y-3">
                         <li><a class="underline" href="{{ route('livewire-components.table') }}" wire:navigate>Overview</a></li>
+                        <li><a class="underline" href="{{ route('livewire-components.table.bulk-actions') }}" wire:navigate>Bulk Actions</a></li>
                         <li><a class="underline" href="{{ route('livewire-components.table.columns') }}" wire:navigate>Columns</a></li>
                         <li><a class="underline" href="{{ route('livewire-components.table.filters') }}" wire:navigate>Filters</a></li>
                         <li><a class="underline" href="{{ route('livewire-components.table.query') }}" wire:navigate>Query</a></li>

@@ -25,11 +25,12 @@
                     <li>Re-query and authorize the record in the handler, then validate and execute your application's action.</li>
                 </ol>
                 <p>Table renders the buttons; your application owns execution, feedback, and exports. It does not serialize the whole record or create overlays. Hiding a button does not authorize its action.</p>
-                <p>There are no arbitrary toolbar actions. Bulk selection and its ellipsis dropdown follow in phase 21.</p>
+                <p>There are no arbitrary toolbar actions. For checked records, see <a href="{{ route('livewire-components.table.bulk-actions') }}" class="underline" wire:navigate>Bulk Actions</a>.</p>
             </section>
             <section id="loading-and-refresh" class="space-y-3">
                 <h2 class="text-xl font-medium">Loading and refresh</h2>
-                <p>Table requests show a backdrop over the rows and footer. Toolbar search and filters remain usable. For external processing, pass a reactive parent <code>loading</code> prop or dispatch <code>table:loading</code> with <code>{ id, loading: true }</code>. Clear external loading when processing finishes, fails, or is cancelled.</p>
+                <p>Loading shows a backdrop over the rows and footer. Toolbar search and filters remain usable. For external processing, pass a reactive parent <code>loading</code> prop or dispatch <code>table:loading</code> with <code>{ id, loading: true }</code>. Clear external loading when processing finishes, fails, or is cancelled.</p>
+                <p>Checking or unchecking rows or the current page updates selection without a loading overlay.</p>
                 <p>Dispatch <code>table:refresh.{id}</code> or call <code>refreshTable()</code> after changing records. Refresh preserves search, filters, and ordering, and adjusts a page that no longer exists.</p>
                 <x-docs-example view="livewire.examples.table-actions" />
             </section>

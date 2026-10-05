@@ -122,6 +122,7 @@ Route::view('blade-components/dropdown', 'blade-components.dropdown-docs')->name
 Route::view('blade-components/menu', 'blade-components.menu-docs')->name('blade-components.menu');
 
 Route::view('livewire-components/table', 'livewire-components.table-docs')->name('livewire-components.table');
+Route::view('livewire-components/table/bulk-actions', 'livewire-components.table-bulk-actions-docs')->name('livewire-components.table.bulk-actions');
 Route::view('livewire-components/table/query', 'livewire-components.table-query-docs')->name('livewire-components.table.query');
 Route::view('livewire-components/table/columns', 'livewire-components.table-columns-docs')->name('livewire-components.table.columns');
 Route::view('livewire-components/table/filters', 'livewire-components.table-filters-docs')->name('livewire-components.table.filters');

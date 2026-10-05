@@ -1,0 +1,4 @@
+<x-sirius::dropdown.item name="Review selected" icon="heroicon-o-pencil-square" wire:click="$dispatch('invoice:bulk-review.{{ $tableId }}', { ids: {{ \Illuminate\Support\Js::from($selectedIds) }} })" />
+<x-sirius::dropdown.item name="Prepare reminders" icon="heroicon-o-envelope" wire:click="$dispatch('invoice:bulk-reminder.{{ $tableId }}', { ids: {{ \Illuminate\Support\Js::from($selectedIds) }} })" />
+<x-sirius::dropdown.item name="View selection" icon="heroicon-o-eye" wire:click="$dispatch('invoice:bulk-details.{{ $tableId }}', { ids: {{ \Illuminate\Support\Js::from($selectedIds) }} })" />
+<x-sirius::dropdown.item name="Open selected invoices" icon="heroicon-o-arrow-top-right-on-square" :link="route('livewire-components.table.bulk-actions', ['ids' => $selectedIds]).'#linked-selection'" />

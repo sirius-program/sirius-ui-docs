@@ -334,7 +334,7 @@ Breadcrumbs::for('livewire-components.table', function (BreadcrumbTrail $trail):
     $trail->push('Overview', route('livewire-components.table'));
 });
 
-foreach (['columns' => 'Columns', 'filters' => 'Filters', 'query' => 'Query', 'row-actions' => 'Row Actions'] as $topic => $label) {
+foreach (['bulk-actions' => 'Bulk Actions', 'columns' => 'Columns', 'filters' => 'Filters', 'query' => 'Query', 'row-actions' => 'Row Actions'] as $topic => $label) {
     Breadcrumbs::for('livewire-components.table.' . $topic, function (BreadcrumbTrail $trail) use ($topic, $label): void {
         $trail->parent('livewire-components.t');
         $trail->push($label, route('livewire-components.table.' . $topic));

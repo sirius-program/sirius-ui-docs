@@ -29,6 +29,7 @@
             <section id="explore-table" class="space-y-3">
                 <h2 class="text-xl font-medium">Explore Table</h2>
                 <ul class="space-y-3">
+                    <li><a href="{{ route('livewire-components.table.bulk-actions') }}" class="underline" wire:navigate>Bulk Actions</a> — Select records across pages and pass their IDs to application-owned buttons and overlays.</li>
                     <li><a href="{{ route('livewire-components.table.query') }}" class="underline" wire:navigate>Query</a> — Return an Eloquent Builder or a Collection, keep records scoped, and set page sizes.</li>
                     <li><a href="{{ route('livewire-components.table.columns') }}" class="underline" wire:navigate>Columns</a> — Choose headings, searchable fields, sorting, formatters, and custom cell views.</li>
                     <li><a href="{{ route('livewire-components.table.filters') }}" class="underline" wire:navigate>Filters</a> — Define text, select, date, time, and datetime filters, including remote options.</li>
