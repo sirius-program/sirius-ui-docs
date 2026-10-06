@@ -19,7 +19,7 @@ Deliver reusable Tailwind-styled Blade components and class-based Livewire compo
 - Preserve existing `sir-` styling and `--sir-` token conventions; support responsive layouts, light/dark themes, keyboard navigation, and visible focus.
 - Use Blade Icons with a selected free icon set. Map `primary` to Tailwind sky, `info` to neutral, `secondary` to indigo, `success` to emerald, `danger` to red, and `warning` to amber through customizable tokens.
 - The table uses a consumer-defined subclass for queries, columns, filters, and optional row/bulk action views. The package handles rendering, search, filtering, ordering, pagination, selection, and loading presentation. Action views receive `$record` for a row or `$selectedIds` for bulk buttons/links; the application creates its own Dialog/Alert/Slideover and owns action execution, authorization, validation, feedback, transactions, and exports. Table provides no action handler registry, built-in operations, automatic action overlays, or arbitrary toolbar actions.
-- Version-one calendar is a month grid with month/year navigation, today indication, date selection, and day actions. Event management, drag-and-drop, and range selection are outside this release.
+- Calendar is a FullCalendar Standard-backed Livewire schedule manager. It provides month/week/day/agenda views, events, date/range selection, event dragging/resizing, and simple recurrence. Consumers subclass the component to supply events and handle interactions; the application owns persistence, authorization, validation, and separately instantiated Dialog/Alert/Slideover. Premium resource views and complex RRule recurrence are outside this release.
 
 ## 2. Standing constraints
 
@@ -86,7 +86,7 @@ All form controls implement the following contract, including enhanced controls:
 | Livewire `chart` | Library-backed chart with serializable options and a local JavaScript callback/plugin extension point |
 | `accordion` | Expandable content and accessible trigger; documented initial/open state |
 | Livewire `table` | Consumer subclass with query, columns, filters, row action views receiving `$record`, and bulk action views receiving `$selectedIds`; application-owned actions and overlays; `loading` state and translated `record-label` |
-| Livewire `calendar` | Month grid with selectable/actionable days |
+| Livewire `calendar` | FullCalendar schedule manager; consumer subclass with `events(start, end, timezone)`, month/week/day/agenda views, date/event/range interactions, application-owned scheduling changes, and simple recurrence |
 
 The former inline Alert is named `message` without changing its planned behavior; the new `alert` is a distinct Dialog-based prompt. The former Modal is named `dialog` without changing its planned behavior, with explicit scrollbar-space preservation.
 
@@ -142,7 +142,8 @@ The following are candidate categories, not claims of verified compatibility or 
 | File upload | FilePond, Dropzone, or equivalent | Free required features, temporary-upload bridge, cleanup/cancel behavior |
 | Richtext | A free self-hostable richtext; evaluate TinyMCE or an alternative | Redistribution license, no unexpected paid requirement, sanitized HTML contract, bundled assets |
 | Select | Select2 or a lighter alternative | Multiple values, remote pagination, accessibility, JS lifecycle |
-| Table/calendar | Native Livewire baseline; evaluate libraries only if needed | Clear reduction in complexity without conflicting ownership or paid features |
+| Table | Native Livewire | Query/selection behavior with application-owned actions |
+| Calendar | FullCalendar Standard; selected for Phase 22 scheduling scope | Free views/interactions, correct timezone handling, Livewire lifecycle, application-owned persistence, and bundled assets/notices |
 
 - [x] Check current official documentation and licenses; record chosen versions and sources in docs.
 - [x] Create narrowly scoped integration proofs for risky widget synchronization before implementing their full component phases.
@@ -565,17 +566,57 @@ The revised Table boundaries below are implemented and verified. Phase 21 adds s
 - [x] Browser-test bulk buttons opening separately created Dialog, Alert, and Slideover, plus an application navigation link carrying selected IDs. Cover cancellation, application success/failure, loading recovery, explicit selection cleanup, multiple tables, and keyboard operation with no JavaScript errors.
 - [x] Extend Table docs with separate copyable bulk action views and external application handler/overlay examples. Explain that mutations and CSV exports are application-owned and validate/authorize received IDs there. Carry this contract into the later AI skill/release phases and complete the mandatory phase gate.
 
-## Phase 22 — Livewire calendar
+## Phase 22 — Livewire Calendar with FullCalendar
 
-- [ ] Implement the agreed month view using native Livewire unless Phase 0 demonstrates a clear benefit from a free library.
-- [ ] Default to the current month in the configured application timezone; provide previous/next month, month/year selectors, and return-to-today.
-- [ ] Support localized labels, configurable week start, selected/today styles, optional date bounds, and disabled dates.
-- [ ] Render a consistent grid across month boundaries with a documented treatment of adjacent-month days.
-- [ ] Expose a typed day action/event with a canonical date; consumer application code handles authorization and domain behavior.
-- [ ] Add accessible keyboard navigation and labels without making every day an unrelated tab stop.
-- [ ] Test leap years, year transitions, timezone-sensitive today, bounds, invalid navigation state, and day-action payloads using deterministic time.
-- [ ] Browser-test navigation, selecting month/year, keyboard operation, day actions, and Livewire updates.
-- [ ] Add calendar docs and complete the mandatory phase gate.
+Planning decision on 2026-10-06: the previous native date-selection implementation was rolled back. Rebuild Calendar for schedule management using FullCalendar Standard. This phase remains unstarted; implementation requires a subsequent user instruction.
+
+### 22.1 Dependency and asset integration
+
+- [ ] Use FullCalendar Standard's free month, week, day, and list views, date/range selection, and event dragging/resizing. Exclude Premium resource/timeline views, paid services, external-calendar integrations, and external drag sources from this phase. Standard is MIT-licensed; retain its notices. See the [official license](https://fullcalendar.io/license) and [plugin index](https://fullcalendar.io/docs/plugin-index).
+- [ ] Use v7 as the integration baseline; the verified current release is [v7.1.1](https://github.com/fullcalendar/fullcalendar/releases/tag/v7.1.1). Recheck the supported stable patch during implementation and record exact resolved versions, licenses, and notices for FullCalendar and its dependencies. Do not use v6 examples against v7 APIs.
+- [ ] Bundle the library, required `temporal-polyfill` peer dependency, standard plugins, locales, theme integration, and CSS internally. Use the vanilla JavaScript adapter, without a consumer React setup or runtime CDN. Verify the v7 packaging and theme requirements against the [installation guide](https://fullcalendar.io/docs/vanilla-js) and [v7 changes](https://fullcalendar.io/docs/upgrading-from-v6).
+- [ ] Map the calendar theme to Sirius UI tokens, shared button styling, light/dark themes, visible focus, RTL, and responsive layouts. Measure and record the added asset size during implementation.
+
+### 22.2 Consumer subclass and event source
+
+- [ ] Provide an extensible class-based Livewire Calendar, preserving the configurable Livewire namespace. Use a consumer subclass, following Table's application boundary; Calendar is a schedule display, not a form-field value control.
+- [ ] Define an `events(start, end, timezone)` PHP hook receiving typed dates and the resolved timezone, returning an iterable of serializable FullCalendar event definitions. Support application queries over Eloquent or collections through this same hook; do not couple package production code to business models or database tables.
+- [ ] Fetch events for the actual visible range, including adjacent days in month view. The requested range is start-inclusive/end-exclusive. Document overlap queries that include events beginning before the visible range, and define how events with no explicit end are represented. Refetch after navigation, view/timezone changes, explicit refresh, and successful application mutations.
+- [ ] Require stable event IDs for actionable events. Preserve supported event fields, including title, start, optional end, all-day state, colors, editability, grouping, and serializable extended properties. Define string ID normalization, missing-end semantics, duplicate-ID rejection, and safe serialization without exposing an entire model automatically.
+- [ ] Offer named props for common configuration and a serializable `options` bag with precedence: defaults, options, explicit props. Document the supported free configuration surface and adapter-owned exceptions. Keep the event source and internal request/lifecycle callbacks protected; provide a local JavaScript extension point for compatible callbacks/render hooks without evaluating code strings from Livewire.
+- [ ] Preserve the active view/date and scroll position when events refresh. Provide loading, empty-agenda, error, and retry feedback. Isolate instances and discard stale event-fetch responses after rapid navigation or configuration changes.
+
+### 22.3 Views, dates, timezone, and translations
+
+- [ ] Default to the current month in the resolved timezone. Provide previous/next, Today, and view switching for `dayGridMonth`, `timeGridWeek`, `timeGridDay`, and `listWeek`; allow an explicit initial date/view. Explain adjacent-month days, all-day rows, and timed events. Support week start, visible hours, optional date bounds, and selection/edit restrictions through compatible FullCalendar options.
+- [ ] Prioritize explicit locale/timezone, then resolve locale as `sirius-ui.locale -> app.locale -> app.fallback_locale -> en`, and timezone as `sirius-ui.timezone -> app.timezone -> UTC`. Validate supported values and document the mapping between Laravel locale names and FullCalendar locales.
+- [ ] Handle named timezones correctly using v7's timezone support. Keep all-day values as date-only ranges, and timed values as ISO-8601 instants with an explicit offset or UTC. Preserve exclusive range/event end semantics; do not convert all-day dates into browser-local instants. See [timezone behavior](https://fullcalendar.io/docs/timeZone) and [selection payloads](https://fullcalendar.io/docs/select-callback).
+- [ ] Put package UI strings in the `calendar` translation group, pass them from Blade to JavaScript, and apply them using the verified v7 API. Separate localized calendar date formatting from application UI translation overrides; document publishing and consumer overrides.
+
+### 22.4 Interactions and application-owned persistence
+
+- [ ] Expose documented PHP interaction hooks for date click, range selection, event click, event drop, and event resize. Define validated payload shapes with calendar identity, stable event ID where applicable, date/range, all-day state, timezone, and old/new scheduling values for mutations. Do not send DOM objects, JavaScript functions, or trusted authorization decisions as payloads.
+- [ ] Let application hooks open separately instantiated Dialog/Alert/Slideover or navigate to a page. The consumer implements create/edit/delete forms, authorization, validation, transactions, conflict handling, and feedback. Calendar provides no built-in CRUD form, model persistence, or automatic action overlay.
+- [ ] Make selection and event editing explicit opt-ins. Read-only viewing/click handling remains available by default; docs enable selection and editing to demonstrate scheduling. Respect per-event editability and application selection constraints.
+- [ ] Define a mutation acknowledgment contract: a drag/resize is provisional until the application hook explicitly succeeds. Prevent overlapping edits to the affected event while pending. Revert on rejection, validation/authorization failure, transport failure, or an unhandled mutation; refresh canonical data after success. Use FullCalendar's revert support and avoid duplicate persistence through both drop/resize and event-change callbacks. See [eventDrop](https://fullcalendar.io/docs/eventDrop) and [eventResize](https://fullcalendar.io/docs/eventResize).
+- [ ] Treat every browser ID/date as untrusted: validate adapter entrypoints before invoking application hooks, then require the application to reload and authorize the record within its own scope. Provide an accessible application-owned edit path so drag/resize is not the only way to reschedule an event.
+
+### 22.5 Recurrence and widget lifecycle
+
+- [ ] Support one-off events and FullCalendar's simple daily/weekly recurrence, including recurrence bounds and duration fields. Keep RRule and advanced recurrence/exceptions outside this phase. Document the supported fields from the [recurring-event contract](https://fullcalendar.io/docs/recurring-events).
+- [ ] Keep recurring definitions non-editable by default. An application may opt into editing only with an explicit policy for an occurrence versus the series and handling every affected event; never infer that policy or silently rewrite a whole series. Server-expanded recurring occurrences may be supplied as ordinary events with stable occurrence IDs.
+- [ ] Maintain one FullCalendar instance per widget through Livewire morphs, validation errors, programmatic updates, conditional rendering, and navigation. Protect the widget DOM while synchronizing server updates explicitly; destroy instances/listeners/observers on removal.
+- [ ] Resize correctly after Tabs, Dialog, or Slideover becomes visible. Support repeated open/close and mount/unmount, multiple calendars, mobile layouts, and reduced motion without duplicated handlers or state loss.
+
+### 22.6 Documentation and acceptance
+
+- [ ] Add a realistic team-scheduling Livewire demo covering all four views, all-day/timed/recurring events, range creation, event details/editing through application-owned overlays, successful drag/resize persistence, and rejected changes reverting. Keep demonstration models and handlers inside docs. Provide copyable subclass, event-source, interaction-hook, and local callback examples.
+- [ ] Document Demo, Usage, Attributes, Assets and interaction, plus Events, Actions, Options, Global configuration, and Translations as needed. Omit Shared field contract. Explain bounds, exclusive ends, timezone conversion, recurrence limitations, refresh, loading/errors, and persistence responsibilities without repeating attribute descriptions. Add Calendar in alphabetical menu order.
+- [ ] Test range-scoped event fetching, Eloquent/collection adapters in consumer fixtures, serialization/IDs, option precedence, translations, deterministic today, leap/year boundaries, all-day/exclusive ends, named timezones/DST, recurrence, invalid payloads, scoped authorization, mutation acknowledgment, failure recovery, and refresh behavior.
+- [ ] Browser-test real FullCalendar rendering in each view, navigation, date/range/event interactions, dragging/resizing with success/rejection, recurrence rendering, loading/retry, stale responses, application overlays, keyboard edit alternatives, RTL, mobile/themes, hidden-to-visible sizing, multiple instances, navigation, and teardown without JavaScript errors. Include a browser timezone different from the calendar and verify that 09:00 Asia/Jakarta represents 02:00 UTC.
+- [ ] Update the docs README/index, build both projects' assets, run `composer test` in every changed project, then complete `composer test:browser` in docs. Record actual versions, asset sizes, results, and compatibility limitations; do not mark this phase complete until its mandatory gate passes.
+
+Acceptance: an application can subclass Calendar, load only events overlapping its visible range, create/edit schedules through its own authorized handlers and overlays, and persist or reject drag/resize changes without state drift. All four views and simple recurrence work with the resolved timezone and translations, using internally bundled free FullCalendar features.
 
 ## Phase 23 — Livewire chart
 
@@ -605,7 +646,7 @@ Prerequisite: complete all component phases through Phase 23 and their documenta
 - [ ] Provide a component-selection guide and references for every shipped Blade and Livewire component, including props, slots, attributes, events, options, defaults, and supported customization points.
 - [ ] Include working ordinary Blade and Livewire examples covering bindings, validation/error bags, helper text, accessibility, stable IDs, reset, and widget lifecycle behavior. Explain the ordinary Blade `form` component's GET default, explicit action, CSRF/method spoofing, multipart contract, and separation from Livewire submission handling.
 - [ ] Include Toast's pre-rendered ID-based invocation, close-state synchronization, duration/queue contract, and footer actions above Dialog/Slideover in the component references and integration examples.
-- [ ] Explain application-owned responsibilities for table queries, row/bulk action views using `$record`/`$selectedIds`, separately instantiated Dialog/Alert/Slideover, authorization, validation, execution, transactions, CSV export, external loading, and explicit refresh/selection updates. Document the fixed toolbar without arbitrary actions and the translated `record-label` contract. Also cover calendar day actions, richtext sanitization, and uploads. Preserve CRUD controller design and the invocable-controller rule for single actions.
+- [ ] Explain application-owned responsibilities for table queries, row/bulk action views using `$record`/`$selectedIds`, separately instantiated Dialog/Alert/Slideover, authorization, validation, execution, transactions, CSV export, external loading, and explicit refresh/selection updates. Document the fixed toolbar without arbitrary actions and the translated `record-label` contract. Also cover Calendar event sources, date/range/event hooks, acknowledged drag/resize persistence, exclusive ends, timezone/recurrence contracts, richtext sanitization, and uploads. Preserve CRUD controller design and the invocable-controller rule for single actions.
 - [ ] Cover local asset installation/builds, Tailwind tokens and themes, Blade Icons, troubleshooting, and relevant test commands. Use only the selected free dependency features.
 - [ ] Instruct agents to inspect the installed package version and configuration, prefer existing components, and avoid inventing APIs or editing `vendor`. Use documented publishing and extension mechanisms; never access `.env` directly or expose secrets.
 - [ ] Bundle version-matched references and examples with each package release so essential usage guidance works without access to the docs repository or a hosted website. Document how to refresh an installed skill after a package upgrade.
@@ -650,6 +691,7 @@ Prerequisite: all component phases and the AI agent skill are complete. This is 
 - [ ] Review keyboard access, focus, light/dark contrast, mobile layouts, and reduced-motion behavior across docs examples, including nested menus, Tabs, Timeline, Skeleton, Tooltip/Popover, Toast, and Chart. Confirm Dialog/Slideover preserve scrollbar space.
 - [ ] Verify Toast timing, queue limits, close-state synchronization, lifecycle cleanup, and interaction above Dialog/Slideover without moving focus or changing the active overlay.
 - [ ] Verify Table row views receive the correct `$record` and bulk views receive exactly the checked `$selectedIds`; application-created Dialog/Alert/Slideover and navigation links use these contexts correctly. Cover selection persistence/reset, explicit refresh/cleanup, loading over rows/footer without blocking toolbar/search/filters, external overlays, or other tables, fixed toolbar/filter dropdown, column borders, numeric pagination/footer, and `record-label` count/empty-state translations. Keep authorization and action execution in consumer fixtures; confirm there is no package action engine, built-in operation, or arbitrary toolbar action API.
+- [ ] Verify FullCalendar scheduling with range-scoped event sources, all four views, all-day/timed/simple recurring events, application-created overlays, acknowledged drag/resize changes and rejection rollback, timezone conversion, hidden-to-visible resizing, multiple instances, and Livewire lifecycle cleanup. Confirm there is no package-owned CRUD persistence or Premium dependency.
 - [ ] Confirm the completed Flux migration covers the entire docs application and any migration-driven additions are included in the AI skill references.
 - [ ] Verify the ordinary Blade `form` component and a separate Livewire form submit the documented canonical values, including disabled/readonly behavior. Cover the Blade form's GET default, non-GET CSRF, spoofed methods, and multipart file submissions.
 - [ ] Verify internal assets load with no runtime CDN requests and no duplicate Alpine/widget initialization.
