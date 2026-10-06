@@ -9,7 +9,7 @@
     'timeGridWeek' => 'Pekan',
     'timeGridDay'  => 'Hari',
     'listWeek'     => 'Agenda',
-    'all_day'      => 'Seluruhnya',
+    'all_day'      => 'Seharian',
     'empty'        => 'Tidak ada jadwal pada rentang ini.',
     'loading'      => 'Memuat jadwal …',
     'saving'       => 'Menyimpan jadwal …',
