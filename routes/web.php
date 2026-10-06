@@ -92,6 +92,7 @@ if (app()->environment(['local', 'testing'])) {
     Route::view('development/overlays', 'development.overlays')->name('development.overlays');
     Route::view('development/toast', 'development.toast')->name('development.toast');
     Route::view('development/table', 'development.table')->name('development.table');
+    Route::view('development/calendar', 'development.calendar')->name('development.calendar');
 }
 
 Route::view('blade-components/alert', 'blade-components.alert-docs')->name('blade-components.alert');
@@ -128,3 +129,8 @@ Route::view('livewire-components/table/columns', 'livewire-components.table-colu
 Route::view('livewire-components/table/filters', 'livewire-components.table-filters-docs')->name('livewire-components.table.filters');
 Route::view('livewire-components/table/row-actions', 'livewire-components.table-row-actions-docs')->name('livewire-components.table.row-actions');
 Route::get('livewire-components/table/customers', InvoiceCustomerOptionController::class)->name('livewire-components.table.customers');
+
+Route::view('livewire-components/calendar', 'livewire-components.calendar-docs')->name('livewire-components.calendar');
+Route::view('livewire-components/calendar/actions', 'livewire-components.calendar-actions-docs')->name('livewire-components.calendar.actions');
+Route::view('livewire-components/calendar/events', 'livewire-components.calendar-events-docs')->name('livewire-components.calendar.events');
+Route::view('livewire-components/calendar/options', 'livewire-components.calendar-options-docs')->name('livewire-components.calendar.options');

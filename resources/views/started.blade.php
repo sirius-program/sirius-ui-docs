@@ -63,6 +63,15 @@
             <h2 class="text-lg font-medium">Livewire Components</h2>
             
             <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+                <section id="livewire-components-calendar" class="rounded-xl border border-zinc-200 p-6 dark:border-zinc-700">
+                    <h3 class="font-medium">Calendar</h3>
+                    <ul class="list-disc pl-5 mt-3 space-y-3">
+                        <li><a class="underline" href="{{ route('livewire-components.calendar') }}" wire:navigate>Overview</a></li>
+                        <li><a class="underline" href="{{ route('livewire-components.calendar.actions') }}" wire:navigate>Actions</a></li>
+                        <li><a class="underline" href="{{ route('livewire-components.calendar.events') }}" wire:navigate>Events</a></li>
+                        <li><a class="underline" href="{{ route('livewire-components.calendar.options') }}" wire:navigate>Options</a></li>
+                    </ul>
+                </section>
                 <section id="livewire-components-table" class="rounded-xl border border-zinc-200 p-6 dark:border-zinc-700">
                     <h3 class="font-medium">Table</h3>
                     <ul class="list-disc pl-5 mt-3 space-y-3">

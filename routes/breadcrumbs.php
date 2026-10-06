@@ -87,6 +87,11 @@ Breadcrumbs::for('development.table', function (BreadcrumbTrail $trail): void {
     $trail->push('Table integration', route('development.table'));
 });
 
+Breadcrumbs::for('development.calendar', function (BreadcrumbTrail $trail): void {
+    $trail->parent('livewire-components.c');
+    $trail->push('Integration');
+});
+
 // User Menu
 
 Breadcrumbs::for('settings', function (BreadcrumbTrail $trail): void {
@@ -321,6 +326,25 @@ Breadcrumbs::for('livewire-components.index', function (BreadcrumbTrail $trail):
     $trail->parent('home');
     $trail->push(__('Livewire Components'));
 });
+
+// Calendar
+
+Breadcrumbs::for('livewire-components.c', function (BreadcrumbTrail $trail): void {
+    $trail->parent('livewire-components.index');
+    $trail->push('Calendar', route('livewire-components.calendar'));
+});
+
+Breadcrumbs::for('livewire-components.calendar', function (BreadcrumbTrail $trail): void {
+    $trail->parent('livewire-components.c');
+    $trail->push('Overview', route('livewire-components.calendar'));
+});
+
+foreach (['actions' => 'Actions', 'events' => 'Events', 'options' => 'Options'] as $topic => $label) {
+    Breadcrumbs::for('livewire-components.calendar.' . $topic, function (BreadcrumbTrail $trail) use ($topic, $label): void {
+        $trail->parent('livewire-components.c');
+        $trail->push($label, route('livewire-components.calendar.' . $topic));
+    });
+}
 
 // Table
 

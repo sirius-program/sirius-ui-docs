@@ -63,6 +63,12 @@
                     </flux:sidebar.group>
                 </flux:sidebar.group>
                 <flux:sidebar.group :heading="__('Livewire Components')" class="grid my-5">
+                    <flux:sidebar.group expandable heading="Calendar" class="grid" :expanded="request()->routeIs('livewire-components.calendar', 'livewire-components.calendar.*', 'development.calendar')">
+                        <flux:sidebar.item :href="route('livewire-components.calendar')" :current="request()->routeIs('livewire-components.calendar')" wire:navigate>Overview</flux:sidebar.item>
+                        <flux:sidebar.item :href="route('livewire-components.calendar.actions')" :current="request()->routeIs('livewire-components.calendar.actions', 'development.calendar')" wire:navigate>Actions</flux:sidebar.item>
+                        <flux:sidebar.item :href="route('livewire-components.calendar.events')" :current="request()->routeIs('livewire-components.calendar.events')" wire:navigate>Events</flux:sidebar.item>
+                        <flux:sidebar.item :href="route('livewire-components.calendar.options')" :current="request()->routeIs('livewire-components.calendar.options')" wire:navigate>Options</flux:sidebar.item>
+                    </flux:sidebar.group>
                     <flux:sidebar.group expandable heading="Table" class="grid" :expanded="request()->routeIs('livewire-components.table', 'livewire-components.table.*', 'development.table')">
                         <flux:sidebar.item :href="route('livewire-components.table')" :current="request()->routeIs('livewire-components.table')" wire:navigate>Overview</flux:sidebar.item>
                         <flux:sidebar.item :href="route('livewire-components.table.bulk-actions')" :current="request()->routeIs('livewire-components.table.bulk-actions')" wire:navigate>Bulk Actions</flux:sidebar.item>
