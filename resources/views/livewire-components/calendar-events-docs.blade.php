@@ -8,11 +8,11 @@
             </header>
             <section id="calendar-demo" class="space-y-4">
                 <h2 class="text-xl font-medium">Demo</h2>
-                <h3 class="text-lg font-medium">Eloquent · Invoice issue dates</h3>
+                <h3 class="text-lg font-medium">Eloquent</h3>
                 <div data-demo-mode="livewire">
                     @include('livewire-components.demos.calendar-events-eloquent')
                 </div>
-                <h3 class="text-lg font-medium">Collection · Team sessions</h3>
+                <h3 class="text-lg font-medium">Collection</h3>
                 <div data-demo-mode="livewire">
                     @include('livewire-components.demos.calendar-events-collection')
                 </div>
