@@ -2,6 +2,10 @@
 
 This application documents and tests the local `sirius/ui` package. Public components are added only after their implementation phases are completed.
 
+Phase 23 adds **Chart** at /livewire-components/chart, with separate **Overview**, **Data**, **Extensions**, and **Options** submenus. Use the generic Livewire Chart inside an application Livewire view and pass reactive labels/datasets, type, sizing, and native serializable options. The package bundles Chart.js 4.5.1 and the date-fns time adapter; application code owns queries and authorization. Local SiriusChart.register(id, factory) callbacks/plugins complement parent prop updates without evaluating JavaScript strings. Demos include scoped Eloquent and Collection sources, accessible chart naming, and a callback to Livewire. The development fixture covers native controllers, mixed/time scales, multiple instances, Tabs/Dialog/Slideover, sizing, and rendering errors. See [Phase 23](PHASE_23.md) for boundaries and verification.
+
+Chart visibility/loading toggles are kept only in /development/chart for lifecycle testing. Public revenue demos omit these toggles, the revenue table, and its description.
+
 ## Local installation
 
 Keep `sirius-ui` and `sirius-ui-docs` in sibling directories. Build the package with `npm ci` and `npm run build`, then run `composer install`, `npm ci`, and `npm run build` in docs. Provision application environment values yourself; agents must never access `.env` directly.

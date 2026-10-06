@@ -72,6 +72,15 @@
                         <li><a class="underline" href="{{ route('livewire-components.calendar.options') }}" wire:navigate>Options</a></li>
                     </ul>
                 </section>
+                <section id="livewire-components-chart" class="rounded-xl border border-zinc-200 p-6 dark:border-zinc-700">
+                    <h3 class="font-medium">Chart</h3>
+                    <ul class="list-disc pl-5 mt-3 space-y-3">
+                        <li><a class="underline" href="{{ route('livewire-components.chart') }}" wire:navigate>Overview</a></li>
+                        <li><a class="underline" href="{{ route('livewire-components.chart.data') }}" wire:navigate>Data</a></li>
+                        <li><a class="underline" href="{{ route('livewire-components.chart.extensions') }}" wire:navigate>Extensions</a></li>
+                        <li><a class="underline" href="{{ route('livewire-components.chart.options') }}" wire:navigate>Options</a></li>
+                    </ul>
+                </section>
                 <section id="livewire-components-table" class="rounded-xl border border-zinc-200 p-6 dark:border-zinc-700">
                     <h3 class="font-medium">Table</h3>
                     <ul class="list-disc pl-5 mt-3 space-y-3">

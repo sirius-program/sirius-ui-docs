@@ -69,6 +69,12 @@
                         <flux:sidebar.item :href="route('livewire-components.calendar.events')" :current="request()->routeIs('livewire-components.calendar.events')" wire:navigate>Events</flux:sidebar.item>
                         <flux:sidebar.item :href="route('livewire-components.calendar.options')" :current="request()->routeIs('livewire-components.calendar.options')" wire:navigate>Options</flux:sidebar.item>
                     </flux:sidebar.group>
+                    <flux:sidebar.group expandable heading="Chart" class="grid" :expanded="request()->routeIs('livewire-components.chart', 'livewire-components.chart.*', 'development.chart')">
+                        <flux:sidebar.item :href="route('livewire-components.chart')" :current="request()->routeIs('livewire-components.chart', 'development.chart')" wire:navigate>Overview</flux:sidebar.item>
+                        <flux:sidebar.item :href="route('livewire-components.chart.data')" :current="request()->routeIs('livewire-components.chart.data')" wire:navigate>Data</flux:sidebar.item>
+                        <flux:sidebar.item :href="route('livewire-components.chart.extensions')" :current="request()->routeIs('livewire-components.chart.extensions')" wire:navigate>Extensions</flux:sidebar.item>
+                        <flux:sidebar.item :href="route('livewire-components.chart.options')" :current="request()->routeIs('livewire-components.chart.options')" wire:navigate>Options</flux:sidebar.item>
+                    </flux:sidebar.group>
                     <flux:sidebar.group expandable heading="Table" class="grid" :expanded="request()->routeIs('livewire-components.table', 'livewire-components.table.*', 'development.table')">
                         <flux:sidebar.item :href="route('livewire-components.table')" :current="request()->routeIs('livewire-components.table')" wire:navigate>Overview</flux:sidebar.item>
                         <flux:sidebar.item :href="route('livewire-components.table.bulk-actions')" :current="request()->routeIs('livewire-components.table.bulk-actions')" wire:navigate>Bulk Actions</flux:sidebar.item>

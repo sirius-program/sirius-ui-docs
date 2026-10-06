@@ -92,6 +92,11 @@ Breadcrumbs::for('development.calendar', function (BreadcrumbTrail $trail): void
     $trail->push('Integration');
 });
 
+Breadcrumbs::for('development.chart', function (BreadcrumbTrail $trail): void {
+    $trail->parent('livewire-components.chart');
+    $trail->push('Integration');
+});
+
 // User Menu
 
 Breadcrumbs::for('settings', function (BreadcrumbTrail $trail): void {
@@ -343,6 +348,25 @@ foreach (['actions' => 'Actions', 'events' => 'Events', 'options' => 'Options'] 
     Breadcrumbs::for('livewire-components.calendar.' . $topic, function (BreadcrumbTrail $trail) use ($topic, $label): void {
         $trail->parent('livewire-components.c');
         $trail->push($label, route('livewire-components.calendar.' . $topic));
+    });
+}
+
+// Chart
+
+Breadcrumbs::for('livewire-components.chart-group', function (BreadcrumbTrail $trail): void {
+    $trail->parent('livewire-components.index');
+    $trail->push('Chart', route('livewire-components.chart'));
+});
+
+Breadcrumbs::for('livewire-components.chart', function (BreadcrumbTrail $trail): void {
+    $trail->parent('livewire-components.chart-group');
+    $trail->push('Overview', route('livewire-components.chart'));
+});
+
+foreach (['data' => 'Data', 'extensions' => 'Extensions', 'options' => 'Options'] as $topic => $label) {
+    Breadcrumbs::for('livewire-components.chart.' . $topic, function (BreadcrumbTrail $trail) use ($topic, $label): void {
+        $trail->parent('livewire-components.chart-group');
+        $trail->push($label, route('livewire-components.chart.' . $topic));
     });
 }
 

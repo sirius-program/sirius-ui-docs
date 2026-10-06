@@ -1,0 +1,1 @@
+<livewire:examples.invoice-chart-demo />

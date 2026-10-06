@@ -93,6 +93,7 @@ if (app()->environment(['local', 'testing'])) {
     Route::view('development/toast', 'development.toast')->name('development.toast');
     Route::view('development/table', 'development.table')->name('development.table');
     Route::view('development/calendar', 'development.calendar')->name('development.calendar');
+    Route::view('development/chart', 'development.chart')->name('development.chart');
 }
 
 Route::view('blade-components/alert', 'blade-components.alert-docs')->name('blade-components.alert');
@@ -134,3 +135,8 @@ Route::view('livewire-components/calendar', 'livewire-components.calendar-docs')
 Route::view('livewire-components/calendar/actions', 'livewire-components.calendar-actions-docs')->name('livewire-components.calendar.actions');
 Route::view('livewire-components/calendar/events', 'livewire-components.calendar-events-docs')->name('livewire-components.calendar.events');
 Route::view('livewire-components/calendar/options', 'livewire-components.calendar-options-docs')->name('livewire-components.calendar.options');
+
+Route::view('livewire-components/chart', 'livewire-components.chart-docs')->name('livewire-components.chart');
+Route::view('livewire-components/chart/data', 'livewire-components.chart-data-docs')->name('livewire-components.chart.data');
+Route::view('livewire-components/chart/extensions', 'livewire-components.chart-extensions-docs')->name('livewire-components.chart.extensions');
+Route::view('livewire-components/chart/options', 'livewire-components.chart-options-docs')->name('livewire-components.chart.options');
