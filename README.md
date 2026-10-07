@@ -16,7 +16,13 @@ Docs uses a Composer path repository at `../sirius-ui`, mapped to `dev-main`. On
 
 If linking is unavailable, set the repository's `options.symlink` to `false`, run `composer reinstall sirius/ui`, and repeat that reinstall after package edits to refresh the mirrored copy. Never edit files under `vendor`.
 
-The docs stylesheet imports `vendor/sirius/ui/dist/sirius.css`, and `resources/js/app.js` imports `vendor/sirius/ui/dist/sirius.js`. Build package assets before building docs. The package script enables password visibility, readonly choice controls, and mixed checkbox state without depending on Alpine or Livewire JavaScript. Widget proofs use lazy, locally bundled JS/CSS imports; no runtime CDN is required and no second Alpine instance is installed. The existing docs layout uses Flux, but the package does not depend on Flux.
+The docs stylesheet imports `vendor/sirius/ui/dist/sirius.css`, and `resources/js/app.js` imports `vendor/sirius/ui/dist/sirius.js`. Build package assets before building docs. The package script enables password visibility, readonly choice controls, and mixed checkbox state without depending on Alpine or Livewire JavaScript. Widget proofs use lazy, locally bundled JS/CSS imports; no runtime CDN is required and no second Alpine instance is installed. Docs use Sirius UI throughout, without a Flux dependency.
+
+The shell composes Menu and Accordion for desktop navigation, Slideover for mobile navigation, Breadcrumb for page context, and Dropdown/Radio for appearance controls. Light, Dark, and System persist under `sirius-docs.appearance`; the previous `flux.appearance` storage key is read only to preserve an existing preference. Theme initialization runs before styles load and synchronizes controls after Livewire navigation. Page surfaces, borders, focus rings, and navigation accents follow Sirius tokens; documentation tables and code blocks use the matching slate palette.
+
+The sticky header uses an opaque Sirius surface so fixed dropdown panels remain aligned with their triggers and do not create horizontal page overflow.
+
+See [Phase 25 migration and verification](PHASE_25.md) for the component mapping, installation checks, and audit notes. Package and docs checks passed; the latest docs follow-up browser suite passed 247 tests / 2,722 assertions.
 
 For applications without a bundler, run `php artisan vendor:publish --tag=sirius-ui-assets` and load `/vendor/sirius-ui/sirius.css` and `/vendor/sirius-ui/sirius.js` once. Refresh published assets after package upgrades, reviewing any local modifications first. The script handles later Livewire renders and navigation automatically.
 
@@ -48,7 +54,7 @@ Checkbox and radio options inside `<x-sirius::field group>` share the group's er
 
 Phase 2 integration fixtures at `/development/basic-controls` and `/development/standalone-controls` verify multiple Livewire instances and native controls without Livewire or Alpine. They are available only in local/testing environments.
 
-The expanded roadmap in the implementation checklist runs through Phase 26. Planned additions include single/range Slider, Message and Dialog naming, new display/navigation/overlay components, and Livewire Chart. Table phases also include custom row, bulk, and toolbar actions, with confirmation/input forms and explicit atomic or partial-result handling. The AI agent skill follows all component phases; replacing Flux throughout docs precedes final release validation. These are planned APIs, not shipped components.
+The implementation checklist runs through Phase 26. Component phases, the AI agent skill, and the docs migration are implemented. Table row and bulk actions remain application-owned buttons and links; the package does not provide an action engine or arbitrary toolbar actions. Phase 26 covers final cross-component and release validation. Direct Claude Code evaluation remains deferred by user instruction.
 
 - [Implementation checklist](IMPLEMENTATION_PLAN.md)
 - [Phase 0 architecture, dependency decisions, and evidence](PHASE_0.md)

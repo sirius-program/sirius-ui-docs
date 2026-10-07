@@ -2,7 +2,7 @@
     <x-docs-page :navigation="['Extensions' => ['chart-demo' => 'Demo', 'chart-usage' => 'Usage', 'local-extensions' => 'Local extensions', 'lifecycle' => 'Lifecycle']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8">
             <header class="space-y-2">
-                <p class="text-sm text-zinc-500 dark:text-zinc-400">CHART</p>
+                <p class="text-sm text-slate-500 dark:text-slate-400">CHART</p>
                 <h1 class="text-3xl font-semibold">Extensions</h1>
                 <p>Add local callbacks and plugins without sending JavaScript through Livewire.</p>
             </header>

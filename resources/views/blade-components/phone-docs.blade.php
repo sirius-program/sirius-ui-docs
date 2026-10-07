@@ -2,16 +2,16 @@
     <x-docs-page :navigation="['Phone' => ['phone-demo' => 'Demo', 'phone-usage' => 'Usage', 'phone-attributes' => 'Attributes'], 'Shared' => ['shared-field-contract' => 'Shared field contract', 'assets-and-interaction' => 'Assets and interaction', 'validation-rules' => 'Validation rules', 'global-configuration' => 'Global configuration', 'translations' => 'Translations']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8" data-control-demo="phone">
             <header class="space-y-2">
-                <p class="text-sm text-zinc-500 dark:text-zinc-400">FORM CONTROL</p>
+                <p class="text-sm text-slate-500 dark:text-slate-400">FORM CONTROL</p>
                 <h1 class="text-3xl font-semibold">Phone</h1>
                 <p>Phone input with country selection and international values, powered by <a href="https://github.com/catamphetamine/libphonenumber-js" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline">libphonenumber-js</a>.</p>
             </header>
             <section id="phone-demo" class="space-y-5">
                 <h2 class="text-xl font-medium">Demo</h2>
-                <div class="space-y-4 rounded-xl border border-zinc-200 p-6 dark:border-zinc-700" data-demo-mode="livewire">
+                <div class="space-y-4 rounded-xl border border-slate-300 p-6 dark:border-slate-600" data-demo-mode="livewire">
                     <h3 class="font-medium">Livewire</h3><livewire:examples.phone-example />
                 </div>
-                <div id="phone-blade" class="space-y-4 rounded-xl border border-zinc-200 p-6 dark:border-zinc-700" data-demo-mode="blade">
+                <div id="phone-blade" class="space-y-4 rounded-xl border border-slate-300 p-6 dark:border-slate-600" data-demo-mode="blade">
                     <h3 class="font-medium">Blade</h3>@include('blade-components.demos.phone-blade')
                 </div>
             </section>

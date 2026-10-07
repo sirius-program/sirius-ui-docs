@@ -2,7 +2,7 @@
     <x-docs-page :navigation="['Overview' => ['calendar-demo' => 'Demo', 'calendar-usage' => 'Usage', 'calendar-attributes' => 'Attributes', 'assets-and-interaction' => 'Assets and interaction', 'explore-calendar' => 'Explore Calendar', 'global-configuration' => 'Global Configuration', 'translations' => 'Translations']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8">
             <header class="space-y-2">
-                <p class="text-sm text-zinc-500 dark:text-zinc-400">CALENDAR</p>
+                <p class="text-sm text-slate-500 dark:text-slate-400">CALENDAR</p>
                 <h1 class="text-3xl font-semibold">Overview</h1>
                 <p>Manage schedules with month, week, day, and agenda views, powered by <a href="https://fullcalendar.io/" target="_blank" rel="noopener noreferrer" class="text-blue-500 dark:text-blue-400 hover:underline">FullCalendar</a></p>
             </header>

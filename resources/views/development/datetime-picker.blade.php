@@ -6,7 +6,7 @@
         <title>Datetime picker integration</title>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="bg-white p-6 text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100">
+    <body class="bg-white p-6 text-slate-900 dark:bg-slate-900 dark:text-slate-100">
         <main class="mx-auto max-w-2xl space-y-6">
             <h1>Datetime picker integration</h1>
             <x-sirius::form :action="url()->current()" id="date-form" class="space-y-5">

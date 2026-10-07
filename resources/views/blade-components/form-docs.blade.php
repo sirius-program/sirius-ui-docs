@@ -2,7 +2,7 @@
     <x-docs-page :navigation="['Form' => ['form-demo' => 'Demo', 'form-usage' => 'Usage', 'form-attributes' => 'Attributes'], 'Shared' => ['shared-field-contract' => 'Shared field contract', 'assets-and-interaction' => 'Assets and interaction']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8">
             <header class="space-y-2">
-                <p class="text-sm text-zinc-500 dark:text-zinc-400">FORM CONTROL</p>
+                <p class="text-sm text-slate-500 dark:text-slate-400">FORM CONTROL</p>
                 <h1 class="text-3xl font-semibold">Form</h1>
                 <p>Native Blade forms with automatic CSRF and method spoofing.</p>
             </header>
@@ -11,7 +11,7 @@
                 @if (session('form-result'))<p role="status" data-form-result>{{ session('form-result') }}</p>@endif
                 @if ($query !== '')<p role="status" data-form-search>Search: {{ $query }}</p>@endif
                 @foreach (['get' => 'GET — Project search', 'post' => 'POST — Create a project', 'put' => 'PUT — Replace project details', 'patch' => 'PATCH — Rename a project', 'delete' => 'DELETE — Archive a draft', 'upload' => 'Multipart — Project document'] as $kind => $title)
-                    <div class="space-y-4 rounded-xl border border-zinc-200 p-6 dark:border-zinc-700" data-demo-mode="blade">
+                    <div class="space-y-4 rounded-xl border border-slate-300 p-6 dark:border-slate-600" data-demo-mode="blade">
                         <h3 class="font-medium">{{ $title }}</h3>
                         @include('blade-components.demos.form-'.$kind)
                     </div>

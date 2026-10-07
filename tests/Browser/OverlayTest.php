@@ -103,7 +103,7 @@ it('preserves scrolled sticky and fixed content for every overlay and restores e
     }
     $page->script('window.scrollTo(0, 200)');
     $page->assertScript('scrollY', 200);
-    $page->script('window.backgroundGeometry = () => Array.from(document.querySelectorAll("[data-flux-header], [data-flux-sidebar], [data-docs-page], [data-overlay-fixed]")).map(el => { const r = el.getBoundingClientRect(); return [r.top,r.left,r.right]; }); window.originalGeometry = window.backgroundGeometry(); document.dispatchEvent(new CustomEvent("dialog:show", { detail: { id: "' . $id . '" } }))');
+    $page->script('window.backgroundGeometry = () => Array.from(document.querySelectorAll("[data-docs-header], [data-docs-sidebar], [data-docs-page], [data-overlay-fixed]")).map(el => { const r = el.getBoundingClientRect(); return [r.top,r.left,r.right]; }); window.originalGeometry = window.backgroundGeometry(); document.dispatchEvent(new CustomEvent("dialog:show", { detail: { id: "' . $id . '" } }))');
     $page->assertPresent('#' . $id . ':modal')->assertScript('scrollY', 200);
     expect($page->script('window.backgroundGeometry()'))->toBe($page->script('window.originalGeometry'));
     $page->script('document.dispatchEvent(new CustomEvent("dialog:hide", { detail: { id: "' . $id . '" } }))');

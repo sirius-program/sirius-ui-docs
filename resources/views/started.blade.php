@@ -2,14 +2,14 @@
     <x-docs-page :navigation="['Getting Started' => ['overview' => 'Overview', 'blade-components' => 'Blade components']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8">
             <header id="overview" class="space-y-2">
-                <p class="text-sm text-zinc-500 dark:text-zinc-400">SIRIUS UI COMPONENTS</p>
+                <p class="text-sm text-slate-500 dark:text-slate-400">SIRIUS UI COMPONENTS</p>
                 <h1 class="text-3xl font-semibold">Getting Started</h1>
             </header>
             <p>Reusable Blade and Livewire components. Choose a component below for demos, usage, and attributes. See the README for local setup.</p>
             <p>Using a coding agent? Install the <a class="underline" href="{{ route('started.ai-agent-skill') }}" wire:navigate>AI Agent Skill</a> for version-matched Sirius UI guidance and examples.</p>
             <h2 class="text-lg font-medium">Blade Components</h2>
             <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
-                <section id="blade-components-form-controls" class="rounded-xl border border-zinc-200 p-6 dark:border-zinc-700">
+                <section id="blade-components-form-controls" class="rounded-xl border border-slate-300 p-6 dark:border-slate-600">
                     <h3 class="font-medium">Form Control</h3>
                     <ul class="list-disc pl-5 mt-3 space-y-3">
                         <li><a class="underline" href="{{ route('blade-components.choices') }}" wire:navigate>Checkbox, Radio &amp; Switch</a></li>
@@ -26,7 +26,7 @@
                         <li><a class="underline" href="{{ route('blade-components.textarea') }}" wire:navigate>Textarea</a></li>
                     </ul>
                 </section>
-                <section id="blade-components-presentation" class="rounded-xl border border-zinc-200 p-6 dark:border-zinc-700">
+                <section id="blade-components-presentation" class="rounded-xl border border-slate-300 p-6 dark:border-slate-600">
                     <h3 class="font-medium">Presentation</h3>
                     <ul class="list-disc pl-5 mt-3 space-y-3">
                         <li><a class="underline" href="{{ route('blade-components.alert') }}" wire:navigate>Alert</a></li>
@@ -43,7 +43,7 @@
                         <li><a class="underline" href="{{ route('blade-components.tooltip') }}" wire:navigate>Tooltip</a></li>
                     </ul>
                 </section>
-                <section id="blade-components-layouts" class="rounded-xl border border-zinc-200 p-6 dark:border-zinc-700">
+                <section id="blade-components-layouts" class="rounded-xl border border-slate-300 p-6 dark:border-slate-600">
                     <h3 class="font-medium">Layout</h3>
                     <ul class="list-disc pl-5 mt-3 space-y-3 mb-4">
                         <li><a class="underline" href="{{ route('blade-components.accordion') }}" wire:navigate>Accordion</a></li>
@@ -64,7 +64,7 @@
             <h2 class="text-lg font-medium">Livewire Components</h2>
             
             <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
-                <section id="livewire-components-calendar" class="rounded-xl border border-zinc-200 p-6 dark:border-zinc-700">
+                <section id="livewire-components-calendar" class="rounded-xl border border-slate-300 p-6 dark:border-slate-600">
                     <h3 class="font-medium">Calendar</h3>
                     <ul class="list-disc pl-5 mt-3 space-y-3">
                         <li><a class="underline" href="{{ route('livewire-components.calendar') }}" wire:navigate>Overview</a></li>
@@ -73,7 +73,7 @@
                         <li><a class="underline" href="{{ route('livewire-components.calendar.options') }}" wire:navigate>Options</a></li>
                     </ul>
                 </section>
-                <section id="livewire-components-chart" class="rounded-xl border border-zinc-200 p-6 dark:border-zinc-700">
+                <section id="livewire-components-chart" class="rounded-xl border border-slate-300 p-6 dark:border-slate-600">
                     <h3 class="font-medium">Chart</h3>
                     <ul class="list-disc pl-5 mt-3 space-y-3">
                         <li><a class="underline" href="{{ route('livewire-components.chart') }}" wire:navigate>Overview</a></li>
@@ -82,7 +82,7 @@
                         <li><a class="underline" href="{{ route('livewire-components.chart.options') }}" wire:navigate>Options</a></li>
                     </ul>
                 </section>
-                <section id="livewire-components-table" class="rounded-xl border border-zinc-200 p-6 dark:border-zinc-700">
+                <section id="livewire-components-table" class="rounded-xl border border-slate-300 p-6 dark:border-slate-600">
                     <h3 class="font-medium">Table</h3>
                     <ul class="list-disc pl-5 mt-3 space-y-3">
                         <li><a class="underline" href="{{ route('livewire-components.table') }}" wire:navigate>Overview</a></li>

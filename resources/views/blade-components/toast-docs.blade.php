@@ -2,14 +2,14 @@
     <x-docs-page :navigation="['Toast' => ['toast-demo' => 'Demo', 'toast-usage' => 'Usage', 'toast-attributes' => 'Attributes'], 'Shared' => ['assets-and-interaction' => 'Assets and interaction', 'state-and-events' => 'State and events', 'global-configuration' => 'Global configuration', 'translations' => 'Translations']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8">
             <header class="space-y-2">
-                <p class="text-sm text-zinc-500 dark:text-zinc-400">PRESENTATION</p>
+                <p class="text-sm text-slate-500 dark:text-slate-400">PRESENTATION</p>
                 <h1 class="text-3xl font-semibold">Toast</h1>
                 <p>Show a short notification without interrupting the current task.</p>
             </header>
             <section id="toast-demo" class="space-y-5">
                 <h2 class="text-xl font-medium">Demo</h2>
                 @foreach (['toast-variants', 'toast-positions',  'toast-actions'] as $demo)
-                    <div class="rounded-xl border border-zinc-200 p-6 dark:border-zinc-700" data-demo-mode="blade">@include('blade-components.demos.'.$demo)</div>
+                    <div class="rounded-xl border border-slate-300 p-6 dark:border-slate-600" data-demo-mode="blade">@include('blade-components.demos.'.$demo)</div>
                 @endforeach
             </section>
             <section id="toast-usage" class="space-y-4">

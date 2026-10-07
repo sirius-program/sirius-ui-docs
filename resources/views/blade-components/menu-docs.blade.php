@@ -2,13 +2,13 @@
     <x-docs-page :navigation="['Menu' => ['menu-demo' => 'Demo', 'menu-usage' => 'Usage', 'menu-attributes' => 'Attributes'], 'Shared' => ['assets-and-interaction' => 'Assets and interaction', 'translations' => 'Translations']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8">
             <header class="space-y-2">
-                <p class="text-sm text-zinc-500 dark:text-zinc-400">NAVIGATION</p>
+                <p class="text-sm text-slate-500 dark:text-slate-400">NAVIGATION</p>
                 <h1 class="text-3xl font-semibold">Menu</h1>
                 <p>Build workspace navigation with nested sections.</p>
             </header>
             <section id="menu-demo" class="space-y-5">
                 <h2 class="text-xl font-medium">Demo</h2>
-                <div class="rounded-xl border border-zinc-200 p-6 dark:border-zinc-700" data-demo-mode="blade">
+                <div class="rounded-xl border border-slate-300 p-6 dark:border-slate-600" data-demo-mode="blade">
                     @include('blade-components.demos.menu-workspace')
                 </div>
             </section>

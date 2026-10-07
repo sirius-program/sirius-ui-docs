@@ -11,7 +11,7 @@
     <x-docs-page :navigation="$navigation">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8">
             <header class="space-y-2">
-                <p class="text-sm text-zinc-500 dark:text-zinc-400">FORM CONTROL</p>
+                <p class="text-sm text-slate-500 dark:text-slate-400">FORM CONTROL</p>
                 <h1 class="text-3xl font-semibold">Checkbox, Radio &amp; Switch</h1>
                 <p>Form controls with labels, helper text, and validation errors.</p>
                 @if (session('basic-result'))<p role="status">Blade sample received. Nothing was stored.</p>@endif
@@ -20,11 +20,11 @@
                 <section id="{{ $example }}" data-control-demo="{{ $example }}" class="space-y-5">
                     <h2 class="text-2xl font-semibold">{{ $label }}</h2>
                     <h3 id="{{ $example }}-demo" class="text-xl font-medium">Demo</h3>
-                    <div class="space-y-4 rounded-xl border border-zinc-200 p-6 dark:border-zinc-700" data-demo-mode="livewire">
+                    <div class="space-y-4 rounded-xl border border-slate-300 p-6 dark:border-slate-600" data-demo-mode="livewire">
                         <h4 class="font-medium">Livewire</h4>
                         <livewire:examples.basic-controls-example :kind="$example" :key="'docs-'.$example" />
                     </div>
-                    <div id="{{ $example }}-blade" class="space-y-4 rounded-xl border border-zinc-200 p-6 dark:border-zinc-700" data-demo-mode="blade">
+                    <div id="{{ $example }}-blade" class="space-y-4 rounded-xl border border-slate-300 p-6 dark:border-slate-600" data-demo-mode="blade">
                         <h4 class="font-medium">Blade</h4>
                         @include('blade-components.demos.'.$example.'-blade')
                     </div>

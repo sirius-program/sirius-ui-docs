@@ -18,6 +18,7 @@ it('submits canonical currency with POST and restores validation errors and old 
         $page->fill('#form-create [name="project[title]"]', 'Website')->click('#form-create button[value=validate]');
         $page->assertValue('#form-create [name="project[title]"]', 'Website')->assertPresent('#form-create [aria-invalid=true]');
         $page->assertNotPresent('#form-rename [aria-invalid=true]');
+        $page->assertEnabled('#form-create [data-sir-currency-value]');
         $page->fill('#form-create [data-sir-currency-display]', '1250.50');
         expect($page->script('new FormData(document.querySelector("#form-create")).get("project[budget]")'))->toBe('1250.50');
         $page->click('#form-create button[value=validate]')->assertSeeIn('[data-form-result]', 'POST: Website')->assertSeeIn('[data-form-result]', '1250.50');

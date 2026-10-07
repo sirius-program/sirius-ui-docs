@@ -9,9 +9,9 @@
     @include('blade-components.demos.file-upload-attachments')
     @include('blade-components.demos.file-upload-artwork')
     <div class="flex flex-wrap gap-2">
-        <flux:button type="submit" name="action" value="validate">Submit / Validate</flux:button>
-        <flux:button type="submit" name="action" value="load" formnovalidate>Load Value</flux:button>
-        <flux:button type="submit" name="action" value="reset" formnovalidate>Reset Sample</flux:button>
+        <x-sirius::button type="submit" name="action" value="validate">Submit / Validate</x-sirius::button>
+        <x-sirius::button type="submit" name="action" value="load" formnovalidate>Load Value</x-sirius::button>
+        <x-sirius::button type="submit" name="action" value="reset" formnovalidate>Reset Sample</x-sirius::button>
     </div>
     @if (session('upload-saved'))<p role="status">{{ session('upload-saved') }}</p>@endif
 </x-sirius::form>

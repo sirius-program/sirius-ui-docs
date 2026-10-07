@@ -4,10 +4,10 @@
         <x-sirius::richtext :reset-key="$richtextRevision" id="signature" wire:model.live="signature" label="Signature" :toolbar="['bold', 'italic', 'link']" :height="100" :readonly="$locked" maxlength="2000" />
     @endif
     <div class="flex flex-wrap gap-2">
-        <flux:button type="submit">Submit / Validate</flux:button>
-        <flux:button type="button" wire:click="loadExample">Load Value</flux:button>
-        <flux:button type="button" wire:click="resetExample">Reset Sample</flux:button>
-        <flux:button type="button" wire:click="$toggle('locked')">Toggle Readonly</flux:button>
+        <x-sirius::button type="submit">Submit / Validate</x-sirius::button>
+        <x-sirius::button type="button" wire:click="loadExample">Load Value</x-sirius::button>
+        <x-sirius::button type="button" wire:click="resetExample">Reset Sample</x-sirius::button>
+        <x-sirius::button type="button" wire:click="$toggle('locked')">Toggle Readonly</x-sirius::button>
     </div>
     <p data-richtext-readonly>Readonly: {{ $locked ? 'on' : 'off' }}</p>
     @if ($preview !== '')<div data-richtext-preview role="status"><p>Sanitized preview</p>{!! $preview !!}</div>@endif

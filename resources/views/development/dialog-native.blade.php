@@ -6,7 +6,7 @@
         <title>Native dialog integration</title>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="bg-white p-6 text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100">
+    <body class="bg-white p-6 text-slate-900 dark:bg-slate-900 dark:text-slate-100">
         <h1>Native dialog integration</h1>
         <x-sirius::button id="native-dialog-trigger" data-sir-dialog-open="native-dialog">Open notice</x-sirius::button>
         <x-sirius::dialog id="native-dialog" header="Shipping notice" open initial-focus="#native-dialog-close">

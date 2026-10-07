@@ -5,7 +5,7 @@ declare(strict_types=1);
 it('navigates the Table submenus and keeps their demos interactive after Livewire navigation', function (): void {
     $page = visit('/livewire-components/table')->type('#overview-table-search', 'Northstar')
         ->assertSeeIn('#overview-table .sir-table-footer', '9 shown of 9 invoices');
-    $page->click('[data-flux-sidebar] a[href$="/livewire-components/table/query"]')
+    $page->click('[data-docs-sidebar] a[href$="/livewire-components/table/query"]')
         ->assertPathIs('/livewire-components/table/query')
         ->type('#query-collection-table-search', 'Northstar')
         ->assertSeeIn('#query-collection-table .sir-table-footer', '1 shown of 1 invoices')
@@ -13,17 +13,17 @@ it('navigates the Table submenus and keeps their demos interactive after Livewir
         ->clear('#query-collection-table-search')
         ->click('#query-collection-table .sir-table-pagination button:has-text("Next")')
         ->assertSeeIn('#query-collection-table tbody', 'Bright Books');
-    $page->click('[data-flux-sidebar] a[href$="/livewire-components/table/columns"]')
+    $page->click('[data-docs-sidebar] a[href$="/livewire-components/table/columns"]')
         ->assertPathIs('/livewire-components/table/columns')
         ->assertSeeIn('#columns-table tbody', '$127.50 · Paid')
         ->click('#columns-table th button:has-text("Customer")')
         ->assertSeeIn('#columns-table tbody tr:first-child', 'Bright Books');
-    $page->click('[data-flux-sidebar] a[href$="/livewire-components/table/filters"]')
+    $page->click('[data-docs-sidebar] a[href$="/livewire-components/table/filters"]')
         ->assertPathIs('/livewire-components/table/filters')
         ->click('#invoice-table-filters-trigger')->type('#invoice-table-filter-status-search', 'Paid')
         ->click('#invoice-table-filters-menu .option[data-value="paid"]')
         ->assertSeeIn('#invoice-table .sir-table-footer', '10 shown of 11 invoices');
-    $page->click('[data-flux-sidebar] a[href$="/livewire-components/table/row-actions"]')
+    $page->click('[data-docs-sidebar] a[href$="/livewire-components/table/row-actions"]')
         ->assertPathIs('/livewire-components/table/row-actions')
         ->click('#invoice-table button[aria-label="Review INV-1042"]')
         ->assertPresent('#invoice-review:modal')->assertSeeIn('#invoice-review', 'INV-1042')

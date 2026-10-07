@@ -8,10 +8,10 @@
     </x-sirius::field>
     @endif
     <div class="flex flex-wrap gap-3">
-        <flux:button type="submit">Submit / Validate</flux:button>
-        <flux:button type="button" wire:click="loadExample">Load Value</flux:button>
-        <flux:button type="button" wire:click="resetForm">Reset Sample</flux:button>
-        <flux:button type="button" wire:click="$toggle('locked')">Toggle Readonly</flux:button>
+        <x-sirius::button type="submit">Submit / Validate</x-sirius::button>
+        <x-sirius::button type="button" wire:click="loadExample">Load Value</x-sirius::button>
+        <x-sirius::button type="button" wire:click="resetForm">Reset Sample</x-sirius::button>
+        <x-sirius::button type="button" wire:click="$toggle('locked')">Toggle Readonly</x-sirius::button>
     </div>
     @if ($saved)
         <p role="status">Validation passed. Nothing was stored.</p>

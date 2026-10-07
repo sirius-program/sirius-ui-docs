@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Facades\File;
+use Pest\Browser\Playwright\Playwright;
 use Symfony\Component\Process\Process;
 
 /** @param callable(string): void $run */
@@ -34,7 +35,7 @@ function withUploadBrowser(callable $run): void
             }
             usleep(10000);
         }
-        $run('http://' . $address . '/blade-components/file-upload');
+        Playwright::usingTimeout(10000, fn () => $run('http://' . $address . '/blade-components/file-upload'));
     } finally {
         $server->stop();
         File::deleteDirectory($uploadRoot);

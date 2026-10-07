@@ -15,8 +15,8 @@
     <x-sirius::checkbox id="plain-mixed" label="Mixed example" indeterminate />
     <x-sirius::input id="plain-password" type="password" label="Unsubmitted demo password" value="demo-secret" />
     <div class="flex flex-wrap gap-2">
-        <flux:button type="submit">Submit Blade sample</flux:button>
-        <flux:button type="reset">Reset Blade sample</flux:button>
+        <x-sirius::button type="submit">Submit Blade sample</x-sirius::button>
+        <x-sirius::button type="reset">Reset Blade sample</x-sirius::button>
     </div>
 </x-sirius::form>
 @if (session('basic-result'))

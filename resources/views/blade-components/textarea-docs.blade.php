@@ -2,18 +2,18 @@
     <x-docs-page :navigation="['Textarea' => ['textarea-demo' => 'Demo', 'textarea-usage' => 'Usage', 'textarea-attributes' => 'Attributes'], 'Shared' => ['shared-field-contract' => 'Shared field contract', 'assets-and-interaction' => 'Asset and interaction']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8" data-control-demo="textarea">
             <header class="space-y-2">
-                <p class="text-sm text-zinc-500 dark:text-zinc-400">FORM CONTROL</p>
+                <p class="text-sm text-slate-500 dark:text-slate-400">FORM CONTROL</p>
                 <h1 class="text-3xl font-semibold">Textarea</h1>
                 <p>Plain text with adjustable height.</p>
                 @if (session('basic-result'))<p role="status">Blade sample received. Nothing was stored.</p>@endif
             </header>
             <section id="textarea-demo" class="space-y-5">
                 <h2 class="text-xl font-medium">Demo</h2>
-                <div class="space-y-4 rounded-xl border border-zinc-200 p-6 dark:border-zinc-700" data-demo-mode="livewire">
+                <div class="space-y-4 rounded-xl border border-slate-300 p-6 dark:border-slate-600" data-demo-mode="livewire">
                     <h3 class="font-medium">Livewire</h3>
                     <livewire:examples.basic-controls-example kind="textarea" />
                 </div>
-                <div id="textarea-blade" class="space-y-4 rounded-xl border border-zinc-200 p-6 dark:border-zinc-700" data-demo-mode="blade">
+                <div id="textarea-blade" class="space-y-4 rounded-xl border border-slate-300 p-6 dark:border-slate-600" data-demo-mode="blade">
                     <h3 class="font-medium">Blade</h3>
                     @include('blade-components.demos.textarea-blade')
                 </div>

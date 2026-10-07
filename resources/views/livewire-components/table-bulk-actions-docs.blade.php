@@ -2,7 +2,7 @@
     <x-docs-page :navigation="['Bulk Actions' => ['table-demo' => 'Demo', 'table-usage' => 'Usage', 'methods-and-variables' => 'Methods and variables', 'selection' => 'Selection', 'application-handlers' => 'Application handlers']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8">
             <header class="space-y-2">
-                <p class="text-sm text-zinc-500 dark:text-zinc-400">TABLE</p>
+                <p class="text-sm text-slate-500 dark:text-slate-400">TABLE</p>
                 <h1 class="text-3xl font-semibold">Bulk Actions</h1>
                 <p>Pass checked record IDs to your application's buttons and links.</p>
             </header>

@@ -1,5 +1,5 @@
 <div class="relative mb-6 w-full">
-    <flux:heading size="xl" level="1">{{ __('Settings') }}</flux:heading>
-    <flux:subheading size="lg" class="mb-6">{{ __('Customize the application appearance') }}</flux:subheading>
-    <flux:separator variant="subtle" />
+    <h1 class="text-3xl font-semibold">{{ __('Settings') }}</h1>
+    <p class="mb-6 mt-2 text-slate-600 dark:text-slate-300">{{ __('Customize the application appearance') }}</p>
+    <x-sirius::separator />
 </div>

@@ -14,10 +14,10 @@
             </div>
         @endif
         <div class="flex flex-wrap gap-2">
-            <flux:button type="submit">Submit / Validate</flux:button>
-            <flux:button wire:click="loadExample" type="button">Load Value</flux:button>
-            <flux:button wire:click="resetExample" type="button">Reset Sample</flux:button>
-            <flux:button wire:click="$toggle('locked')" type="button">Toggle Readonly</flux:button>
+            <x-sirius::button type="submit">Submit / Validate</x-sirius::button>
+            <x-sirius::button wire:click="loadExample" type="button">Load Value</x-sirius::button>
+            <x-sirius::button wire:click="resetExample" type="button">Reset Sample</x-sirius::button>
+            <x-sirius::button wire:click="$toggle('locked')" type="button">Toggle Readonly</x-sirius::button>
         </div>
         <p role="status">Readonly: {{ $locked ? 'on' : 'off' }}</p>
         @if ($saved)<p role="status">Travel dates validated. Nothing was stored.</p>@endif

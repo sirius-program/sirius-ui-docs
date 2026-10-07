@@ -2,17 +2,17 @@
     <x-docs-page :navigation="['File Upload' => ['upload-demo' => 'Demo', 'upload-usage' => 'Usage', 'upload-attributes' => 'Attributes'], 'Shared' => ['shared-field-contract' => 'Shared field contract', 'assets-and-interaction' => 'Assets and interaction', 'storage' => 'Storage and validation', 'translations' => 'Translations']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8">
             <header class="space-y-2">
-                <p class="text-sm text-zinc-500 dark:text-zinc-400">FORM CONTROL</p>
+                <p class="text-sm text-slate-500 dark:text-slate-400">FORM CONTROL</p>
                 <h1 class="text-3xl font-semibold">File Upload</h1>
                 <p>File uploads with image and PDF previews, powered by <a href="https://pqina.nl/filepond/" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline">filepond</a>.</p>
             </header>
             <section id="upload-demo" class="space-y-5">
                 <h2 class="text-xl font-medium">Demo</h2>
-                <div class="space-y-4 rounded-xl border border-zinc-200 p-6 dark:border-zinc-700">
+                <div class="space-y-4 rounded-xl border border-slate-300 p-6 dark:border-slate-600">
                     <h3 class="font-medium">Livewire</h3>
                     <livewire:examples.file-upload-example />
                 </div>
-                <div class="space-y-4 rounded-xl border border-zinc-200 p-6 dark:border-zinc-700">
+                <div class="space-y-4 rounded-xl border border-slate-300 p-6 dark:border-slate-600">
                     <h3 class="font-medium">Blade</h3>
                     @include('blade-components.demos.file-upload-blade')
                 </div>

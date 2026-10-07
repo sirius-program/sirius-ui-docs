@@ -26,7 +26,7 @@ it('preserves docs content and sticky header and sidebar geometry when opening a
     $page = visit('/blade-components/dialog')->resize(1920, 1080);
     $page->script('window.scrollTo(0, ' . $scroll . ')');
     $page->assertScript('scrollY', $scroll);
-    $page->script('window.docsGeometry = () => Array.from(document.querySelectorAll("[data-docs-page], [data-docs-toc], [data-flux-sidebar], [data-flux-header]")).map(el => { const r = el.getBoundingClientRect(); return [r.left, r.right, r.width, r.top, r.bottom]; }); window.beforeDialog = window.docsGeometry(); document.dispatchEvent(new CustomEvent("dialog:show", { detail: { id: "invoice-review" } }))');
+    $page->script('window.docsGeometry = () => Array.from(document.querySelectorAll("[data-docs-page], [data-docs-toc], [data-docs-sidebar], [data-docs-header]")).map(el => { const r = el.getBoundingClientRect(); return [r.left, r.right, r.width, r.top, r.bottom]; }); window.beforeDialog = window.docsGeometry(); document.dispatchEvent(new CustomEvent("dialog:show", { detail: { id: "invoice-review" } }))');
     $page->assertPresent('#invoice-review:modal')->assertScript('scrollY', $scroll);
     expect($page->script('window.docsGeometry()'))->toBe($page->script('window.beforeDialog'));
     $page->click('#invoice-review [data-sir-dialog-close]');

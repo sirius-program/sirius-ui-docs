@@ -2,7 +2,7 @@
     <x-docs-page :navigation="['Columns' => ['table-demo' => 'Demo', 'table-usage' => 'Usage', 'table-parameters' => 'Parameters', 'cell-values' => 'Cell values', 'sorting' => 'Sorting']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8">
             <header class="space-y-2">
-                <p class="text-sm text-zinc-500 dark:text-zinc-400">TABLE</p>
+                <p class="text-sm text-slate-500 dark:text-slate-400">TABLE</p>
                 <h1 class="text-3xl font-semibold">Columns</h1>
                 <p>Manage table's columns.</p>
             </header>

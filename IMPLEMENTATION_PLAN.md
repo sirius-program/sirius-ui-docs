@@ -4,7 +4,7 @@
 Package: `D:/Projects/sirius-ui`  
 Documentation and integration application: `D:/Projects/sirius-ui-docs`
 
-Phase 0 through Phase 24 checkboxes reflect executed work within the agreed scope. Direct Claude Code runtime evaluation remains deferred by user instruction. The reusable phase gate remains an unchecked template. The expanded roadmap runs through Phase 26; Toast follows Phase 18 before the Livewire Table phases; phases 0–7 retain their completed status, Phone follows Datetime Picker; Phone and Slider precede Form, the AI skill follows all component phases, and Flux migration immediately precedes final validation. See PHASE_0.md, PHASE_1.md, PHASE_2.md, PHASE_3.md, PHASE_4.md, PHASE_5.md, PHASE_6.md, PHASE_7.md, PHASE_8.md, PHASE_9.md, PHASE_10.md, PHASE_11.md, PHASE_12.md, PHASE_13.md, PHASE_14.md, PHASE_15.md, PHASE_16.md, PHASE_17.md, PHASE_18.md, PHASE_19.md, PHASE_20.md, PHASE_21.md, PHASE_22.md, PHASE_23.md, and PHASE_24.md for architecture boundaries, decisions, verification scope, and maintenance notes.
+Phase 0 through Phase 25 checkboxes reflect executed work within the agreed scope. Direct Claude Code runtime evaluation remains deferred by user instruction. The reusable phase gate remains an unchecked template. The expanded roadmap runs through Phase 26; Toast follows Phase 18 before the Livewire Table phases; phases 0–7 retain their completed status, Phone follows Datetime Picker; Phone and Slider precede Form, the AI skill follows all component phases, and Flux migration immediately precedes final validation. See PHASE_0.md, PHASE_1.md, PHASE_2.md, PHASE_3.md, PHASE_4.md, PHASE_5.md, PHASE_6.md, PHASE_7.md, PHASE_8.md, PHASE_9.md, PHASE_10.md, PHASE_11.md, PHASE_12.md, PHASE_13.md, PHASE_14.md, PHASE_15.md, PHASE_16.md, PHASE_17.md, PHASE_18.md, PHASE_19.md, PHASE_20.md, PHASE_21.md, PHASE_22.md, PHASE_23.md, PHASE_24.md, and PHASE_25.md for architecture boundaries, decisions, verification scope, and maintenance notes.
 
 ## 1. Agreed outcome and architecture
 
@@ -682,13 +682,13 @@ Acceptance: a consumer can install and refresh the bundled skill through Laravel
 
 Prerequisite: all component phases and the AI agent skill are complete. This is the final implementation phase before release validation.
 
-- [ ] Inventory every Flux component, directive, helper, stylesheet, JavaScript integration, icon, and dependency across docs layouts, navigation, component pages, demos, and development fixtures; map each use to a Sirius UI component or supported native behavior.
-- [ ] Resolve missing reusable package functionality before replacing its callers, including Icon, Menu/Dropdown, Breadcrumb, dialogs, buttons, and responsive navigation needs. Add docs/tests and refresh AI skill references for any package API introduced here.
-- [ ] Replace all Flux usage with Sirius UI functionality while preserving routes, content, themes, responsive/mobile navigation, accessibility, form behavior, and the existing documentation layout contract.
-- [ ] Update affected tests to assert user-visible behavior using the new package components, retaining meaningful regression coverage. Do not merely delete failing Flux-specific tests.
-- [ ] Once no Flux functionality is required, remove its docs dependencies, asset imports, configuration, and obsolete instructions. Keep necessary Livewire/Alpine behavior intact and ensure package components are consumed through the local Composer installation.
-- [ ] Audit remaining Flux references, distinguishing historical records from active code/dependencies. Verify clean installation/builds and no missing assets, duplicate initialization, or JavaScript errors.
-- [ ] Browser-test desktop/mobile navigation, theme switching, content navigation, copy controls, dialogs/menus, and representative native/Livewire form demos. Update the docs README and complete the mandatory phase gate.
+- [x] Inventory every Flux component, directive, helper, stylesheet, JavaScript integration, icon, and dependency across docs layouts, navigation, component pages, demos, and development fixtures; map each use to a Sirius UI component or supported native behavior.
+- [x] Resolve missing reusable package functionality before replacing its callers, including Icon, Menu/Dropdown, Breadcrumb, dialogs, buttons, and responsive navigation needs. Add docs/tests and refresh AI skill references for any package API introduced here.
+- [x] Replace all Flux usage with Sirius UI functionality while preserving routes, content, themes, responsive/mobile navigation, accessibility, form behavior, and the existing documentation layout contract.
+- [x] Update affected tests to assert user-visible behavior using the new package components, retaining meaningful regression coverage. Do not merely delete failing Flux-specific tests.
+- [x] Once no Flux functionality is required, remove its docs dependencies, asset imports, configuration, and obsolete instructions. Keep necessary Livewire/Alpine behavior intact and ensure package components are consumed through the local Composer installation.
+- [x] Audit remaining Flux references, distinguishing historical records from active code/dependencies. Verify clean installation/builds and no missing assets, duplicate initialization, or JavaScript errors.
+- [x] Browser-test desktop/mobile navigation, theme switching, content navigation, copy controls, dialogs/menus, and representative native/Livewire form demos. Update the docs README and complete the mandatory phase gate.
 
 ## Phase 26 — Cross-component validation and release readiness
 
@@ -731,3 +731,5 @@ For each phase, append its outcome here when it is actually executed:
 Planning-document verification on 2026-09-12: only this Markdown file was added. In docs, `composer test` passed (Pint, PHPStan, Rector, and 1 existing test with 4 assertions), followed by `composer test:browser` passing (1 existing test with 2 assertions). These baseline checks do not validate unimplemented components or complete any phase. The package was unchanged, so its suite was not run for this documentation-only change.
 
 Any additional implementation detail that changes the agreed public behavior must be surfaced before coding that behavior. Routine implementation choices and dependency verification within this plan do not require repeating already-granted approval.
+
+| 25 | Complete | Package and docs | Both passed: package 682 tests / 2,186 assertions; docs 218 tests / 1,312 assertions; lint, types, refactoring passed | Passed: 247 tests / 2,722 assertions without warnings (two workers, latest docs follow-up) | Flux dependency, views, imports, directives, and obsolete skill removed; Sirius navigation/breadcrumb/buttons/theme controls and matching slate/token palette used throughout docs. Fresh Composer installation and docs asset build passed. Native-date readiness and scoped real-server upload timing were corrected without removing assertions; final full browser gate passed. See PHASE_25.md for audit notes and temporary-cache cleanup limitation. |

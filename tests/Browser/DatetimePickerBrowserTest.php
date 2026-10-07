@@ -34,7 +34,8 @@ it('submits native date demos and exposes localized keyboard calendar selection'
     $page = visit('/blade-components/datetime-picker')->click('[data-blade-datetime-picker] button[value="load"]')->assertValue('#blade-date-departure', '29/02/2028');
     $page->click('#blade-date-departure')->assertPresent('.flatpickr-calendar.open');
     $page->click('.flatpickr-calendar.open .flatpickr-day[aria-label="Februari 28, 2028"]');
-    $page->assertValue('#blade-date-departure', '28/02/2028')->click('[data-blade-datetime-picker] button[value="validate"]')->assertSee('Travel dates validated. Nothing was stored.');
+    $page->assertValue('#blade-date-departure', '28/02/2028')->click('[data-blade-datetime-picker] button[value="validate"]')->assertSee('Travel dates validated. Nothing was stored.')
+        ->assertValue('#blade-date-departure', '28/02/2028');
     $page->type('#blade-date-departure', '30/02/2028')->click('[data-blade-datetime-picker] button[value="validate"]')->assertSee('The departure field must match the format Y-m-d.')->assertValue('#blade-date-departure', '30/02/2028')->assertNoJavaScriptErrors();
 });
 

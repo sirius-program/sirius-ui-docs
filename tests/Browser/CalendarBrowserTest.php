@@ -84,9 +84,9 @@ it('keeps a local render extension through refresh and cleans instances after na
     $page->script('window.calendarCleanup = window.SiriusCalendar.register("team-calendar", () => ({ eventContent(info) { const span = document.createElement("span"); span.dataset.customCalendar = "true"; span.textContent = info.event.title; return { domNodes: [span] }; } })); void 0;');
     $page->assertPresent('#team-calendar [data-custom-calendar]')->click('button:has-text("Refresh events")')
         ->assertPresent('#team-calendar [data-custom-calendar]');
-    $page->click('[data-flux-sidebar] button:has-text("Table")')->click('[data-flux-sidebar] a[href$="/livewire-components/table"]')->assertPathIs('/livewire-components/table')
+    $page->click('[data-docs-sidebar] summary:has-text("Table")')->click('[data-docs-sidebar] a[href$="/livewire-components/table"]')->assertPathIs('/livewire-components/table')
         ->assertScript('window.SiriusCalendar.get("team-calendar")', null);
-    $page->click('[data-flux-sidebar] button:has-text("Calendar")')->click('[data-flux-sidebar] a[href$="/livewire-components/calendar/actions"]')->assertSeeIn('#team-calendar', 'Website kickoff')
+    $page->click('[data-docs-sidebar] summary:has-text("Calendar")')->click('[data-docs-sidebar] a[href$="/livewire-components/calendar/actions"]')->assertSeeIn('#team-calendar', 'Website kickoff')
         ->assertPresent('#team-calendar [data-custom-calendar]')->assertScript('document.querySelectorAll("#team-calendar").length', 1)
         ->assertNoJavaScriptErrors();
 });
@@ -147,18 +147,18 @@ it('identifies the clicked date of recurring events without opening an edit form
 
 it('navigates Calendar submenus and mounts each page-specific demo without leftover instances', function (): void {
     $page = visit('/livewire-components/calendar')->assertSeeIn('#team-calendar', 'Website kickoff');
-    $page->assertNotPresent('#team-calendar-edit')->click('[data-flux-sidebar] a[href$="/livewire-components/calendar/events"]')
+    $page->assertNotPresent('#team-calendar-edit')->click('[data-docs-sidebar] a[href$="/livewire-components/calendar/events"]')
         ->assertPathIs('/livewire-components/calendar/events')->assertSeeIn('#collection-calendar', 'Website kickoff')
         ->assertSeeIn('#invoice-calendar', 'INV-1042 · Northstar Studio')
         ->assertScript('window.SiriusCalendar.get("team-calendar")', null);
-    $page->click('[data-flux-sidebar] a[href$="/livewire-components/calendar/options"]')
+    $page->click('[data-docs-sidebar] a[href$="/livewire-components/calendar/options"]')
         ->assertPathIs('/livewire-components/calendar/options')->assertSeeIn('#options-calendar', 'Website kickoff')
         ->assertScript('window.SiriusCalendar.get("options-calendar").view.type', 'timeGridWeek')
         ->assertScript('window.SiriusCalendar.get("options-calendar").getOption("weekends")', false)
         ->assertScript('window.SiriusCalendar.get("options-calendar").getOption("locale")', 'id')
         ->assertScript('window.SiriusCalendar.get("collection-calendar")', null)
         ->assertScript('window.SiriusCalendar.get("invoice-calendar")', null);
-    $page->click('[data-flux-sidebar] a[href$="/livewire-components/calendar/actions"]')
+    $page->click('[data-docs-sidebar] a[href$="/livewire-components/calendar/actions"]')
         ->assertPathIs('/livewire-components/calendar/actions')->assertSeeIn('#team-calendar', 'Website kickoff')
         ->click('#team-calendar [data-calendar-event-id="kickoff"]')->assertPresent('#team-calendar-edit:modal')
         ->assertScript('window.SiriusCalendar.get("options-calendar")', null)->assertNoJavaScriptErrors();

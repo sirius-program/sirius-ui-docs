@@ -11,10 +11,10 @@
             </div>
         @endif
         <div class="flex flex-wrap gap-2">
-            <flux:button type="submit">Submit / Validate</flux:button>
-            <flux:button type="button" wire:click="loadExample">Load Value</flux:button>
-            <flux:button type="button" wire:click="resetExample">Reset Sample</flux:button>
-            <flux:button type="button" wire:click="$toggle('locked')">Toggle Readonly</flux:button>
+            <x-sirius::button type="submit">Submit / Validate</x-sirius::button>
+            <x-sirius::button type="button" wire:click="loadExample">Load Value</x-sirius::button>
+            <x-sirius::button type="button" wire:click="resetExample">Reset Sample</x-sirius::button>
+            <x-sirius::button type="button" wire:click="$toggle('locked')">Toggle Readonly</x-sirius::button>
         </div>
         <p role="status">Readonly: {{ $locked ? 'on' : 'off' }}</p>
         @if ($saved)<p role="status">Preferences validated. Nothing was stored.</p>@endif

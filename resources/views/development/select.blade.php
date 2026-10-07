@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Select integration</title>@vite(['resources/css/app.css', 'resources/js/app.js'])</head>
-<body class="bg-white p-6 text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100"><main class="mx-auto max-w-2xl space-y-6">
+<body class="bg-white p-6 text-slate-900 dark:bg-slate-900 dark:text-slate-100"><main class="mx-auto max-w-2xl space-y-6">
 <h1>Select integration</h1>
 <x-sirius::form :action="url()->current()" id="select-form" class="space-y-5">
     <x-sirius::select id="native-single" name="shipping" label="Delivery" :options="\App\Support\SelectCatalog::shipping()" value="0" />

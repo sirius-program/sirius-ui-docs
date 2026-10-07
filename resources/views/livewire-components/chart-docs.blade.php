@@ -2,7 +2,7 @@
     <x-docs-page :navigation="['Overview' => ['chart-demo' => 'Demo', 'chart-usage' => 'Usage', 'chart-attributes' => 'Attributes', 'assets-and-interaction' => 'Assets and interaction', 'explore-chart' => 'Explore Chart', 'global-configuration' => 'Global configuration', 'translations' => 'Translations']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8">
             <header class="space-y-2">
-                <p class="text-sm text-zinc-500 dark:text-zinc-400">CHART</p>
+                <p class="text-sm text-slate-500 dark:text-slate-400">CHART</p>
                 <h1 class="text-3xl font-semibold">Overview</h1>
                 <p>Visualize application data, statistics, and more, powered by <a href="https://www.chartjs.org/docs/latest/" target="_blank" rel="noopener noreferrer" class="text-blue-500 dark:text-blue-400 hover:underline">Chart.js</a>.</p>
             </header>

@@ -2,14 +2,14 @@
     <x-docs-page :navigation="['Timeline' => ['timeline-demo' => 'Demo', 'timeline-usage' => 'Usage', 'timeline-attributes' => 'Attributes'], 'Shared' => ['assets-and-interaction' => 'Assets and interaction', 'translations' => 'Translations']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8">
             <header class="space-y-2">
-                <p class="text-sm text-zinc-500 dark:text-zinc-400">PRESENTATION</p>
+                <p class="text-sm text-slate-500 dark:text-slate-400">PRESENTATION</p>
                 <h1 class="text-3xl font-semibold">Timeline</h1>
                 <p>Show progress or events in a vertical sequence.</p>
             </header>
             <section id="timeline-demo" class="space-y-5">
                 <h2 class="text-xl font-medium">Demo</h2>
-                <div class="rounded-xl border border-zinc-200 p-6 dark:border-zinc-700" data-demo-mode="blade">@include('blade-components.demos.timeline-onboarding')</div>
-                <div class="rounded-xl border border-zinc-200 p-6 dark:border-zinc-700" data-demo-mode="blade">@include('blade-components.demos.timeline-delivery')</div>
+                <div class="rounded-xl border border-slate-300 p-6 dark:border-slate-600" data-demo-mode="blade">@include('blade-components.demos.timeline-onboarding')</div>
+                <div class="rounded-xl border border-slate-300 p-6 dark:border-slate-600" data-demo-mode="blade">@include('blade-components.demos.timeline-delivery')</div>
             </section>
             <section id="timeline-usage" class="space-y-4">
                 <h2 class="text-xl font-medium">Usage</h2>

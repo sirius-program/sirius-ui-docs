@@ -1,5 +1,3 @@
 <x-layouts::app.sidebar :title="$title ?? null">
-    <flux:main>
-        {{ $slot }}
-    </flux:main>
+    <main id="docs-main" class="docs-main" tabindex="-1">{{ $slot }}</main>
 </x-layouts::app.sidebar>

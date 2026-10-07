@@ -2,7 +2,7 @@
     <x-docs-page :navigation="['Data' => ['chart-demo' => 'Demo', 'chart-usage' => 'Usage', 'data-sources' => 'Data sources', 'datasets' => 'Datasets', 'updates' => 'Updates']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8">
             <header class="space-y-2">
-                <p class="text-sm text-zinc-500 dark:text-zinc-400">CHART</p>
+                <p class="text-sm text-slate-500 dark:text-slate-400">CHART</p>
                 <h1 class="text-3xl font-semibold">Data</h1>
                 <p>Turn your source data into labels and datasets.</p>
             </header>

@@ -2,7 +2,7 @@
     <x-docs-page :navigation="['Options' => ['calendar-demo' => 'Demo', 'calendar-usage' => 'Usage', 'fullcalendar-options' => 'FullCalendar options', 'local-extensions' => 'Local extensions']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8">
             <header class="space-y-2">
-                <p class="text-sm text-zinc-500 dark:text-zinc-400">CALENDAR</p>
+                <p class="text-sm text-slate-500 dark:text-slate-400">CALENDAR</p>
                 <h1 class="text-3xl font-semibold">Options</h1>
                 <p>Configure views, locale, timezone, and local rendering.</p>
             </header>

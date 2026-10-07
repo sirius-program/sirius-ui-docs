@@ -2,7 +2,7 @@
     <x-docs-page :navigation="['AI Agent Skill' => ['overview' => 'Overview', 'boost' => 'Laravel Boost', 'standalone' => 'Without Boost', 'activation' => 'Using the skill', 'updates' => 'Updates and customization', 'troubleshooting' => 'Troubleshooting', 'compatibility' => 'Compatibility']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8">
             <header id="overview" class="space-y-2">
-                <p class="text-sm text-zinc-500 dark:text-zinc-400">GETTING STARTED</p>
+                <p class="text-sm text-slate-500 dark:text-slate-400">GETTING STARTED</p>
                 <h1 class="text-3xl font-semibold">AI Agent Skill</h1>
                 <p>Give your coding agent the Sirius UI APIs and examples that match your installed package.</p>
             </header>
