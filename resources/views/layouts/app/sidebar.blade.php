@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="sir-scrollbar">
     <head>@include('partials.head')</head>
     <body class="docs-shell">
         <a href="#docs-main" class="docs-skip-link">Skip to content</a>

@@ -24,6 +24,8 @@ The shell composes Menu and Accordion for desktop navigation, Slideover for mobi
 
 The sticky header uses an opaque Sirius surface so fixed dropdown panels remain aligned with their triggers and do not create horizontal page overflow.
 
+The docs layout applies the package's `sir-scrollbar` class to `html`, giving the page, sidebar, code blocks, widget lists, and overlay bodies thin rounded native scrollbars in both themes. Apply the same class to a container in another project to style that container and its descendants. Customize `--sir-scrollbar-size` (default `0.5rem`), `--sir-scrollbar-track`, `--sir-scrollbar-thumb`, and `--sir-scrollbar-thumb-hover` after importing Sirius CSS. Standard scrollbar styling provides the fallback where WebKit selectors are unavailable; forced-colors mode keeps system scrollbars.
+
 See [Phase 25 migration and verification](PHASE_25.md) for the component mapping, installation checks, and audit notes. Package and docs checks passed; the latest docs follow-up browser suite passed 247 tests / 2,722 assertions.
 
 For applications without a bundler, run `php artisan vendor:publish --tag=sirius-ui-assets` and load `/vendor/sirius-ui/sirius.css` and `/vendor/sirius-ui/sirius.js` once. Refresh published assets after package upgrades, reviewing any local modifications first. The script handles later Livewire renders and navigation automatically.

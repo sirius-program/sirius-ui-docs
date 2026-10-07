@@ -96,7 +96,8 @@ it('submits canonical native values and resets Blade controls without hidden dup
         ->assertChecked('#plain-pro')->assertChecked('#plain-editor');
     expect($page->script('new FormData(document.querySelector("#plain-basic-form")).has("ignored")'))->toBeFalse();
     expect($page->script('new FormData(document.querySelector("#plain-basic-form")).getAll("roles[]")'))->toBe(['0', 'editor']);
-    $page->click('Submit Blade sample')->assertSee('Blade sample received. Nothing was stored.')->assertNoJavaScriptErrors();
+    $page->page()->locator('#plain-basic-form button[type="submit"]')->click(['timeout' => 10000]);
+    $page->assertSee('Blade sample received. Nothing was stored.')->assertNoJavaScriptErrors();
 });
 
 it('updates text number and textarea values and errors after Livewire reset', function (): void {
