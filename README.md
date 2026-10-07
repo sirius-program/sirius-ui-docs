@@ -2,6 +2,8 @@
 
 This application documents and tests the local `sirius/ui` package. Public components are added only after their implementation phases are completed.
 
+Phase 26 validates the combined components, six Laravel/PHP combinations, clean installations, distribution contents, and dependency audits. Currency, Datetime Picker, password, and Phone UI feedback now use package translation strings. Final gates passed: package 686 tests / 2,199 assertions, docs 218 / 1,312, and browser 251 / 2,746 without warnings. See [Phase 26](PHASE_26.md), the [release checklist](RELEASE_CHECKLIST.md), and the [unreleased changelog](CHANGELOG.md) for evidence and remaining release steps. Direct Claude Code runtime evaluation remains deferred; no release is published by this phase.
+
 Phase 24 adds **Getting Started → AI Agent Skill** at /getting-started/ai-agent-skill. The package ships the portable sirius-ui-development skill, discoverable by Laravel Boost. Consumers can use boost:install / boost:update, or explicitly install project-local Codex/Claude Code skills with sirius:skills:install --agent=codex or --agent=claude-code. The guide covers activation, updates, ownership, manual copies, and customization recovery. Direct Claude Code runtime evaluation is deferred by request; see PHASE_24.md for verified versions and checks.
 
 Phase 23 adds **Chart** at /livewire-components/chart, with separate **Overview**, **Data**, **Extensions**, and **Options** submenus. Use the generic Livewire Chart inside an application Livewire view and pass reactive labels/datasets, type, sizing, and native serializable options. The package bundles Chart.js 4.5.1 and the date-fns time adapter; application code owns queries and authorization. Local SiriusChart.register(id, factory) callbacks/plugins complement parent prop updates without evaluating JavaScript strings. Demos include scoped Eloquent and Collection sources, accessible chart naming, and a callback to Livewire. The development fixture covers native controllers, mixed/time scales, multiple instances, Tabs/Dialog/Slideover, sizing, and rendering errors. See [Phase 23](PHASE_23.md) for boundaries and verification.
@@ -54,7 +56,7 @@ Checkbox and radio options inside `<x-sirius::field group>` share the group's er
 
 Phase 2 integration fixtures at `/development/basic-controls` and `/development/standalone-controls` verify multiple Livewire instances and native controls without Livewire or Alpine. They are available only in local/testing environments.
 
-The implementation checklist runs through Phase 26. Component phases, the AI agent skill, and the docs migration are implemented. Table row and bulk actions remain application-owned buttons and links; the package does not provide an action engine or arbitrary toolbar actions. Phase 26 covers final cross-component and release validation. Direct Claude Code evaluation remains deferred by user instruction.
+The implementation checklist is complete through Phase 26 within the agreed scope. Component phases, the AI agent skill, docs migration, and final cross-component/release validation are implemented. Table row and bulk actions remain application-owned buttons and links; the package does not provide an action engine or arbitrary toolbar actions. Direct Claude Code evaluation remains deferred by user instruction.
 
 - [Implementation checklist](IMPLEMENTATION_PLAN.md)
 - [Phase 0 architecture, dependency decisions, and evidence](PHASE_0.md)

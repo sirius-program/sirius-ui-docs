@@ -2,6 +2,13 @@
 
 declare(strict_types=1);
 
+it('uses translated show and hide labels when toggling a password', function (): void {
+    app('translator')->addLines(['sirius-ui.input.show_password' => 'Tampilkan', 'sirius-ui.input.hide_password' => 'Sembunyikan'], 'en', 'sirius');
+    $page = visit('/development/standalone-controls')->assertAttribute('[data-sir-password-toggle]', 'aria-label', 'Tampilkan');
+    $page->click('[data-sir-password-toggle]')->assertAttribute('[data-sir-password-toggle]', 'aria-label', 'Sembunyikan')
+        ->assertAttribute('#standalone-password', 'type', 'text')->assertNoJavaScriptErrors();
+});
+
 it('shows one required marker and error per choice group after Livewire validation', function (string $kind, string $option): void {
     $page = visit('/blade-components/choices');
     $scope = '[data-control-demo="' . $kind . '"]';

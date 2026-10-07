@@ -46,6 +46,9 @@
             </section>
             <section id="translations" class="space-y-3">
                 <h2 class="text-xl font-medium">Translations</h2>
+                <p>These are translation string used for client-side validation and messages, for server-side use Laravel's translation string.</p>
+                <p>Edit the <code>phone</code> array in <code>lang/vendor/sirius/{locale}/sirius-ui.php</code>.</p>
+                @include('blade-components.examples.phone-ui-translations')
                 <p>If you use the <code>Sirius\Ui\Rules\PhoneNumber</code> rule, you can edit the validation messages. Publish translations and edit <code>lang/vendor/sirius/{locale}/validation.php</code>. Keys are <code>phone_number</code> and <code>phone_country</code>; preserve <code>:attribute</code> when used. Messages follow the application locale, independently of the selected country.</p>
                 @include('blade-components.examples.phone-translations')
             </section>

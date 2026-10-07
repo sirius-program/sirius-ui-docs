@@ -2,6 +2,16 @@
 
 declare(strict_types=1);
 
+it('uses translated date feedback and clear labels while retaining the chosen calendar locale', function (): void {
+    app('translator')->addLines(['sirius-ui.datetime-picker.invalid' => 'Tanggal tidak tersedia.', 'sirius-ui.datetime-picker.clear' => 'Kosongkan'], 'en', 'sirius');
+    $page = visit('/development/datetime-picker')->assertValue('#native-date', '29/02/2028')
+        ->type('#native-date', '30/02/2028');
+    $page->assertScript('document.querySelector("#native-date").validationMessage', 'Tanggal tidak tersedia.')
+        ->assertAttribute('[data-sir-datetime-picker]:has(#native-date) [data-sir-date-clear]', 'aria-label', 'Kosongkan')
+        ->click('[data-sir-datetime-picker]:has(#native-date) [data-sir-date-clear]')->assertValue('#native-date', '')
+        ->assertNoJavaScriptErrors();
+});
+
 it('keeps native date values canonical and rejects invalid days and time bounds', function (): void {
     $page = visit('/development/datetime-picker')->assertValue('#native-date', '29/02/2028')->assertValue('#native-time', '09:30')->assertValue('#native-datetime', '31/12/2028 14:30:45');
     expect($page->script('typeof window.Livewire'))->toBe('undefined');

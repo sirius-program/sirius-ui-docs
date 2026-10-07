@@ -12,7 +12,7 @@
         ['prefix', 'string | null', 'null', 'Text or slot before the input. The slot takes priority; neither is submitted.'],
         ['suffix', 'string | null', 'null', 'Text or slot after the input. The slot takes priority; neither is submitted.'],
         ['control-size', 'integer | null', 'null', 'HTML size: approximate width in characters. Does not limit text length.'],
-        ['show-label', 'string', 'Show', 'Button label and tooltip for showing the password.'],
-        ['hide-label', 'string', 'Hide', 'Button label and tooltip for hiding the password.'],
+        ['show-label', 'string | null', 'Translation', 'Button label and tooltip for showing the password.'],
+        ['hide-label', 'string | null', 'Translation', 'Button label and tooltip for hiding the password.'],
     ]" />
 </section>

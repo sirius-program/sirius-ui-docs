@@ -56,9 +56,9 @@ it('retries a failed temporary upload and cancels an in-flight upload', function
         $page = visit($url)->assertPresent('[data-upload-example] .filepond--browser');
         $page->script('(() => { if (window.uploadInterceptInstalled) return true; window.uploadInterceptInstalled = true; window.uploadMode = "fail"; const open = XMLHttpRequest.prototype.open; const send = XMLHttpRequest.prototype.send; XMLHttpRequest.prototype.open = function(method, url, ...args) { this.isUpload = String(url).includes("upload-file"); return open.call(this, method, url, ...args); }; XMLHttpRequest.prototype.send = function(body) { if(this.isUpload && window.uploadMode === "fail") { window.uploadMode = "normal"; setTimeout(() => this.dispatchEvent(new Event("error"))); return; } if(this.isUpload && window.uploadMode === "hold") return; return send.call(this, body); }; return true; })()');
         $page->attach('[data-upload-example] [data-sir-file-upload]:has([name=brief]) .filepond--browser', dirname(__DIR__) . '/Fixtures/proof.txt')
-            ->assertSeeIn('[data-upload-example] .filepond--file-status-main', 'Upload failed')
-            ->click('[data-upload-example] .filepond--action-retry-item-processing')
-            ->assertSeeIn('[data-upload-example] .filepond--file-status-main', 'Upload complete');
+            ->assertSeeIn('[data-upload-example] .filepond--file-status-main', 'Upload failed');
+        $page->page()->locator('[data-upload-example] .filepond--action-retry-item-processing')->click(['timeout' => 10000]);
+        $page->assertSeeIn('[data-upload-example] .filepond--file-status-main', 'Upload complete');
         $page->click('[data-upload-example] button:has-text("Reset Sample")')->assertMissing('[data-upload-example] .filepond--item');
         $page->script('window.uploadMode = "hold";');
         $page->attach('[data-upload-example] [data-sir-file-upload]:has([name=brief]) .filepond--browser', dirname(__DIR__) . '/Fixtures/proof.txt')
@@ -104,8 +104,8 @@ it('previews new images and PDFs and loads existing metadata without reuploading
         $page->assertScript('document.querySelector("[data-upload-example] [name=brief]").files.length', 0);
         $page->assertScript('document.querySelector("[data-upload-example] [name=brief]").required', false);
         $page->click('[data-upload-example] button:has-text("Submit / Validate")')->assertSeeIn('[data-upload-example] [role=status]', 'Project documents validated. Nothing was stored.');
-        $page->click($attachments . ' .filepond--item:has(.filepond--file-info-main:text-is("sample.txt")) .filepond--action-remove-item')
-            ->assertMissing($attachments . ' .filepond--file-info-main:text-is("sample.txt")')
+        $page->page()->locator($attachments . ' .filepond--item:has(.filepond--file-info-main:text-is("sample.txt")) .filepond--action-remove-item')->click(['timeout' => 10000]);
+        $page->assertMissing($attachments . ' .filepond--file-info-main:text-is("sample.txt")')
             ->assertSeeIn($attachments . ' .filepond--file-info-main:text-is("sample.csv")', 'sample.csv')
             ->assertSeeIn($attachments . ' .filepond--file-info-main:text-is("sample.pdf")', 'sample.pdf');
         $page->assertScript('Livewire.find(document.querySelector("[data-upload-example]").getAttribute("wire:id")).$get("existingAttachments").length', 2);

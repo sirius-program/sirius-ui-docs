@@ -2,6 +2,14 @@
 
 declare(strict_types=1);
 
+it('uses translated country labels and feedback without changing the numbering country', function (): void {
+    app('translator')->addLines(['sirius-ui.phone.country_label' => 'Kode panggilan', 'sirius-ui.phone.invalid' => 'Nomor tidak valid.'], 'en', 'sirius');
+    $page = visit('/development/phone')->assertAttribute('[data-sir-phone]:has(#native-multiple) [data-phone-country]', 'aria-label', 'Kode panggilan');
+    $page->type('#native-phone', '123')->click('Phone integration')
+        ->assertSeeIn('[data-sir-phone]:has(#native-phone) [data-phone-error]', 'Nomor tidak valid.')
+        ->assertNoJavaScriptErrors();
+});
+
 it('formats native phone fields and submits only canonical values', function (): void {
     $page = visit('/development/phone')->assertValue('#native-phone', '812 3456 7890')->assertValue('#native-multiple', '20-7946-0018')->assertValue('#native-compact', '81234567890');
     expect($page->script('typeof window.Livewire'))->toBe('undefined');

@@ -1,5 +1,5 @@
 <x-layouts::app title="Input">
-    <x-docs-page :navigation="['Input' => ['input-demo' => 'Demo', 'input-usage' => 'Usage', 'input-attributes' => 'Attributes'], 'Shared' => ['shared-field-contract' => 'Shared field contract', 'assets-and-interaction' => 'Asset and interaction']]">
+    <x-docs-page :navigation="['Input' => ['input-demo' => 'Demo', 'input-usage' => 'Usage', 'input-attributes' => 'Attributes'], 'Shared' => ['shared-field-contract' => 'Shared field contract', 'assets-and-interaction' => 'Asset and interaction', 'translations' => 'Translations']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8" data-control-demo="input">
             <header class="space-y-2">
                 <p class="text-sm text-slate-500 dark:text-slate-400">FORM CONTROL</p>
@@ -34,6 +34,12 @@
                 <p>Import the package CSS and JavaScript, or publish and load <code>sirius-ui-assets</code>.</p>
                 @include('blade-components.examples.assets')
                 <p>Controls support Livewire updates and navigation. No extra Alpine instance is needed.</p>
+            </section>
+            <section id="translations" class="space-y-3">
+                <h2 class="text-xl font-medium">Translations</h2>
+                <p>These translation strings are used only for accessibility.</p>
+                <p>Edit the <code>input</code> array in <code>lang/vendor/sirius/{locale}/sirius-ui.php</code>.</p>
+                @include('blade-components.examples.input-translations')
             </section>
         </article>
     </x-docs-page>

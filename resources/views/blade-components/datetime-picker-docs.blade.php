@@ -1,5 +1,5 @@
 <x-layouts::app title="Datetime Picker">
-    <x-docs-page :navigation="['Datetime Picker' => ['datetime-picker-demo' => 'Demo', 'datetime-picker-usage' => 'Usage', 'datetime-picker-attributes' => 'Attributes'], 'Shared' => ['shared-field-contract' => 'Shared field contract', 'assets-and-interaction' => 'Assets and interaction', 'global-configuration' => 'Global configuration']]">
+    <x-docs-page :navigation="['Datetime Picker' => ['datetime-picker-demo' => 'Demo', 'datetime-picker-usage' => 'Usage', 'datetime-picker-attributes' => 'Attributes'], 'Shared' => ['shared-field-contract' => 'Shared field contract', 'assets-and-interaction' => 'Assets and interaction', 'global-configuration' => 'Global configuration', 'translations' => 'Translations']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8" data-control-demo="datetime-picker">
             <header class="space-y-2">
                 <p class="text-sm text-slate-500 dark:text-slate-400">FORM CONTROL</p>
@@ -44,6 +44,12 @@
                 <h2 class="text-xl font-medium">Global configuration</h2>
                 <p>Publish the config to set defaults. Timezone falls back through <code>sirius-ui.timezone &rarr; app.timezone &rarr; UTC</code>. Locale falls back through <code>sirius-ui.locale &rarr; app.locale &rarr; app.fallback_locale &rarr; en</code>. Invalid explicit values are rejected.</p>
                 @include('blade-components.examples.datetime-picker-config')
+            </section>
+            <section id="translations" class="space-y-3">
+                <h2 class="text-xl font-medium">Translations</h2>
+                <p>These are translation string used for client-side validation and messages, for server-side use Laravel's translation string. These strings follow the application locale. The <code>locale</code> prop controls calendar month and weekday names.</p>
+                <p>Edit the <code>datetime-picker</code> array in <code>lang/vendor/sirius/{locale}/sirius-ui.php</code>.</p>
+                @include('blade-components.examples.datetime-picker-translations')
             </section>
         </article>
     </x-docs-page>

@@ -1,5 +1,5 @@
 <x-layouts::app title="Currency">
-    <x-docs-page :navigation="['Currency' => ['currency-demo' => 'Demo', 'currency-usage' => 'Usage', 'currency-attributes' => 'Attributes'], 'Shared' => ['shared-field-contract' => 'Shared field contract', 'assets-and-interaction' => 'Assets and interaction', 'global-configuration' => 'Global configuration']]">
+    <x-docs-page :navigation="['Currency' => ['currency-demo' => 'Demo', 'currency-usage' => 'Usage', 'currency-attributes' => 'Attributes'], 'Shared' => ['shared-field-contract' => 'Shared field contract', 'assets-and-interaction' => 'Assets and interaction', 'global-configuration' => 'Global configuration', 'translations' => 'Translations']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8" data-control-demo="currency">
             <header class="space-y-2">
                 <p class="text-sm text-slate-500 dark:text-slate-400">FORM CONTROL</p>
@@ -43,6 +43,12 @@
                 <h2 class="text-xl font-medium">Global configuration</h2>
                 <p>Publish the config to set default separators and precision. Missing or null settings use comma, dot, and 2 decimal places. Component props override these defaults.</p>
                 @include('blade-components.examples.currency-config')
+            </section>
+            <section id="translations" class="space-y-3">
+                <h2 class="text-xl font-medium">Translations</h2>
+                <p>These are translation string used for client-side validation and messages, for server-side use Laravel's translation string.</p>
+                <p>Edit the <code>currency</code> array in <code>lang/vendor/sirius/{locale}/sirius-ui.php</code>.
+                @include('blade-components.examples.currency-translations')
             </section>
         </article>
     </x-docs-page>

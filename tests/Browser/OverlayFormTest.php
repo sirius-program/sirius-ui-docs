@@ -55,6 +55,8 @@ it('edits and submits all kinds of package controls inside a project overlay', f
         $page->click($root . ' button:has-text("Submit / Validate")')->assertSeeIn($root, 'Project validated. Nothing was stored.')
             ->assertValue($root . '-title', 'Customer portal')->assertPresent($root . ':modal');
         $page->assertScript('Array.from(document.querySelectorAll("' . $root . ' [data-select-source], ' . $root . ' [data-slider-source], ' . $root . ' [data-richtext-source], ' . $root . ' [data-upload-source]")).every(el => el.getClientRects().length === 0)', true);
+        $page->assertScript('(() => { const d = document.querySelector("' . $root . '"); return d.querySelectorAll(".ts-wrapper").length === 2 && d.querySelectorAll(".flatpickr-calendar").length === 3 && d.querySelectorAll(".filepond--root").length === 1 && d.querySelectorAll(".tiptap").length === 1; })()', true);
+        $page->assertScript('performance.getEntriesByType("resource").filter(entry => /^https?:/.test(entry.name)).every(entry => new URL(entry.name).origin === location.origin)', true);
         $page->resize(390, 844);
         $page->assertScript('(() => { const d = document.querySelector("' . $root . '"); return d.scrollWidth <= d.clientWidth && d.getBoundingClientRect().right <= innerWidth; })()', true);
         $page->script('document.querySelector("' . $scrollRoot . '").scrollTop = 0; document.documentElement.classList.add("dark")');

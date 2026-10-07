@@ -2,6 +2,16 @@
 
 declare(strict_types=1);
 
+it('uses translated currency feedback with the current precision and bounds', function (): void {
+    app('translator')->addLines(['sirius-ui.currency.precision' => 'Maksimal :precision desimal.', 'sirius-ui.currency.max' => 'Maksimal :max.', 'sirius-ui.currency.incomplete' => 'Lengkapi nominal.'], 'en', 'sirius');
+    $page = visit('/development/currency')->type('#native-amount', '12.345');
+    $page->assertScript('document.querySelector("#native-amount").validationMessage', 'Maksimal 2 desimal.');
+    $page->script('const input = document.querySelector("#native-bounds"); input.min = "0"; input.max = "5";');
+    $page->type('#native-bounds', '6')->assertScript('document.querySelector("#native-bounds").validationMessage', 'Maksimal 5.')
+        ->type('#native-reversed', '-')->assertScript('document.querySelector("#native-reversed").validationMessage', 'Lengkapi nominal.')
+        ->assertNoJavaScriptErrors();
+});
+
 it('formats exact values and rejects malformed pastes without changing the previous amount', function (): void {
     $page = visit('/development/currency')->assertValue('#native-amount', '1,234.50')->assertValue('#native-reversed', '-1.250,125');
     expect($page->script('typeof window.Livewire'))->toBe('undefined');
