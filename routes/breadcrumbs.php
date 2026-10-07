@@ -125,6 +125,11 @@ Breadcrumbs::for('started', function (BreadcrumbTrail $trail): void {
     $trail->push(__('Getting Started'), route('started'));
 });
 
+Breadcrumbs::for('started.ai-agent-skill', function (BreadcrumbTrail $trail): void {
+    $trail->parent('started');
+    $trail->push(__('AI Agent Skill'), route('started.ai-agent-skill'));
+});
+
 // Blade Components
 
 Breadcrumbs::for('blade-components.index', function (BreadcrumbTrail $trail): void {

@@ -14,9 +14,10 @@
                 <flux:sidebar.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
                     {{ __('Dashboard') }}
                 </flux:sidebar.item>
-                <flux:sidebar.item icon="flag" :href="route('started')" :current="request()->routeIs('started')" wire:navigate>
-                    {{ __('Getting Started') }}
-                </flux:sidebar.item>
+                <flux:sidebar.group expandable :heading="__('Getting Started')" :expanded="request()->routeIs('started', 'started.*')">
+                    <flux:sidebar.item :href="route('started')" :current="request()->routeIs('started')" wire:navigate>Overview</flux:sidebar.item>
+                    <flux:sidebar.item :href="route('started.ai-agent-skill')" :current="request()->routeIs('started.ai-agent-skill')" wire:navigate>AI Agent Skill</flux:sidebar.item>
+                </flux:sidebar.group>
                 <flux:sidebar.group :heading="__('Blade Components')" class="grid my-5">
                     <flux:sidebar.group expandable heading="Form Control" class="grid" :expanded="request()->routeIs('blade-components.label', 'blade-components.input', 'blade-components.textarea', 'blade-components.choices', 'blade-components.slider', 'blade-components.currency', 'blade-components.datetime-picker', 'blade-components.phone', 'blade-components.select', 'blade-components.file-upload', 'blade-components.richtext', 'blade-components.form')">
                         <flux:sidebar.item :href="route('blade-components.choices')" :current="request()->routeIs('blade-components.choices')" wire:navigate>Checkbox, Radio &amp; Switch</flux:sidebar.item>

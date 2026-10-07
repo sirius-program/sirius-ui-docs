@@ -6,6 +6,7 @@
                 <h1 class="text-3xl font-semibold">Getting Started</h1>
             </header>
             <p>Reusable Blade and Livewire components. Choose a component below for demos, usage, and attributes. See the README for local setup.</p>
+            <p>Using a coding agent? Install the <a class="underline" href="{{ route('started.ai-agent-skill') }}" wire:navigate>AI Agent Skill</a> for version-matched Sirius UI guidance and examples.</p>
             <h2 class="text-lg font-medium">Blade Components</h2>
             <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
                 <section id="blade-components-form-controls" class="rounded-xl border border-zinc-200 p-6 dark:border-zinc-700">

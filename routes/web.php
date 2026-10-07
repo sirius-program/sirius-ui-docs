@@ -27,6 +27,7 @@ require __DIR__ . '/settings.php';
 Route::view('/', 'welcome')->name('home');
 Route::view('dashboard', 'dashboard')->name('dashboard');
 Route::view('getting-started', 'started')->name('started');
+Route::view('getting-started/ai-agent-skill', 'ai-agent-skill')->name('started.ai-agent-skill');
 
 Route::view('blade-components/choices', 'blade-components.choices-docs')->name('blade-components.choices');
 Route::view('blade-components/currency', 'blade-components.currency-docs')->name('blade-components.currency');

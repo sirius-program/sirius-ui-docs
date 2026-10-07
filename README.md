@@ -2,6 +2,8 @@
 
 This application documents and tests the local `sirius/ui` package. Public components are added only after their implementation phases are completed.
 
+Phase 24 adds **Getting Started → AI Agent Skill** at /getting-started/ai-agent-skill. The package ships the portable sirius-ui-development skill, discoverable by Laravel Boost. Consumers can use boost:install / boost:update, or explicitly install project-local Codex/Claude Code skills with sirius:skills:install --agent=codex or --agent=claude-code. The guide covers activation, updates, ownership, manual copies, and customization recovery. Direct Claude Code runtime evaluation is deferred by request; see PHASE_24.md for verified versions and checks.
+
 Phase 23 adds **Chart** at /livewire-components/chart, with separate **Overview**, **Data**, **Extensions**, and **Options** submenus. Use the generic Livewire Chart inside an application Livewire view and pass reactive labels/datasets, type, sizing, and native serializable options. The package bundles Chart.js 4.5.1 and the date-fns time adapter; application code owns queries and authorization. Local SiriusChart.register(id, factory) callbacks/plugins complement parent prop updates without evaluating JavaScript strings. Demos include scoped Eloquent and Collection sources, accessible chart naming, and a callback to Livewire. The development fixture covers native controllers, mixed/time scales, multiple instances, Tabs/Dialog/Slideover, sizing, and rendering errors. See [Phase 23](PHASE_23.md) for boundaries and verification.
 
 Chart visibility/loading toggles are kept only in /development/chart for lifecycle testing. Public revenue demos omit these toggles, the revenue table, and its description.
