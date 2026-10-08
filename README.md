@@ -132,6 +132,8 @@ Phase 20 adds **Livewire Table**. Its docs are grouped under Table: Overview (`/
 
 Table headings cycle ascending, descending, and unsorted. Shift-click combines columns with visible sort priorities; a plain click selects one column. Pagination includes translated Back/Next controls disabled at the boundaries. The Translations example lists all Table UI keys.
 
+Table footers stack and center the record summary, per-page selector, and pagination when their container is 640px wide or narrower, including narrow desktop columns. Wider containers retain the left–center–right layout.
+
 Table's Overview submenu appears first; the remaining submenus stay alphabetical. This exception is recorded in the documentation menu ordering rule in `AGENTS.md`.
 
 The Query page documents `pageSizes()` with a copyable override: footer choices default to `[10, 25, 50]`, and the first choice is selected initially for either source type.

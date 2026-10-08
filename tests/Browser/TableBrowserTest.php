@@ -286,6 +286,6 @@ it('keeps borders footer and filter controls usable on mobile in both themes', f
             ->click('#invoice-table-filters-trigger')->assertVisible('#invoice-table-filter-status-search')
             ->click('#invoice-table-filters-trigger');
     }
-    $page->script('document.querySelector("#invoice-table").scrollIntoView({block: "start"});');
+    $page->script('document.querySelector("#invoice-table .sir-table-footer").scrollIntoView({block: "end"});');
     $page->screenshot(fullPage: false, filename: 'table-mobile')->assertNoJavaScriptErrors();
 });
