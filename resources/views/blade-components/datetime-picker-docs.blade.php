@@ -1,5 +1,5 @@
 <x-layouts::app title="Datetime Picker">
-    <x-docs-page :navigation="['Datetime Picker' => ['datetime-picker-demo' => 'Demo', 'datetime-picker-usage' => 'Usage', 'datetime-picker-attributes' => 'Attributes'], 'Shared' => ['shared-field-contract' => 'Shared field contract', 'assets-and-interaction' => 'Assets and interaction', 'global-configuration' => 'Global configuration', 'translations' => 'Translations']]">
+    <x-docs-page :navigation="['Datetime Picker' => ['datetime-picker-demo' => 'Demo', 'datetime-picker-usage' => 'Usage', 'datetime-picker-attributes' => 'Attributes', 'assets-and-interaction' => 'Assets and interaction', 'global-configuration' => 'Global configuration', 'translations' => 'Translations']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8" data-control-demo="datetime-picker">
             <header class="space-y-2">
                 <p class="text-sm text-slate-500 dark:text-slate-400">FORM CONTROL</p>
@@ -23,12 +23,6 @@
             </section>
             <section id="datetime-picker-attributes">
                 @include('blade-components.attributes.datetime-picker')
-            </section>
-            <section id="shared-field-contract" class="space-y-3">
-                <h2 class="text-xl font-medium">Shared field contract</h2>
-                <p>Labels, helper text, and Laravel or Livewire validation errors are linked automatically.</p>
-                <p>Values are submitted as local date/time strings: <code>2028-02-29</code>, <code>09:30</code>, or <code>2028-12-31 14:30:45</code>. They are not converted to UTC.</p>
-                <p>Your application handles timezone conversion and daylight-saving validation.</p>
             </section>
             <section id="assets-and-interaction" class="space-y-3">
                 <h2 class="text-xl font-medium">Assets and interaction</h2>

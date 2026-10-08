@@ -122,12 +122,22 @@ Breadcrumbs::for('dashboard', function (BreadcrumbTrail $trail): void {
 
 Breadcrumbs::for('started', function (BreadcrumbTrail $trail): void {
     $trail->parent('home');
-    $trail->push(__('Getting Started'), route('started'));
+    $trail->push(__('Getting Started'));
+});
+
+Breadcrumbs::for('started.introduction', function (BreadcrumbTrail $trail): void {
+    $trail->parent('started');
+    $trail->push(__('Introduction'), route('started.introduction'));
 });
 
 Breadcrumbs::for('started.ai-agent-skill', function (BreadcrumbTrail $trail): void {
     $trail->parent('started');
     $trail->push(__('AI Agent Skill'), route('started.ai-agent-skill'));
+});
+
+Breadcrumbs::for('started.installation', function (BreadcrumbTrail $trail): void {
+    $trail->parent('started');
+    $trail->push(__('Installation'), route('started.installation'));
 });
 
 // Blade Components
@@ -146,7 +156,7 @@ Breadcrumbs::for('blade-components.form-control', function (BreadcrumbTrail $tra
 
 Breadcrumbs::for('blade-components.choices', function (BreadcrumbTrail $trail): void {
     $trail->parent('blade-components.form-control');
-    $trail->push('Checkbox, Radio & Switch', route('blade-components.choices'));
+    $trail->push('Choices', route('blade-components.choices'));
 });
 
 Breadcrumbs::for('blade-components.currency', function (BreadcrumbTrail $trail): void {
@@ -271,28 +281,6 @@ Breadcrumbs::for('blade-components.tooltip', function (BreadcrumbTrail $trail): 
     $trail->push('Tooltip', route('blade-components.tooltip'));
 });
 
-// Navigation
-
-Breadcrumbs::for('blade-components.navigation', function (BreadcrumbTrail $trail): void {
-    $trail->parent('blade-components.index');
-    $trail->push('Navigation');
-});
-
-Breadcrumbs::for('blade-components.breadcrumb', function (BreadcrumbTrail $trail): void {
-    $trail->parent('blade-components.navigation');
-    $trail->push('Breadcrumb', route('blade-components.breadcrumb'));
-});
-
-Breadcrumbs::for('blade-components.dropdown', function (BreadcrumbTrail $trail): void {
-    $trail->parent('blade-components.navigation');
-    $trail->push('Dropdown', route('blade-components.dropdown'));
-});
-
-Breadcrumbs::for('blade-components.menu', function (BreadcrumbTrail $trail): void {
-    $trail->parent('blade-components.navigation');
-    $trail->push('Menu', route('blade-components.menu'));
-});
-
 // Layout
 
 Breadcrumbs::for('blade-components.layout', function (BreadcrumbTrail $trail): void {
@@ -305,6 +293,11 @@ Breadcrumbs::for('blade-components.accordion', function (BreadcrumbTrail $trail)
     $trail->push('Accordion', route('blade-components.accordion'));
 });
 
+Breadcrumbs::for('blade-components.breadcrumb', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.layout');
+    $trail->push('Breadcrumb', route('blade-components.breadcrumb'));
+});
+
 Breadcrumbs::for('blade-components.card', function (BreadcrumbTrail $trail): void {
     $trail->parent('blade-components.layout');
     $trail->push('Card', route('blade-components.card'));
@@ -313,6 +306,16 @@ Breadcrumbs::for('blade-components.card', function (BreadcrumbTrail $trail): voi
 Breadcrumbs::for('blade-components.dialog', function (BreadcrumbTrail $trail): void {
     $trail->parent('blade-components.layout');
     $trail->push('Dialog', route('blade-components.dialog'));
+});
+
+Breadcrumbs::for('blade-components.dropdown', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.layout');
+    $trail->push('Dropdown', route('blade-components.dropdown'));
+});
+
+Breadcrumbs::for('blade-components.menu', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.layout');
+    $trail->push('Menu', route('blade-components.menu'));
 });
 
 Breadcrumbs::for('blade-components.slideover', function (BreadcrumbTrail $trail): void {

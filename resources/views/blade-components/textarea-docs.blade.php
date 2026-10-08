@@ -1,5 +1,5 @@
 <x-layouts::app title="Textarea">
-    <x-docs-page :navigation="['Textarea' => ['textarea-demo' => 'Demo', 'textarea-usage' => 'Usage', 'textarea-attributes' => 'Attributes'], 'Shared' => ['shared-field-contract' => 'Shared field contract', 'assets-and-interaction' => 'Asset and interaction']]">
+    <x-docs-page :navigation="['Textarea' => ['textarea-demo' => 'Demo', 'textarea-usage' => 'Usage', 'textarea-attributes' => 'Attributes', 'assets-and-interaction' => 'Asset and interaction']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8" data-control-demo="textarea">
             <header class="space-y-2">
                 <p class="text-sm text-slate-500 dark:text-slate-400">FORM CONTROL</p>
@@ -24,10 +24,6 @@
             </section>
             <section id="textarea-attributes">
                 @include('blade-components.attributes.textarea')
-            </section>
-            <section id="shared-field-contract" class="space-y-3">
-                <h2 class="text-xl font-medium">Shared field contract</h2>
-                <p>Labels, helper text, and Laravel or Livewire validation errors are linked automatically.</p>
             </section>
             <section id="assets-and-interaction" class="space-y-3">
                 <h2 class="text-xl font-medium">Asset and interaction</h2>

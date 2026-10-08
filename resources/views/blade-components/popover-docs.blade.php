@@ -1,5 +1,5 @@
 <x-layouts::app title="Popover">
-    <x-docs-page :navigation="['Popover' => ['popover-demo' => 'Demo', 'popover-usage' => 'Usage', 'popover-attributes' => 'Attributes'], 'Shared' => ['assets-and-interaction' => 'Assets and interaction', 'state-and-events' => 'State and events', 'translations' => 'Translations']]">
+    <x-docs-page :navigation="['Popover' => ['popover-demo' => 'Demo', 'popover-usage' => 'Usage', 'popover-attributes' => 'Attributes', 'assets-and-interaction' => 'Assets and interaction', 'state-and-events' => 'State and events', 'translations' => 'Translations']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8">
             <header class="space-y-2">
                 <p class="text-sm text-slate-500 dark:text-slate-400">PRESENTATION</p>

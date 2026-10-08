@@ -1,5 +1,5 @@
 <x-layouts::app title="Dropdown">
-    <x-docs-page :navigation="['Dropdown' => ['dropdown-demo' => 'Demo', 'dropdown-usage' => 'Usage', 'dropdown-attributes' => 'Attributes'], 'Shared' => ['assets-and-interaction' => 'Assets and interaction', 'state-and-events' => 'State and events']]">
+    <x-docs-page :navigation="['Dropdown' => ['dropdown-demo' => 'Demo', 'dropdown-usage' => 'Usage', 'dropdown-attributes' => 'Attributes', 'assets-and-interaction' => 'Assets and interaction', 'state-and-events' => 'State and events']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8">
             <header class="space-y-2">
                 <p class="text-sm text-slate-500 dark:text-slate-400">NAVIGATION</p>

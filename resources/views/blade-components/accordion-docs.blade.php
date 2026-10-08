@@ -1,5 +1,5 @@
 <x-layouts::app title="Accordion">
-    <x-docs-page :navigation="['Accordion' => ['accordion-demo' => 'Demo', 'accordion-usage' => 'Usage', 'accordion-attributes' => 'Attributes'], 'Shared' => ['assets-and-interaction' => 'Assets and interaction']]">
+    <x-docs-page :navigation="['Accordion' => ['accordion-demo' => 'Demo', 'accordion-usage' => 'Usage', 'accordion-attributes' => 'Attributes']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8">
             <header class="space-y-2">
                 <p class="text-sm text-slate-500 dark:text-slate-400">LAYOUT</p>

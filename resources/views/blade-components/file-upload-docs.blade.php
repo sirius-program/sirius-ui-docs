@@ -1,5 +1,5 @@
 <x-layouts::app title="File Upload">
-    <x-docs-page :navigation="['File Upload' => ['upload-demo' => 'Demo', 'upload-usage' => 'Usage', 'upload-attributes' => 'Attributes'], 'Shared' => ['shared-field-contract' => 'Shared field contract', 'assets-and-interaction' => 'Assets and interaction', 'storage' => 'Storage and validation', 'translations' => 'Translations']]">
+    <x-docs-page :navigation="['File Upload' => ['upload-demo' => 'Demo', 'upload-usage' => 'Usage', 'upload-attributes' => 'Attributes', 'assets-and-interaction' => 'Assets and interaction', 'storage' => 'Storage and validation', 'translations' => 'Translations']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8">
             <header class="space-y-2">
                 <p class="text-sm text-slate-500 dark:text-slate-400">FORM CONTROL</p>
@@ -22,12 +22,6 @@
                 @include('blade-components.examples.file-upload')
             </section>
             <section id="upload-attributes">@include('blade-components.attributes.file-upload')</section>
-            <section id="shared-field-contract" class="space-y-3">
-                <h2 class="text-xl font-medium">Shared field contract</h2>
-                <p>Labels, helper text, and Laravel or Livewire validation errors are linked automatically.</p>
-                <p>With Livewire, use <code>WithFileUploads</code>, a nullable property for one file, or an array for multiple files. Do not add another upload handler. Uploads start immediately regardless of model modifiers. Use stable IDs and change <code>reset-key</code> for server resets.</p>
-                <p>Existing files are displayed without uploading them again. Validate retained files separately from new uploads. New selections must be chosen again after a reload.</p>
-            </section>
             <section id="assets-and-interaction" class="space-y-3">
                 <h2 class="text-xl font-medium">Assets and interaction</h2>
                 <p>Import the package CSS and JavaScript, or publish and load <code>sirius-ui-assets</code>.</p>

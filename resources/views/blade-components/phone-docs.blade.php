@@ -1,5 +1,5 @@
 <x-layouts::app title="Phone">
-    <x-docs-page :navigation="['Phone' => ['phone-demo' => 'Demo', 'phone-usage' => 'Usage', 'phone-attributes' => 'Attributes'], 'Shared' => ['shared-field-contract' => 'Shared field contract', 'assets-and-interaction' => 'Assets and interaction', 'validation-rules' => 'Validation rules', 'global-configuration' => 'Global configuration', 'translations' => 'Translations']]">
+    <x-docs-page :navigation="['Phone' => ['phone-demo' => 'Demo', 'phone-usage' => 'Usage', 'phone-attributes' => 'Attributes', 'assets-and-interaction' => 'Assets and interaction', 'validation-rules' => 'Validation rules', 'global-configuration' => 'Global configuration', 'translations' => 'Translations']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8" data-control-demo="phone">
             <header class="space-y-2">
                 <p class="text-sm text-slate-500 dark:text-slate-400">FORM CONTROL</p>
@@ -17,11 +17,6 @@
             </section>
             <section id="phone-usage" class="space-y-4"><h2 class="text-xl font-medium">Usage</h2>@include('blade-components.examples.phone')</section>
             <section id="phone-attributes">@include('blade-components.attributes.phone')</section>
-            <section id="shared-field-contract" class="space-y-3">
-                <h2 class="text-xl font-medium">Shared field contract</h2>
-                <p>Labels, helper text, and Laravel or Livewire validation errors are linked automatically.</p>
-                <p>Bind a nullable string. Valid numbers produce E.164, such as <code>+6281234567890</code>; empty or invalid drafts produce <code>null</code>. Native forms submit an empty string instead. Draft text stays visible, with feedback on blur or submit.</p>
-            </section>
             <section id="assets-and-interaction" class="space-y-3">
                 <h2 class="text-xl font-medium">Assets and interaction</h2>
                 <p>Import the package CSS and JavaScript, or publish and load <code>sirius-ui-assets</code>.</p>

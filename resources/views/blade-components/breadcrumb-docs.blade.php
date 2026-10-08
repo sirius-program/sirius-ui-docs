@@ -1,5 +1,5 @@
 <x-layouts::app title="Breadcrumb">
-    <x-docs-page :navigation="['Breadcrumb' => ['breadcrumb-demo' => 'Demo', 'breadcrumb-usage' => 'Usage', 'breadcrumb-attributes' => 'Attributes'], 'Shared' => ['assets-and-interaction' => 'Assets and interaction', 'translations' => 'Translations']]">
+    <x-docs-page :navigation="['Breadcrumb' => ['breadcrumb-demo' => 'Demo', 'breadcrumb-usage' => 'Usage', 'breadcrumb-attributes' => 'Attributes', 'translations' => 'Translations']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8">
             <header class="space-y-2">
                 <p class="text-sm text-slate-500 dark:text-slate-400">NAVIGATION</p>
@@ -21,10 +21,6 @@
             </section>
             <section id="breadcrumb-attributes">
                 @include('blade-components.attributes.breadcrumb')
-            </section>
-            <section id="assets-and-interaction" class="space-y-3">
-                <h2 class="text-xl font-medium">Assets and interaction</h2>
-                <p>Breadcrumb requires only the package CSS. Links keep their native keyboard behavior; separators are decorative.</p>
             </section>
             <section id="translations" class="space-y-3">
                 <h2 class="text-xl font-medium">Translations</h2>

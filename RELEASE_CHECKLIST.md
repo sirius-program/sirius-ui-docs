@@ -1,6 +1,18 @@
 # Release checklist
 
-Local candidate validation: 2026-10-07. Evidence and scope are recorded in [Phase 26](PHASE_26.md). No release has been published.
+Latest local candidate validation: 2026-10-08. Earlier evidence and scope are recorded in [Phase 26](PHASE_26.md). No release has been published.
+
+## Current audit
+
+- Package quality gate: 738 tests / 2,343 assertions; docs quality gate: 218 tests / 1,312 assertions. Formatting, static analysis, and refactoring checks pass.
+- Final full docs browser gate after the corrections: 251 tests / 2,746 assertions, passed without warnings in 228 seconds. Browser evidence uses local Windows Chromium; remote CI is still pending.
+- The current 738-test package suite passes on Windows for Laravel 12.69.3 and 13.35.0, each with PHP 8.3.33, 8.4.26, and 8.5.10. The existing independent dependency installations were reused with current source. Oldest permitted framework patches and Linux execution are not claimed.
+- Composer and npm audits report zero advisories/vulnerabilities in both projects. No dependency versions or advisory ignores were changed. `composer validate` passes; strict validation reports the existing exact Heroicons 2.7.0 pin as a general warning. The pin is retained.
+- Package CSS/JS hashes are identical across two consecutive builds. The compiled JS was refreshed to match committed regional-setting exception text. The public README link, Composer support metadata, and package changelog are corrected.
+- The clean source archive contains 219 files, compiled assets, English translations, license notices, and the skill plus ten references. It excludes root vendor/node_modules, tests, CI, environment files, and caches. Vendored Tiptap UI source and its licenses are intentional package contents.
+- A fresh mirrored consumer with Laravel 13.35.0 / Livewire 4.4.7 installs the archive, publishes assets, installs both skill destinations, and passes 23 usage tests / 112 assertions with a fresh config cache. Installed assets, regional metadata, translations, and all eleven skill Markdown files match source hashes. No direct Claude Code evaluation was resumed.
+- The empty consumer fixture deliberately has no environment file. Uncached boot reports Laravel dotenv missing-file warnings; its explicit test configuration is cached before the clean gate. No environment file or vendor source was edited to suppress them.
+- CI corrections are prepared: package metadata/audit steps; docs master/main triggers, exact locked package checkout in a sibling directory, Node 24, locked npm installs, package-first builds, and browser process timeout. YAML parses successfully and pinned docs action commits resolve. Remote execution still requires pushed commits.
 
 ## Technical validation
 
@@ -15,12 +27,13 @@ Local candidate validation: 2026-10-07. Evidence and scope are recorded in [Phas
 - [x] Distribution includes compiled assets, translations, license notices, skill entry point, and every referenced Markdown file.
 - [x] A fresh non-linked consumer can install the distribution, publish assets, install/update both documented agent skill destinations, and run the usage scenarios.
 - [x] A fresh linked docs installation passes npm installation/build and feature tests.
-- [x] Final full docs browser gate passes after all other checks: 251 tests / 2,746 assertions without warnings.
+- [x] Repeat the final full docs browser gate after this audit's corrections: 251 tests / 2,746 assertions, without warnings.
 
 ## Before publication
 
 - [ ] Choose the release version and review the [unreleased changelog](CHANGELOG.md).
 - [ ] Review and commit the final changes, including generated assets and lock files where tracked.
+- [ ] Push the package commit first, refresh `sirius/ui` in the docs lock file to that commit, then push docs so its CI checkout references the reviewed source.
 - [ ] Obtain successful remote CI results for the release commit.
 - [ ] Rebuild/archive the selected release commit and confirm its version-matched skill/references.
 - [ ] Authorize package publication or docs deployment separately.

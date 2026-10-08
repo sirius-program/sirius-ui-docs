@@ -30,9 +30,9 @@ php artisan sirius:skills:install --agent=codex --agent=claude-code</x-docs-code
                 <h2 class="text-2xl font-semibold">Using the skill</h2>
                 <p>Start a new agent session in the consuming project after installing or updating. Ask for a Sirius UI task, or invoke the skill explicitly.</p>
                 <h3 class="text-lg font-medium">Codex</h3>
-                <x-docs-code language="Text">$sirius-ui-development Build a validated Livewire project form using Sirius UI.</x-docs-code>
+                <x-docs-code language="Shell">$sirius-ui-development Build a validated Livewire project form using Sirius UI.</x-docs-code>
                 <h3 class="text-lg font-medium">Claude Code</h3>
-                <x-docs-code language="Text">/sirius-ui-development Build a scoped Sirius UI Table with date filters.</x-docs-code>
+                <x-docs-code language="Shell">/sirius-ui-development Build a scoped Sirius UI Table with date filters.</x-docs-code>
                 <p>The skill covers components, form values, validation, themes, overlays, Table, Calendar, Chart, and application-owned actions. It loads detailed references only when needed. Your agent still needs to inspect the application's models, permissions, and tests.</p>
             </section>
 

@@ -1,5 +1,5 @@
 <x-layouts::app title="Timeline">
-    <x-docs-page :navigation="['Timeline' => ['timeline-demo' => 'Demo', 'timeline-usage' => 'Usage', 'timeline-attributes' => 'Attributes'], 'Shared' => ['assets-and-interaction' => 'Assets and interaction', 'translations' => 'Translations']]">
+    <x-docs-page :navigation="['Timeline' => ['timeline-demo' => 'Demo', 'timeline-usage' => 'Usage', 'timeline-attributes' => 'Attributes', 'translations' => 'Translations']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8">
             <header class="space-y-2">
                 <p class="text-sm text-slate-500 dark:text-slate-400">PRESENTATION</p>
@@ -17,11 +17,6 @@
             </section>
             <section id="timeline-attributes">
                 @include('blade-components.attributes.timeline')
-            </section>
-            <section id="assets-and-interaction" class="space-y-3">
-                <h2 class="text-xl font-medium">Assets and interaction</h2>
-                <p>Import the package CSS, or publish and load <code>sirius-ui-assets</code>. JavaScript is not required.</p>
-                <p>Timeline only displays the supplied state. Your application owns progression, validation, and any actions. Mark one item as current when displaying a step sequence.</p>
             </section>
             <section id="translations" class="space-y-3">
                 <h2 class="text-xl font-medium">Translations</h2>

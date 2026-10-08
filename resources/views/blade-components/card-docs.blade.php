@@ -1,5 +1,5 @@
 <x-layouts::app title="Card">
-    <x-docs-page :navigation="['Card' => ['card-demo' => 'Demo', 'card-usage' => 'Usage', 'card-attributes' => 'Attributes'], 'Shared' => ['assets-and-interaction' => 'Assets and interaction']]">
+    <x-docs-page :navigation="['Card' => ['card-demo' => 'Demo', 'card-usage' => 'Usage', 'card-attributes' => 'Attributes', 'interaction' => 'Interaction']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8">
             <header class="space-y-2">
                 <p class="text-sm text-slate-500 dark:text-slate-400">LAYOUT</p>
@@ -22,8 +22,8 @@
             <section id="card-attributes">
                 @include('blade-components.attributes.card')
             </section>
-            <section id="assets-and-interaction" class="space-y-3">
-                <h2 class="text-xl font-medium">Assets and interaction</h2>
+            <section id="interaction" class="space-y-3">
+                <h2 class="text-xl font-medium">Interaction</h2>
                 <p>Named header/footer slots override their text props, including empty slots. The default slot overrides body text when it contains content. Empty header/footer sections are omitted; the body remains.</p>
                 <p>Section IDs use the root ID plus <code>-header</code>, <code>-body</code>, or <code>-footer</code>. Header/footer slot attributes are forwarded, but their IDs cannot replace these associations.</p>
                 <p>Card requires only the package CSS. Livewire can update its content without additional setup.</p>

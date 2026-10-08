@@ -26,7 +26,9 @@ require __DIR__ . '/settings.php';
 
 Route::view('/', 'welcome')->name('home');
 Route::view('dashboard', 'dashboard')->name('dashboard');
-Route::view('getting-started', 'started')->name('started');
+Route::redirect('getting-started', 'getting-started/introduction')->name('started');
+Route::view('getting-started/introduction', 'introduction')->name('started.introduction');
+Route::view('getting-started/installation', 'installation')->name('started.installation');
 Route::view('getting-started/ai-agent-skill', 'ai-agent-skill')->name('started.ai-agent-skill');
 
 Route::view('blade-components/choices', 'blade-components.choices-docs')->name('blade-components.choices');

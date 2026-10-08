@@ -1,5 +1,5 @@
 <x-layouts::app title="Separator">
-    <x-docs-page :navigation="['Separator' => ['separator-demo' => 'Demo', 'separator-usage' => 'Usage', 'separator-attributes' => 'Attributes'], 'Shared' => ['assets-and-interaction' => 'Assets and interaction']]">
+    <x-docs-page :navigation="['Separator' => ['separator-demo' => 'Demo', 'separator-usage' => 'Usage', 'separator-attributes' => 'Attributes']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8">
             <header class="space-y-2">
                 <p class="text-sm text-slate-500 dark:text-slate-400">LAYOUT</p>
@@ -21,10 +21,6 @@
             </section>
             <section id="separator-attributes">
                 @include('blade-components.attributes.separator')
-            </section>
-            <section id="assets-and-interaction" class="space-y-3">
-                <h2 class="text-xl font-medium">Assets and interaction</h2>
-                <p>Separator requires only the package CSS. Livewire can update its content without additional setup.</p>
             </section>
         </article>
     </x-docs-page>

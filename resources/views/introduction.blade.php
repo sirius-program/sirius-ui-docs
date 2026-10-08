@@ -1,24 +1,25 @@
-<x-layouts::app :title="__('Getting Started')">
-    <x-docs-page :navigation="['Getting Started' => ['overview' => 'Overview', 'blade-components' => 'Blade components']]">
+<x-layouts::app :title="__('Introduction')">
+    <x-docs-page :navigation="['Introduction' => ['overview' => 'Overview', 'blade-components' => 'Blade components']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8">
             <header id="overview" class="space-y-2">
-                <p class="text-sm text-slate-500 dark:text-slate-400">SIRIUS UI COMPONENTS</p>
-                <h1 class="text-3xl font-semibold">Getting Started</h1>
+                <p class="text-sm text-slate-500 dark:text-slate-400">GETTING STARTED</p>
+                <h1 class="text-3xl font-semibold">Introduction</h1>
+                <p>Get to know more about Sirius UI.</p>
             </header>
             <p>Reusable Blade and Livewire components. Start with <a class="underline" href="{{ route('started.installation') }}" wire:navigate>Installation</a> to install the package and load its assets, then choose a component below for demos, usage, and attributes.</p>
             <p>Using a coding agent? Install the <a class="underline" href="{{ route('started.ai-agent-skill') }}" wire:navigate>AI Agent Skill</a> for version-matched Sirius UI guidance and examples.</p>
             <h2 class="text-lg font-medium">Blade Components</h2>
             <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
-                <section id="blade-components-form-controls" class="rounded-xl border border-slate-300 p-6 dark:border-slate-600">
+                <section id="blade-components-form-control" class="rounded-xl border border-slate-300 p-6 dark:border-slate-600">
                     <h3 class="font-medium">Form Control</h3>
                     <ul class="list-disc pl-5 mt-3 space-y-3">
-                        <li><a class="underline" href="{{ route('blade-components.choices') }}" wire:navigate>Checkbox, Radio &amp; Switch</a></li>
+                        <li><a class="underline" href="{{ route('blade-components.form') }}" wire:navigate>Form</a></li>
+                        <li><a class="underline" href="{{ route('blade-components.label') }}" wire:navigate>Label</a></li>
+                        <li><a class="underline" href="{{ route('blade-components.choices') }}" wire:navigate>Choices</a></li>
                         <li><a class="underline" href="{{ route('blade-components.currency') }}" wire:navigate>Currency</a></li>
                         <li><a class="underline" href="{{ route('blade-components.datetime-picker') }}" wire:navigate>Datetime Picker</a></li>
                         <li><a class="underline" href="{{ route('blade-components.file-upload') }}" wire:navigate>File Upload</a></li>
-                        <li><a class="underline" href="{{ route('blade-components.form') }}" wire:navigate>Form</a></li>
                         <li><a class="underline" href="{{ route('blade-components.input') }}" wire:navigate>Input</a></li>
-                        <li><a class="underline" href="{{ route('blade-components.label') }}" wire:navigate>Label</a></li>
                         <li><a class="underline" href="{{ route('blade-components.phone') }}" wire:navigate>Phone</a></li>
                         <li><a class="underline" href="{{ route('blade-components.richtext') }}" wire:navigate>Richtext</a></li>
                         <li><a class="underline" href="{{ route('blade-components.select') }}" wire:navigate>Select</a></li>
@@ -43,21 +44,18 @@
                         <li><a class="underline" href="{{ route('blade-components.tooltip') }}" wire:navigate>Tooltip</a></li>
                     </ul>
                 </section>
-                <section id="blade-components-layouts" class="rounded-xl border border-slate-300 p-6 dark:border-slate-600">
+                <section id="blade-components-layout" class="rounded-xl border border-slate-300 p-6 dark:border-slate-600">
                     <h3 class="font-medium">Layout</h3>
                     <ul class="list-disc pl-5 mt-3 space-y-3 mb-4">
                         <li><a class="underline" href="{{ route('blade-components.accordion') }}" wire:navigate>Accordion</a></li>
+                        <li><a class="underline" href="{{ route('blade-components.breadcrumb') }}" wire:navigate>Breadcrumb</a></li>
                         <li><a class="underline" href="{{ route('blade-components.card') }}" wire:navigate>Card</a></li>
                         <li><a class="underline" href="{{ route('blade-components.dialog') }}" wire:navigate>Dialog</a></li>
+                        <li><a class="underline" href="{{ route('blade-components.dropdown') }}" wire:navigate>Dropdown</a></li>
+                        <li><a class="underline" href="{{ route('blade-components.menu') }}" wire:navigate>Menu</a></li>
                         <li><a class="underline" href="{{ route('blade-components.separator') }}" wire:navigate>Separator</a></li>
                         <li><a class="underline" href="{{ route('blade-components.slideover') }}" wire:navigate>Slideover</a></li>
                         <li><a class="underline" href="{{ route('blade-components.tabs') }}" wire:navigate>Tabs</a></li>
-                    </ul>
-                    <h3 class="font-medium">Navigation</h3>
-                    <ul class="list-disc pl-5 mt-3 space-y-3">
-                        <li><a class="underline" href="{{ route('blade-components.breadcrumb') }}" wire:navigate>Breadcrumb</a></li>
-                        <li><a class="underline" href="{{ route('blade-components.dropdown') }}" wire:navigate>Dropdown</a></li>
-                        <li><a class="underline" href="{{ route('blade-components.menu') }}" wire:navigate>Menu</a></li>
                     </ul>
                 </section>
             </div>
@@ -86,11 +84,11 @@
                     <h3 class="font-medium">Table</h3>
                     <ul class="list-disc pl-5 mt-3 space-y-3">
                         <li><a class="underline" href="{{ route('livewire-components.table') }}" wire:navigate>Overview</a></li>
-                        <li><a class="underline" href="{{ route('livewire-components.table.bulk-actions') }}" wire:navigate>Bulk Actions</a></li>
+                        <li><a class="underline" href="{{ route('livewire-components.table.query') }}" wire:navigate>Query</a></li>
                         <li><a class="underline" href="{{ route('livewire-components.table.columns') }}" wire:navigate>Columns</a></li>
                         <li><a class="underline" href="{{ route('livewire-components.table.filters') }}" wire:navigate>Filters</a></li>
-                        <li><a class="underline" href="{{ route('livewire-components.table.query') }}" wire:navigate>Query</a></li>
                         <li><a class="underline" href="{{ route('livewire-components.table.row-actions') }}" wire:navigate>Row Actions</a></li>
+                        <li><a class="underline" href="{{ route('livewire-components.table.bulk-actions') }}" wire:navigate>Bulk Actions</a></li>
                     </ul>
                 </section>
             </div>

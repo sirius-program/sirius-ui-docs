@@ -1,5 +1,5 @@
 <x-layouts::app title="Select">
-    <x-docs-page :navigation="['Select' => ['select-demo' => 'Demo', 'select-usage' => 'Usage', 'select-attributes' => 'Attributes'], 'Shared' => ['shared-field-contract' => 'Shared field contract', 'assets-and-interaction' => 'Assets and interaction', 'server-search' => 'Server search', 'translations' => 'Translations']]">
+    <x-docs-page :navigation="['Select' => ['select-demo' => 'Demo', 'select-usage' => 'Usage', 'select-attributes' => 'Attributes', 'assets-and-interaction' => 'Assets and interaction', 'server-search' => 'Server search', 'translations' => 'Translations']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8" data-control-demo="select">
             <header class="space-y-2">
                 <p class="text-sm text-slate-500 dark:text-slate-400">FORM CONTROL</p>
@@ -23,11 +23,6 @@
             </section>
             <section id="select-attributes">
                 @include('blade-components.attributes.select')
-            </section>
-            <section id="shared-field-contract" class="space-y-3">
-                <h2 class="text-xl font-medium">Shared field contract</h2>
-                <p>Labels, helper text, and Laravel or Livewire validation errors are linked automatically.</p>
-                <p>Use a nullable string for one selection or an array of strings for multiple selections. The value <code>0</code> becomes <code>"0"</code>. Native forms omit empty multiple fields, so normalize missing values to an array. Validate that submitted IDs are allowed for the current user.</p>
             </section>
             <section id="assets-and-interaction" class="space-y-3">
                 <h2 class="text-xl font-medium">Assets and interaction</h2>

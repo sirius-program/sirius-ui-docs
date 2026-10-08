@@ -3798,7 +3798,7 @@
             "dist": {
                 "type": "path",
                 "url": "../sirius-ui",
-                "reference": "474edc6836fca664ff8c87ac5d62eb4a32acf943"
+                "reference": "ced0a2820978bc3da9117b87fa8e51e43b51fa30"
             },
             "require": {
                 "blade-ui-kit/blade-heroicons": "2.7.0",
@@ -3888,6 +3888,7 @@
                 }
             ],
             "description": "Reusable Laravel Blade and Livewire UI components styled with Tailwind CSS.",
+            "homepage": "https://github.com/sirius-program/sirius-ui",
             "keywords": [
                 "blade",
                 "components",
@@ -3895,6 +3896,11 @@
                 "livewire",
                 "tailwindcss"
             ],
+            "support": {
+                "docs": "https://github.com/sirius-program/sirius-ui-docs#readme",
+                "issues": "https://github.com/sirius-program/sirius-ui/issues",
+                "source": "https://github.com/sirius-program/sirius-ui"
+            },
             "transport-options": {
                 "symlink": true,
                 "relative": true

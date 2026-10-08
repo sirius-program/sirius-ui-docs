@@ -1,5 +1,5 @@
 <x-layouts::app title="Input">
-    <x-docs-page :navigation="['Input' => ['input-demo' => 'Demo', 'input-usage' => 'Usage', 'input-attributes' => 'Attributes'], 'Shared' => ['shared-field-contract' => 'Shared field contract', 'assets-and-interaction' => 'Asset and interaction', 'translations' => 'Translations']]">
+    <x-docs-page :navigation="['Input' => ['input-demo' => 'Demo', 'input-usage' => 'Usage', 'input-attributes' => 'Attributes', 'assets-and-interaction' => 'Asset and interaction', 'translations' => 'Translations']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8" data-control-demo="input">
             <header class="space-y-2">
                 <p class="text-sm text-slate-500 dark:text-slate-400">FORM CONTROL</p>
@@ -24,10 +24,6 @@
             </section>
             <section id="input-attributes">
                 @include('blade-components.attributes.input')
-            </section>
-            <section id="shared-field-contract" class="space-y-3">
-                <h2 class="text-xl font-medium">Shared field contract</h2>
-                <p>Labels, helper text, and Laravel or Livewire validation errors are linked automatically.</p>
             </section>
             <section id="assets-and-interaction" class="space-y-3">
                 <h2 class="text-xl font-medium">Asset and interaction</h2>

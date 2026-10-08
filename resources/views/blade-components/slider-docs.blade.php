@@ -1,5 +1,5 @@
 <x-layouts::app title="Slider">
-    <x-docs-page :navigation="['Slider' => ['slider-demo' => 'Demo', 'slider-usage' => 'Usage', 'slider-attributes' => 'Attributes'], 'Shared' => ['shared-field-contract' => 'Shared field contract', 'assets-and-interaction' => 'Assets and interaction', 'translations' => 'Translations']]">
+    <x-docs-page :navigation="['Slider' => ['slider-demo' => 'Demo', 'slider-usage' => 'Usage', 'slider-attributes' => 'Attributes', 'assets-and-interaction' => 'Assets and interaction', 'translations' => 'Translations']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8">
             <header class="space-y-2">
                 <p class="text-sm text-slate-500 dark:text-slate-400">FORM CONTROL</p>
@@ -23,12 +23,6 @@
             </section>
             <section id="slider-attributes">
                 @include('blade-components.attributes.slider')
-            </section>
-            <section id="shared-field-contract" class="space-y-3">
-                <h2 class="text-xl font-medium">Shared field contract</h2>
-                <p>Labels, helper text, and Laravel or Livewire validation errors are linked automatically.</p>
-                <p>Range handles share one label and error area. Use <code>error-key="budget*"</code> to include errors for both the array and its entries.</p>
-                <p>Values must be finite, within their bounds, and on their step grid. Range handles cannot cross. Invalid PHP values throw a configuration error; invalid bound values keep the last valid selection and show an error. Validate submitted values on the server too.</p>
             </section>
             <section id="assets-and-interaction" class="space-y-3">
                 <h2 class="text-xl font-medium">Assets and interaction</h2>

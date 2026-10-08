@@ -1,9 +1,9 @@
 @props(['rows', 'note' => 'Accepts HTML5 attributes, Alpine events, data-*, ARIA, and supported Livewire bindings.'])
 <div class="overflow-x-auto rounded-xl border border-slate-300 dark:border-slate-600">
     <table class="w-full text-left text-sm">
-        <caption class="sr-only">Component attributes, types, requirements, defaults, and descriptions</caption>
+        <caption class="sr-only">Component keyword, types, requirements, defaults, and descriptions</caption>
         <thead class="bg-slate-50 text-xs text-slate-600 dark:bg-slate-900 dark:text-slate-400"><tr>
-            @foreach (['Attributes', 'Type', 'Default', 'Description'] as $heading)<th scope="col" class="px-4 py-3 font-medium">{{ $heading }}</th>@endforeach
+            @foreach (['Keyword', 'Type', 'Default', 'Description'] as $heading)<th scope="col" class="px-4 py-3 font-medium">{{ $heading }}</th>@endforeach
         </tr></thead>
         <tbody class="divide-y divide-slate-200 dark:divide-slate-800">
             @foreach ($rows as $row)<tr>
