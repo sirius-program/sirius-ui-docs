@@ -40,7 +40,7 @@
             </section>
             <section id="global-configuration" class="space-y-3">
                 <h2 class="text-xl font-medium">Global configuration</h2>
-                <p>Country selects the numbering region, not the UI language. Regional locales use their region. Language mappings: <code>en: US, ja: JP, ko: KR, zh: CN, vi: VN, uk: UA, el: GR, ar: SA, he: IL</code>. Other supported country codes resolve directly, including <code>id: ID</code> and <code>ca: CA</code>. Use an explicit country when ambiguous.</p>
+                <p>Country selects the numbering region, not the UI language. Regional locales use their region. Language mappings: <code>en: US, ja: JP, ko: KR, zh: CN, vi: VN, uk: UA, el: GR, ar: SA</code>. Other supported country codes resolve directly, including <code>id: ID</code> and <code>ca: CA</code>. Use an explicit country when ambiguous.</p>
                 <p>Country falls back through <code>sirius-ui.phone_country &rarr; sirius-ui.locale &rarr; app.locale &rarr; app.fallback_locale &rarr; US</code>. Props take priority. <code>*</code> sorts countries by calling code and uses the fallback chain for its initial choice. Arrays keep their order and start with the first country. Comma-separated environment values are unsupported.</p>
                 @include('blade-components.examples.phone-config')
             </section>
