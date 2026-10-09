@@ -1,0 +1,236 @@
+# Implementation Plan — Components and Documentation Refresh
+
+Created: 2026-10-09. Baseline: docs commit `fdbdc78` (`chore: clean up docs`).
+
+Plan approved: 2026-10-09.
+
+This is a new plan. Deleted implementation/phase reports will not be restored. The existing 0.1.0 components and the user's documentation cleanup are the starting point. Feature implementation starts only after the user requests a phase.
+
+## Progress
+
+**1 of 8 phases complete.** Phase 0 is complete; Phases 1–7 have not started.
+
+Check a task only after its work is done and any required verification passes. Check a phase in the completion list only when all its work and acceptance criteria are complete. Approval of this plan does not mark implementation tasks complete. Update this summary and the recorded evidence as work progresses.
+
+## Confirmed decisions
+
+- Add **Code** and **Link** to the package. Rendered docs anchors use Link, not Code.
+- Code supports inline and block modes. Block mode preserves existing highlighting, whitespace, and clipboard behavior in `x-docs-code`.
+- Both components support `primary`, `info`, `secondary`, `success`, `danger`, and `warning`. Code defaults to `info`; Link defaults to `primary` with an underline. Font size follows its surrounding content.
+- Use **Menu.category** and **Menu.group** to compose titled/icon-bearing sections and optional accordions. Existing Menu/Menu.item APIs remain compatible. Native list markup remains inside package components, not in `docs-navigation.blade.php`.
+- Keep the existing plural **examples** directories. Add corresponding locations for Getting Started, Other, and shared snippet rendering.
+- Changelog is one page with **Package** and **Documentation** tabs. Read the two existing Markdown files directly; do not invent or duplicate release entries.
+- Welcome becomes a separate landing page **without the docs sidebar**, with a short introduction and lightweight interactive demos.
+- Fix the labeled-icon accessibility defect before documenting it as supported behavior. Document verified behavior and limitations, not WCAG certification.
+
+## Boundaries
+
+- Preserve the current menu order and grouping choices; do not restore alphabetical ordering. Existing component submenus that have Overview keep it first.
+- Preserve Introduction, Installation, and AI Agent Skill and the current Keyword table heading. Do not reintroduce mandatory Shared field contract or Asset/interaction sections.
+- Do not change native anchors inside other package components, including Button, Menu/Dropdown, Breadcrumb, widgets, and vendor code.
+- Migrate rendered docs markup, not quoted snippets, nowdocs, escaped native HTML examples, or JavaScript source strings. Actual demo markup can use the new components where appropriate.
+- Code/Link CSS is scoped to their classes. Do not apply global selectors that restyle anchors/code inside unrelated package components.
+- Keep the existing syntax highlighter and Copy implementation. Code does not add a second highlighter, copy button, or external library.
+- Keep package namespaces configurable and use internal aliases for package composition. New UI strings, if any, follow the existing translation contract.
+- No new dependency is presently needed. Use installed Blade Icons and CommonMark APIs. Additional icon packs are consumer installation examples, not new package requirements.
+- Do not read/edit the user's environment files, patch vendor source, or alter Windows configuration. Keep evaluation installations and generated audit artifacts inside ignored project caches.
+- Changelog rendering uses fixed local paths and safe Markdown options; never compile authored Markdown or its generated HTML as a Blade template.
+- Do not publish, tag, or deploy as part of these phases. Existing deferred direct Claude Code evaluation stays deferred.
+
+## Phase 0 — Baseline and obsolete rules
+
+### Work
+
+- [x] Inspect the last docs commit and remove obsolete rule clauses rather than replacing them with a new ordering/template policy.
+- [x] Remove alphabetical ordering and preservation of the old menu groups, mandatory Shared field contract/Asset and interaction sections, and the outdated prescribed table header.
+- [x] Retain applicable rules for examples/demos, concise descriptions, individual keyword rows, native form demos, namespaces/translations, and active navigation state.
+- [x] Update stale navigation tests to check the active link and absence of hidden/collapsed ancestors; Getting Started is currently an ordinary category, not an accordion.
+- [x] Preserve the completed Installation page and its literal, escaped asset examples.
+- [x] Review the current project baseline and identify existing failures. The recorded project gate below establishes the starting point.
+- [x] Review the browser baseline and resolve existing failures before starting feature work; do not weaken assertions or recreate UI intentionally removed by the user.
+- [x] Remove README/release-checklist links and claims that depend on deleted historical phase documents. Keep current setup/API information and real verification evidence. Link to this new plan.
+
+### Acceptance
+
+- [x] No alphabetical ordering rule remains.
+- [x] Current Introduction/Installation/AI pages have correct routes, breadcrumbs, active links, and unique IDs.
+- [x] Installation snippets render as code and do not load extra scripts/styles.
+- [x] Baseline failures, if any, have an identified cause and are resolved before Phase 1.
+
+### Baseline evidence recorded during planning
+
+- Obsolete rule clauses have been removed. The focused shell suite passes 8 tests / 41 assertions after adapting active-link checks and adding Introduction.
+- The full docs gate passes formatting, static analysis, and refactoring, but its current feature run is not green: 221 scenarios, 208 passed, 12 failed, and one error.
+- Failures include tests still requesting the old redirecting Getting Started route, tests requiring asset sections intentionally removed in the cleanup, and development fixture responses that now return errors. The Field fixture cannot find its `livewire.examples.field-example` view, and the navigation fixture references the unregistered `blade-components.navigation` breadcrumb. Inspect fixture/breadcrumb failures separately from outdated UI assertions; do not dismiss an HTTP 500 as a wording change.
+- These were the Phase 0 failures identified during planning. The verified outcome after repairs is recorded below; no new component implementation has started.
+
+### Verification after baseline repairs — 2026-10-09
+
+- Restored the existing Field Livewire view/demo used by the development fixture and corrected Navigation integration's breadcrumb parent to Layout.
+- Updated stale route, section, and navigation assumptions while retaining validation, reset, focus, escaping, and interaction assertions. Added section-link checks; repaired Introduction's missing target and removed obsolete Table Query targets.
+- Removed deleted phase-report references from README/release checklist. Kept the 2026-10-08 audit as dated historical evidence and linked the current plan.
+- Browser tests now use two workers, matching CI, with Composer's process timeout disabled for this script. Native Form tests use single Playwright clicks for submissions, and the Chart overlay test waits for Dialog closure before opening Slideover.
+- Real-server upload tests allow 20 seconds for queued uploads. The multiple-file case explicitly waits for both completion statuses and verifies two Livewire files, then one after removal, rather than relying on a positional FilePond state selector.
+- `composer test` passes: 221 tests / 1,366 assertions, plus formatting, static analysis, and refactoring checks. Composer metadata and whitespace checks pass.
+- `composer test:browser` passes in local Windows Chromium with two workers: 251 tests / 2,748 assertions, without warnings, in 299 seconds. The entire suite ran after the final repairs.
+- Final gate logs are retained in ignored `.phpunit.cache/phase-0-project-gate.log` and `.phpunit.cache/phase-0-browser-baseline.log`. No vendor source, environment files, or Windows settings were edited. Remote CI and the deferred direct Claude Code evaluation are not claimed.
+
+## Phase 1 — Code and Link
+
+### Work
+
+- [ ] Add public `<x-sirius::code>` and `<x-sirius::link>` Blade components and scoped, theme-aware styles.
+- [ ] Code renders a native `code` element. Use `block` to opt out of inline background/padding/tone treatment within a `pre`; preserve the supplied text and line breaks.
+- [ ] Code defaults to the `info` tone. Block mode inherits its enclosing code-block/highlighter colors and spacing.
+- [ ] Link renders a native `a` element, defaults to the primary text tone and an underline, and has a visible keyboard focus treatment.
+- [ ] Forward class, data/ARIA, native link attributes, Alpine directives, and supported Livewire attributes. Preserve fragment navigation, downloads, and external target/rel behavior. Reject executable URL schemes/control characters consistently with existing navigation URL validation.
+- [ ] Support the six confirmed tones; do not add syntax highlighting, copy controls, routing helpers, loading state, or an action engine.
+- [ ] Add dedicated Code and Link documentation with Blade demos, copyable examples, separate keyword rows, and all supported tones. Do not add Livewire public demos for these presentation components.
+- [ ] Update bundled skill references and regenerate assets after the public APIs are final.
+
+### Acceptance
+
+- [ ] Text/source escaping, slot content, attributes, safe URLs, focus treatment, configurable namespaces, and light/dark styles work.
+- [ ] Inline and block Code are visually distinct in the intended way; block source copies byte-for-byte as before.
+- [ ] Styles do not affect existing package-owned native anchors or unrelated code elements.
+
+## Phase 2 — Composable Menu categories and groups
+
+### Public composition
+
+```blade
+<x-sirius::menu label="Documentation">
+    <x-sirius::menu.category title="Getting Started">
+        <x-sirius::menu.item icon="heroicon-s-rocket-launch" :link="route('started.introduction')">
+            Introduction
+        </x-sirius::menu.item>
+    </x-sirius::menu.category>
+
+    <x-sirius::menu.category title="Blade Components">
+        <x-sirius::menu.group title="Form Control" icon="heroicon-o-pencil-square" accordion :open="true">
+            <x-sirius::menu.item :link="route('blade-components.input')">Input</x-sirius::menu.item>
+        </x-sirius::menu.group>
+    </x-sirius::menu.category>
+</x-sirius::menu>
+```
+
+### Work
+
+- [ ] `menu.category` owns its section/list markup and accepts a title and optional icon.
+- [ ] `menu.group` owns its list/disclosure markup and accepts title, optional icon, `accordion`, `open`, `transition`, and stable ID. A nonaccordion group stays visible.
+- [ ] Reuse native Accordion behavior through a namespace-independent internal alias. Keep independent groups, details/summary semantics, ARIA relationships, reduced motion, and focus/state synchronization.
+- [ ] Retain Menu.item's current link/action/submenu APIs and navigation semantics. Do not substitute Dropdown submenu behavior for independent Accordion groups.
+- [ ] Refactor docs navigation to component composition only: no handwritten `ul`/`li`. Preserve user ordering, routes, icons, desktop/mobile prefixes, active state, and mobile close/focus restoration.
+- [ ] Update Menu demos, examples, keyword documentation, and skill references.
+
+### Acceptance
+
+- [ ] Existing Menu/Dropdown/Accordion usage still works with default and custom namespaces.
+- [ ] Generated HTML lists are valid. IDs and associations stay unique across desktop/mobile rendering and Livewire updates.
+- [ ] All current menu links remain available; collapsible and noncollapsible groups remain keyboard accessible.
+
+## Phase 3 — Docs markup, examples, Introduction, and Icons
+
+### Work
+
+- [ ] Replace docs-owned rendered inline `code` with Code and anchors with Link, preserving all existing attributes and text.
+- [ ] Make the reusable docs code-block renderer use block Code without changing its source escaping, highlighting, clipboard text, or error feedback.
+- [ ] Move every `x-docs-code` invocation into an `examples` partial. Include the helper invocation currently inside `docs-example` in this audit; the public wrapper can delegate to a shared example partial.
+- [ ] Keep `blade-components/examples` and `livewire-components/examples`. Add `getting-started/examples`, `other/examples`, and shared `resources/views/examples` only where needed. Pass snippet data explicitly through `@include`.
+- [ ] Pages include snippet partials; shared prose remains literal page content, following the existing wording rule. Avoid copying large variable definitions across pages.
+- [ ] Complete Introduction with a concise overview, Blade versus Livewire use, bundled widgets/themes, and application-owned validation/persistence/uploads. Keep the component directory on Introduction.
+- [ ] Expand the existing Icon page: only Heroicons ships by default; explain outline `heroicon-o-*` (24px), solid `heroicon-s-*` (24px), mini `heroicon-m-*` (20px), and micro `heroicon-c-*` (16px).
+- [ ] Distinguish source icon family from Sirius `size`. Explain installing a separately chosen Blade Icons pack, its registered prefix, custom sets, and icon-cache refresh. Link official pack documentation; do not imply every Blade Icons catalog set is preinstalled.
+
+### Acceptance
+
+- [ ] Rendered docs code/link markup consistently uses the new components; example strings/native HTML demonstrations remain correct.
+- [ ] Page templates and helper components have no direct `x-docs-code` invocation outside an examples partial.
+- [ ] Syntax highlighting and exact Copy behavior survive ordinary navigation, Livewire navigation, and clipboard denial.
+- [ ] Introduction retains all current component links, and Icon documentation matches installed support.
+
+## Phase 4 — Accessibility, License, and Changelog
+
+### Accessibility
+
+- [ ] Fix labeled Icon SVG output so `role="img"`/its accessible name are not negated by inherited `aria-hidden="true"`. Preserve decorative icons and avoid duplicate/conflicting effective attributes. Do not modify vendor SVG files.
+- [ ] Add a Getting Started Accessibility page covering verified labels/helpers/errors, keyboard/focus, overlay focus restoration, native disclosures, tabs, sliders, tooltip/popover distinctions, announcements, reduced motion, and forced-colors behavior.
+- [ ] Explain consumer responsibilities: useful names, sensible color overrides, validation/error routing, and accessible Chart alternatives. Do not claim screen-reader certification or audited WCAG conformance.
+
+### License
+
+- [ ] Add a Getting Started License page using package `LICENSE.md` and the generated bundled dependency notices as authoritative sources.
+- [ ] Identify package MIT terms and relevant runtime dependency licenses; distinguish included dependencies from optional icon packs and application-added packages.
+- [ ] Retain third-party notices/provenance. Do not invent a docs copyright owner or a new license text; docs currently declares MIT in Composer but has no root license file.
+
+### Changelog
+
+- [ ] Add one Getting Started Changelog page with Package and Documentation tabs using the existing Tabs component.
+- [ ] Resolve package root via Composer installed-package metadata and read its `CHANGELOG.md`; read the docs file via a fixed `base_path` path.
+- [ ] Render with installed CommonMark, stripping raw HTML and rejecting unsafe links. Handle missing/unreadable sources clearly without exposing internal paths.
+- [ ] Route Markdown-generated links/code through safe node rendering that uses the new presentation components. Do not execute Markdown as Blade or apply unsafe string replacement to generated HTML.
+- [ ] Ensure the docs changelog is included in deployment/archive sources; its current `export-ignore` conflicts with request-time rendering. Package already ships its changelog.
+- [ ] Render current source content on requests without copying release entries into a view or fetching GitHub. Preserve the fact that both current files may contain the same initial-release text.
+
+### Acceptance
+
+- [ ] Meaningful icons are exposed to the accessibility tree; decorative icons remain hidden.
+- [ ] New pages are linked with active state, breadcrumbs, and matching content navigation.
+- [ ] Changelog tabs read the correct independent sources and react to file changes; unsafe HTML/links cannot execute.
+- [ ] License and accessibility statements are traceable to shipped behavior/files and accurately state their limits.
+
+## Phase 5 — Other: Colors and Customized Scrollbar
+
+### Work
+
+- [ ] Add an **Other** navigation category with **Colors** and **Customized Scrollbar** pages.
+- [ ] Explain semantic variants with swatches and real examples: primary/sky, secondary/indigo, success/emerald, danger/red, warning/amber. Light presentation shades are 100/900/300; dark shades are 950/200/700 for background/text/border.
+- [ ] Explain info as a custom surface/border mix, not a named Tailwind shade. Cover ghost/outline as component-specific treatments rather than additional color families.
+- [ ] Distinguish semantic `--sir-{variant}-{bg,text,border}` tokens from global `--sir-color-primary` and other widget/layout tokens. Custom OKLCH values have no exact named Tailwind shade equivalence.
+- [ ] Provide copyable light/dark overrides after Sirius CSS; demonstrate both presentation tones and widget tokens without promising one token controls every component.
+- [ ] Document `sir-scrollbar` on an element and descendants, its four CSS variables, light/dark styling, standard thin/color fallbacks, and forced-colors behavior.
+- [ ] Use Code/Link and examples partials for all new documentation. Do not add a redundant scrollbar JavaScript API or alter default colors merely to document them.
+
+### Acceptance
+
+- [ ] Displayed colors, shades, and CSS variables agree with package source and working examples.
+- [ ] Scrollbar examples work in both themes and narrow containers; compatibility limits are explicit.
+- [ ] Navigation/content links remain functional after the new category is added.
+
+## Phase 6 — Separate Welcome landing page
+
+### Work
+
+- [ ] Build a dedicated landing layout without the docs sidebar; reuse shared head/assets, brand, appearance preference, and package components.
+- [ ] Add a short Sirius UI introduction and clear links to Introduction, Installation, and component documentation.
+- [ ] Include lightweight interactive showcases: Button/Badge variants, Card with representative form controls, and Dialog/Toast. Use local/demo state, not real uploads, database queries, authentication, or persistence.
+- [ ] Use the new Code/Link and menu composition where relevant. Keep docs pages on their existing documentation shell.
+- [ ] Support light/dark/system appearance, mobile layout, keyboard/focus, reduced motion, and viewport-contained floating controls.
+
+### Acceptance
+
+- [ ] Welcome has no sidebar and remains usable on mobile/desktop in both themes.
+- [ ] Showcases interact correctly without pretending to save user data.
+- [ ] Appearance and navigation transitions remain consistent when moving between landing and docs pages.
+
+## Phase 7 — Final validation and documentation alignment
+
+- [ ] Review all new APIs, keyword rows, examples, translations, skill references, Introduction links, and README links against source.
+- [ ] Run focused behavior tests after each change, then package/docs quality gates, package build followed by docs build, and the full docs browser suite.
+- [ ] Cover Code/Link forwarding/escaping and styles; Menu composition/custom namespaces/keyboard/lifecycle; exact copied source; Icon accessibility; safe two-source Markdown rendering; and landing/navigation/theme/viewport behavior.
+- [ ] Preserve existing tests. Update assumptions contradicted by intentional UI changes; do not suppress failures, delete tests, or assert matching prose.
+- [ ] Recheck dependency audits, generated assets/notices, source distribution, and supported Laravel/PHP compatibility when package behavior changes warrant it.
+- [ ] Complete the release checklist using actual results. Do not claim remote CI, extra browser engines, physical devices, formal accessibility certification, or direct Claude Code execution without running them.
+
+## Implementation order and completion
+
+- [x] Phase 0 — Baseline/rules and stale references.
+- [ ] Phase 1 — Code/Link APIs and docs.
+- [ ] Phase 2 — Menu composition and navigation migration.
+- [ ] Phase 3 — Existing docs markup/examples, Introduction, and Icons.
+- [ ] Phase 4 — Accessibility fix/pages, License, and source-driven Changelog.
+- [ ] Phase 5 — Other pages.
+- [ ] Phase 6 — Separate Welcome landing.
+- [ ] Phase 7 — Final integration/release checks.
+
+Each phase ends with concrete reviewable changes and relevant passing checks. No phase is marked complete from a plan or an assumed test result. User decisions above take priority over older conventions.

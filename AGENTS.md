@@ -182,12 +182,12 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 
 - Within resources/views/blade-components, keep copyable snippets in examples, rendered demo markup in demos, and attribute/property definitions in attributes. Page views compose these partials; conventional Livewire views delegate their demo markup to demos.
 
-- Every component docs page must include Demo, Usage, and Attributes. Include Shared field contract only when a shared form-field contract applies; omit it for non-form components such as Badge. Follow with Asset and interaction when applicable. Do not add filler sections to satisfy a template. Add component-specific sections after these, only when needed. Combined pages repeat Demo, Usage, and Attributes for each component, followed by the shared sections. Keep the content navigator in the same order.
+- Every component docs page must include Demo, Usage, and Attributes. Do not add filler sections to satisfy a template. Add component-specific sections after these, only when needed. Combined pages repeat Demo, Usage, and Attributes for each component. Keep the content navigator in the same order.
 - For form controls, stack Livewire above Blade demos with identical controls, labels, helper text, options, and initial/sample values. Form demos share Submit / Validate, Load Value, and Reset Sample actions; Toggle Readonly appears only in Livewire demos.
 - Non-form-control component pages show Blade demos only. Keep Livewire regression fixtures in development pages, outside public component demos.
 - For every non-form-control component with variants, demonstrate every supported variant, including component-specific variants such as Button link. Provide copyable Usage for each demo.
 - Use <x-sirius::form> for every native Blade demo form, with an explicit action and sending-file for uploads. Do not add duplicate @csrf or @method directives. Keep Livewire wire:submit forms native. Use ordinary controller-backed submissions for Blade demos, with isolated validation bags and sample state. Never flash passwords. Keep complex integration fixtures outside the primary component examples.
-- Use x-docs-example with a view prop for every component Usage example, one block per demo. It delegates highlighting and copying to x-docs-code. Use x-docs-code directly only for supplemental PHP, configuration, translation, or shell snippets. Preserve exact demo source and clipboard error handling. Use docs-props for minimal, responsive tables with attribute, type, default, and description columns. Keep attribute behavior in its table row; do not repeat it in Usage or other sections.
+- Use x-docs-example with a view prop for every component Usage example, one block per demo. It delegates highlighting and copying to x-docs-code. Use x-docs-code directly only for supplemental PHP, configuration, translation, or shell snippets. Preserve exact demo source and clipboard error handling. Keep attribute behavior in its table row; do not repeat it in Usage or other sections.
 - Attribute tables describe package props, not ordinary HTML5 attributes such as disabled, readonly, or placeholder. Include native-looking attributes only when their behavior differs (such as size or readonly on select), or when a custom control such as currency or richtext needs an explicit contract. Explain the difference; do not repeat standard HTML documentation.
 - After each props table, explain supported HTML5, Alpine, data/ARIA, and Livewire forwarding for that component; do not imply unsupported directives or attributes work.
 - Give every attribute its own table row, with its own type, default, and description. Never combine attributes in one row, even when their behavior is similar (for example, header, body, footer, and their class props).
@@ -196,9 +196,7 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 
 ## Documentation menu ordering
 
-- Keep component menu items in alphabetical order by their displayed labels within each group. When adding or renaming a menu item in any future phase, place it in its correct alphabetical position rather than appending it.
-- Exception: when a component group has an Overview submenu, always place Overview first. Keep all remaining submenus in alphabetical order.
-- Preserve the existing menu groups and place new components in the appropriate group. Add a new group when it improves organization, keeping its component items alphabetically ordered as well.
+- When a component group has an Overview submenu, always place Overview first.
 - Update the group's active-route and expanded-state checks when adding or moving items so the current component remains visible in navigation.
 
 ## Documentation wording consistency
