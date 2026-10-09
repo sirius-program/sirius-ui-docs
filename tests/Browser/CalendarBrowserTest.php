@@ -84,9 +84,9 @@ it('keeps a local render extension through refresh and cleans instances after na
     $page->script('window.calendarCleanup = window.SiriusCalendar.register("team-calendar", () => ({ eventContent(info) { const span = document.createElement("span"); span.dataset.customCalendar = "true"; span.textContent = info.event.title; return { domNodes: [span] }; } })); void 0;');
     $page->assertPresent('#team-calendar [data-custom-calendar]')->click('button:has-text("Refresh events")')
         ->assertPresent('#team-calendar [data-custom-calendar]');
-    $page->click('[data-docs-sidebar] summary:has-text("Table")')->click('[data-docs-sidebar] a[href$="/livewire-components/table"]')->assertPathIs('/livewire-components/table')
+    $page->click('[data-docs-sidebar] button[data-sir-submenu-trigger]:has-text("Table")')->click('[data-docs-sidebar] a[href$="/livewire-components/table"]')->assertPathIs('/livewire-components/table')
         ->assertScript('window.SiriusCalendar.get("team-calendar")', null);
-    $page->click('[data-docs-sidebar] summary:has-text("Calendar")')->click('[data-docs-sidebar] a[href$="/livewire-components/calendar/actions"]')->assertSeeIn('#team-calendar', 'Website kickoff')
+    $page->click('[data-docs-sidebar] button[data-sir-submenu-trigger]:has-text("Calendar")')->click('[data-docs-sidebar] a[href$="/livewire-components/calendar/actions"]')->assertSeeIn('#team-calendar', 'Website kickoff')
         ->assertPresent('#team-calendar [data-custom-calendar]')->assertScript('document.querySelectorAll("#team-calendar").length', 1)
         ->assertNoJavaScriptErrors();
 });

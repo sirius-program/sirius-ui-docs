@@ -10,7 +10,8 @@
             "richtext",
             "slideover",
             "dropdown",
-            "tooltip"
+            "tooltip",
+            "submenu"
         ],
         "paths": []
     }

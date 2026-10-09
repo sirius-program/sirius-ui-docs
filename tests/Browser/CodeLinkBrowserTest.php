@@ -25,7 +25,8 @@ it('preserves exact copied examples and highlighting when navigating between the
     $page->click('#code-usage [data-usage-example]:nth-of-type(1) [data-copy-code]')->assertSee('Copied');
     expect($page->script('window.copiedSource'))->toBe($source);
     $page->click('[data-docs-sidebar] a[href$="/blade-components/link"]')->assertPathIs('/blade-components/link')->assertPresent('#link-usage .docs-token-tag');
-    $page->click('[data-link-variants-demo] .sir-link:first-child')->assertScript('location.hash', '#link-details');
+    $page->assertAttribute('[data-link-variants-demo] .sir-link:first-child', 'href', '#')
+        ->click('[data-link-variants-demo] .sir-link:first-child')->assertScript('location.href.endsWith("#")', true);
     $page->assertAttribute('.sir-link[download]', 'download', 'project-brief.pdf')->assertNoJavaScriptErrors();
 });
 

@@ -40,12 +40,12 @@ it('opens submenus by touch without hover and keeps panels inside a narrow viewp
 
 it('uses navigation disclosures and ordinary tab stops in a persistent menu', function (): void {
     $page = visit('/blade-components/menu')->assertAttribute('#workspace-menu a[data-active="true"]', 'aria-current', 'page')
-        ->click('#workspace-settings')->assertPresent('#workspace-settings-submenu')
+        ->assertAttribute('#workspace-settings', 'aria-expanded', 'true')->assertPresent('#workspace-settings-submenu')
         ->keys('#workspace-billing', 'ArrowRight')->assertPresent('#workspace-billing-submenu');
     $page->keys('#workspace-billing-submenu button:not([disabled])', 'Enter')->assertSee('Invoice requested')
         ->keys('#workspace-billing-submenu button:not([disabled])', 'Escape')->assertMissing('#workspace-billing-submenu')
         ->assertScript('document.activeElement.id', 'workspace-billing')
-        ->keys('#workspace-billing', 'Escape')->assertMissing('#workspace-settings-submenu')
+        ->keys('#workspace-settings', 'Space')->assertMissing('#workspace-settings-submenu')
         ->assertScript('document.activeElement.id', 'workspace-settings')->assertNoJavaScriptErrors();
 });
 

@@ -21,6 +21,13 @@
             @endforeach
         </x-sirius::dropdown>
         <x-sirius::menu id="livewire-menu" label="Project navigation" wire:key="livewire-menu" class="max-w-sm">
+            <x-sirius::menu.category title="Workspace">
+                <x-sirius::menu.item id="livewire-group" name="Projects" :disabled="$locked" :open="$opened" transition wire:key="livewire-group">
+                    <x-slot:submenu>
+                        <x-sirius::menu.item id="livewire-group-action" :name="$name" wire:click="increment" />
+                    </x-slot:submenu>
+                </x-sirius::menu.item>
+            </x-sirius::menu.category>
             <x-sirius::menu.item id="livewire-settings" name="Settings">
                 <x-slot:submenu>
                     <x-sirius::menu.item name="Save settings" :disabled="$locked" wire:click="increment" />

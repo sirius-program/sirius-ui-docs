@@ -24,7 +24,7 @@
                 <p>Import the package CSS and JavaScript, or publish and load <x-sirius::code>sirius-ui-assets</x-sirius::code>.</p>
                 @include('blade-components.examples.assets')
                 <p>Menu uses ordinary links and buttons. Tab moves through visible items; click, Enter, or Space opens a submenu. Left/Right arrows enter or leave a nested section.</p>
-                <p>Use <x-sirius::code>menu.category</x-sirius::code> for a titled section and <x-sirius::code>menu.group</x-sirius::code> to group its items. Add <x-sirius::code>accordion</x-sirius::code> to make a group collapsible. Each group opens independently with click, Enter, or Space; plain groups stay visible.</p>
+                <p>Use <x-sirius::code>menu.category</x-sirius::code> for a titled section and <x-sirius::code>menu.item</x-sirius::code> with a <x-sirius::code>submenu</x-sirius::code> slot for nested items.</p>
                 <p>Works with Alpine changes, Livewire updates, and navigation. Use an explicit ID and <x-sirius::code>wire:key</x-sirius::code> for stable Livewire identity.</p>
             </section>
             <section id="translations" class="space-y-3">

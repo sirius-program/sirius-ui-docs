@@ -88,7 +88,7 @@ it('cleans plugins and native instances on removal remount and navigation', func
             ->assertScript('document.querySelectorAll("#revenue-chart canvas").length', 1);
     }
     $page->assertScript('window.chartDestroyed', 2);
-    $page->click('[data-docs-sidebar] summary:has-text("Chart")')
+    $page->click('[data-docs-sidebar] button[data-sir-submenu-trigger]:has-text("Chart")')
         ->click('[data-docs-sidebar] a[href$="/livewire-components/chart/options"]')->assertPathIs('/livewire-components/chart/options')
         ->assertAttribute('#options-chart', 'data-chart-state', 'ready')->assertScript('window.SiriusChart.get("revenue-chart")', null)
         ->assertScript('window.chartDestroyed', 3)->assertNoJavaScriptErrors();

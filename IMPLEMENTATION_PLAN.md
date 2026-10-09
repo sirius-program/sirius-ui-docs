@@ -8,7 +8,7 @@ This is a new plan. Deleted implementation/phase reports will not be restored. T
 
 ## Progress
 
-**1 of 8 phases complete.** Phase 0 is complete; Phases 1–7 have not started.
+**3 of 8 phases complete.** Phases 0–2 are complete. Phase 3 markup migration is complete; its remaining work and Phases 4–7 have not started.
 
 Check a task only after its work is done and any required verification passes. Check a phase in the completion list only when all its work and acceptance criteria are complete. Approval of this plan does not mark implementation tasks complete. Update this summary and the recorded evidence as work progresses.
 
@@ -17,7 +17,7 @@ Check a task only after its work is done and any required verification passes. C
 - Add **Code** and **Link** to the package. Rendered docs anchors use Link, not Code.
 - Code supports inline and block modes. Block mode preserves existing highlighting, whitespace, and clipboard behavior in `x-docs-code`.
 - Both components support `primary`, `info`, `secondary`, `success`, `danger`, and `warning`. Code defaults to `info`; Link defaults to `primary` with an underline. Font size follows its surrounding content.
-- Use **Menu.category** and **Menu.group** to compose titled/icon-bearing sections and optional accordions. Existing Menu/Menu.item APIs remain compatible. Native list markup remains inside package components, not in `docs-navigation.blade.php`.
+- Use **Menu.category** and **Menu.item** with a named submenu slot to compose titled/icon-bearing sections and stateful submenus. Existing Menu/Menu.item APIs remain compatible. Native list markup remains inside package components, not in `docs-navigation.blade.php`.
 - Keep the existing plural **examples** directories. Add corresponding locations for Getting Started, Other, and shared snippet rendering.
 - Changelog is one page with **Package** and **Documentation** tabs. Read the two existing Markdown files directly; do not invent or duplicate release entries.
 - Welcome becomes a separate landing page **without the docs sidebar**, with a short introduction and lightweight interactive demos.
@@ -79,22 +79,32 @@ Check a task only after its work is done and any required verification passes. C
 
 ### Work
 
-- [ ] Add public `<x-sirius::code>` and `<x-sirius::link>` Blade components and scoped, theme-aware styles.
-- [ ] Code renders a native `code` element. Use `block` to opt out of inline background/padding/tone treatment within a `pre`; preserve the supplied text and line breaks.
-- [ ] Code defaults to the `info` tone. Block mode inherits its enclosing code-block/highlighter colors and spacing.
-- [ ] Link renders a native `a` element, defaults to the primary text tone and an underline, and has a visible keyboard focus treatment.
-- [ ] Forward class, data/ARIA, native link attributes, Alpine directives, and supported Livewire attributes. Preserve fragment navigation, downloads, and external target/rel behavior. Reject executable URL schemes/control characters consistently with existing navigation URL validation.
-- [ ] Support the six confirmed tones; do not add syntax highlighting, copy controls, routing helpers, loading state, or an action engine.
-- [ ] Add dedicated Code and Link documentation with Blade demos, copyable examples, separate keyword rows, and all supported tones. Do not add Livewire public demos for these presentation components.
-- [ ] Update bundled skill references and regenerate assets after the public APIs are final.
+- [x] Add public `<x-sirius::code>` and `<x-sirius::link>` Blade components and scoped, theme-aware styles.
+- [x] Code renders a native `code` element. Use `block` to opt out of inline background/padding/tone treatment within a `pre`; preserve the supplied text and line breaks.
+- [x] Code defaults to the `info` tone. Block mode inherits its enclosing code-block/highlighter colors and spacing.
+- [x] Link renders a native `a` element, defaults to the primary text tone and an underline, and has a visible keyboard focus treatment.
+- [x] Forward class, data/ARIA, native link attributes, Alpine directives, and supported Livewire attributes. Preserve fragment navigation, downloads, and external target/rel behavior. Reject executable URL schemes/control characters consistently with existing navigation URL validation.
+- [x] Support the six confirmed tones; do not add syntax highlighting, copy controls, routing helpers, loading state, or an action engine.
+- [x] Add dedicated Code and Link documentation with Blade demos, copyable examples, separate keyword rows, and all supported tones. Do not add Livewire public demos for these presentation components.
+- [x] Update bundled skill references and regenerate assets after the public APIs are final.
 
 ### Acceptance
 
-- [ ] Text/source escaping, slot content, attributes, safe URLs, focus treatment, configurable namespaces, and light/dark styles work.
-- [ ] Inline and block Code are visually distinct in the intended way; block source copies byte-for-byte as before.
-- [ ] Styles do not affect existing package-owned native anchors or unrelated code elements.
+- [x] Text/source escaping, slot content, attributes, safe URLs, focus treatment, configurable namespaces, and light/dark styles work.
+- [x] Inline and block Code are visually distinct in the intended way; block source copies byte-for-byte as before.
+- [x] Styles do not affect existing package-owned native anchors or unrelated code elements.
 
-## Phase 2 — Composable Menu categories and groups
+### Verification — 2026-10-09
+
+- Added Code (`variant=info`, `block=false`, `text=null`) and Link (`variant=primary`), plus namespace-independent internal aliases. Code's optional escaped `text` preserves source whitespace; authored token markup remains available through its slot.
+- Added scoped light/dark/forced-colors CSS using the existing six semantic tones. Link preserves native attributes and checks static destinations using the existing navigation URL policy; application code owns dynamic href validation.
+- Added separate Code/Link pages, demo/example/attribute partials, routes, breadcrumbs, active navigation, and Introduction entries. Existing package-owned anchors and the docs highlighter/Copy renderer remain unchanged; broad markup migration belongs to Phase 3.
+- Updated package/docs README and bundled skill references. Package assets were built before docs assets; both builds pass, and the compiled CSS is refreshed.
+- Package quality gate passes: 769 tests / 2,443 assertions. Docs quality gate passes: 224 tests / 1,401 assertions. Both include formatting, static analysis, and refactoring checks.
+- Full local Chromium browser gate passes with two workers: 254 tests / 2,770 assertions, without warnings, in 208 seconds. Coverage includes both themes, native styling isolation, whitespace, exact Copy, navigation/download attributes, and keyboard focus.
+- Gate/build logs are retained in each project's ignored `.phpunit.cache/phase-1-*.log`. No dependency changes, vendor-source edits, Windows changes, release publication, or remote CI execution are claimed.
+
+## Phase 2 — Composable Menu categories and submenu items
 
 ### Public composition
 
@@ -107,34 +117,44 @@ Check a task only after its work is done and any required verification passes. C
     </x-sirius::menu.category>
 
     <x-sirius::menu.category title="Blade Components">
-        <x-sirius::menu.group title="Form Control" icon="heroicon-o-pencil-square" accordion :open="true">
-            <x-sirius::menu.item :link="route('blade-components.input')">Input</x-sirius::menu.item>
-        </x-sirius::menu.group>
+        <x-sirius::menu.item name="Form Control" icon="heroicon-o-pencil-square" :open="true">
+            <x-slot:submenu>
+                <x-sirius::menu.item :link="route('blade-components.input')">Input</x-sirius::menu.item>
+            </x-slot:submenu>
+        </x-sirius::menu.item>
     </x-sirius::menu.category>
 </x-sirius::menu>
 ```
 
 ### Work
 
-- [ ] `menu.category` owns its section/list markup and accepts a title and optional icon.
-- [ ] `menu.group` owns its list/disclosure markup and accepts title, optional icon, `accordion`, `open`, `transition`, and stable ID. A nonaccordion group stays visible.
-- [ ] Reuse native Accordion behavior through a namespace-independent internal alias. Keep independent groups, details/summary semantics, ARIA relationships, reduced motion, and focus/state synchronization.
-- [ ] Retain Menu.item's current link/action/submenu APIs and navigation semantics. Do not substitute Dropdown submenu behavior for independent Accordion groups.
-- [ ] Refactor docs navigation to component composition only: no handwritten `ul`/`li`. Preserve user ordering, routes, icons, desktop/mobile prefixes, active state, and mobile close/focus restoration.
-- [ ] Update Menu demos, examples, keyword documentation, and skill references.
+- [x] `menu.category` owns its section/list markup and accepts a title and optional icon.
+- [x] `menu.item` owns its submenu/disclosure markup and supports `open`, `transition`, and stable ID directly on submenus. Keep button/list markup and existing keyboard navigation.
+- [x] Use the shared navigation submenu controller for declared state, opening transitions and immediate closing, ARIA, reduced motion, and focus/state synchronization. Keep the standalone Accordion component independent.
+- [x] Retain Menu.item's current link/action/submenu APIs and navigation semantics. Preserve Dropdown-specific action menu semantics and positioning.
+- [x] Refactor docs navigation to component composition only: no handwritten `ul`/`li`. Preserve user ordering, routes, icons, desktop/mobile prefixes, active state, and mobile close/focus restoration.
+- [x] Update Menu demos, examples, keyword documentation, and skill references.
 
 ### Acceptance
 
-- [ ] Existing Menu/Dropdown/Accordion usage still works with default and custom namespaces.
-- [ ] Generated HTML lists are valid. IDs and associations stay unique across desktop/mobile rendering and Livewire updates.
-- [ ] All current menu links remain available; collapsible and noncollapsible groups remain keyboard accessible.
+- [x] Existing Menu/Dropdown/Accordion usage still works with default and custom namespaces.
+- [x] Generated HTML lists are valid. IDs and associations stay unique across desktop/mobile rendering and Livewire updates.
+- [x] All current menu links remain available; submenu items remain keyboard accessible.
+
+### Recorded evidence
+
+- Added Menu.category and stateful Menu.item submenus. Updated per the user decision on 2026-10-10: remove the separate group and accordion mode APIs. Use the existing button/list submenu structure with open/transition, trigger attributes and Alpine state binding; preserve custom namespaces.
+- Docs navigation now contains only Menu components. All 52 existing links, their order, routes, icons, desktop/mobile IDs, and active-state expressions remain intact. Added a Blade composition demo and a development Livewire lifecycle fixture.
+- Package quality gate passes: 788 tests / 2,498 assertions; lint, PHPStan, and Rector pass. Docs quality gate passes: 225 tests / 1,483 assertions, with the same checks passing.
+- Package and docs production builds pass. Full local Chromium browser gate passes with two workers: 259 tests / 2,818 assertions, without warnings, in 218 seconds. Coverage includes initial submenu state, sibling collapse, keyboard navigation, focus restoration, opening transitions and immediate closing, rapid reopening, Alpine binding, reduced motion, disabled activation, Livewire updates/removal, sidebar/mobile navigation, and existing Dropdown interactions. Inspected the mobile dark-theme demo screenshot.
+- Logs are retained in each project's ignored `.phpunit.cache/menu-*.log`. No dependency changes, vendor-source edits, system changes, publication, or remote CI execution were performed.
 
 ## Phase 3 — Docs markup, examples, Introduction, and Icons
 
 ### Work
 
-- [ ] Replace docs-owned rendered inline `code` with Code and anchors with Link, preserving all existing attributes and text.
-- [ ] Make the reusable docs code-block renderer use block Code without changing its source escaping, highlighting, clipboard text, or error feedback.
+- [x] Replace docs-owned rendered inline `code` with Code and anchors with Link, preserving all existing attributes and text.
+- [x] Make the reusable docs code-block renderer use block Code without changing its source escaping, highlighting, clipboard text, or error feedback.
 - [ ] Move every `x-docs-code` invocation into an `examples` partial. Include the helper invocation currently inside `docs-example` in this audit; the public wrapper can delegate to a shared example partial.
 - [ ] Keep `blade-components/examples` and `livewire-components/examples`. Add `getting-started/examples`, `other/examples`, and shared `resources/views/examples` only where needed. Pass snippet data explicitly through `@include`.
 - [ ] Pages include snippet partials; shared prose remains literal page content, following the existing wording rule. Avoid copying large variable definitions across pages.
@@ -144,10 +164,18 @@ Check a task only after its work is done and any required verification passes. C
 
 ### Acceptance
 
-- [ ] Rendered docs code/link markup consistently uses the new components; example strings/native HTML demonstrations remain correct.
+- [x] Rendered docs code/link markup consistently uses the new components; example strings/native HTML demonstrations remain correct.
 - [ ] Page templates and helper components have no direct `x-docs-code` invocation outside an examples partial.
-- [ ] Syntax highlighting and exact Copy behavior survive ordinary navigation, Livewire navigation, and clipboard denial.
+- [x] Syntax highlighting and exact Copy behavior survive ordinary navigation, Livewire navigation, and clipboard denial.
 - [ ] Introduction retains all current component links, and Icon documentation matches installed support.
+
+### Markup migration verification — 2026-10-09
+
+- Converted rendered docs-owned anchors/code in 62 templates to Link/Code, including supporting layouts, development pages, and rendered demos. Package-owned native tags and literal source examples remain untouched.
+- Preserved every existing pre opening/closing tag and its attributes, as explicitly requested. The shared docs-code renderer replaces only its inner code element with Code block mode; highlighting and Copy retain their original implementation.
+- No raw a/code elements remain in docs Blade templates. A renderer regression confirms exact leading/trailing whitespace and safely escaped literal anchor/code examples.
+- Docs build and quality gate pass: 225 tests / 1,405 assertions, including formatting, static analysis, and refactoring checks. Full local Chromium browser gate passes: 254 tests / 2,770 assertions, without warnings, in 211 seconds.
+- Evidence is retained in ignored `.phpunit.cache/docs-tags-*.log`. Examples extraction, Introduction expansion, and Icon guidance remain pending; this does not complete Phase 3.
 
 ## Phase 4 — Accessibility, License, and Changelog
 
@@ -225,8 +253,8 @@ Check a task only after its work is done and any required verification passes. C
 ## Implementation order and completion
 
 - [x] Phase 0 — Baseline/rules and stale references.
-- [ ] Phase 1 — Code/Link APIs and docs.
-- [ ] Phase 2 — Menu composition and navigation migration.
+- [x] Phase 1 — Code/Link APIs and docs.
+- [x] Phase 2 — Menu composition and navigation migration.
 - [ ] Phase 3 — Existing docs markup/examples, Introduction, and Icons.
 - [ ] Phase 4 — Accessibility fix/pages, License, and source-driven Changelog.
 - [ ] Phase 5 — Other pages.

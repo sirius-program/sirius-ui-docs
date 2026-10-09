@@ -60,7 +60,7 @@ it('keeps an existing appearance preference after upgrading the docs shell', fun
 it('navigates on mobile and restores interaction after dismissal navigation and desktop resize', function (): void {
     $page = visit('/blade-components/input')->inDarkMode()->resize(390, 844)
         ->click('[aria-label="Open navigation"]')->assertPresent('#docs-navigation:modal')
-        ->assertPresent('#mobile-group-2[open]')
+        ->assertAttribute('#mobile-group-2', 'aria-expanded', 'true')
         ->click('#docs-navigation a[href$="/blade-components/textarea"]')
         ->assertPathIs('/blade-components/textarea')->assertMissing('#docs-navigation:modal');
     $page->assertScript('document.querySelector(".docs-workspace").inert', false)
@@ -70,9 +70,9 @@ it('navigates on mobile and restores interaction after dismissal navigation and 
         ->click('[aria-label="Open navigation"]')->resize(1440, 1000)
         ->assertMissing('#docs-navigation:modal')
         ->assertScript('document.querySelector(".docs-workspace").inert', false)
-        ->click('[data-docs-sidebar] summary:has-text("Table")')
+        ->click('[data-docs-sidebar] button[data-sir-submenu-trigger]:has-text("Table")')
         ->click('[data-docs-sidebar] a[href$="/livewire-components/table/query"]')
-        ->assertPathIs('/livewire-components/table/query')->assertPresent('#desktop-group-8[open]')
+        ->assertPathIs('/livewire-components/table/query')->assertAttribute('#desktop-group-8', 'aria-expanded', 'true')
         ->assertAttribute('[data-docs-sidebar] a[href$="/livewire-components/table/query"]', 'aria-current', 'page')
         ->assertNoJavaScriptErrors();
     $page->screenshot(fullPage: false, filename: 'phase25-desktop-dark');
