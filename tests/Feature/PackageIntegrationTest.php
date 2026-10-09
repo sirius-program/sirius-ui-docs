@@ -14,9 +14,10 @@ it('discovers the local package and renders its icon dependency', function (): v
 });
 
 it('provides navigation for completed components', function (): void {
-    $this->get(route('started'))
+    $this->get(route('started'))->assertRedirect(route('started.introduction'));
+    $this->get(route('started.introduction'))
         ->assertSee('Getting Started')
         ->assertDontSee('Form Conventions')
-        ->assertSee('Checkbox')
+        ->assertSee(route('blade-components.choices'))
         ->assertSee(route('blade-components.phone'));
 });

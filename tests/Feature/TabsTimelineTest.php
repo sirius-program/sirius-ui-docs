@@ -6,11 +6,15 @@ use App\Livewire\Examples\TabsExample;
 use Livewire\Livewire;
 
 it('renders separate Tabs and Timeline docs with Blade demos and copyable usage', function (string $component): void {
-    $this->get(route('blade-components.' . $component))->assertOk()
+    $response = $this->get(route('blade-components.' . $component))->assertOk()
         ->assertSee('id="' . $component . '-demo"', false)->assertSee('id="' . $component . '-usage"', false)
-        ->assertSee('id="' . $component . '-attributes"', false)->assertSee('id="assets-and-interaction"', false)
+        ->assertSee('id="' . $component . '-attributes"', false)
         ->assertSee('data-demo-mode="blade"', false)->assertSee('data-usage-example', false)
         ->assertDontSee('data-demo-mode="livewire"', false)->assertDontSee('Shared field contract');
+
+    if ($component === 'tabs') {
+        $response->assertSee('id="assets-and-interaction"', false);
+    }
 })->with(['tabs', 'timeline']);
 
 it('preserves project form values while the server changes the active tab and refreshes content', function (): void {

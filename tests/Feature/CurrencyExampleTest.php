@@ -10,7 +10,7 @@ it('renders currency navigation and exact separate Blade examples', function ():
     foreach (['currency-budget', 'currency-adjustment'] as $example) {
         $response->assertSee(e(trim(file_get_contents(resource_path('views/blade-components/demos/' . $example . '.blade.php')))), false);
     }
-    $this->get(route('started'))->assertSee(route('blade-components.currency'));
+    $this->get(route('started.introduction'))->assertSee(route('blade-components.currency'));
 });
 
 it('validates canonical currency on native submissions without rounding or flashing unsafe data', function (mixed $budget, string $adjustment, string $error): void {

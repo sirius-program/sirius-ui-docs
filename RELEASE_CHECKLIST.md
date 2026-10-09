@@ -1,8 +1,17 @@
 # Release checklist
 
-Latest local candidate validation: 2026-10-08. Earlier evidence and scope are recorded in [Phase 26](PHASE_26.md). No release has been published.
+The audit below records local candidate validation from 2026-10-08, before the documentation cleanup. These results are historical evidence, not a passing baseline for later changes. Current work and verification are tracked in the [implementation plan](IMPLEMENTATION_PLAN.md). No release has been published.
 
-## Current audit
+## Documentation baseline — 2026-10-09
+
+- [x] Complete Phase 0 in the [implementation plan](IMPLEMENTATION_PLAN.md): obsolete rules/references removed, development fixtures repaired, and tests aligned with the intentional cleanup.
+- [x] Docs quality gate passes: 221 tests / 1,366 assertions, including formatting, static analysis, and refactoring checks.
+- [x] Full local Chromium browser gate passes: 251 tests / 2,748 assertions, without warnings, in 299 seconds. The default script uses two workers and disables Composer's process timeout; CI uses the same script.
+- [x] Composer metadata and whitespace checks pass. This phase changes docs and test infrastructure; the package source remains unchanged.
+
+Logs are retained under the ignored `.phpunit.cache` directory. Package compatibility/install/audit results below remain the dated 2026-10-08 evidence; they were not repeated in this docs-only phase. Remote CI remains pending.
+
+## Recorded audit — 2026-10-08
 
 - Package quality gate: 738 tests / 2,343 assertions; docs quality gate: 218 tests / 1,312 assertions. Formatting, static analysis, and refactoring checks pass.
 - Final full docs browser gate after the corrections: 251 tests / 2,746 assertions, passed without warnings in 228 seconds. Browser evidence uses local Windows Chromium; remote CI is still pending.
@@ -14,7 +23,7 @@ Latest local candidate validation: 2026-10-08. Earlier evidence and scope are re
 - The empty consumer fixture deliberately has no environment file. Uncached boot reports Laravel dotenv missing-file warnings; its explicit test configuration is cached before the clean gate. No environment file or vendor source was edited to suppress them.
 - CI corrections are prepared: package metadata/audit steps; docs master/main triggers, exact locked package checkout in a sibling directory, Node 24, locked npm installs, package-first builds, and browser process timeout. YAML parses successfully and pinned docs action commits resolve. Remote execution still requires pushed commits.
 
-## Technical validation
+## Technical validation — 2026-10-08 candidate
 
 - [x] All promised component families have documentation and working examples.
 - [x] Package/docs formatting, static analysis, refactoring, and feature gates pass.

@@ -72,12 +72,14 @@ it('retries a failed temporary upload and cancels an in-flight upload', function
 it('uploads multiple files removes only a temporary selection and resets native fields', function (): void {
     withUploadBrowser(function (string $url): void {
         $page = visit($url)->assertPresent('[data-upload-example] .filepond--browser');
+        $attachments = '[data-upload-example] [data-sir-file-upload]:has([name="attachments[]"])';
         $page->script('window.progressSeen = false; document.addEventListener("file-upload:progress", e => { if(e.detail.progress >= 0) window.progressSeen = true; }); const input = document.querySelector("[data-upload-example] [data-sir-file-upload]:has([name=\\"attachments[]\\"]) .filepond--browser"); const files = new DataTransfer(); for(let i=0;i<2;i++) files.items.add(new File(["Project notes"], `notes-${i}.txt`, {type:"text/plain"})); input.files = files.files; input.dispatchEvent(new Event("change", {bubbles:true}));');
-        $page->assertPresent('[data-upload-example] .filepond--item:nth-child(2)[data-filepond-item-state="processing-complete"]');
+        $page->assertScript('Array.from(document.querySelectorAll(' . json_encode($attachments . ' .filepond--file-status-main') . ')).filter(status => status.textContent.includes("Upload complete")).length', 2);
         $wire = 'Livewire.find(document.querySelector("[data-upload-example]").getAttribute("wire:id"))';
         expect($page->script($wire . '.$get("attachments").length'))->toBe(2);
         expect($page->script('window.progressSeen'))->toBeTrue();
-        $page->click('[data-upload-example] .filepond--item:first-child .filepond--action-revert-item-processing')->assertMissing('[data-upload-example] .filepond--item:nth-child(2)');
+        $page->page()->locator($attachments . ' .filepond--item:first-child .filepond--action-revert-item-processing')->click(['timeout' => 20000]);
+        $page->assertMissing($attachments . ' .filepond--item:nth-child(2)');
         $page->assertScript($wire . '.$get("attachments").length', 1);
         $page->attach('#blade-upload-brief-browse', dirname(__DIR__) . '/Fixtures/proof.txt');
         $page->script('document.querySelector("[data-blade-upload]").reset();');

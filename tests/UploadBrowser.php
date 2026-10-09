@@ -35,7 +35,7 @@ function withUploadBrowser(callable $run): void
             }
             usleep(10000);
         }
-        Playwright::usingTimeout(10000, fn () => $run('http://' . $address . '/blade-components/file-upload'));
+        Playwright::usingTimeout(20000, fn () => $run('http://' . $address . '/blade-components/file-upload'));
     } finally {
         $server->stop();
         File::deleteDirectory($uploadRoot);

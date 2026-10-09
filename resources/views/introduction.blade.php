@@ -8,7 +8,7 @@
             </header>
             <p>Reusable Blade and Livewire components. Start with <a class="underline" href="{{ route('started.installation') }}" wire:navigate>Installation</a> to install the package and load its assets, then choose a component below for demos, usage, and attributes.</p>
             <p>Using a coding agent? Install the <a class="underline" href="{{ route('started.ai-agent-skill') }}" wire:navigate>AI Agent Skill</a> for version-matched Sirius UI guidance and examples.</p>
-            <h2 class="text-lg font-medium">Blade Components</h2>
+            <h2 id="blade-components" class="text-lg font-medium">Blade Components</h2>
             <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
                 <section id="blade-components-form-control" class="rounded-xl border border-slate-300 p-6 dark:border-slate-600">
                     <h3 class="font-medium">Form Control</h3>

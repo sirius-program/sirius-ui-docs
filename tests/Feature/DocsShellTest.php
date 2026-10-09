@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-it('exposes the current documentation link inside an open group with unique control IDs', function (string $path): void {
+it('exposes the current documentation link with unique control IDs and no collapsed ancestor', function (string $path): void {
     $response = $this->get($path)->assertOk();
     $document = new DOMDocument;
     $previous = libxml_use_internal_errors(true);
@@ -15,8 +15,14 @@ it('exposes the current documentation link inside an open group with unique cont
         $ids[] = $element->getAttribute('id');
     }
     expect($ids)->toHaveCount(count(array_unique($ids)));
-    expect($xpath->query('//aside[@data-docs-sidebar]//a[@aria-current="page" and contains(@href, "' . $path . '")]/ancestor::details[@open]')->length)->toBe(1);
-})->with(['/getting-started/ai-agent-skill', '/getting-started/installation', '/blade-components/input', '/livewire-components/table/query', '/livewire-components/calendar/events']);
+    foreach ($xpath->query('//*[@data-docs-toc]//a[starts-with(@href, "#")]') as $link) {
+        expect($ids)->toContain(substr($link->getAttribute('href'), 1));
+    }
+    $currentLink = '//aside[@data-docs-sidebar]//a[@aria-current="page" and contains(@href, "' . $path . '")]';
+    expect($xpath->query($currentLink)->length)->toBe(1);
+    expect($xpath->query($currentLink . '/ancestor::details[not(@open)]')->length)->toBe(0);
+    expect($xpath->query($currentLink . '/ancestor::*[@hidden]')->length)->toBe(0);
+})->with(['/getting-started/introduction', '/getting-started/ai-agent-skill', '/getting-started/installation', '/blade-components/input', '/livewire-components/table/query', '/livewire-components/calendar/events']);
 
 it('renders installation asset examples as literal code instead of loading additional assets', function (): void {
     $this->get(route('started.installation'))->assertOk()->assertViewIs('installation')

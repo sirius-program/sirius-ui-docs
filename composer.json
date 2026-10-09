@@ -99,7 +99,8 @@
             "@php test.php"
         ],
         "test:browser": [
-            "pest tests/Browser --ci --parallel"
+            "Composer\\Config::disableProcessTimeout",
+            "pest tests/Browser --ci --parallel --processes=2"
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",

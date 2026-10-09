@@ -30,9 +30,9 @@ it('navigates to label examples and focuses their associated native controls', f
     $page->click('label[for="label-required"]');
 
     expect($page->script('document.activeElement.id'))->toBe('label-required');
-    $page->click('[data-docs-toc] a[href="#shared-field-contract"]')
-        ->assertSee('Shared field contract')
-        ->assertPresent('#shared-field-contract')
+    $page->click('[data-docs-toc] a[href="#assets"]')
+        ->assertScript('location.hash', '#assets')
+        ->assertPresent('#assets')
         ->assertNoJavaScriptErrors();
 });
 

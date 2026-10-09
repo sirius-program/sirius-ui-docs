@@ -41,7 +41,7 @@ it('rejects unrecognized demo kinds and actions', function (): void {
 it('removes the public form conventions page and keeps field fixtures in development', function (): void {
     $this->get('/blade-components/forms')->assertNotFound();
     $this->post('/blade-components/forms')->assertNotFound();
-    $this->get(route('started'))->assertDontSee('Form Conventions')->assertSee('On this page')->assertSee('Back to top');
+    $this->get(route('started.introduction'))->assertDontSee('Form Conventions')->assertSee('On this page')->assertSee('Back to top');
     $this->get(route('development.fields'))->assertOk()->assertSee('data-blade-field-example', false);
 });
 

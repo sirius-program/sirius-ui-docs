@@ -36,7 +36,7 @@ it('serves the skill guide under Getting Started with installation and activatio
         ->assertSee('sirius:skills:install')->assertSee('boost:install')->assertSee('boost:update')
         ->assertSee('$sirius-ui-development')->assertSee('/sirius-ui-development')
         ->assertSee('direct runtime evaluation is deferred');
-    $this->get(route('started'))->assertSee(route('started.ai-agent-skill'));
+    $this->get(route('started.introduction'))->assertSee(route('started.ai-agent-skill'));
 });
 
 it('runs the bundled form recipe with validation canonical currency values and reset', function (): void {

@@ -57,6 +57,7 @@ it('resizes charts when revealed in Tabs Dialog and Slideover', function (): voi
         ->click('[data-sir-dialog-open="chart-dialog"]')->assertPresent('#chart-dialog:modal')
         ->assertScript('window.dialogChart === window.SiriusChart.get("dialog-chart")', true)
         ->click('#chart-dialog [data-sir-dialog-close]')
+        ->assertNotPresent('#chart-dialog:modal')
         ->click('[data-sir-dialog-open="chart-slideover"]')->assertPresent('#chart-slideover:modal')
         ->assertScript('window.SiriusChart.get("slideover-chart").width > 200', true)->assertNoJavaScriptErrors();
 });
@@ -87,7 +88,8 @@ it('cleans plugins and native instances on removal remount and navigation', func
             ->assertScript('document.querySelectorAll("#revenue-chart canvas").length', 1);
     }
     $page->assertScript('window.chartDestroyed', 2);
-    $page->click('[data-docs-sidebar] a[href$="/livewire-components/chart/options"]')->assertPathIs('/livewire-components/chart/options')
+    $page->click('[data-docs-sidebar] summary:has-text("Chart")')
+        ->click('[data-docs-sidebar] a[href$="/livewire-components/chart/options"]')->assertPathIs('/livewire-components/chart/options')
         ->assertAttribute('#options-chart', 'data-chart-state', 'ready')->assertScript('window.SiriusChart.get("revenue-chart")', null)
         ->assertScript('window.chartDestroyed', 3)->assertNoJavaScriptErrors();
 });

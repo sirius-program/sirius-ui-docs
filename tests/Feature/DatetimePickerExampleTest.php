@@ -10,7 +10,7 @@ it('documents all three date modes using exact native demo sources', function ()
     foreach (['date', 'time', 'datetime'] as $mode) {
         $response->assertSee(e(trim(file_get_contents(resource_path('views/blade-components/demos/datetime-picker-' . $mode . '.blade.php')))), false);
     }
-    $this->get(route('started'))->assertSee(route('blade-components.datetime-picker'));
+    $this->get(route('started.introduction'))->assertSee(route('blade-components.datetime-picker'));
     $this->get(route('development.datetime-picker'))->assertOk();
     $this->get(route('development.date-bindings'))->assertOk();
 });

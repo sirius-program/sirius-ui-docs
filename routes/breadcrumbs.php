@@ -8,7 +8,7 @@ use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 // Fixtures
 
 Breadcrumbs::for('development.navigation', function (BreadcrumbTrail $trail): void {
-    $trail->parent('blade-components.navigation');
+    $trail->parent('blade-components.layout');
     $trail->push('Navigation integration', route('development.navigation'));
 });
 
