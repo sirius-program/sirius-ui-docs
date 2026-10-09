@@ -16,13 +16,13 @@
             <section id="message-attributes">@include('blade-components.attributes.message')</section>
             <section id="assets-and-interaction" class="space-y-3">
                 <h2 class="text-xl font-medium">Assets and interaction</h2>
-                <p>Import the package CSS and JavaScript, or publish and load <code>sirius-ui-assets</code>.</p>
+                <p>Import the package CSS and JavaScript, or publish and load <x-sirius::code>sirius-ui-assets</x-sirius::code>.</p>
                 @include('blade-components.examples.assets')
                 <p>Dismissal is local to the current element and survives ordinary Livewire updates. Change reset-key or remount the component to show it again. The bubbling message:dismiss event includes detail.id; it does not update your model automatically.</p>
             </section>
             <section id="translations" class="space-y-3">
                 <h2 class="text-xl font-medium">Translations</h2>
-                <p>Edit the <code>message</code> array in <code>lang/vendor/sirius/{locale}/sirius-ui.php</code>. This translation is used only for accessibility.</p>
+                <p>Edit the <x-sirius::code>message</x-sirius::code> array in <x-sirius::code>lang/vendor/sirius/{locale}/sirius-ui.php</x-sirius::code>. This translation is used only for accessibility.</p>
                 @include('blade-components.examples.message-translations')
             </section>
         </article>

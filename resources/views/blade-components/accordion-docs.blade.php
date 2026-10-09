@@ -24,11 +24,11 @@
             </section>
             <section id="assets-and-interaction" class="space-y-3">
                 <h2 class="text-xl font-medium">Assets and interaction</h2>
-                <p>Uses native <code>details</code>/<code>summary</code>. Set the HTML <code>open</code> attribute for an initially expanded section. Enter and Space toggle the focused summary. Closed content is excluded from keyboard navigation.</p>
-                <p>Import the package CSS and JavaScript, or publish and load <code>sirius-ui-assets</code>.</p>
+                <p>Uses native <x-sirius::code>details</x-sirius::code>/<x-sirius::code>summary</x-sirius::code>. Set the HTML <x-sirius::code>open</x-sirius::code> attribute for an initially expanded section. Enter and Space toggle the focused summary. Closed content is excluded from keyboard navigation.</p>
+                <p>Import the package CSS and JavaScript, or publish and load <x-sirius::code>sirius-ui-assets</x-sirius::code>.</p>
                 @include('blade-components.examples.assets')
-                <p>JavaScript synchronizes <code>aria-expanded</code>, restores focus to the trigger when focused content is closed, and emits <code>accordion:toggle</code> with <code>detail.id</code> and <code>detail.open</code>. Native disclosure still works without JavaScript.</p>
-                <p>For Alpine, use <code>x-bind:open</code> and the toggle event. For Livewire, pass <code>:open</code> and synchronize user toggles as shown below. Server renders otherwise restore the supplied state. Use a stable ID and <code>wire:key</code>; direct <code>wire:model</code> is not supported.</p>
+                <p>JavaScript synchronizes <x-sirius::code>aria-expanded</x-sirius::code>, restores focus to the trigger when focused content is closed, and emits <x-sirius::code>accordion:toggle</x-sirius::code> with <x-sirius::code>detail.id</x-sirius::code> and <x-sirius::code>detail.open</x-sirius::code>. Native disclosure still works without JavaScript.</p>
+                <p>For Alpine, use <x-sirius::code>x-bind:open</x-sirius::code> and the toggle event. For Livewire, pass <x-sirius::code>:open</x-sirius::code> and synchronize user toggles as shown below. Server renders otherwise restore the supplied state. Use a stable ID and <x-sirius::code>wire:key</x-sirius::code>; direct <x-sirius::code>wire:model</x-sirius::code> is not supported.</p>
                 @include('blade-components.examples.accordion-livewire')
             </section>
         </article>

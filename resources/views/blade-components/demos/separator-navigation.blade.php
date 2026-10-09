@@ -1,5 +1,5 @@
 <nav aria-label="Project sections" class="flex items-center gap-4">
-    <a href="#" class="underline">Overview</a>
+    <x-sirius::link href="#" class="underline">Overview</x-sirius::link>
     <x-sirius::separator id="navigation-separator" orientation="vertical" decorative />
-    <a href="#" class="underline">Billing</a>
+    <x-sirius::link href="#" class="underline">Billing</x-sirius::link>
 </nav>

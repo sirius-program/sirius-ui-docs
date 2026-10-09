@@ -23,7 +23,7 @@
                 <h2 class="text-xl font-medium">Assets</h2>
                 <p>Load the package CSS. No JavaScript is needed.</p>
                 <p>Labels have no outer margin. Set spacing on your label-and-input wrapper.</p>
-                <p>Use <code>--sir-color-danger</code> to change the required-marker and error color.</p>
+                <p>Use <x-sirius::code>--sir-color-danger</x-sirius::code> to change the required-marker and error color.</p>
             </section>
         </article>
     </x-docs-page>

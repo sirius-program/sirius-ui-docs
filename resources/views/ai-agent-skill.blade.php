@@ -11,8 +11,8 @@
                 <h2 class="text-2xl font-semibold">Laravel Boost</h2>
                 <p>If your project uses Boost, run the installer and select <strong>Agent Skills</strong>, your agent, and <strong>sirius/ui (skills)</strong>.</p>
                 <x-docs-code language="Shell">php artisan boost:install --skills</x-docs-code>
-                <p>The package includes <code>resources/boost/skills/sirius-ui-development</code>, following <a class="underline" href="https://github.com/laravel/docs/blob/13.x/boost.md#third-party-package-skills" target="_blank" rel="noopener noreferrer">Boost's third-party skill convention</a>. Sirius UI must be a direct Composer dependency. Boost is optional for standalone installation.</p>
-                <p>Boost writes Codex skills to <code>.agents/skills</code> and Claude Code skills to <code>.claude/skills</code>. Use one installation method per agent.</p>
+                <p>The package includes <x-sirius::code>resources/boost/skills/sirius-ui-development</x-sirius::code>, following <x-sirius::link href="https://github.com/laravel/docs/blob/13.x/boost.md#third-party-package-skills" target="_blank" rel="noopener noreferrer">Boost's third-party skill convention</x-sirius::link>. Sirius UI must be a direct Composer dependency. Boost is optional for standalone installation.</p>
+                <p>Boost writes Codex skills to <x-sirius::code>.agents/skills</x-sirius::code> and Claude Code skills to <x-sirius::code>.claude/skills</x-sirius::code>. Use one installation method per agent.</p>
             </section>
 
             <section id="standalone" class="space-y-4">
@@ -22,8 +22,8 @@
 php artisan sirius:skills:install --agent=codex
 php artisan sirius:skills:install --agent=claude-code
 php artisan sirius:skills:install --agent=codex --agent=claude-code</x-docs-code>
-                <p>The command previews destinations and file changes before applying them. Repeating it updates the same skill; unchanged files stay untouched. It does not change <code>AGENTS.md</code>, <code>CLAUDE.md</code>, MCP settings, or other skills. Composer installation and provider boot do not install agent files.</p>
-                <p>For manual installation, copy the <strong>entire</strong> <code>vendor/sirius/ui/resources/boost/skills/sirius-ui-development</code> folder to <code>.agents/skills/sirius-ui-development</code> or <code>.claude/skills/sirius-ui-development</code>. Keep all references beside <code>SKILL.md</code>. Manual copies are user-owned; compare and copy updates manually.</p>
+                <p>The command previews destinations and file changes before applying them. Repeating it updates the same skill; unchanged files stay untouched. It does not change <x-sirius::code>AGENTS.md</x-sirius::code>, <x-sirius::code>CLAUDE.md</x-sirius::code>, MCP settings, or other skills. Composer installation and provider boot do not install agent files.</p>
+                <p>For manual installation, copy the <strong>entire</strong> <x-sirius::code>vendor/sirius/ui/resources/boost/skills/sirius-ui-development</x-sirius::code> folder to <x-sirius::code>.agents/skills/sirius-ui-development</x-sirius::code> or <x-sirius::code>.claude/skills/sirius-ui-development</x-sirius::code>. Keep all references beside <x-sirius::code>SKILL.md</x-sirius::code>. Manual copies are user-owned; compare and copy updates manually.</p>
             </section>
 
             <section id="activation" class="space-y-4">
@@ -45,18 +45,18 @@ php artisan boost:update
 # Standalone installation
 php artisan sirius:skills:install --agent=codex --dry-run
 php artisan sirius:skills:install --agent=codex</x-docs-code>
-                <p><strong>Boost:</strong> direct edits to installed package skill files are replaced on update. To customize, copy the complete bundle into <code>.ai/skills/sirius-ui-development</code>, edit it there, and run <code>boost:update</code>. The custom bundle overrides the package bundle; merge new package guidance into it manually.</p>
-                <p><strong>Standalone:</strong> the ownership manifest tracks installed files. Customized files require confirmation before replacement. Originals are saved under <code>.sirius-ui-backups</code> inside the skill folder. <code>--no-interaction</code> refuses conflicts and leaves files intact. Review the preview, then run interactively to confirm, or merge your edits manually.</p>
+                <p><strong>Boost:</strong> direct edits to installed package skill files are replaced on update. To customize, copy the complete bundle into <x-sirius::code>.ai/skills/sirius-ui-development</x-sirius::code>, edit it there, and run <x-sirius::code>boost:update</x-sirius::code>. The custom bundle overrides the package bundle; merge new package guidance into it manually.</p>
+                <p><strong>Standalone:</strong> the ownership manifest tracks installed files. Customized files require confirmation before replacement. Originals are saved under <x-sirius::code>.sirius-ui-backups</x-sirius::code> inside the skill folder. <x-sirius::code>--no-interaction</x-sirius::code> refuses conflicts and leaves files intact. Review the preview, then run interactively to confirm, or merge your edits manually.</p>
                 <p>Keep the ownership manifest with standalone files. Restore a damaged manifest from version control before updating. Unrelated files remain intact. If a destination uses a symlink or junction, use its existing owner rather than the standalone installer.</p>
             </section>
 
             <section id="troubleshooting" class="space-y-4">
                 <h2 class="text-2xl font-semibold">Troubleshooting</h2>
                 <ul class="list-disc space-y-2 pl-5">
-                    <li><strong>Boost cannot find the skill:</strong> check <code>composer show sirius/ui</code>, the bundled <code>SKILL.md</code>, and the selected <code>sirius/ui</code> package. Check Boost exclusions and update its package scan.</li>
-                    <li><strong>Agent cannot find it:</strong> open the consuming project root, check the chosen agent directory, and start a new session. Copying only <code>SKILL.md</code> omits required references.</li>
+                    <li><strong>Boost cannot find the skill:</strong> check <x-sirius::code>composer show sirius/ui</x-sirius::code>, the bundled <x-sirius::code>SKILL.md</x-sirius::code>, and the selected <x-sirius::code>sirius/ui</x-sirius::code> package. Check Boost exclusions and update its package scan.</li>
+                    <li><strong>Agent cannot find it:</strong> open the consuming project root, check the chosen agent directory, and start a new session. Copying only <x-sirius::code>SKILL.md</x-sirius::code> omits required references.</li>
                     <li><strong>Old guidance:</strong> refresh after Composer upgrades. A custom Boost bundle must be merged manually.</li>
-                    <li><strong>Ownership conflict:</strong> use <code>boost:update</code> for Boost-installed files. Standalone installation will not overwrite them.</li>
+                    <li><strong>Ownership conflict:</strong> use <x-sirius::code>boost:update</x-sirius::code> for Boost-installed files. Standalone installation will not overwrite them.</li>
                 </ul>
             </section>
 

@@ -4,7 +4,7 @@
             <header class="space-y-2">
                 <p class="text-sm text-slate-500 dark:text-slate-400">FORM CONTROL</p>
                 <h1 class="text-3xl font-semibold">File Upload</h1>
-                <p>File uploads with image and PDF previews, powered by <a href="https://pqina.nl/filepond/" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline">filepond</a>.</p>
+                <p>File uploads with image and PDF previews, powered by <x-sirius::link href="https://pqina.nl/filepond/" target="_blank" rel="noopener noreferrer">filepond</x-sirius::link>.</p>
             </header>
             <section id="upload-demo" class="space-y-5">
                 <h2 class="text-xl font-medium">Demo</h2>
@@ -24,11 +24,11 @@
             <section id="upload-attributes">@include('blade-components.attributes.file-upload')</section>
             <section id="assets-and-interaction" class="space-y-3">
                 <h2 class="text-xl font-medium">Assets and interaction</h2>
-                <p>Import the package CSS and JavaScript, or publish and load <code>sirius-ui-assets</code>.</p>
+                <p>Import the package CSS and JavaScript, or publish and load <x-sirius::code>sirius-ui-assets</x-sirius::code>.</p>
                 @include('blade-components.examples.assets')
                 <p>FilePond and its preview plugins are bundled. PDF previews use the browser viewer, with an Open preview link as a fallback. Preview URLs must be accessible and allowed by your content security policy.</p>
-                <p>Blade uploads use <code>multipart/form-data</code> on submit. Livewire uploads support progress, cancellation, and retry. A native input is used when enhancement is unavailable.</p>
-                <p>Listen for <code>file-upload:start</code>, <code>file-upload:progress</code>, <code>file-upload:complete</code>, <code>file-upload:error</code>, <code>file-upload:cancel</code>, or <code>file-upload:change</code>. Progress includes a 0-100 value; change includes file metadata. Change <code>wire:key</code> to apply new upload limits.</p>
+                <p>Blade uploads use <x-sirius::code>multipart/form-data</x-sirius::code> on submit. Livewire uploads support progress, cancellation, and retry. A native input is used when enhancement is unavailable.</p>
+                <p>Listen for <x-sirius::code>file-upload:start</x-sirius::code>, <x-sirius::code>file-upload:progress</x-sirius::code>, <x-sirius::code>file-upload:complete</x-sirius::code>, <x-sirius::code>file-upload:error</x-sirius::code>, <x-sirius::code>file-upload:cancel</x-sirius::code>, or <x-sirius::code>file-upload:change</x-sirius::code>. Progress includes a 0-100 value; change includes file metadata. Change <x-sirius::code>wire:key</x-sirius::code> to apply new upload limits.</p>
             </section>
             <section id="storage" class="space-y-3">
                 <h2 class="text-xl font-medium">Storage and validation</h2>
@@ -38,7 +38,7 @@
             </section>
             <section id="translations" class="space-y-3">
                 <h2 class="text-xl font-medium">Translations</h2>
-                <p>Edit the <code>file_upload</code> array in <code>lang/vendor/sirius/{locale}/sirius-ui.php</code>.</p>
+                <p>Edit the <x-sirius::code>file_upload</x-sirius::code> array in <x-sirius::code>lang/vendor/sirius/{locale}/sirius-ui.php</x-sirius::code>.</p>
                 @include('blade-components.examples.file-upload-translations')
             </section>
         </article>

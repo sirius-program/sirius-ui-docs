@@ -5,5 +5,5 @@
         <button type="button" data-copy-code class="rounded-md px-3 py-1.5 font-medium hover:bg-slate-200 focus-visible:outline-2 focus-visible:outline-offset-2 dark:hover:bg-slate-800" aria-label="Copy code">Copy</button>
         <span class="sr-only" role="status" data-copy-status></span>
     </div>
-    <pre class="overflow-x-auto bg-white p-5 text-sm leading-7 dark:bg-slate-950" tabindex="0" aria-label="{{ $language }} code example"><code>{{ $source ?? $slot }}</code></pre>
+    <pre class="overflow-x-auto bg-white p-5 text-sm leading-7 dark:bg-slate-950" tabindex="0" aria-label="{{ $language }} code example"><x-sirius::code block :text="$source">{{ $slot }}</x-sirius::code></pre>
 </div>

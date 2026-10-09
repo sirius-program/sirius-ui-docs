@@ -9,7 +9,7 @@
 </head>
 <body class="p-8" data-integration-probe>
     <h1>Plain Blade proof</h1>
-    <a href="{{ route('development.integrations') }}" wire:navigate>Integration proofs</a>
+    <x-sirius::link href="{{ route('development.integrations') }}" wire:navigate>Integration proofs</x-sirius::link>
     <x-sirius::form :action="url()->current()" x-data="{ submitted: '' }" @submit.prevent="submitted = JSON.stringify(Object.fromEntries(new FormData($el)))">
         @foreach (['first', 'second'] as $instance)
             <div x-data="integrationWidget('date', '2026-09-12')">

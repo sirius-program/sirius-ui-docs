@@ -26,11 +26,11 @@
             </section>
             <section id="assets-and-interaction" class="space-y-3">
                 <h2 class="text-xl font-medium">Assets and interaction</h2>
-                <p>Import the package CSS and JavaScript, or publish and load <code>sirius-ui-assets</code>.</p>
+                <p>Import the package CSS and JavaScript, or publish and load <x-sirius::code>sirius-ui-assets</x-sirius::code>.</p>
                 @include('blade-components.examples.assets')
                 <p>Separators are added as you type. Pasted text must match the configured format; invalid pastes leave the value unchanged. A trailing decimal is removed on blur. A lone minus submits an empty value.</p>
                 <p>Form resets and Livewire updates refresh the display. Without JavaScript, the field submits text as entered. Readonly values are submitted; disabled values are omitted.</p>
-                <p>For JavaScript updates, set <code>[data-sir-currency-value].value</code> and dispatch <code>input</code>. Events on the visible input contain formatted text.</p>
+                <p>For JavaScript updates, set <x-sirius::code>[data-sir-currency-value].value</x-sirius::code> and dispatch <x-sirius::code>input</x-sirius::code>. Events on the visible input contain formatted text.</p>
             </section>
             <section id="global-configuration" class="space-y-3">
                 <h2 class="text-xl font-medium">Global configuration</h2>
@@ -40,7 +40,7 @@
             <section id="translations" class="space-y-3">
                 <h2 class="text-xl font-medium">Translations</h2>
                 <p>These are translation string used for client-side validation and messages, for server-side use Laravel's translation string.</p>
-                <p>Edit the <code>currency</code> array in <code>lang/vendor/sirius/{locale}/sirius-ui.php</code>.
+                <p>Edit the <x-sirius::code>currency</x-sirius::code> array in <x-sirius::code>lang/vendor/sirius/{locale}/sirius-ui.php</x-sirius::code>.
                 @include('blade-components.examples.currency-translations')
             </section>
         </article>

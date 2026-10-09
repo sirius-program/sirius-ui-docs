@@ -20,7 +20,7 @@
             </section>
             <section id="translations" class="space-y-3">
                 <h2 class="text-xl font-medium">Translations</h2>
-                <p>Edit the <code>timeline</code> array in <code>lang/vendor/sirius/{locale}/sirius-ui.php</code>. These translations are used only for accessibility.</p>
+                <p>Edit the <x-sirius::code>timeline</x-sirius::code> array in <x-sirius::code>lang/vendor/sirius/{locale}/sirius-ui.php</x-sirius::code>. These translations are used only for accessibility.</p>
                 @include('blade-components.examples.timeline-translations')
             </section>
         </article>

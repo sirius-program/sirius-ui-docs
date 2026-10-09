@@ -27,7 +27,7 @@
             </section>
             <section id="assets-and-interaction" class="space-y-3">
                 <h2 class="text-xl font-medium">Asset and interaction</h2>
-                <p>Import the package CSS and JavaScript, or publish and load <code>sirius-ui-assets</code>.</p>
+                <p>Import the package CSS and JavaScript, or publish and load <x-sirius::code>sirius-ui-assets</x-sirius::code>.</p>
                 @include('blade-components.examples.assets')
                 <p>Controls support Livewire updates and navigation. No extra Alpine instance is needed.</p>
             </section>

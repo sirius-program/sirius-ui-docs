@@ -27,14 +27,14 @@
             </section>
             <section id="assets-and-interaction" class="space-y-3">
                 <h2 class="text-xl font-medium">Asset and interaction</h2>
-                <p>Import the package CSS and JavaScript, or publish and load <code>sirius-ui-assets</code>.</p>
+                <p>Import the package CSS and JavaScript, or publish and load <x-sirius::code>sirius-ui-assets</x-sirius::code>.</p>
                 @include('blade-components.examples.assets')
                 <p>Controls support Livewire updates and navigation. No extra Alpine instance is needed.</p>
             </section>
             <section id="translations" class="space-y-3">
                 <h2 class="text-xl font-medium">Translations</h2>
                 <p>These translation strings are used only for accessibility.</p>
-                <p>Edit the <code>input</code> array in <code>lang/vendor/sirius/{locale}/sirius-ui.php</code>.</p>
+                <p>Edit the <x-sirius::code>input</x-sirius::code> array in <x-sirius::code>lang/vendor/sirius/{locale}/sirius-ui.php</x-sirius::code>.</p>
                 @include('blade-components.examples.input-translations')
             </section>
         </article>

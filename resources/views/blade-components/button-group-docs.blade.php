@@ -16,7 +16,7 @@
             <section id="button-group-attributes">@include('blade-components.attributes.button-group')</section>
             <section id="assets-and-interaction" class="space-y-3">
                 <h2 class="text-xl font-medium">Assets and interaction</h2>
-                <p>Import the package CSS and JavaScript, or publish and load <code>sirius-ui-assets</code>.</p>
+                <p>Import the package CSS and JavaScript, or publish and load <x-sirius::code>sirius-ui-assets</x-sirius::code>.</p>
                 @include('blade-components.examples.assets')
                 <p>Give the group a short accessible name. Each button keeps its own action and accessible name.</p>
                 <p>Place Button components directly inside the group. It does not add selection state, arrow-key navigation, or toggle behavior.</p>

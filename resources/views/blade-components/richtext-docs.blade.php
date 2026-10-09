@@ -4,7 +4,7 @@
             <header class="space-y-2">
                 <p class="text-sm text-slate-500 dark:text-slate-400">FORM CONTROL</p>
                 <h1 class="text-3xl font-semibold">Richtext</h1>
-                <p>Textarea with Docs-like formatting, powered by <a href="https://tiptap.dev/" target="_blank" rel="noopener noreferrer" class="text-blue-500 dark:text-blue-400 hover:underline">Tiptap</a>.</p>
+                <p>Textarea with Docs-like formatting, powered by <x-sirius::link href="https://tiptap.dev/" target="_blank" rel="noopener noreferrer">Tiptap</x-sirius::link>.</p>
             </header>
             <section id="richtext-demo" class="space-y-5">
                 <h2 class="text-xl font-medium">Demo</h2>
@@ -26,14 +26,14 @@
             </section>
             <section id="assets-and-interaction" class="space-y-3">
                 <h2 class="text-xl font-medium">Assets and interaction</h2>
-                <p>Import the package CSS and JavaScript, or publish and load <code>sirius-ui-assets</code>.</p>
+                <p>Import the package CSS and JavaScript, or publish and load <x-sirius::code>sirius-ui-assets</x-sirius::code>.</p>
                 @include('blade-components.examples.assets')
                 <p>Controls support Livewire updates and navigation. No extra Alpine instance is needed.</p>
                 <p>Tiptap core, the MIT-licensed Tiptap UI components, and React are bundled internally. No React setup, API key, or Tiptap subscription is needed.</p>
             </section>
             <section id="richtext-upload" class="space-y-3">
                 <h2 class="text-xl font-medium">Image upload</h2>
-                <p>The richtext sends a multipart <code>POST</code> with the <code>image</code> field. Return JSON with a <code>url</code> pointing to the stored image. Laravel CSRF is read from the page meta tag, form token, or XSRF cookie.</p>
+                <p>The richtext sends a multipart <x-sirius::code>POST</x-sirius::code> with the <x-sirius::code>image</x-sirius::code> field. Return JSON with a <x-sirius::code>url</x-sirius::code> pointing to the stored image. Laravel CSRF is read from the page meta tag, form token, or XSRF cookie.</p>
                 <x-docs-code language="PHP" :source="file_get_contents(app_path('Http/Controllers/RichtextImageStoreController.php'))" />
                 <p>The demo endpoint stores images on the default disk and serves them through a dedicated route. Add your application's authorization and cleanup policy. Removing an image from the richtext does not delete its file.</p>
                 <p>Submission waits for uploads to finish. Failed uploads can be retried by choosing the file again.</p>
@@ -46,7 +46,7 @@
             </section>
             <section id="translations" class="space-y-3">
                 <h2 class="text-xl font-medium">Translations</h2>
-                <p>Edit the <code>richtext</code> array in <code>lang/vendor/sirius/{locale}/sirius-ui.php</code>.</p>
+                <p>Edit the <x-sirius::code>richtext</x-sirius::code> array in <x-sirius::code>lang/vendor/sirius/{locale}/sirius-ui.php</x-sirius::code>.</p>
                 @include('blade-components.examples.richtext-translations')
             </section>
         </article>

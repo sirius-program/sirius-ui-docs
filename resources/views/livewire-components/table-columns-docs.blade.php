@@ -21,9 +21,9 @@
             </section>
             <section id="cell-values" class="space-y-3">
                 <h2 class="text-xl font-medium">Cell values</h2>
-                <p>Table reads the displayed value from the column's <code>key</code>. Use <code>field</code> when its search/sort path differs. Only columns marked <code>searchable</code> participate in global search.</p>
+                <p>Table reads the displayed value from the column's <x-sirius::code>key</x-sirius::code>. Use <x-sirius::code>field</x-sirius::code> when its search/sort path differs. Only columns marked <x-sirius::code>searchable</x-sirius::code> participate in global search.</p>
                 <p>Use a formatter for text such as prices or dates. Its second argument is the original record, so the demo appends Paid to settled amounts. Formatting does not change search or sorting.</p>
-                <p>Use a cell view for markup such as the status badge. It receives <code>$record</code> and <code>$column</code>. A view takes precedence over a formatter; ordinary cell values and formatter strings are escaped.</p>
+                <p>Use a cell view for markup such as the status badge. It receives <x-sirius::code>$record</x-sirius::code> and <x-sirius::code>$column</x-sirius::code>. A view takes precedence over a formatter; ordinary cell values and formatter strings are escaped.</p>
             </section>
             <section id="sorting" class="space-y-3">
                 <h2 class="text-xl font-medium">Sorting</h2>

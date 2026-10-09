@@ -1,4 +1,4 @@
-<h3 class="text-lg font-medium">Table subclass (see <code>bulkActionsView()</code> methods)</h3>
+<h3 class="text-lg font-medium">Table subclass (see <x-sirius::code>bulkActionsView()</x-sirius::code> methods)</h3>
 <x-docs-code language="PHP" :source="file_get_contents(app_path('Livewire/Examples/BulkInvoiceTable.php'))" />
 <h3 class="text-lg font-medium">Bulk buttons view</h3>
 <x-docs-example view="livewire-components.demos.table-bulk-buttons" />

@@ -24,12 +24,12 @@
             </section>
             <section id="assets-and-interaction" class="space-y-3">
                 <h2 class="text-xl font-medium">Assets and interaction</h2>
-                <p>Import the package CSS and JavaScript, or publish and load <code>sirius-ui-assets</code>.</p>
+                <p>Import the package CSS and JavaScript, or publish and load <x-sirius::code>sirius-ui-assets</x-sirius::code>.</p>
                 @include('blade-components.examples.assets')
                 <p>Requires a browser with the Popover API. Panels stay above scrollable content, including Dialog and Slideover. Fades respect reduced motion.</p>
                 <p>The arrow follows the trigger when the panel flips or shifts.</p>
-                <p>Hover or focus the trigger to show the hint; Escape dismisses it. Keep an accessible name on icon-only triggers. Tooltip content cannot contain interactive controls, if you want to add interactive controls, use <a href="{{ route('blade-components.popover') }}" wire:navigate class="text-blue-500 dark:text-blue-400 hover:underline">Popover</a> component instead.</p>
-                <p>Works with Alpine changes, Livewire updates, and navigation. Use an explicit ID and <code>wire:key</code> for stable Livewire identity.</p>
+                <p>Hover or focus the trigger to show the hint; Escape dismisses it. Keep an accessible name on icon-only triggers. Tooltip content cannot contain interactive controls, if you want to add interactive controls, use <x-sirius::link href="{{ route('blade-components.popover') }}" wire:navigate>Popover</x-sirius::link> component instead.</p>
+                <p>Works with Alpine changes, Livewire updates, and navigation. Use an explicit ID and <x-sirius::code>wire:key</x-sirius::code> for stable Livewire identity.</p>
             </section>
         </article>
     </x-docs-page>

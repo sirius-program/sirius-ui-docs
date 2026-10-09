@@ -30,6 +30,6 @@
             </x-sirius::tabs>
         </x-sirius::dialog>
         @include('blade-components.demos.timeline-onboarding')
-        <a id="tabs-navigation" href="{{ route('blade-components.tabs') }}" wire:navigate>Tabs docs</a>
+        <x-sirius::link id="tabs-navigation" href="{{ route('blade-components.tabs') }}" wire:navigate>Tabs docs</x-sirius::link>
     </div>
 </x-layouts::app>

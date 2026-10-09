@@ -21,7 +21,7 @@
             </section>
             <section id="assets-and-interaction" class="space-y-3">
                 <h2 class="text-xl font-medium">Assets and interaction</h2>
-                <p>Import the package CSS and JavaScript, or publish and load <code>sirius-ui-assets</code>.</p>
+                <p>Import the package CSS and JavaScript, or publish and load <x-sirius::code>sirius-ui-assets</x-sirius::code>.</p>
                 @include('blade-components.examples.assets')
                 <p>An icon-only button needs aria-label or aria-labelledby. Use type=submit inside a form.</p>
                 <p>Bind loading explicitly when needed. For Livewire requests, wire:loading.attr="disabled" disables a real button while the request is pending. Application actions still need authorization.</p>

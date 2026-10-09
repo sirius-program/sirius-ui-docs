@@ -24,7 +24,7 @@
             </section>
             <section id="translations" class="space-y-3">
                 <h2 class="text-xl font-medium">Translations</h2>
-                <p>Edit the <code>breadcrumb</code> array in <code>lang/vendor/sirius/{locale}/sirius-ui.php</code>. This translation is used only for accessibility.</p>
+                <p>Edit the <x-sirius::code>breadcrumb</x-sirius::code> array in <x-sirius::code>lang/vendor/sirius/{locale}/sirius-ui.php</x-sirius::code>. This translation is used only for accessibility.</p>
                 @include('blade-components.examples.breadcrumb-translations')
             </section>
         </article>

@@ -18,22 +18,22 @@
             </section>
             <section id="interaction-hooks" class="space-y-4">
                 <h2 class="text-xl font-medium">Interaction hooks</h2>
-                <p>Override <code>onDateClick()</code>, <code>onSelect()</code>, or <code>onEventClick()</code> to open your own form or navigate. Defaults dispatch <code>calendar:date-click</code>, <code>calendar:select</code>, and <code>calendar:event-click</code>.</p>
-                <p>All contexts contain calendar <code>id</code> and <code>timezone</code>. Date/range contexts add <code>start</code>, nullable <code>end</code>, and <code>allDay</code>. Event contexts add <code>eventId</code> and the server-loaded <code>record</code>.</p>
-                <p>Event clicks also include an <code>occurrence</code> span for the clicked date, including recurring instances. Event URLs require a redirect from <code>onEventClick()</code>.</p>
+                <p>Override <x-sirius::code>onDateClick()</x-sirius::code>, <x-sirius::code>onSelect()</x-sirius::code>, or <x-sirius::code>onEventClick()</x-sirius::code> to open your own form or navigate. Defaults dispatch <x-sirius::code>calendar:date-click</x-sirius::code>, <x-sirius::code>calendar:select</x-sirius::code>, and <x-sirius::code>calendar:event-click</x-sirius::code>.</p>
+                <p>All contexts contain calendar <x-sirius::code>id</x-sirius::code> and <x-sirius::code>timezone</x-sirius::code>. Date/range contexts add <x-sirius::code>start</x-sirius::code>, nullable <x-sirius::code>end</x-sirius::code>, and <x-sirius::code>allDay</x-sirius::code>. Event contexts add <x-sirius::code>eventId</x-sirius::code> and the server-loaded <x-sirius::code>record</x-sirius::code>.</p>
+                <p>Event clicks also include an <x-sirius::code>occurrence</x-sirius::code> span for the clicked date, including recurring instances. Event URLs require a redirect from <x-sirius::code>onEventClick()</x-sirius::code>.</p>
                 <p>The demo parent listens for the subclass's events and owns the create/edit/delete form.</p>
                 <x-docs-code language="PHP" :source="file_get_contents(app_path('Livewire/Examples/CalendarActions.php'))" />
                 <x-docs-example view="livewire-components.demos.calendar" />
             </section>
             <section id="saving-changes" class="space-y-4">
                 <h2 class="text-xl font-medium">Saving changes</h2>
-                <p><code>onEventDrop()</code> and <code>onEventResize()</code> receive <code>eventId</code>, <code>record</code>, <code>old</code>, <code>new</code>, and <code>relatedIds</code>, alongside the calendar ID and timezone.</p>
+                <p><x-sirius::code>onEventDrop()</x-sirius::code> and <x-sirius::code>onEventResize()</x-sirius::code> receive <x-sirius::code>eventId</x-sirius::code>, <x-sirius::code>record</x-sirius::code>, <x-sirius::code>old</x-sirius::code>, <x-sirius::code>new</x-sirius::code>, and <x-sirius::code>relatedIds</x-sirius::code>, alongside the calendar ID and timezone.</p>
                 <p>Reload and authorize the record, validate the proposed schedule, save it, then return true. Returning false or a failed request restores the old position.</p>
                 <p>The application owns conflict checks and grouped/recurring edit policy. Try <strong>Toggle rejected changes</strong> to see rollback.</p>
             </section>
             <section id="refresh" class="space-y-4">
                 <h2 class="text-xl font-medium">Refresh</h2>
-                <p>Call <code>refreshCalendar()</code> on the subclass, or dispatch <code>calendar:refresh.{id}</code> after an external form saves. Refresh keeps the current date and view.</p>
+                <p>Call <x-sirius::code>refreshCalendar()</x-sirius::code> on the subclass, or dispatch <x-sirius::code>calendar:refresh.{id}</x-sirius::code> after an external form saves. Refresh keeps the current date and view.</p>
                 <x-docs-code language="PHP" source="$this->dispatch('calendar:refresh.team-calendar');" />
             </section>
         </article>

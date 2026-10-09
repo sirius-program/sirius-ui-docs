@@ -29,7 +29,7 @@
             </section>
             <section id="filter-callbacks" class="space-y-3">
                 <h2 class="text-xl font-medium">Filter callbacks</h2>
-                <p><code>filters()</code> declares the controls; the public <code>$filters</code> property stores their current values.</p>
+                <p><x-sirius::code>filters()</x-sirius::code> declares the controls; the public <x-sirius::code>$filters</x-sirius::code> property stores their current values.</p>
                 <p>Builder callbacks receive the scoped query and validated string value. Add constraints to that query; Table groups them so an OR cannot escape the base scope.</p>
                 <p>Collection callbacks receive the current Collection and validated string value. Return the filtered Collection, as in the example below. Table applies registered filters in order.</p>
                 @include('livewire-components.examples.table-collection')
@@ -37,7 +37,7 @@
             </section>
             <section id="remote-options" class="space-y-3">
                 <h2 class="text-xl font-medium">Remote options</h2>
-                <p>Use <code>searchUrl</code> with the <a href="{{ route('blade-components.select') }}" class="underline" wire:navigate>Select component</a> for search, pagination, and selected-label resolution. Scope the endpoint and filter callback to the same permitted records.</p>
+                <p>Use <x-sirius::code>searchUrl</x-sirius::code> with the <x-sirius::link href="{{ route('blade-components.select') }}" wire:navigate>Select component</x-sirius::link> for search, pagination, and selected-label resolution. Scope the endpoint and filter callback to the same permitted records.</p>
                 <x-docs-code language="PHP" :source="file_get_contents(app_path('Http/Controllers/InvoiceCustomerOptionController.php'))" />
             </section>
         </article>

@@ -2,6 +2,14 @@
 
 The audit below records local candidate validation from 2026-10-08, before the documentation cleanup. These results are historical evidence, not a passing baseline for later changes. Current work and verification are tracked in the [implementation plan](IMPLEMENTATION_PLAN.md). No release has been published.
 
+## Code/Link phase verification — 2026-10-09
+
+- [x] Complete Phase 1 in the [implementation plan](IMPLEMENTATION_PLAN.md): Code/Link APIs, six scoped tones, Blade documentation/examples, skill references, and compiled CSS.
+- [x] Package quality gate passes: 769 tests / 2,443 assertions; docs quality gate passes: 224 tests / 1,401 assertions, including formatting, static analysis, and refactoring checks.
+- [x] Package-first asset builds pass. Full local Chromium browser gate passes: 254 tests / 2,770 assertions, without warnings, in 208 seconds.
+
+Phase-specific logs are retained in the ignored `.phpunit.cache` directories. These checks cover the new components and existing regressions; the older compatibility/install/audit evidence remains dated below. Remote CI remains pending.
+
 ## Documentation baseline — 2026-10-09
 
 - [x] Complete Phase 0 in the [implementation plan](IMPLEMENTATION_PLAN.md): obsolete rules/references removed, development fixtures repaired, and tests aligned with the intentional cleanup.

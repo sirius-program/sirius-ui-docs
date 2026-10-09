@@ -23,15 +23,15 @@
             </section>
             <section id="datasets" class="space-y-4">
                 <h2 class="text-xl font-medium">Datasets</h2>
-                <p>Use native <a href="https://www.chartjs.org/docs/latest/general/data-structures.html" target="_blank" rel="noopener noreferrer" class="text-blue-500 dark:text-blue-400 hover:underline">Chart.js data structures</a>: numbers, nulls, coordinate objects, tuples, or keyed values. Scatter uses x/y points; bubble also uses r. Dataset fields such as colors, parsing, and stack pass through unchanged.</p>
-                <p>Set a dataset's <code>type</code> to mix controllers, such as a line over bars. All standard controllers are bundled: bar, line, pie, doughnut, radar, polarArea, scatter, and bubble.</p>
+                <p>Use native <x-sirius::link href="https://www.chartjs.org/docs/latest/general/data-structures.html" target="_blank" rel="noopener noreferrer">Chart.js data structures</x-sirius::link>: numbers, nulls, coordinate objects, tuples, or keyed values. Scatter uses x/y points; bubble also uses r. Dataset fields such as colors, parsing, and stack pass through unchanged.</p>
+                <p>Set a dataset's <x-sirius::code>type</x-sirius::code> to mix controllers, such as a line over bars. All standard controllers are bundled: bar, line, pie, doughnut, radar, polarArea, scatter, and bubble.</p>
                 @include('livewire-components.examples.chart-dataset')
-                <p>Data and PHP options must contain JSON-compatible values. Objects, closures, infinite numbers, and prototype keys are rejected. Use <a href="{{ route('livewire-components.chart.extensions') }}" class="underline" wire:navigate>Extensions</a> for functions.</p>
+                <p>Data and PHP options must contain JSON-compatible values. Objects, closures, infinite numbers, and prototype keys are rejected. Use <x-sirius::link href="{{ route('livewire-components.chart.extensions') }}" wire:navigate>Extensions</x-sirius::link> for functions.</p>
             </section>
             <section id="updates" class="space-y-4">
                 <h2 class="text-xl font-medium">Updates</h2>
                 <p>Keep an explicit ID and stable Livewire key. Change props in the parent component; the child props are reactive. Replace an array or change dataset values in a parent action. Empty or entirely null dataset values show the empty state.</p>
-                <p>Show <code>loading</code> for work outside the immediate parent request. Loading ends when you change the prop back to false; handle request errors in your application.</p>
+                <p>Show <x-sirius::code>loading</x-sirius::code> for work outside the immediate parent request. Loading ends when you change the prop back to false; handle request errors in your application.</p>
             </section>
         </article>
     </x-docs-page>

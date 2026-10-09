@@ -21,7 +21,7 @@
             </section>
             <section id="assets-and-interaction" class="space-y-3">
                 <h2 class="text-xl font-medium">Assets and interaction</h2>
-                <p>Import the package CSS and JavaScript, or publish and load <code>sirius-ui-assets</code>.</p>
+                <p>Import the package CSS and JavaScript, or publish and load <x-sirius::code>sirius-ui-assets</x-sirius::code>.</p>
                 @include('blade-components.examples.assets')
                 <p>Timers pause while hovered, focused, or the browser tab is hidden. Entry and exit use fade and slide; reduced motion disables the animation.</p>
                 <p>Up to three notifications appear at once across all positions. The next 20 wait in order; overflow removes the oldest waiting notification. Waiting timers start when shown. Opening the same ID again restarts its timer without adding a duplicate.</p>
@@ -30,19 +30,19 @@
             </section>
             <section id="state-and-events" class="space-y-3">
                 <h2 class="text-xl font-medium">State and events</h2>
-                <p>Render the Toast first, then open or close it by ID with <code>data-sir-toast-open</code>, <code>data-sir-toast-close</code>, or <code>toast:show</code>/<code>toast:hide</code> with <code>detail: { id }</code>. Events do not create new Toasts from payload content.</p>
-                <p><code>toast:open</code> and <code>toast:close</code> bubble from the wrapper with <code>detail.id</code> and <code>detail.reason</code>. Close reasons include button, escape, api, state, timeout, overflow, removed, and navigation. Queued notifications emit open only when shown.</p>
+                <p>Render the Toast first, then open or close it by ID with <x-sirius::code>data-sir-toast-open</x-sirius::code>, <x-sirius::code>data-sir-toast-close</x-sirius::code>, or <x-sirius::code>toast:show</x-sirius::code>/<x-sirius::code>toast:hide</x-sirius::code> with <x-sirius::code>detail: { id }</x-sirius::code>. Events do not create new Toasts from payload content.</p>
+                <p><x-sirius::code>toast:open</x-sirius::code> and <x-sirius::code>toast:close</x-sirius::code> bubble from the wrapper with <x-sirius::code>detail.id</x-sirius::code> and <x-sirius::code>detail.reason</x-sirius::code>. Close reasons include button, escape, api, state, timeout, overflow, removed, and navigation. Queued notifications emit open only when shown.</p>
                 @include('blade-components.examples.toast-binding')
-                <p>For Alpine, bind <code>x-bind:data-open</code> and update your state from <code>toast:close</code>. Unrelated Livewire renders preserve visible state and do not revive closed notifications.</p>
+                <p>For Alpine, bind <x-sirius::code>x-bind:data-open</x-sirius::code> and update your state from <x-sirius::code>toast:close</x-sirius::code>. Unrelated Livewire renders preserve visible state and do not revive closed notifications.</p>
             </section>
             <section id="global-configuration" class="space-y-3">
                 <h2 class="text-xl font-medium">Global configuration</h2>
-                <p>Publish <code>sirius-ui-config</code> and change the default duration and position in <code>config/sirius-ui.php</code>.</p>
+                <p>Publish <x-sirius::code>sirius-ui-config</x-sirius::code> and change the default duration and position in <x-sirius::code>config/sirius-ui.php</x-sirius::code>.</p>
                 @include('blade-components.examples.toast-config')
             </section>
             <section id="translations" class="space-y-3">
                 <h2 class="text-xl font-medium">Translations</h2>
-                <p>The built-in Close button uses Dialog translations. Edit the <code>dialog</code> array in <code>lang/vendor/sirius/{locale}/sirius-ui.php</code>. This translation is used only for accessibility.</p>
+                <p>The built-in Close button uses Dialog translations. Edit the <x-sirius::code>dialog</x-sirius::code> array in <x-sirius::code>lang/vendor/sirius/{locale}/sirius-ui.php</x-sirius::code>. This translation is used only for accessibility.</p>
                 @include('blade-components.examples.dialog-translations')
             </section>
         </article>

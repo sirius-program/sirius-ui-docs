@@ -4,7 +4,7 @@
             <header class="space-y-2">
                 <p class="text-sm text-slate-500 dark:text-slate-400">CHART</p>
                 <h1 class="text-3xl font-semibold">Overview</h1>
-                <p>Visualize application data, statistics, and more, powered by <a href="https://www.chartjs.org/docs/latest/" target="_blank" rel="noopener noreferrer" class="text-blue-500 dark:text-blue-400 hover:underline">Chart.js</a>.</p>
+                <p>Visualize application data, statistics, and more, powered by <x-sirius::link href="https://www.chartjs.org/docs/latest/" target="_blank" rel="noopener noreferrer">Chart.js</x-sirius::link>.</p>
             </header>
             <section id="chart-demo" class="space-y-4">
                 <h2 class="text-xl font-medium">Demo</h2>
@@ -21,7 +21,7 @@
             </section>
             <section id="assets-and-interaction" class="space-y-4">
                 <h2 class="text-xl font-medium">Assets and interaction</h2>
-                <p>Import the package CSS and JavaScript, or publish and load <code>sirius-ui-assets</code>.</p>
+                <p>Import the package CSS and JavaScript, or publish and load <x-sirius::code>sirius-ui-assets</x-sirius::code>.</p>
                 @include('blade-components.examples.assets')
                 <p>Chart.js 4.5.1 and its date-fns adapter are bundled. No CDN or API key is required. Charts resize when shown in Tabs, Dialog, or Slideover.</p>
                 <p>Data changes reuse the chart. Type, options, theme, or local extension changes rebuild it. Removal and Livewire navigation destroy the old instance.</p>
@@ -31,19 +31,19 @@
             <section id="explore-chart" class="space-y-4">
                 <h2 class="text-xl font-medium">Explore Chart</h2>
                 <ul class="space-y-3">
-                    <li><a href="{{ route('livewire-components.chart.data') }}" class="underline" wire:navigate>Data</a> — Prepare Eloquent or Collection data and native datasets.</li>
-                    <li><a href="{{ route('livewire-components.chart.extensions') }}" class="underline" wire:navigate>Extensions</a> — Add callbacks, formatters, and local plugins.</li>
-                    <li><a href="{{ route('livewire-components.chart.options') }}" class="underline" wire:navigate>Options</a> — Configure axes, legends, sizing, and time scales.</li>
+                    <li><x-sirius::link href="{{ route('livewire-components.chart.data') }}" wire:navigate>Data</x-sirius::link> — Prepare Eloquent or Collection data and native datasets.</li>
+                    <li><x-sirius::link href="{{ route('livewire-components.chart.extensions') }}" wire:navigate>Extensions</x-sirius::link> — Add callbacks, formatters, and local plugins.</li>
+                    <li><x-sirius::link href="{{ route('livewire-components.chart.options') }}" wire:navigate>Options</x-sirius::link> — Configure axes, legends, sizing, and time scales.</li>
                 </ul>
             </section>
             <section id="global-configuration" class="space-y-4">
                 <h2 class="text-xl font-medium">Global configuration</h2>
-                <p>Publish the config to set defaults. Number formatting uses <code>sirius-ui.locale &rarr; app.locale &rarr; app.fallback_locale &rarr; en</code>; <code>options.locale</code> overrides it. Underscores in the default locale become hyphens for Intl formatting.</p>
+                <p>Publish the config to set defaults. Number formatting uses <x-sirius::code>sirius-ui.locale &rarr; app.locale &rarr; app.fallback_locale &rarr; en</x-sirius::code>; <x-sirius::code>options.locale</x-sirius::code> overrides it. Underscores in the default locale become hyphens for Intl formatting.</p>
                 @include('livewire-components.examples.chart-config')
             </section>
             <section id="translations" class="space-y-3">
                 <h2 class="text-xl font-medium">Translations</h2>
-                <p>Edit the <code>chart</code> array in <code>lang/vendor/sirius/{locale}/sirius-ui.php</code>.</p>
+                <p>Edit the <x-sirius::code>chart</x-sirius::code> array in <x-sirius::code>lang/vendor/sirius/{locale}/sirius-ui.php</x-sirius::code>.</p>
                 @include('livewire-components.examples.chart-translations')
             </section>
         </article>

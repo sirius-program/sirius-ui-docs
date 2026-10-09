@@ -7,6 +7,6 @@
             <livewire:examples.basic-controls-example :automatic-ids="true" />
         </div>
         @include('blade-components.demos.plain-form')
-        <a href="{{ route('blade-components.choices') }}" wire:navigate>Open checkbox docs</a>
+        <x-sirius::link href="{{ route('blade-components.choices') }}" wire:navigate>Open checkbox docs</x-sirius::link>
     </main>
 </x-layouts::app>

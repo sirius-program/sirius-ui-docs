@@ -4,7 +4,7 @@
             <header class="space-y-2">
                 <p class="text-sm text-slate-500 dark:text-slate-400">FORM CONTROL</p>
                 <h1 class="text-3xl font-semibold">Select</h1>
-                <p>Searchable single or multiple selections, powered by <a href="https://tom-select.js.org/" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline">Tom Select</a>.</p>
+                <p>Searchable single or multiple selections, powered by <x-sirius::link href="https://tom-select.js.org/" target="_blank">Tom Select</x-sirius::link>.</p>
             </header>
             <section id="select-demo" class="space-y-5">
                 <h2 class="text-xl font-medium">Demo</h2>
@@ -26,7 +26,7 @@
             </section>
             <section id="assets-and-interaction" class="space-y-3">
                 <h2 class="text-xl font-medium">Assets and interaction</h2>
-                <p>Import the package CSS and JavaScript, or publish and load <code>sirius-ui-assets</code>.</p>
+                <p>Import the package CSS and JavaScript, or publish and load <x-sirius::code>sirius-ui-assets</x-sirius::code>.</p>
                 @include('blade-components.examples.assets')
                 <p>Tom Select is bundled. Without JavaScript, local options use a native select; remote search needs JavaScript.</p>
                 <p>Livewire/Alpine updates and form resets keep selections in sync. Input/change events reach the original select.</p>
@@ -34,14 +34,14 @@
             </section>
             <section id="server-search" class="space-y-3">
                 <h2 class="text-xl font-medium">Server search</h2>
-                <p>Use a same-origin JSON endpoint. Searches send <code>q</code> and a one-based <code>page</code>; label lookups send <code>values[]</code>. Return <code>options</code> and <code>hasMore</code> as shown below. Labels are plain text. Initial options avoid showing IDs while labels load.</p>
+                <p>Use a same-origin JSON endpoint. Searches send <x-sirius::code>q</x-sirius::code> and a one-based <x-sirius::code>page</x-sirius::code>; label lookups send <x-sirius::code>values[]</x-sirius::code>. Return <x-sirius::code>options</x-sirius::code> and <x-sirius::code>hasMore</x-sirius::code> as shown below. Labels are plain text. Initial options avoid showing IDs while labels load.</p>
                 @include('blade-components.examples.select-response')
                 <p>Apply the same access rules to search, label lookup, and submitted IDs. Bound query inputs and rate-limit the endpoint. The demo uses a public venue list.</p>
                 <p>New searches replace pending requests and preserve selected values. Load more fetches the next page. Status appears beside the label; failed requests show a Retry button.</p>
             </section>
             <section id="translations" class="space-y-3">
                 <h2 class="text-xl font-medium">Translations</h2>
-                <p>Edit the <code>select</code> array in <code>lang/vendor/sirius/{locale}/sirius-ui.php</code>.</p>
+                <p>Edit the <x-sirius::code>select</x-sirius::code> array in <x-sirius::code>lang/vendor/sirius/{locale}/sirius-ui.php</x-sirius::code>.</p>
                 @include('blade-components.examples.select-translations')
             </section>
         </article>

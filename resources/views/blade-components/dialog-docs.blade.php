@@ -27,25 +27,25 @@
             </section>
             <section id="assets-and-interaction" class="space-y-3">
                 <h2 class="text-xl font-medium">Assets and interaction</h2>
-                <p>Import the package CSS and JavaScript, or publish and load <code>sirius-ui-assets</code>.</p>
+                <p>Import the package CSS and JavaScript, or publish and load <x-sirius::code>sirius-ui-assets</x-sirius::code>.</p>
                 @include('blade-components.examples.assets')
-                <p>Uses native <code>dialog</code> for focus containment and inactive background content. Background scrolling is locked without removing scrollbar space; previous scroll styles and focus are restored on close or removal.</p>
+                <p>Uses native <x-sirius::code>dialog</x-sirius::code> for focus containment and inactive background content. Background scrolling is locked without removing scrollbar space; previous scroll styles and focus are restored on close or removal.</p>
                 <p>The dialog and backdrop fade in and out. Reduced-motion preferences disable the animation. Focus and scroll lock remain active until the closing fade finishes.</p>
                 <p>The body scrolls independently while the header and footer remain visible.</p>
-                <p>The header supplies the accessible name. Without a header, provide <code>aria-label</code> or <code>aria-labelledby</code>. Section IDs use the root ID plus <code>-header</code>, <code>-body</code>, or <code>-footer</code>. Use an explicit ID and <code>wire:key</code> for stable Livewire identity.</p>
+                <p>The header supplies the accessible name. Without a header, provide <x-sirius::code>aria-label</x-sirius::code> or <x-sirius::code>aria-labelledby</x-sirius::code>. Section IDs use the root ID plus <x-sirius::code>-header</x-sirius::code>, <x-sirius::code>-body</x-sirius::code>, or <x-sirius::code>-footer</x-sirius::code>. Use an explicit ID and <x-sirius::code>wire:key</x-sirius::code> for stable Livewire identity.</p>
                 <p>One Dialog, Alert, or Slideover can be active at a time. Opening another closes the previous one. Nested overlays are unsupported.</p>
             </section>
             <section id="state-and-events" class="space-y-3">
                 <h2 class="text-xl font-medium">State and events</h2>
-                <p>Use <code>data-sir-dialog-open="id"</code> on a trigger. Use <code>data-sir-dialog-close</code> inside the dialog, or give it a target ID outside. Use buttons with <code>type="button"</code> for these actions.</p>
-                <p>Alpine can bind <code>x-bind:data-open</code>. Livewire uses <code>:open</code> and the close event below; unsynchronized server renders restore the supplied state. Content and validation updates do not reset focus or reopen an active dialog.</p>
+                <p>Use <x-sirius::code>data-sir-dialog-open="id"</x-sirius::code> on a trigger. Use <x-sirius::code>data-sir-dialog-close</x-sirius::code> inside the dialog, or give it a target ID outside. Use buttons with <x-sirius::code>type="button"</x-sirius::code> for these actions.</p>
+                <p>Alpine can bind <x-sirius::code>x-bind:data-open</x-sirius::code>. Livewire uses <x-sirius::code>:open</x-sirius::code> and the close event below; unsynchronized server renders restore the supplied state. Content and validation updates do not reset focus or reopen an active dialog.</p>
                 @include('blade-components.examples.dialog-livewire')
-                <p>Dispatch <code>dialog:show</code> or <code>dialog:hide</code> on document with <code>detail: { id }</code> for programmatic control. Do not toggle the native HTML <code>open</code> attribute.</p>
-                <p><code>dialog:open</code> and <code>dialog:close</code> bubble from the component with <code>detail.id</code> and <code>detail.reason</code>. Close reasons are <code>button</code>, <code>escape</code>, <code>backdrop</code>, <code>state</code>, <code>api</code>, <code>native</code>, <code>replaced</code>, <code>removed</code>, or <code>navigation</code>. Nested requests emit <code>dialog:blocked</code>.</p>
+                <p>Dispatch <x-sirius::code>dialog:show</x-sirius::code> or <x-sirius::code>dialog:hide</x-sirius::code> on document with <x-sirius::code>detail: { id }</x-sirius::code> for programmatic control. Do not toggle the native HTML <x-sirius::code>open</x-sirius::code> attribute.</p>
+                <p><x-sirius::code>dialog:open</x-sirius::code> and <x-sirius::code>dialog:close</x-sirius::code> bubble from the component with <x-sirius::code>detail.id</x-sirius::code> and <x-sirius::code>detail.reason</x-sirius::code>. Close reasons are <x-sirius::code>button</x-sirius::code>, <x-sirius::code>escape</x-sirius::code>, <x-sirius::code>backdrop</x-sirius::code>, <x-sirius::code>state</x-sirius::code>, <x-sirius::code>api</x-sirius::code>, <x-sirius::code>native</x-sirius::code>, <x-sirius::code>replaced</x-sirius::code>, <x-sirius::code>removed</x-sirius::code>, or <x-sirius::code>navigation</x-sirius::code>. Nested requests emit <x-sirius::code>dialog:blocked</x-sirius::code>.</p>
             </section>
             <section id="translations" class="space-y-3">
                 <h2 class="text-xl font-medium">Translations</h2>
-                <p>Edit the <code>dialog</code> array in <code>lang/vendor/sirius/{locale}/sirius-ui.php</code>. This translation is used only for accessibility.</p>
+                <p>Edit the <x-sirius::code>dialog</x-sirius::code> array in <x-sirius::code>lang/vendor/sirius/{locale}/sirius-ui.php</x-sirius::code>. This translation is used only for accessibility.</p>
                 @include('blade-components.examples.dialog-translations')
             </section>
         </article>

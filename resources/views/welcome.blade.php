@@ -5,7 +5,7 @@
             <h2 class="text-3xl font-semibold">Let's get started</h2>
             <p class="text-slate-600 dark:text-slate-300">Reusable components for Laravel Blade and Livewire.</p>
             <div class="flex flex-wrap gap-3">
-                <x-sirius::button as="a" :href="route('started')" variant="primary" wire:navigate>Getting Started</x-sirius::button>
+                <x-sirius::button as="a" :href="route('started.introduction')" variant="primary" wire:navigate>Getting Started</x-sirius::button>
                 <x-sirius::button as="a" :href="route('dashboard')" variant="outline" wire:navigate>Dashboard</x-sirius::button>
             </div>
         </header>

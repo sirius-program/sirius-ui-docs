@@ -5,7 +5,7 @@
     @if ($visible)
         <x-sirius::accordion id="livewire-shipping" wire:key="shipping" trigger="Shipping details" :open="$expanded" transition
             x-on:accordion:toggle="if ($event.target === $el && $wire.expanded !== $event.detail.open) $wire.set('expanded', $event.detail.open)">
-            <a href="#tracking" id="tracking-link">Track parcel</a>
+            <x-sirius::link href="#tracking" id="tracking-link">Track parcel</x-sirius::link>
         </x-sirius::accordion>
     @endif
     <div class="flex flex-wrap gap-3">

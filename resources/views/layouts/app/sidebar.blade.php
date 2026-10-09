@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="sir-scrollbar">
     <head>@include('partials.head')</head>
     <body class="docs-shell">
-        <a href="#docs-main" class="docs-skip-link">Skip to content</a>
+        <x-sirius::link href="#docs-main" class="docs-skip-link">Skip to content</x-sirius::link>
         <aside class="docs-sidebar" data-docs-sidebar>
             <div class="docs-sidebar-brand"><x-app-logo :href="route('dashboard')" wire:navigate /></div>
             <div class="docs-sidebar-scroll"><x-docs-navigation prefix="desktop" /></div>

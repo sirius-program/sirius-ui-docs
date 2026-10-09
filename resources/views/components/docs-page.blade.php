@@ -11,7 +11,7 @@
                             <p class="text-xs font-medium text-slate-500 dark:text-slate-400">{{ $group }}</p>
                             <ul class="space-y-2">
                                 @foreach ($links as $id => $label)
-                                    <li><a href="#{{ $id }}" class="block rounded-sm text-slate-600 hover:text-slate-950 focus-visible:outline-2 focus-visible:outline-offset-4 dark:text-slate-400 dark:hover:text-white">{{ $label }}</a></li>
+                                    <li><x-sirius::link href="#{{ $id }}" class="block rounded-sm text-slate-600 hover:text-slate-950 focus-visible:outline-2 focus-visible:outline-offset-4 dark:text-slate-400 dark:hover:text-white">{{ $label }}</x-sirius::link></li>
                                 @endforeach
                             </ul>
                         </div>
@@ -21,7 +21,7 @@
         </aside>
     </div>
     <footer class="flex flex-wrap items-center justify-between gap-3 border-t border-slate-300 py-6 text-sm text-slate-500 dark:border-slate-600 dark:text-slate-400">
-        <p>Sirius UI &middot; Reusable components for Laravel Blade and Livewire. Created with ❤️ by <a href="https://fathulhusnan.com/">Fathul Husnan</a>.</p>
-        <a href="#docs-top" class="underline underline-offset-4">Back to top</a>
+        <p>Sirius UI &middot; Reusable components for Laravel Blade and Livewire. Created with ❤️ by <x-sirius::link href="https://fathulhusnan.com/">Fathul Husnan</x-sirius::link>.</p>
+        <x-sirius::link href="#docs-top" class="underline underline-offset-4">Back to top</x-sirius::link>
     </footer>
 </div>

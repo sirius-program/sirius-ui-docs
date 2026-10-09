@@ -40,12 +40,12 @@
             <section id="shared-field-contract" class="space-y-3">
                 <h2 class="text-xl font-medium">Shared field contract</h2>
                 <p>Labels, helper text, and Laravel or Livewire validation errors are linked automatically.</p>
-                <p>Use <code>&lt;x-sirius::field group&gt;</code> for checkboxes or radios to show one label, required marker, and error message. Validate selection counts on the server.</p>
+                <p>Use <x-sirius::code>&lt;x-sirius::field group&gt;</x-sirius::code> for checkboxes or radios to show one label, required marker, and error message. Validate selection counts on the server.</p>
             </section>
             <section id="assets-and-interaction" class="space-y-3">
                 <h2 class="text-xl font-medium">Asset and interaction</h2>
-                <p>Choice animations respect reduced-motion settings. Set <code>--sir-choice-duration</code> to change their speed, or <code>0ms</code> to disable them.</p>
-                <p>Import the package CSS and JavaScript, or publish and load <code>sirius-ui-assets</code>.</p>
+                <p>Choice animations respect reduced-motion settings. Set <x-sirius::code>--sir-choice-duration</x-sirius::code> to change their speed, or <x-sirius::code>0ms</x-sirius::code> to disable them.</p>
+                <p>Import the package CSS and JavaScript, or publish and load <x-sirius::code>sirius-ui-assets</x-sirius::code>.</p>
                 @include('blade-components.examples.assets')
                 <p>Controls support Livewire updates and navigation. No extra Alpine instance is needed.</p>
             </section>

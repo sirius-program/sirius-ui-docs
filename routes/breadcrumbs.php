@@ -246,9 +246,19 @@ Breadcrumbs::for('blade-components.button-group', function (BreadcrumbTrail $tra
     $trail->push('Button Group', route('blade-components.button-group'));
 });
 
+Breadcrumbs::for('blade-components.code', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.presentation');
+    $trail->push('Code', route('blade-components.code'));
+});
+
 Breadcrumbs::for('blade-components.icon', function (BreadcrumbTrail $trail): void {
     $trail->parent('blade-components.presentation');
     $trail->push('Icon', route('blade-components.icon'));
+});
+
+Breadcrumbs::for('blade-components.link', function (BreadcrumbTrail $trail): void {
+    $trail->parent('blade-components.presentation');
+    $trail->push('Link', route('blade-components.link'));
 });
 
 Breadcrumbs::for('blade-components.message', function (BreadcrumbTrail $trail): void {

@@ -12,7 +12,7 @@
             </section>
             <section id="table-usage" class="space-y-4">
                 <h2 class="text-xl font-medium">Usage</h2>
-                <p>Create a class under <code>App\Livewire</code>, extend <code>Sirius\Ui\Livewire\Table</code>, and define <code>query()</code> and <code>columns()</code>. The base class renders the table; you do not need a separate Table view or <code>render()</code> method.</p>
+                <p>Create a class under <x-sirius::code>App\Livewire</x-sirius::code>, extend <x-sirius::code>Sirius\Ui\Livewire\Table</x-sirius::code>, and define <x-sirius::code>query()</x-sirius::code> and <x-sirius::code>columns()</x-sirius::code>. The base class renders the table; you do not need a separate Table view or <x-sirius::code>render()</x-sirius::code> method.</p>
                 <x-docs-code language="Shell" source="php artisan make:class Livewire/Examples/BasicInvoiceTable" />
                 <p>The example uses the docs sample source.</p>
                 @include('livewire-components.examples.table')
@@ -22,23 +22,23 @@
             </section>
             <section id="assets-and-interaction" class="space-y-3">
                 <h2 class="text-xl font-medium">Assets and interaction</h2>
-                <p>Import the package CSS and JavaScript, or publish and load <code>sirius-ui-assets</code>.</p>
+                <p>Import the package CSS and JavaScript, or publish and load <x-sirius::code>sirius-ui-assets</x-sirius::code>.</p>
                 @include('blade-components.examples.assets')
                 <p>Search, sorting, and pagination update through Livewire. On narrow screens, rows scroll horizontally and footer controls stack.</p>
             </section>
             <section id="explore-table" class="space-y-3">
                 <h2 class="text-xl font-medium">Explore Table</h2>
                 <ul class="space-y-3">
-                    <li><a href="{{ route('livewire-components.table.bulk-actions') }}" class="underline" wire:navigate>Bulk Actions</a> — Select records across pages and pass their IDs to application-owned buttons and overlays.</li>
-                    <li><a href="{{ route('livewire-components.table.query') }}" class="underline" wire:navigate>Query</a> — Return an Eloquent Builder or a Collection, keep records scoped, and set page sizes.</li>
-                    <li><a href="{{ route('livewire-components.table.columns') }}" class="underline" wire:navigate>Columns</a> — Choose headings, searchable fields, sorting, formatters, and custom cell views.</li>
-                    <li><a href="{{ route('livewire-components.table.filters') }}" class="underline" wire:navigate>Filters</a> — Define text, select, date, time, and datetime filters, including remote options.</li>
-                    <li><a href="{{ route('livewire-components.table.row-actions') }}" class="underline" wire:navigate>Row Actions</a> — Add row buttons and connect your own links, Dialog, Alert, or Slideover.</li>
+                    <li><x-sirius::link href="{{ route('livewire-components.table.bulk-actions') }}" wire:navigate>Bulk Actions</x-sirius::link> — Select records across pages and pass their IDs to application-owned buttons and overlays.</li>
+                    <li><x-sirius::link href="{{ route('livewire-components.table.query') }}" wire:navigate>Query</x-sirius::link> — Return an Eloquent Builder or a Collection, keep records scoped, and set page sizes.</li>
+                    <li><x-sirius::link href="{{ route('livewire-components.table.columns') }}" wire:navigate>Columns</x-sirius::link> — Choose headings, searchable fields, sorting, formatters, and custom cell views.</li>
+                    <li><x-sirius::link href="{{ route('livewire-components.table.filters') }}" wire:navigate>Filters</x-sirius::link> — Define text, select, date, time, and datetime filters, including remote options.</li>
+                    <li><x-sirius::link href="{{ route('livewire-components.table.row-actions') }}" wire:navigate>Row Actions</x-sirius::link> — Add row buttons and connect your own links, Dialog, Alert, or Slideover.</li>
                 </ul>
             </section>
             <section id="translations" class="space-y-3">
                 <h2 class="text-xl font-medium">Translations</h2>
-                <p>Edit the <code>table</code> array in <code>lang/vendor/sirius/{locale}/sirius-ui.php</code>.</p>
+                <p>Edit the <x-sirius::code>table</x-sirius::code> array in <x-sirius::code>lang/vendor/sirius/{locale}/sirius-ui.php</x-sirius::code>.</p>
                 @include('livewire-components.examples.table-translations')
             </section>
         </article>

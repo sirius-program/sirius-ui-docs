@@ -21,14 +21,15 @@
             </section>
             <section id="assets-and-interaction" class="space-y-3">
                 <h2 class="text-xl font-medium">Assets and interaction</h2>
-                <p>Import the package CSS and JavaScript, or publish and load <code>sirius-ui-assets</code>.</p>
+                <p>Import the package CSS and JavaScript, or publish and load <x-sirius::code>sirius-ui-assets</x-sirius::code>.</p>
                 @include('blade-components.examples.assets')
                 <p>Menu uses ordinary links and buttons. Tab moves through visible items; click, Enter, or Space opens a submenu. Left/Right arrows enter or leave a nested section.</p>
-                <p>Works with Alpine changes, Livewire updates, and navigation. Use an explicit ID and <code>wire:key</code> for stable Livewire identity.</p>
+                <p>Use <x-sirius::code>menu.category</x-sirius::code> for a titled section and <x-sirius::code>menu.group</x-sirius::code> to group its items. Add <x-sirius::code>accordion</x-sirius::code> to make a group collapsible. Each group opens independently with click, Enter, or Space; plain groups stay visible.</p>
+                <p>Works with Alpine changes, Livewire updates, and navigation. Use an explicit ID and <x-sirius::code>wire:key</x-sirius::code> for stable Livewire identity.</p>
             </section>
             <section id="translations" class="space-y-3">
                 <h2 class="text-xl font-medium">Translations</h2>
-                <p>Edit the <code>menu</code> array in <code>lang/vendor/sirius/{locale}/sirius-ui.php</code>. This translation is used only for accessibility.</p>
+                <p>Edit the <x-sirius::code>menu</x-sirius::code> array in <x-sirius::code>lang/vendor/sirius/{locale}/sirius-ui.php</x-sirius::code>. This translation is used only for accessibility.</p>
                 @include('blade-components.examples.menu-translations')
             </section>
         </article>

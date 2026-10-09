@@ -24,21 +24,21 @@
             </section>
             <section id="assets-and-interaction" class="space-y-3">
                 <h2 class="text-xl font-medium">Assets and interaction</h2>
-                <p>Import the package CSS and JavaScript, or publish and load <code>sirius-ui-assets</code>.</p>
+                <p>Import the package CSS and JavaScript, or publish and load <x-sirius::code>sirius-ui-assets</x-sirius::code>.</p>
                 @include('blade-components.examples.assets')
                 <p>Requires a browser with the Popover API. Panels stay above scrollable content, including Dialog and Slideover. Fades respect reduced motion.</p>
                 <p>The arrow follows the trigger when the panel flips or shifts.</p>
                 <p>Click, Enter, or Space toggles the panel. Opening moves focus into its content; Escape and close actions return focus to the trigger. Outside click or tabbing out closes it without moving focus. Popover does not trap focus.</p>
-                <p>Works with Alpine changes, Livewire updates, and navigation. Use an explicit ID and <code>wire:key</code> for stable Livewire identity.</p>
+                <p>Works with Alpine changes, Livewire updates, and navigation. Use an explicit ID and <x-sirius::code>wire:key</x-sirius::code> for stable Livewire identity.</p>
             </section>
             <section id="state-and-events" class="space-y-3">
                 <h2 class="text-xl font-medium">State and events</h2>
-                <p>Listen for <code>popover:open</code> and <code>popover:close</code> on the root. Events bubble with <code>event.detail.id</code> and <code>event.detail.reason</code>. Client open state survives unrelated Livewire updates.</p>
-                <p>Put <code>data-sir-popover-close</code> on an action to close the panel. Opening another Popover closes the previous one; nested panels close before their parent.</p>
+                <p>Listen for <x-sirius::code>popover:open</x-sirius::code> and <x-sirius::code>popover:close</x-sirius::code> on the root. Events bubble with <x-sirius::code>event.detail.id</x-sirius::code> and <x-sirius::code>event.detail.reason</x-sirius::code>. Client open state survives unrelated Livewire updates.</p>
+                <p>Put <x-sirius::code>data-sir-popover-close</x-sirius::code> on an action to close the panel. Opening another Popover closes the previous one; nested panels close before their parent.</p>
             </section>
             <section id="translations" class="space-y-3">
                 <h2 class="text-xl font-medium">Translations</h2>
-                <p>Edit the <code>popover</code> array in <code>lang/vendor/sirius/{locale}/sirius-ui.php</code>. This translation is used only for accessibility.</p>
+                <p>Edit the <x-sirius::code>popover</x-sirius::code> array in <x-sirius::code>lang/vendor/sirius/{locale}/sirius-ui.php</x-sirius::code>. This translation is used only for accessibility.</p>
                 @include('blade-components.examples.popover-translations')
             </section>
         </article>

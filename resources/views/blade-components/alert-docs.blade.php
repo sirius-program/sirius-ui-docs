@@ -21,7 +21,7 @@
             </section>
             <section id="assets-and-interaction" class="space-y-3">
                 <h2 class="text-xl font-medium">Assets and interaction</h2>
-                <p>Import the package CSS and JavaScript, or publish and load <code>sirius-ui-assets</code>.</p>
+                <p>Import the package CSS and JavaScript, or publish and load <x-sirius::code>sirius-ui-assets</x-sirius::code>.</p>
                 @include('blade-components.examples.assets')
                 <p>Uses Dialog internally, without SweetAlert or another dependency. Footer actions belong to your application.</p>
                 <p>One Dialog, Alert, or Slideover can be active at a time. Opening another closes the previous one. Nested overlays are unsupported.</p>
@@ -29,14 +29,14 @@
             </section>
             <section id="state-and-events" class="space-y-3">
                 <h2 class="text-xl font-medium">State and events</h2>
-                <p>Uses the Dialog controls and events: <code>data-sir-dialog-open="id"</code>, <code>data-sir-dialog-close</code>, and <code>dialog:show</code>/<code>dialog:hide</code> with <code>detail: { id }</code>.</p>
-                <p><code>dialog:open</code> and <code>dialog:close</code> bubble from the root with <code>detail.id</code> and <code>detail.reason</code>. Alpine can bind <code>x-bind:data-open</code>; Livewire can pass <code>:open</code> and synchronize its state on close.</p>
+                <p>Uses the Dialog controls and events: <x-sirius::code>data-sir-dialog-open="id"</x-sirius::code>, <x-sirius::code>data-sir-dialog-close</x-sirius::code>, and <x-sirius::code>dialog:show</x-sirius::code>/<x-sirius::code>dialog:hide</x-sirius::code> with <x-sirius::code>detail: { id }</x-sirius::code>.</p>
+                <p><x-sirius::code>dialog:open</x-sirius::code> and <x-sirius::code>dialog:close</x-sirius::code> bubble from the root with <x-sirius::code>detail.id</x-sirius::code> and <x-sirius::code>detail.reason</x-sirius::code>. Alpine can bind <x-sirius::code>x-bind:data-open</x-sirius::code>; Livewire can pass <x-sirius::code>:open</x-sirius::code> and synchronize its state on close.</p>
                 @include('blade-components.examples.alert-binding')
-                <p>IDs default to five random characters. Use an explicit ID and <code>wire:key</code> for stable Livewire identity. Title and text use <code>id-title</code> and <code>id-text</code>; body and footer use <code>id-body</code> and <code>id-footer</code>.</p>
+                <p>IDs default to five random characters. Use an explicit ID and <x-sirius::code>wire:key</x-sirius::code> for stable Livewire identity. Title and text use <x-sirius::code>id-title</x-sirius::code> and <x-sirius::code>id-text</x-sirius::code>; body and footer use <x-sirius::code>id-body</x-sirius::code> and <x-sirius::code>id-footer</x-sirius::code>.</p>
             </section>
             <section id="translations" class="space-y-3">
                 <h2 class="text-xl font-medium">Translations</h2>
-                <p>The built-in Close button uses Dialog translations. Edit the <code>dialog</code> array in <code>lang/vendor/sirius/{locale}/sirius-ui.php</code>. This translation is used only for accessibility.</p>
+                <p>The built-in Close button uses Dialog translations. Edit the <x-sirius::code>dialog</x-sirius::code> array in <x-sirius::code>lang/vendor/sirius/{locale}/sirius-ui.php</x-sirius::code>. This translation is used only for accessibility.</p>
                 @include('blade-components.examples.dialog-translations')
             </section>
         </article>

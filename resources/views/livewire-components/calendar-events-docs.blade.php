@@ -26,20 +26,20 @@
             </section>
             <section id="visible-range" class="space-y-4">
                 <h2 class="text-xl font-medium">Visible range</h2>
-                <p><code>events(CarbonImmutable $start, CarbonImmutable $end, string $timezone): iterable</code> receives the visible range in the resolved timezone. Return serializable event arrays with unique IDs.</p>
+                <p><x-sirius::code>events(CarbonImmutable $start, CarbonImmutable $end, string $timezone): iterable</x-sirius::code> receives the visible range in the resolved timezone. Return serializable event arrays with unique IDs.</p>
                 <p>Include every event that overlaps the range: event start &lt; range end, and event end &gt; range start. The Eloquent demo uses one-day issue dates; the Collection demo also includes sessions that started before the range.</p>
                 <p>Keep permission and tenant constraints in your source. Requests are limited to 370 days; the package does not query business models.</p>
             </section>
             <section id="date-spans" class="space-y-4">
                 <h2 class="text-xl font-medium">Date spans</h2>
-                <p>Use <code>Y-m-d</code> for all-day dates and ISO-8601 dates with an offset for timed events. Ends are exclusive: an event ending on October 20 occupies dates through October 19.</p>
+                <p>Use <x-sirius::code>Y-m-d</x-sirius::code> for all-day dates and ISO-8601 dates with an offset for timed events. Ends are exclusive: an event ending on October 20 occupies dates through October 19.</p>
                 <p>A missing end stays null; FullCalendar uses its configured display duration. Each event must contain JSON-compatible values.</p>
             </section>
             <section id="recurrence" class="space-y-4">
                 <h2 class="text-xl font-medium">Recurrence</h2>
-                <p>Simple daily/weekly schedules use <code>daysOfWeek</code>, optional times, and a recurrence date range. Recurring definitions are read-only by default.</p>
+                <p>Simple daily/weekly schedules use <x-sirius::code>daysOfWeek</x-sirius::code>, optional times, and a recurrence date range. Recurring definitions are read-only by default.</p>
                 <p>Recurring times are local to the calendar timezone. Return expanded events with explicit offsets and unique IDs when a series must keep its own timezone or support individual exceptions.</p>
-                <p>Override protected <code>recurringEditable()</code> only when your edit hooks enforce an occurrence/series policy. RRule and Premium resource views are outside this release.</p>
+                <p>Override protected <x-sirius::code>recurringEditable()</x-sirius::code> only when your edit hooks enforce an occurrence/series policy. RRule and Premium resource views are outside this release.</p>
             </section>
         </article>
     </x-docs-page>

@@ -104,7 +104,9 @@ Route::view('blade-components/avatar', 'blade-components.avatar-docs')->name('bl
 Route::view('blade-components/badge', 'blade-components.badge-docs')->name('blade-components.badge');
 Route::view('blade-components/button', 'blade-components.button-docs')->name('blade-components.button');
 Route::view('blade-components/button-group', 'blade-components.button-group-docs')->name('blade-components.button-group');
+Route::view('blade-components/code', 'blade-components.code-docs')->name('blade-components.code');
 Route::view('blade-components/icon', 'blade-components.icon-docs')->name('blade-components.icon');
+Route::view('blade-components/link', 'blade-components.link-docs')->name('blade-components.link');
 Route::view('blade-components/message', 'blade-components.message-docs')->name('blade-components.message');
 Route::view('blade-components/popover', 'blade-components.popover-docs')->name('blade-components.popover');
 Route::view('blade-components/skeleton', 'blade-components.skeleton-docs')->name('blade-components.skeleton');

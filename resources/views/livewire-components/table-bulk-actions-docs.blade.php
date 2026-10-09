@@ -29,7 +29,7 @@
             </section>
             <section id="application-handlers" class="space-y-3">
                 <h2 class="text-xl font-medium">Application handlers</h2>
-                <p>Render your Dialog, Alert, or Slideover in a parent component. Encode <code>$selectedIds</code> with <code>Js::from()</code> for event payloads, or pass them as link parameters.</p>
+                <p>Render your Dialog, Alert, or Slideover in a parent component. Encode <x-sirius::code>$selectedIds</x-sirius::code> with <x-sirius::code>Js::from()</x-sirius::code> for event payloads, or pass them as link parameters.</p>
                 <p>Validate the IDs, re-query within the user's scope, and authorize each record when executing. Checked IDs are input, not permission. The demo checks its workspace; add your application's policies or gates.</p>
                 <p>Your application owns confirmation, mutations, CSV exports, transactions, retries, and feedback. Set and clear external loading on success, failure, and cancellation, then request refresh and selection cleanup explicitly.</p>
                 <p>The navigation example reloads this page with the selected IDs and displays their scoped invoice numbers. It does not restore Table selection from the URL.</p>

@@ -18,21 +18,21 @@
             <section id="tabs-attributes">@include('blade-components.attributes.tabs')</section>
             <section id="assets-and-interaction" class="space-y-3">
                 <h2 class="text-xl font-medium">Assets and interaction</h2>
-                <p>Import the package CSS and JavaScript, or publish and load <code>sirius-ui-assets</code>.</p>
+                <p>Import the package CSS and JavaScript, or publish and load <x-sirius::code>sirius-ui-assets</x-sirius::code>.</p>
                 @include('blade-components.examples.assets')
                 <p>Use Left/Right arrows for horizontal tabs and Up/Down for vertical tabs. Home and End move to the first and last enabled tab. Tab moves into the selected panel.</p>
                 <p>All panels are rendered and stay in the DOM. Switching hides inactive panels and removes them from keyboard navigation; form values are preserved. Hidden controls remain part of form submission. Applications handle validation and select the panel containing an invalid field.</p>
-                <p>Works with Alpine changes, Livewire updates, and navigation. Use an explicit ID and <code>wire:key</code> for stable Livewire identity.</p>
+                <p>Works with Alpine changes, Livewire updates, and navigation. Use an explicit ID and <x-sirius::code>wire:key</x-sirius::code> for stable Livewire identity.</p>
             </section>
             <section id="state-and-events" class="space-y-3">
                 <h2 class="text-xl font-medium">State and events</h2>
-                <p>Listen for <code>tabs:change</code> on the wrapper. Events bubble with <code>detail.id</code>, <code>detail.value</code>, <code>detail.previous</code>, and <code>detail.reason</code>. Local selection survives unrelated Livewire updates; changes to <code>active</code> select the requested panel.</p>
+                <p>Listen for <x-sirius::code>tabs:change</x-sirius::code> on the wrapper. Events bubble with <x-sirius::code>detail.id</x-sirius::code>, <x-sirius::code>detail.value</x-sirius::code>, <x-sirius::code>detail.previous</x-sirius::code>, and <x-sirius::code>detail.reason</x-sirius::code>. Local selection survives unrelated Livewire updates; changes to <x-sirius::code>active</x-sirius::code> select the requested panel.</p>
                 @include('blade-components.examples.tabs-binding')
-                <p>For Alpine, bind <code>x-bind:data-active</code> and update your state from <code>tabs:change</code>. Check <code>$event.target === $el</code> when nesting Tabs.</p>
+                <p>For Alpine, bind <x-sirius::code>x-bind:data-active</x-sirius::code> and update your state from <x-sirius::code>tabs:change</x-sirius::code>. Check <x-sirius::code>$event.target === $el</x-sirius::code> when nesting Tabs.</p>
             </section>
             <section id="translations" class="space-y-3">
                 <h2 class="text-xl font-medium">Translations</h2>
-                <p>Edit the <code>tabs</code> array in <code>lang/vendor/sirius/{locale}/sirius-ui.php</code>. This translation is used only for accessibility.</p>
+                <p>Edit the <x-sirius::code>tabs</x-sirius::code> array in <x-sirius::code>lang/vendor/sirius/{locale}/sirius-ui.php</x-sirius::code>. This translation is used only for accessibility.</p>
                 @include('blade-components.examples.tabs-translations')
             </section>
         </article>

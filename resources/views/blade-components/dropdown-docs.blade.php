@@ -24,16 +24,16 @@
             </section>
             <section id="assets-and-interaction" class="space-y-3">
                 <h2 class="text-xl font-medium">Assets and interaction</h2>
-                <p>Import the package CSS and JavaScript, or publish and load <code>sirius-ui-assets</code>.</p>
+                <p>Import the package CSS and JavaScript, or publish and load <x-sirius::code>sirius-ui-assets</x-sirius::code>.</p>
                 @include('blade-components.examples.assets')
                 <p>Enter, Space, or Down/Up opens the menu. Up/Down, Home/End, and typing a name move focus; Right/Left enters or leaves a submenu. Escape closes the current menu, and Tab leaves it. Disabled items remain focusable but cannot run actions.</p>
                 <p>Actions close the menu and return focus to its trigger. Outside click closes it without moving focus. Opening another Dropdown closes the previous one. Submenus support touch and menus can scroll; fades respect reduced motion.</p>
-                <p>Works with Alpine changes, Livewire updates, and navigation. Use an explicit ID and <code>wire:key</code> for stable Livewire identity.</p>
+                <p>Works with Alpine changes, Livewire updates, and navigation. Use an explicit ID and <x-sirius::code>wire:key</x-sirius::code> for stable Livewire identity.</p>
             </section>
             <section id="state-and-events" class="space-y-3">
                 <h2 class="text-xl font-medium">State and events</h2>
-                <p>Listen for <code>dropdown:open</code> and <code>dropdown:close</code> on the root. Both events bubble and include <code>event.detail.id</code>. Client open state survives unrelated Livewire updates.</p>
-                <p>Dropdown items use action-menu semantics; use Menu for persistent page navigation. Put badges or shortcuts in <code>trailing</code>, and keep item content free of nested interactive controls.</p>
+                <p>Listen for <x-sirius::code>dropdown:open</x-sirius::code> and <x-sirius::code>dropdown:close</x-sirius::code> on the root. Both events bubble and include <x-sirius::code>event.detail.id</x-sirius::code>. Client open state survives unrelated Livewire updates.</p>
+                <p>Dropdown items use action-menu semantics; use Menu for persistent page navigation. Put badges or shortcuts in <x-sirius::code>trailing</x-sirius::code>, and keep item content free of nested interactive controls.</p>
             </section>
         </article>
     </x-docs-page>
