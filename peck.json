@@ -15,7 +15,8 @@
             "lucide",
             "renderer",
             "submenus",
-            "ofl"
+            "ofl",
+            "scrollbar"
         ],
         "paths": []
     }
