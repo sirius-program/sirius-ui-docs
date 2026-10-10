@@ -85,55 +85,53 @@ This app ships a frontend stack, so the items below apply.
     - Hint: `ls app/View/Components`; grep `<x-`, `@include` in `resources/views`.
 30. Livewire component format: Volt functional/class components, native Livewire 4 single-file (SFC), multi-file (MFC), view-based, or class-based components. Evaluate full-page vs nested separately because it is an independent usage choice.
     - Hint: check the installed Livewire major and `livewire/volt`; inspect `app/Livewire`, `resources/views/livewire`, and Livewire 4 component/page directories for `@volt`, SFC, MFC, view-based, and class-based formats.
-31. UI kit (Flux): Flux components vs custom components vs another library.
-    - Hint: grep `<flux:` in `resources/views`.
-32. Localization: short keys (`lang/*/*.php` + `__('messages.welcome')`) vs JSON string keys (`lang/*.json` + `__('Full sentence')`).
+31. Localization: short keys (`lang/*/*.php` + `__('messages.welcome')`) vs JSON string keys (`lang/*.json` + `__('Full sentence')`).
     - Hint: `ls lang`; grep dotted `__('` vs sentence keys.
 
 ## G. Database & migrations
 
-33. Foreign keys: `foreignId()->constrained()` vs `foreignIdFor(Model::class)` vs manual `foreign()->references()->on()`.
+32. Foreign keys: `foreignId()->constrained()` vs `foreignIdFor(Model::class)` vs manual `foreign()->references()->on()`.
     - Hint: grep `foreignId(`, `foreignIdFor(`, `->foreign(` in `database/migrations`.
-34. `down()` methods: real reverse logic vs omitted / one-way migrations.
+33. `down()` methods: real reverse logic vs omitted / one-way migrations.
     - Hint: grep `function down` vs the migration count.
-35. Enum storage: DB `enum()` column vs `string()` + PHP-enum cast on the model.
+34. Enum storage: DB `enum()` column vs `string()` + PHP-enum cast on the model.
     - Hint: grep `->enum(` in migrations vs string columns cast to enums.
-36. Transactions: `DB::transaction(fn ...)` closure vs manual `beginTransaction` / `commit` / `rollBack`.
+35. Transactions: `DB::transaction(fn ...)` closure vs manual `beginTransaction` / `commit` / `rollBack`.
     - Hint: grep `DB::transaction`, `beginTransaction` in `app/`.
-37. Idempotent writes: `upsert` / `updateOrCreate` / `firstOrCreate` vs find-then-save.
+36. Idempotent writes: `upsert` / `updateOrCreate` / `firstOrCreate` vs find-then-save.
     - Hint: grep `upsert(`, `updateOrCreate(`, `firstOrCreate(` in `app/`.
 
 ## H. Testing
 
-38. Framework: Pest (`it()` / `test()` / `expect()`) vs PHPUnit classes.
+37. Framework: Pest (`it()` / `test()` / `expect()`) vs PHPUnit classes.
     - Hint: `ls tests/Pest.php`; grep `it(` / `test(` vs `extends TestCase`.
-39. DB reset: `RefreshDatabase` vs `DatabaseTruncation` vs `DatabaseMigrations`.
+38. DB reset: `RefreshDatabase` vs `DatabaseTruncation` vs `DatabaseMigrations`.
     - Hint: grep those trait names in `tests/`.
-40. Fixtures: compare how equivalent test-owned records are created, such as factories vs manual inserts. Track seeders separately for shared reference data because `$this->seed()` commonly and legitimately coexists with factories.
+39. Fixtures: compare how equivalent test-owned records are created, such as factories vs manual inserts. Track seeders separately for shared reference data because `$this->seed()` commonly and legitimately coexists with factories.
     - Hint: grep `::factory(` and direct inserts in `tests/`; separately inspect `$this->seed(` calls and what those seeders provide.
-41. Collaborator isolation: how the app doubles its own classes, Mockery `mock()` / `spy()` vs real integration. Ignore facade fakes like `Mail::fake()` here, they isolate framework services by default and are not a fork against Mockery.
+40. Collaborator isolation: how the app doubles its own classes, Mockery `mock()` / `spy()` vs real integration. Ignore facade fakes like `Mail::fake()` here, they isolate framework services by default and are not a fork against Mockery.
     - Hint: grep `->mock(`, `->spy(`, `Mockery::` in `tests/`.
-42. Endpoint assertions: array `assertJson([...])` / `assertJsonFragment` vs fluent `AssertableJson`.
+41. Endpoint assertions: array `assertJson([...])` / `assertJsonFragment` vs fluent `AssertableJson`.
     - Hint: grep `AssertableJson`, `assertJsonFragment` in `tests/`.
 
 ## I. Responses & API resources
 
-43. Response shape: API Resource classes vs `response()->json()` vs returning models/arrays directly.
+42. Response shape: API Resource classes vs `response()->json()` vs returning models/arrays directly.
     - Hint: `ls app/Http/Resources`; grep `JsonResource`, `->json(` in controllers.
-44. Resource relationship inclusion: `whenLoaded()` guards vs unconditional relationship access. Do not count ordinary scalar attributes as rivals to conditional relationships, and evaluate general `when()` fields separately.
+43. Resource relationship inclusion: `whenLoaded()` guards vs unconditional relationship access. Do not count ordinary scalar attributes as rivals to conditional relationships, and evaluate general `when()` fields separately.
     - Hint: compare relationship fields using `whenLoaded(` with unconditional relationship property access in `app/Http/Resources`.
-45. Pagination contracts: within comparable endpoint categories, length-aware `paginate()` vs `simplePaginate()` vs `cursorPaginate()`. These have different totals, navigation, ordering, and performance contracts, so record only a stable path-scoped API policy, never a project-wide majority.
+44. Pagination contracts: within comparable endpoint categories, length-aware `paginate()` vs `simplePaginate()` vs `cursorPaginate()`. These have different totals, navigation, ordering, and performance contracts, so record only a stable path-scoped API policy, never a project-wide majority.
     - Hint: grep those in `app/`, then group matches by endpoint type and client contract before comparing them.
-46. Web redirects/URLs: `route('name')` vs `url('/path')` vs `action([...])`.
+45. Web redirects/URLs: `route('name')` vs `url('/path')` vs `action([...])`.
     - Hint: grep `route('`, `url('/`, `action([` in `app/Http` and views.
 
 ## J. Strings, collections & dates
 
-47. Iteration idiom: `collect()->map()->filter()` pipelines vs `array_map` / `foreach`.
+46. Iteration idiom: `collect()->map()->filter()` pipelines vs `array_map` / `foreach`.
     - Hint: grep `collect(`, `->map(` vs `array_map`, `foreach` density in `app/`.
-48. String API: fluent `Str::of()->...` (Stringable) vs static `Str::` vs native (`trim`, `strtoupper`).
+47. String API: fluent `Str::of()->...` (Stringable) vs static `Str::` vs native (`trim`, `strtoupper`).
     - Hint: grep `Str::of(` vs `Str::` vs native string funcs.
-49. Dates: compare equivalent construction call styles (`now()` / `today()` helpers vs `Carbon::`) separately from the application's mutable/immutable date policy. `Date::use(CarbonImmutable::class)` can make helpers return immutable dates, so those signals are complementary rather than conflicting.
+48. Dates: compare equivalent construction call styles (`now()` / `today()` helpers vs `Carbon::`) separately from the application's mutable/immutable date policy. `Date::use(CarbonImmutable::class)` can make helpers return immutable dates, so those signals are complementary rather than conflicting.
     - Hint: grep `now(` and `Carbon::` for call style; separately inspect `CarbonImmutable` and `Date::use` for mutability policy.
 
 ---

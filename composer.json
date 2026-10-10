@@ -8,16 +8,7 @@
         "framework"
     ],
     "license": "MIT",
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../sirius-ui",
-            "options": {
-                "symlink": true,
-                "versions": {"sirius/ui": "dev-main"}
-            }
-        }
-    ],
+    "repositories": [],
     "require": {
         "php": "^8.3",
         "diglactic/laravel-breadcrumbs": "^10.1",
@@ -26,7 +17,7 @@
         "laravel/tinker": "^3.0",
         "livewire/blaze": "^1.0",
         "livewire/livewire": "^4.1",
-        "sirius/ui": "dev-main",
+        "sirius/ui": "^0.1",
         "symfony/html-sanitizer": "^7.4.18"
     },
     "require-dev": {
