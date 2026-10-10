@@ -9,7 +9,7 @@
         <x-sirius::menu.item icon="heroicon-s-clock" :link="route('started.changelog')" :active="request()->routeIs('started.changelog')" wire:navigate>Changelog</x-sirius::menu.item>
     </x-sirius::menu.category>
     <x-sirius::menu.category :title="__('Blade Components')" class="docs-nav-section">
-        <x-sirius::menu.item :id="$prefix.'-group-2'" name="Form Control" :open="request()->routeIs('blade-components.label', 'blade-components.input', 'blade-components.textarea', 'blade-components.choices', 'blade-components.slider', 'blade-components.currency', 'blade-components.datetime-picker', 'blade-components.phone', 'blade-components.select', 'blade-components.file-upload', 'blade-components.richtext', 'blade-components.form')"  class="docs-nav-group" transition>
+        <x-sirius::menu.item icon="heroicon-s-pencil-square" :id="$prefix.'-group-2'" name="Form Control" :open="request()->routeIs('blade-components.label', 'blade-components.input', 'blade-components.textarea', 'blade-components.choices', 'blade-components.slider', 'blade-components.currency', 'blade-components.datetime-picker', 'blade-components.phone', 'blade-components.select', 'blade-components.file-upload', 'blade-components.richtext', 'blade-components.form')"  class="docs-nav-group" transition>
             <x-slot:submenu>
                 <x-sirius::menu.item :link="route('blade-components.form')" :active="request()->routeIs('blade-components.form')" wire:navigate>Form</x-sirius::menu.item>
                 <x-sirius::menu.item :link="route('blade-components.label')" :active="request()->routeIs('blade-components.label')" wire:navigate>Label</x-sirius::menu.item>
@@ -25,7 +25,7 @@
                 <x-sirius::menu.item :link="route('blade-components.textarea')" :active="request()->routeIs('blade-components.textarea')" wire:navigate>Textarea</x-sirius::menu.item>
             </x-slot:submenu>
         </x-sirius::menu.item>
-        <x-sirius::menu.item :id="$prefix.'-group-3'" name="Presentation" :open="request()->routeIs('blade-components.alert', 'blade-components.avatar', 'blade-components.skeleton', 'blade-components.icon', 'blade-components.button', 'blade-components.button-group', 'blade-components.code', 'blade-components.link', 'blade-components.badge', 'blade-components.message', 'blade-components.popover', 'blade-components.timeline', 'blade-components.toast', 'blade-components.tooltip')"  class="docs-nav-group" transition>
+        <x-sirius::menu.item icon="heroicon-s-sparkles" :id="$prefix.'-group-3'" name="Presentation" :open="request()->routeIs('blade-components.alert', 'blade-components.avatar', 'blade-components.skeleton', 'blade-components.icon', 'blade-components.button', 'blade-components.button-group', 'blade-components.code', 'blade-components.link', 'blade-components.badge', 'blade-components.message', 'blade-components.popover', 'blade-components.timeline', 'blade-components.toast', 'blade-components.tooltip')"  class="docs-nav-group" transition>
             <x-slot:submenu>
                 <x-sirius::menu.item :link="route('blade-components.alert')" :active="request()->routeIs('blade-components.alert')" wire:navigate>Alert</x-sirius::menu.item>
                 <x-sirius::menu.item :link="route('blade-components.avatar')" :active="request()->routeIs('blade-components.avatar')" wire:navigate>Avatar</x-sirius::menu.item>
@@ -43,7 +43,7 @@
                 <x-sirius::menu.item :link="route('blade-components.tooltip')" :active="request()->routeIs('blade-components.tooltip')" wire:navigate>Tooltip</x-sirius::menu.item>
             </x-slot:submenu>
         </x-sirius::menu.item>
-        <x-sirius::menu.item :id="$prefix.'-group-4'" name="Layout" :open="request()->routeIs('blade-components.card', 'blade-components.accordion', 'blade-components.breadcrumb', 'blade-components.dialog', 'blade-components.dropdown', 'blade-components.menu', 'blade-components.separator', 'blade-components.slideover', 'blade-components.tabs')"  class="docs-nav-group" transition>
+        <x-sirius::menu.item icon="heroicon-s-rectangle-group" :id="$prefix.'-group-4'" name="Layout" :open="request()->routeIs('blade-components.card', 'blade-components.accordion', 'blade-components.breadcrumb', 'blade-components.dialog', 'blade-components.dropdown', 'blade-components.menu', 'blade-components.separator', 'blade-components.slideover', 'blade-components.tabs')"  class="docs-nav-group" transition>
             <x-slot:submenu>
                 <x-sirius::menu.item :link="route('blade-components.accordion')" :active="request()->routeIs('blade-components.accordion')" wire:navigate>Accordion</x-sirius::menu.item>
                 <x-sirius::menu.item :link="route('blade-components.breadcrumb')" :active="request()->routeIs('blade-components.breadcrumb')" wire:navigate>Breadcrumb</x-sirius::menu.item>
@@ -58,7 +58,7 @@
         </x-sirius::menu.item>
     </x-sirius::menu.category>
     <x-sirius::menu.category :title="__('Livewire Components')" class="docs-nav-section">
-        <x-sirius::menu.item :id="$prefix.'-group-6'" name="Calendar" :open="request()->routeIs('livewire-components.calendar', 'livewire-components.calendar.*')"  class="docs-nav-group" transition>
+        <x-sirius::menu.item icon="heroicon-s-calendar" :id="$prefix.'-group-6'" name="Calendar" :open="request()->routeIs('livewire-components.calendar', 'livewire-components.calendar.*')"  class="docs-nav-group" transition>
             <x-slot:submenu>
                 <x-sirius::menu.item :link="route('livewire-components.calendar')" :active="request()->routeIs('livewire-components.calendar')" wire:navigate>Overview</x-sirius::menu.item>
                 <x-sirius::menu.item :link="route('livewire-components.calendar.actions')" :active="request()->routeIs('livewire-components.calendar.actions')" wire:navigate>Actions</x-sirius::menu.item>
@@ -66,7 +66,7 @@
                 <x-sirius::menu.item :link="route('livewire-components.calendar.options')" :active="request()->routeIs('livewire-components.calendar.options')" wire:navigate>Options</x-sirius::menu.item>
             </x-slot:submenu>
         </x-sirius::menu.item>
-        <x-sirius::menu.item :id="$prefix.'-group-7'" name="Chart" :open="request()->routeIs('livewire-components.chart', 'livewire-components.chart.*')"  class="docs-nav-group" transition>
+        <x-sirius::menu.item icon="heroicon-s-chart-bar" :id="$prefix.'-group-7'" name="Chart" :open="request()->routeIs('livewire-components.chart', 'livewire-components.chart.*')"  class="docs-nav-group" transition>
             <x-slot:submenu>
                 <x-sirius::menu.item :link="route('livewire-components.chart')" :active="request()->routeIs('livewire-components.chart')" wire:navigate>Overview</x-sirius::menu.item>
                 <x-sirius::menu.item :link="route('livewire-components.chart.data')" :active="request()->routeIs('livewire-components.chart.data')" wire:navigate>Data</x-sirius::menu.item>
@@ -74,7 +74,7 @@
                 <x-sirius::menu.item :link="route('livewire-components.chart.options')" :active="request()->routeIs('livewire-components.chart.options')" wire:navigate>Options</x-sirius::menu.item>
             </x-slot:submenu>
         </x-sirius::menu.item>
-        <x-sirius::menu.item :id="$prefix.'-group-8'" name="Table" :open="request()->routeIs('livewire-components.table', 'livewire-components.table.*')"  class="docs-nav-group" transition>
+        <x-sirius::menu.item icon="heroicon-s-table-cells" :id="$prefix.'-group-8'" name="Table" :open="request()->routeIs('livewire-components.table', 'livewire-components.table.*')"  class="docs-nav-group" transition>
             <x-slot:submenu>
                 <x-sirius::menu.item :link="route('livewire-components.table')" :active="request()->routeIs('livewire-components.table')" wire:navigate>Overview</x-sirius::menu.item>
                 <x-sirius::menu.item :link="route('livewire-components.table.query')" :active="request()->routeIs('livewire-components.table.query')" wire:navigate>Query</x-sirius::menu.item>
