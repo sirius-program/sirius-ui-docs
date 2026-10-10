@@ -6,4 +6,4 @@
         ['trigger-class', 'string', 'empty string', 'Additional classes for the trigger.'],
         ['content-class', 'string', 'empty string', 'Additional classes for the content.']
     ]" />
-</d>
+</div>

@@ -81,6 +81,8 @@ The 2026-10-09 documentation baseline passes `composer test` (221 tests / 1,366 
 
 The 2026-10-10 landing-page checks pass `composer test` (257 tests / 1,757 assertions, plus Pint/PHPStan/Rector), package and docs builds, and the full local Chromium browser suite (280 tests / 2,987 assertions, without warnings). Phase 6 is complete in the implementation plan.
 
+Final local validation on 2026-10-10 completes all eight phases: package quality gate 793 tests / 2,563 assertions, docs quality gate 257 tests / 1,757 assertions, and full Chromium browser gate 280 tests / 2,987 assertions without warnings. Six Laravel 12/13 and PHP 8.3/8.4/8.5 package-suite runs, package-first builds, clean Composer/npm audits, source-distribution checks, and a fresh mirrored consumer (24 tests / 123 assertions) also pass. The [release checklist](RELEASE_CHECKLIST.md) records exact versions, logs, and limits. Publication remains separate: commit/push the reviewed package, refresh the docs lock reference, and obtain remote CI results before tagging/deploying.
+
 Run `composer test` in each changed project. Once all those checks pass, run `composer test:browser` in docs and wait for completion. Use `npm run build` after frontend changes; it also refreshes third-party license notices.
 
 Browser tests use two workers, matching CI. The browser script disables Composer's process timeout so the full suite can finish. Run Pest invocations sequentially: the browser plugin shares temporary Playwright server metadata, and a concurrent invocation can interrupt the active browser suite.

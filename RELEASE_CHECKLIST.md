@@ -1,6 +1,21 @@
 # Release checklist
 
-The audit below records local candidate validation from 2026-10-08, before the documentation cleanup. These results are historical evidence, not a passing baseline for later changes. Current work and verification are tracked in the [implementation plan](IMPLEMENTATION_PLAN.md). No release has been published.
+Current local validation is recorded in the 2026-10-10 section below. Older sections retain dated historical evidence. Completed work and verification are tracked in the [implementation plan](IMPLEMENTATION_PLAN.md). Publication steps remain pending; no release has been published.
+
+## Final refresh verification — 2026-10-10
+
+- [x] Complete all eight phases of the current implementation plan and review new APIs, examples, translations, skill references, source-rendered pages, navigation, and landing behavior.
+- [x] Package quality gate: 793 tests / 2,563 assertions; docs quality gate: 257 tests / 1,757 assertions. Formatting, PHPStan, and Rector pass in both projects.
+- [x] Full local Chromium browser gate: 280 tests / 2,987 assertions, without warnings, in 246 seconds. Existing tests are retained.
+- [x] Current package suite: 793 tests / 2,563 assertions in each of six combinations of Laravel 12.69.3/13.35.0 and PHP 8.3.33/8.4.26/8.5.10 on Windows. Existing dependency installations were reused with current source/tests.
+- [x] Package-first asset builds pass. Three distribution files and two generated metadata files are identical across consecutive package builds.
+- [x] Composer/npm audits are clean in both main projects. Composer metadata validates; the exact Heroicons pin remains a general warning. No dependency versions or advisory ignores changed.
+- [x] Source candidate includes 222 files, compiled assets, translations, licenses/notices, and all eleven skill Markdown files; it excludes root dependencies, tests, CI, caches, and environment files.
+- [x] Fresh mirrored consumer installs the candidate with Laravel 13.35.0 / Livewire 4.4.7, publishes assets/config/translations, installs Codex/Claude Code skill files, and passes 24 tests / 123 assertions with cached configuration. All package files and 29 published/skill integrity checks match source.
+- [x] Corrected documentation forwarding/ID details, Icon accessibility wording, Accordion markup, and Code/Link names in the existing changelog catalogs. No new release/version/date was invented.
+- [x] Restored the docs lock reference/installation metadata after a misdirected fixture command. Main manifests and locks have no diff; evaluation files are retained in ignored project caches.
+
+The evaluation candidate is based on package commit `dd3a56a` plus its changelog-only working-tree correction. Docs currently locks `ced0a28` while its linked local source is `dd3a56a`. These are local results; refresh the docs lock to the final reviewed package commit after pushing that commit, then obtain remote CI results. Rebuild/archive the selected release commit before publication. The publication steps below remain pending.
 
 ## Code/Link phase verification — 2026-10-09
 
@@ -48,7 +63,7 @@ Logs are retained under the ignored `.phpunit.cache` directory. Package compatib
 
 ## Before publication
 
-- [ ] Choose the release version and review the [unreleased changelog](CHANGELOG.md).
+- [ ] Choose the release version and review the [candidate changelog](CHANGELOG.md).
 - [ ] Review and commit the final changes, including generated assets and lock files where tracked.
 - [ ] Push the package commit first, refresh `sirius/ui` in the docs lock file to that commit, then push docs so its CI checkout references the reviewed source.
 - [ ] Obtain successful remote CI results for the release commit.

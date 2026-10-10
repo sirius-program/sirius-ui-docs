@@ -20,5 +20,5 @@
         ['title', 'string', 'Required', 'Section heading.'],
         ['icon', 'string | null', 'null', 'Blade icon beside the heading.']
     ]" />
-    <p>Place items inside a category and nested items inside the submenu slot. List markup is generated for you. Item attributes, including wire:key, apply to the link or button. Use x-bind:open on a submenu trigger to bind its state with Alpine.</p>
+    <p>Place items inside a category and nested items inside the submenu slot. List markup is generated for you. Parent attributes apply to nav; category attributes apply to li. Item attributes, including wire:key, apply to the link or button. Use x-bind:open on a submenu trigger to bind its state with Alpine.</p>
 </div>
