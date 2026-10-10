@@ -22,7 +22,7 @@
                 <p>All contexts contain calendar <x-sirius::code>id</x-sirius::code> and <x-sirius::code>timezone</x-sirius::code>. Date/range contexts add <x-sirius::code>start</x-sirius::code>, nullable <x-sirius::code>end</x-sirius::code>, and <x-sirius::code>allDay</x-sirius::code>. Event contexts add <x-sirius::code>eventId</x-sirius::code> and the server-loaded <x-sirius::code>record</x-sirius::code>.</p>
                 <p>Event clicks also include an <x-sirius::code>occurrence</x-sirius::code> span for the clicked date, including recurring instances. Event URLs require a redirect from <x-sirius::code>onEventClick()</x-sirius::code>.</p>
                 <p>The demo parent listens for the subclass's events and owns the create/edit/delete form.</p>
-                <x-docs-code language="PHP" :source="file_get_contents(app_path('Livewire/Examples/CalendarActions.php'))" />
+                @include('livewire-components.examples.calendar-parent')
                 <x-docs-example view="livewire-components.demos.calendar" />
             </section>
             <section id="saving-changes" class="space-y-4">
@@ -34,7 +34,7 @@
             <section id="refresh" class="space-y-4">
                 <h2 class="text-xl font-medium">Refresh</h2>
                 <p>Call <x-sirius::code>refreshCalendar()</x-sirius::code> on the subclass, or dispatch <x-sirius::code>calendar:refresh.{id}</x-sirius::code> after an external form saves. Refresh keeps the current date and view.</p>
-                <x-docs-code language="PHP" source="$this->dispatch('calendar:refresh.team-calendar');" />
+                @include('livewire-components.examples.calendar-refresh')
             </section>
         </article>
     </x-docs-page>

@@ -1,5 +1,4 @@
-<section class="min-w-0 space-y-3" data-docs-props>
-    <h3 class="text-xl font-medium">Attributes</h3>
+<div class="min-w-0 space-y-3" data-docs-props>
     <x-docs-props :rows="[
         ['country', 'string | array', 'sirius-ui.phone_country → sirius-ui.locale → app.locale → app.fallback_locale → US', 'A country, regional locale, non-empty country list, or * for all supported countries. One country gives a fixed prefix; multiple countries give a fixed-width select with a five-character text area and ellipsis.'],
         ['delimiter', 'space | - | . | empty string', 'space', 'Display separator between metadata-defined digit groups; never included in the canonical value.'],
@@ -18,4 +17,4 @@
         ['control-size', 'integer | null', 'null', 'HTML size: approximate width in characters. Does not limit text length.'],
         ['wrapper-class', 'string', 'empty string', 'CSS classes for the field wrapper.'],
     ]" note="Accepts HTML5 input attributes, Alpine events, data-*, ARIA, and supported Livewire bindings. Models receive the international value; maxlength and pattern apply to displayed text. Type and country-prefix rendering are managed by the package." />
-</section>
+</div>

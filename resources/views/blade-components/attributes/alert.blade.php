@@ -1,5 +1,4 @@
-<section class="min-w-0 space-y-3" data-docs-props>
-    <h3 class="text-xl font-medium">Attributes</h3>
+<div class="min-w-0 space-y-3" data-docs-props>
     <x-docs-props :rows="[
         ['text', 'string', 'required', 'Plain text for the prompt. HTML is escaped.'],
         ['title', 'string | null', 'null', 'Optional heading between the icon and text. HTML is escaped.'],
@@ -13,4 +12,4 @@
         ['close-on-backdrop', 'boolean', 'true', 'Allow a click outside the dialog to close it.'],
         ['initial-focus', 'string | null', 'null', 'CSS selector inside the dialog. Falls back to autofocus or native initial focus when unavailable.'],
     ]" />
-</section>
+</div>

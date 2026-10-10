@@ -19,7 +19,8 @@
                 <h2 class="text-xl font-medium">Usage</h2>
                 @include('blade-components.examples.card')
             </section>
-            <section id="card-attributes">
+            <section id="card-attributes" class="space-y-3">
+                <h2 class="text-xl font-medium">Attributes</h2>
                 @include('blade-components.attributes.card')
             </section>
             <section id="interaction" class="space-y-3">

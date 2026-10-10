@@ -15,7 +15,7 @@
             <section id="calendar-usage" class="space-y-4">
                 <h2 class="text-xl font-medium">Usage</h2>
                 <p>Create a class under <x-sirius::code>App\Livewire</x-sirius::code>, extend <x-sirius::code>Sirius\Ui\Livewire\Calendar</x-sirius::code>, and implement <x-sirius::code>events()</x-sirius::code>. The base class renders the calendar; no separate view or <x-sirius::code>render()</x-sirius::code> method is needed.</p>
-                <x-docs-code language="Shell" source="php artisan make:class Livewire/Examples/BasicTeamCalendar" />
+                @include('livewire-components.examples.calendar-create-class')
                 <p>The example uses the docs sample source.</p>
                 @include('livewire-components.examples.calendar')
             </section>

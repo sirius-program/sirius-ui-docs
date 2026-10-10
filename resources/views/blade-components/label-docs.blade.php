@@ -16,9 +16,10 @@
                 <h2 class="text-xl font-medium">Usage</h2>
                 @include('blade-components.examples.label')
             </section>
-            <div id="label-attributes">
+            <section id="label-attributes" class="space-y-3">
+                <h2 class="text-xl font-medium">Attributes</h2>
                 @include('blade-components.attributes.label')
-            </div>
+            </section>
             <section id="assets" class="space-y-3">
                 <h2 class="text-xl font-medium">Assets</h2>
                 <p>Load the package CSS. No JavaScript is needed.</p>

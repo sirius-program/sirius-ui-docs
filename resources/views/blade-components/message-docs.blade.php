@@ -12,8 +12,14 @@
                     <h3 class="font-medium">Blade</h3>@include('blade-components.demos.message-blade')
                 </div>
             </section>
-            <section id="message-usage" class="space-y-4"><h2 class="text-xl font-medium">Usage</h2>@include('blade-components.examples.message')</section>
-            <section id="message-attributes">@include('blade-components.attributes.message')</section>
+            <section id="message-usage" class="space-y-4">
+                <h2 class="text-xl font-medium">Usage</h2>
+                @include('blade-components.examples.message')
+            </section>
+            <section id="message-attributes" class="space-y-3">
+                <h2 class="text-xl font-medium">Attributes</h2>
+                @include('blade-components.attributes.message')
+            </section>
             <section id="assets-and-interaction" class="space-y-3">
                 <h2 class="text-xl font-medium">Assets and interaction</h2>
                 <p>Import the package CSS and JavaScript, or publish and load <x-sirius::code>sirius-ui-assets</x-sirius::code>.</p>

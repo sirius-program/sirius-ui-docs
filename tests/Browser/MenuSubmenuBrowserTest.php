@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 it('uses initial submenu states and closes sibling submenus through keyboard interaction', function (): void {
-    $page = visit('/blade-components/menu', ['reducedMotion' => 'reduce'])
+    $page = visit('/development/navigation', ['reducedMotion' => 'reduce'])
         ->assertPresent('#team-links-submenu')
         ->assertAttribute('#project-links', 'aria-expanded', 'true')
         ->assertAttribute('#account-links', 'aria-expanded', 'false')
@@ -56,7 +56,7 @@ it('blocks disabled submenu activation and restores interaction after a Livewire
 });
 
 it('animates submenu opening and hides content immediately on closing and rapid toggles', function (): void {
-    $page = visit('/blade-components/menu', ['reducedMotion' => 'no-preference']);
+    $page = visit('/development/navigation', ['reducedMotion' => 'no-preference']);
     $closedImmediately = $page->script('(() => { document.querySelector("#project-links").click(); const panel = document.querySelector("#project-links-submenu"); return panel.hidden && panel.inert && !panel.hasAttribute("data-closing"); })()');
     expect($closedImmediately)->toBeTrue();
     $page->assertMissing('#project-links-submenu')->click('#project-links')
@@ -69,7 +69,7 @@ it('animates submenu opening and hides content immediately on closing and rapid 
 });
 
 it('updates submenu state from an Alpine binding and restores focus when collapsed', function (): void {
-    $page = visit('/blade-components/menu')->assertPresent('#team-links-submenu');
+    $page = visit('/development/navigation')->assertPresent('#team-links-submenu');
     $page->script('document.querySelector("#team-links-submenu a").focus(); Alpine.$data(document.querySelector("#team-links")).expanded = false;');
     $page->assertAttribute('#team-links', 'aria-expanded', 'false')->assertMissing('#team-links-submenu')
         ->assertScript('document.activeElement.id', 'team-links');

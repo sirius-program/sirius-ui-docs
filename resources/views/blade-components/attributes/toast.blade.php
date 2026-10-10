@@ -1,5 +1,4 @@
-<section class="min-w-0 space-y-3" data-docs-props>
-    <h2 class="text-xl font-medium">Attributes</h2>
+<div class="min-w-0 space-y-3" data-docs-props>
     <x-docs-props :rows="[
         ['text', 'string', 'required', 'Plain text for the notification. HTML is escaped.'],
         ['title', 'string | null', 'null', 'Optional heading between the icon and text. HTML is escaped.'],
@@ -13,4 +12,4 @@
         ['class', 'string', '', 'Additional classes for the content.'],
         ['style', 'string', '', 'Inline styles for the content.'],
     ]" />
-</section>
+</div>

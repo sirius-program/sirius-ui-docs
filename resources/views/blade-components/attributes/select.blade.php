@@ -1,5 +1,4 @@
-<section class="min-w-0 space-y-3" data-docs-props>
-    <h3 class="text-xl font-medium">Attributes</h3>
+<div class="min-w-0 space-y-3" data-docs-props>
     <x-docs-props :rows="[
         ['options', 'array', '[]', 'List of records with a unique non-empty value and a label; optional disabled boolean and group label. Integer values become strings.'],
         ['value', 'string | integer | array | null', 'null', 'Initial selected ID or list of IDs in multiple mode. Empty single values bind null; empty multiple values bind an empty array.'],
@@ -20,4 +19,4 @@
         ['size', 'sm | md | lg', 'md', 'Font and padding size; separate from HTML size.'],
         ['wrapper-class', 'string', 'empty string', 'CSS classes for the field wrapper.'],
     ]" note="Accepts HTML5 select attributes, Alpine events, data-*, ARIA, and supported Livewire bindings. Models use string IDs or arrays; number, boolean, and trim modifiers are unsupported." />
-</section>
+</div>

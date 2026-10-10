@@ -16,7 +16,8 @@
                 <h2 class="text-xl font-medium">Usage</h2>
                 @include('blade-components.examples.button')
             </section>
-            <section id="button-attributes">
+            <section id="button-attributes" class="space-y-3">
+                <h2 class="text-xl font-medium">Attributes</h2>
                 @include('blade-components.attributes.button')
             </section>
             <section id="assets-and-interaction" class="space-y-3">

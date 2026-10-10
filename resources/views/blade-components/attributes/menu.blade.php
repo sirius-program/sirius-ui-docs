@@ -1,5 +1,4 @@
-<section class="min-w-0 space-y-3" data-docs-props>
-    <h3 class="text-xl font-medium">Attributes</h3>
+<div class="min-w-0 space-y-3" data-docs-props>
     <h4 class="mt-5 text-lg font-medium">Parent</h4>
     <x-docs-props :rows="[
         ['label', 'string', 'Translated Navigation', 'Accessible navigation name.']
@@ -22,4 +21,4 @@
         ['icon', 'string | null', 'null', 'Blade icon beside the heading.']
     ]" />
     <p>Place items inside a category and nested items inside the submenu slot. List markup is generated for you. Item attributes, including wire:key, apply to the link or button. Use x-bind:open on a submenu trigger to bind its state with Alpine.</p>
-</section>
+</div>

@@ -1,5 +1,4 @@
-<section class="min-w-0 space-y-3" data-docs-props>
-    <h3 class="text-xl font-medium">Attributes</h3>
+<div class="min-w-0 space-y-3" data-docs-props>
     <h4 class="mt-5 text-lg font-medium">Parent</h4>
     <x-docs-props :rows="[
         ['label', 'string', 'Translated Breadcrumb', 'Accessible navigation name.'],
@@ -11,4 +10,4 @@
         ['link', 'string | null', 'null', 'Destination URL. Omit for plain text.'],
         ['current', 'boolean', 'false', 'Marks the current page.']
     ]" />
-</section>
+</div>

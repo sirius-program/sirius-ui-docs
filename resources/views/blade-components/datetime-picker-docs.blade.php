@@ -21,7 +21,8 @@
                 <h2 class="text-xl font-medium">Usage</h2>
                 @include('blade-components.examples.datetime-picker')
             </section>
-            <section id="datetime-picker-attributes">
+            <section id="datetime-picker-attributes" class="space-y-3">
+                <h2 class="text-xl font-medium">Attributes</h2>
                 @include('blade-components.attributes.datetime-picker')
             </section>
             <section id="assets-and-interaction" class="space-y-3">

@@ -19,7 +19,8 @@
                 <h2 class="text-xl font-medium">Usage</h2>
                 @include('blade-components.examples.popover')
             </section>
-            <section id="popover-attributes">
+            <section id="popover-attributes" class="space-y-3">
+                <h2 class="text-xl font-medium">Attributes</h2>
                 @include('blade-components.attributes.popover')
             </section>
             <section id="assets-and-interaction" class="space-y-3">

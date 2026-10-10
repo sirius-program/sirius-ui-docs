@@ -1,5 +1,4 @@
-<section class="min-w-0 space-y-3" data-docs-props>
-    <h3 class="text-xl font-medium">Attributes</h3>
+<div class="min-w-0 space-y-3" data-docs-props>
     <x-docs-props :rows="[
         ['as', 'button | a', 'button', 'HTML element. Buttons default to type=button.'],
         ['variant', 'primary | info | success | danger | warning | secondary | ghost | outline | link', 'info', 'Visual style. Link styling does not change the HTML element.'],
@@ -8,4 +7,4 @@
         ['loading', 'boolean', 'false', 'Shows a spinner and prevents activation.'],
         ['disabled', 'boolean', 'false', 'Prevents activation. Disabled anchors lose their href and leave the tab order.']
     ]" />
-</section>
+</div>

@@ -16,7 +16,8 @@
                 <h2 class="text-xl font-medium">Usage</h2>
                 @include('blade-components.examples.alert')
             </section>
-            <section id="alert-attributes">
+            <section id="alert-attributes" class="space-y-3">
+                <h2 class="text-xl font-medium">Attributes</h2>
                 @include('blade-components.attributes.alert')
             </section>
             <section id="assets-and-interaction" class="space-y-3">

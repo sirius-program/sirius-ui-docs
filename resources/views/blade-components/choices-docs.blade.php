@@ -19,22 +19,22 @@
             @foreach ($examples as $example => $label)
                 <section id="{{ $example }}" data-control-demo="{{ $example }}" class="space-y-5">
                     <h2 class="text-2xl font-semibold">{{ $label }}</h2>
-                    <h3 id="{{ $example }}-demo" class="text-xl font-medium">Demo</h3>
-                    <div class="space-y-4 rounded-xl border border-slate-300 p-6 dark:border-slate-600" data-demo-mode="livewire">
-                        <h4 class="font-medium">Livewire</h4>
+                    <section id="{{ $example }}-demo" class="space-y-4 rounded-xl border border-slate-300 p-6 dark:border-slate-600" data-demo-mode="livewire">
+                        <h3 class="font-medium">Livewire</h3>
                         <livewire:examples.basic-controls-example :kind="$example" :key="'docs-'.$example" />
-                    </div>
-                    <div id="{{ $example }}-blade" class="space-y-4 rounded-xl border border-slate-300 p-6 dark:border-slate-600" data-demo-mode="blade">
-                        <h4 class="font-medium">Blade</h4>
+                    </section>
+                    <section id="{{ $example }}-blade" class="space-y-4 rounded-xl border border-slate-300 p-6 dark:border-slate-600" data-demo-mode="blade">
+                        <h3 class="font-medium">Blade</h3>
                         @include('blade-components.demos.'.$example.'-blade')
-                    </div>
-                    <div id="{{ $example }}-usage" class="space-y-4">
+                    </section>
+                    <section id="{{ $example }}-usage" class="space-y-4">
                         <h3 class="text-xl font-medium">Usage</h3>
                         @include('blade-components.examples.'.$example)
-                    </div>
-                    <div id="{{ $example }}-attributes">
+                    </section>
+                    <section id="{{ $example }}-attributes" class="space-y-3">
+                        <h3 class="text-xl font-medium">Attributes</h3>
                         @include('blade-components.attributes.'.$example)
-                    </div>
+                    </section>
                 </section>
             @endforeach
             <section id="shared-field-contract" class="space-y-3">

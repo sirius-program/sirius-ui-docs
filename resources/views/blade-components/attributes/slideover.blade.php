@@ -1,5 +1,4 @@
-<section class="min-w-0 space-y-3" data-docs-props>
-    <h3 class="text-xl font-medium">Attributes</h3>
+<div class="min-w-0 space-y-3" data-docs-props>
     <x-docs-props :rows="[
         ['side', 'top | right | bottom | left', 'right', 'Viewport edge where the panel opens.'],
         ['header', 'string | null', 'null', 'Header text. The named header slot overrides it.'],
@@ -15,4 +14,4 @@
         ['close-on-backdrop', 'boolean', 'true', 'Allow a click outside the dialog to close it.'],
         ['initial-focus', 'string | null', 'null', 'CSS selector inside the dialog. Falls back to autofocus or native initial focus when unavailable.'],
     ]" />
-</section>
+</div>

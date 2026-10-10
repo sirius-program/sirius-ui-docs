@@ -27,5 +27,8 @@ it('renders and updates the development navigation fixture without duplicating i
 });
 
 it('loads the development navigation fixture inside its local route', function (): void {
-    $this->get(route('development.navigation'))->assertOk()->assertSee('id="livewire-actions"', false);
+    $this->get(route('development.navigation'))->assertOk()->assertSee('id="livewire-actions"', false)
+        ->assertSee('id="team-links-submenu"', false)
+        ->assertSee('id="project-links-submenu"', false)
+        ->assertSee('id="account-links-submenu"', false);
 });

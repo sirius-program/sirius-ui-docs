@@ -1,5 +1,4 @@
-<section class="min-w-0 space-y-3" data-docs-props>
-    <h3 class="text-xl font-medium">Attributes</h3>
+<div class="min-w-0 space-y-3" data-docs-props>
     <h4 class="mt-5 text-lg font-medium">Parent</h4>
     <x-docs-props :rows="[
         ['trigger', 'string | slot', 'Required', 'Trigger text or content. A named slot takes precedence; do not nest another button.'],
@@ -17,4 +16,4 @@
         ['active', 'boolean', 'false', 'Highlights the item.'],
         ['submenu', 'slot | null', 'null', 'Nested menu items. Opens by click or keyboard.']
     ]" />
-</section>
+</div>

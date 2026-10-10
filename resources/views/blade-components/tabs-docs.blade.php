@@ -1,5 +1,5 @@
 <x-layouts::app title="Tabs">
-    <x-docs-page :navigation="['Tabs' => ['tabs-demo' => 'Demo', 'tabs-usage' => 'Usage', 'tabs-attributes' => 'Attributes', 'assets-and-interaction' => 'Assets and interaction', 'state-and-events' => 'State and events', 'translations' => 'Translations']]">
+    <x-docs-page :navigation="['Tabs' => ['tabs-demo' => 'Demo', 'tabs-usage' => 'Usage', 'tabs-attributes' => 'Attributes', 'tabs-array' => 'Tab item definitions', 'assets-and-interaction' => 'Assets and interaction', 'state-and-events' => 'State and events', 'translations' => 'Translations']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8">
             <header class="space-y-2">
                 <p class="text-sm text-slate-500 dark:text-slate-400">LAYOUT</p>
@@ -15,7 +15,14 @@
                 <h2 class="text-xl font-medium">Usage</h2>
                 @include('blade-components.examples.tabs')
             </section>
-            <section id="tabs-attributes">@include('blade-components.attributes.tabs')</section>
+            <section id="tabs-attributes" class="space-y-3">
+                <h2 class="text-xl font-medium">Attributes</h2>
+                @include('blade-components.attributes.tabs')
+            </section>
+            <section id="tabs-array" class="space-y-3">
+                <h2 class="text-xl font-medium">Tab items definitions</h2>
+                @include('blade-components.attributes.tabs-array')
+            </section>
             <section id="assets-and-interaction" class="space-y-3">
                 <h2 class="text-xl font-medium">Assets and interaction</h2>
                 <p>Import the package CSS and JavaScript, or publish and load <x-sirius::code>sirius-ui-assets</x-sirius::code>.</p>

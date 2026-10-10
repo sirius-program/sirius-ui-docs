@@ -1,5 +1,5 @@
 <x-layouts::app :title="__('Introduction')">
-    <x-docs-page :navigation="['Introduction' => ['overview' => 'Overview', 'blade-components' => 'Blade components']]">
+    <x-docs-page :navigation="['Introduction' => ['overview' => 'Overview', 'choosing-components' => 'Blade and Livewire', 'assets-and-themes' => 'Assets and themes', 'application-responsibilities' => 'Application responsibilities', 'blade-components' => 'Blade components', 'livewire-components' => 'Livewire components']]">
         <article class="mx-auto flex min-w-0 max-w-4xl flex-col gap-8">
             <header id="overview" class="space-y-2">
                 <p class="text-sm text-slate-500 dark:text-slate-400">GETTING STARTED</p>
@@ -8,6 +8,20 @@
             </header>
             <p>Reusable Blade and Livewire components. Start with <x-sirius::link href="{{ route('started.installation') }}" wire:navigate>Installation</x-sirius::link> to install the package and load its assets, then choose a component below for demos, usage, and attributes.</p>
             <p>Using a coding agent? Install the <x-sirius::link href="{{ route('started.ai-agent-skill') }}" wire:navigate>AI Agent Skill</x-sirius::link> for version-matched Sirius UI guidance and examples.</p>
+            <section id="choosing-components" class="space-y-3">
+                <h2 class="text-xl font-medium">Blade and Livewire</h2>
+                <p>Use Blade components for forms, navigation, layouts, and overlays. Form controls work with native submissions or Livewire bindings; interactive widgets initialize from the package assets.</p>
+                <p>For data interfaces, extend the Livewire Table or Calendar with your application's queries and hooks. Mount Chart directly with your datasets and options. Their documentation includes examples for each approach.</p>
+            </section>
+            <section id="assets-and-themes" class="space-y-3">
+                <h2 class="text-xl font-medium">Assets and themes</h2>
+                <p>Load Sirius CSS and JavaScript once through Vite or published assets. Select, File Upload, Richtext, Calendar, and Chart bundle their widget dependencies; no CDN or separate React setup is required.</p>
+                <p>The package supports light and dark themes, semantic color variants, and CSS variables for customization. Use the <x-sirius::code>dark</x-sirius::code> class on a parent element to enable the dark theme.</p>
+            </section>
+            <section id="application-responsibilities" class="space-y-3">
+                <h2 class="text-xl font-medium">Application responsibilities</h2>
+                <p>Your application owns authorization, query scoping, validation, persistence, and upload endpoints. Sanitize Richtext HTML before rendering it, and manage stored-file cleanup when uploads or editor images are removed.</p>
+            </section>
             <h2 id="blade-components" class="text-lg font-medium">Blade Components</h2>
             <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
                 <section id="blade-components-form-control" class="rounded-xl border border-slate-300 p-6 dark:border-slate-600">
@@ -61,7 +75,7 @@
                     </ul>
                 </section>
             </div>
-            <h2 class="text-lg font-medium">Livewire Components</h2>
+            <h2 id="livewire-components" class="text-lg font-medium">Livewire Components</h2>
             
             <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
                 <section id="livewire-components-calendar" class="rounded-xl border border-slate-300 p-6 dark:border-slate-600">

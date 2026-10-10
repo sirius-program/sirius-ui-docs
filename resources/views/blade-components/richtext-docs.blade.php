@@ -21,7 +21,8 @@
                 <h2 class="text-xl font-medium">Usage</h2>
                 @include('blade-components.examples.richtext')
             </section>
-            <section id="richtext-attributes">
+            <section id="richtext-attributes" class="space-y-3">
+                <h2 class="text-xl font-medium">Attributes</h2>
                 @include('blade-components.attributes.richtext')
             </section>
             <section id="assets-and-interaction" class="space-y-3">
@@ -34,14 +35,14 @@
             <section id="richtext-upload" class="space-y-3">
                 <h2 class="text-xl font-medium">Image upload</h2>
                 <p>The richtext sends a multipart <x-sirius::code>POST</x-sirius::code> with the <x-sirius::code>image</x-sirius::code> field. Return JSON with a <x-sirius::code>url</x-sirius::code> pointing to the stored image. Laravel CSRF is read from the page meta tag, form token, or XSRF cookie.</p>
-                <x-docs-code language="PHP" :source="file_get_contents(app_path('Http/Controllers/RichtextImageStoreController.php'))" />
+                @include('blade-components.examples.richtext-upload-controller')
                 <p>The demo endpoint stores images on the default disk and serves them through a dedicated route. Add your application's authorization and cleanup policy. Removing an image from the richtext does not delete its file.</p>
                 <p>Submission waits for uploads to finish. Failed uploads can be retried by choosing the file again.</p>
             </section>
             <section id="richtext-sanitization" class="space-y-3">
                 <h2 class="text-xl font-medium">Sanitization</h2>
                 <p>Validate and sanitize HTML on the server before storing or rendering it. The demos use Symfony HTML Sanitizer with an allowlist of formatting tags and safe link schemes.</p>
-                <x-docs-code language="PHP" :source="file_get_contents(app_path('Support/RichtextSample.php'))" />
+                @include('blade-components.examples.richtext-sanitizer')
                 <p>Render only the sanitized result with Blade's unescaped output syntax. Toolbar settings do not protect against forged requests.</p>
             </section>
             <section id="translations" class="space-y-3">

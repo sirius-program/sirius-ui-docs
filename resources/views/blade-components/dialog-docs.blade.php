@@ -22,7 +22,8 @@
                 <h2 class="text-xl font-medium">Usage</h2>
                 @include('blade-components.examples.dialog')
             </section>
-            <section id="dialog-attributes">
+            <section id="dialog-attributes" class="space-y-3">
+                <h2 class="text-xl font-medium">Attributes</h2>
                 @include('blade-components.attributes.dialog')
             </section>
             <section id="assets-and-interaction" class="space-y-3">

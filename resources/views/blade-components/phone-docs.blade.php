@@ -15,8 +15,14 @@
                     <h3 class="font-medium">Blade</h3>@include('blade-components.demos.phone-blade')
                 </div>
             </section>
-            <section id="phone-usage" class="space-y-4"><h2 class="text-xl font-medium">Usage</h2>@include('blade-components.examples.phone')</section>
-            <section id="phone-attributes">@include('blade-components.attributes.phone')</section>
+            <section id="phone-usage" class="space-y-4">
+                <h2 class="text-xl font-medium">Usage</h2>
+                @include('blade-components.examples.phone')
+            </section>
+            <section id="phone-attributes" class="space-y-3">
+                <h2 class="text-xl font-medium">Attributes</h2>
+                @include('blade-components.attributes.phone')
+            </section>
             <section id="assets-and-interaction" class="space-y-3">
                 <h2 class="text-xl font-medium">Assets and interaction</h2>
                 <p>Import the package CSS and JavaScript, or publish and load <x-sirius::code>sirius-ui-assets</x-sirius::code>.</p>

@@ -1,5 +1,4 @@
-<section class="min-w-0 space-y-3" data-docs-props>
-    <h3 class="text-xl font-medium">Attributes</h3>
+<div class="min-w-0 space-y-3" data-docs-props>
     <x-docs-props :rows="[
         ['label', 'string | null', 'null', 'Label text; hidden when empty.'],
         ['helper', 'string | null', 'null', 'Helper text below the control.'],
@@ -16,4 +15,4 @@
         ['errors', 'ViewErrorBag | null', 'null', 'Custom error bags; defaults to Laravel or Livewire errors.'],
         ['wrapper-class', 'string', 'empty string', 'CSS classes for the field wrapper.'],
     ]" />
-</section>
+</div>

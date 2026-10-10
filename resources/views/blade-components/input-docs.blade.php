@@ -22,7 +22,8 @@
                 <h2 class="text-xl font-medium">Usage</h2>
                 @include('blade-components.examples.input')
             </section>
-            <section id="input-attributes">
+            <section id="input-attributes" class="space-y-3">
+                <h2 class="text-xl font-medium">Attributes</h2>
                 @include('blade-components.attributes.input')
             </section>
             <section id="assets-and-interaction" class="space-y-3">

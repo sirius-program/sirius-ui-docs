@@ -1,5 +1,4 @@
-<section class="min-w-0 space-y-3" data-docs-props>
-    <h3 class="text-xl font-medium">Attributes</h3>
+<div class="min-w-0 space-y-3" data-docs-props>
     <x-docs-props :rows="[
         ['src', 'string | null', 'null', 'Image URL. Missing or failed images show the fallback.'],
         ['alt', 'string', 'empty string', 'Accessible image description. Empty is decorative unless an ARIA name is provided.'],
@@ -7,4 +6,4 @@
         ['size', 'sm | md | lg | xl', 'md', 'Component size.'],
         ['variant', 'rounded | circle', 'circle', 'Visual style.']
     ]" />
-</section>
+</div>

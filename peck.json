@@ -11,7 +11,8 @@
             "slideover",
             "dropdown",
             "tooltip",
-            "submenu"
+            "submenu",
+            "lucide"
         ],
         "paths": []
     }

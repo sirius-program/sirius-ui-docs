@@ -1,5 +1,4 @@
-<section class="min-w-0 space-y-3" data-docs-props>
-    <h3 class="text-xl font-medium">Attributes</h3>
+<div class="min-w-0 space-y-3" data-docs-props>
     <x-docs-props :rows="[
         ['type', 'date | time | datetime', 'date', 'Date, time, or both. Submitted formats: Y-m-d, H:i, or Y-m-d H:i:s. Includes a calendar or clock icon.'],
         ['display-format', 'string', 'd/m/Y; H:i; d/m/Y H:i:S', 'Flatpickr display format; uppercase S means seconds. Include all parts needed by the selected type.'],
@@ -22,4 +21,4 @@
         ['size', 'sm | md | lg', 'md', 'Font and padding size; separate from HTML size.'],
         ['wrapper-class', 'string', 'empty string', 'CSS classes for the field wrapper.'],
     ]" note="Accepts HTML5 input attributes, Alpine events, data-*, ARIA, and supported Livewire bindings. Type and widget lifecycle are managed by the package." />
-</section>
+</div>

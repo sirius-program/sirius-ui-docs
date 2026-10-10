@@ -1,5 +1,4 @@
-<section class="min-w-0 space-y-3" data-docs-props>
-    <h3 class="text-xl font-medium">Attributes</h3>
+<div class="min-w-0 space-y-3" data-docs-props>
     <x-docs-props :rows="[
         ['trigger', 'string | slot', 'Required', 'Summary text. A named trigger slot overrides the text prop. Do not place interactive controls inside it.'],
         ['transition', 'boolean', 'false', 'Animates content on opening. Closing is immediate; reduced-motion preferences disable animation.'],
@@ -7,4 +6,4 @@
         ['trigger-class', 'string', 'empty string', 'Additional classes for the trigger.'],
         ['content-class', 'string', 'empty string', 'Additional classes for the content.']
     ]" />
-</section>
+</d>

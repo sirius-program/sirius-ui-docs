@@ -21,7 +21,10 @@
                 <h2 class="text-xl font-medium">Usage</h2>
                 @include('blade-components.examples.file-upload')
             </section>
-            <section id="upload-attributes">@include('blade-components.attributes.file-upload')</section>
+            <section id="upload-attributes" class="space-y-3">
+                <h2 class="text-xl font-medium">Attributes</h2>
+                @include('blade-components.attributes.file-upload')
+            </section>
             <section id="assets-and-interaction" class="space-y-3">
                 <h2 class="text-xl font-medium">Assets and interaction</h2>
                 <p>Import the package CSS and JavaScript, or publish and load <x-sirius::code>sirius-ui-assets</x-sirius::code>.</p>

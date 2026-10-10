@@ -1,5 +1,4 @@
-<section class="min-w-0 space-y-3" data-docs-props>
-    <h3 class="text-xl font-medium">Attributes</h3>
+<div class="min-w-0 space-y-3" data-docs-props>
     <x-docs-props :rows="[
         ['range', 'boolean', 'false', 'Enable two handles on a shared scale.'],
         ['value', 'number | array | null', 'null', 'Initial value. Single mode defaults to min; range mode requires two ordered numbers.'],
@@ -17,4 +16,4 @@
         ['size', 'sm | md | lg', 'md', 'Font and padding size; separate from HTML size.'],
         ['wrapper-class', 'string', 'empty string', 'CSS classes for the field wrapper.'],
     ]" note="Accepts HTML5 range-input attributes, Alpine events, data-*, ARIA, and supported Livewire bindings. Bind a number or a two-number array; number, boolean, and trim modifiers are not supported." />
-</section>
+</div>

@@ -1,5 +1,4 @@
-<section class="min-w-0 space-y-3" data-docs-props>
-    <h3 class="text-xl font-medium">Attributes</h3>
+<div class="min-w-0 space-y-3" data-docs-props>
     <x-docs-props :rows="[
         ['value', 'string | null', 'null', 'Initial HTML; falls back to the slot content. Empty richtexts submit an empty string.'],
         ['toolbar', 'array | null', 'null', 'Ordered buttons: bold, italic, underline, strike, heading, bulletList, orderedList, blockquote, codeBlock, link, image, undo, redo. Null shows all except image; [] hides the toolbar.'],
@@ -17,4 +16,4 @@
         ['size', 'sm | md | lg', 'md', 'Font and padding size; separate from HTML size.'],
         ['wrapper-class', 'string', 'empty string', 'CSS classes for the field wrapper.'],
     ]" note="Accepts HTML5 textarea attributes, Alpine events, data-*, ARIA, and supported Livewire bindings. Bind an HTML string; number, boolean, and trim modifiers are not supported. Textarea's native rows, cols, and resize are not supported." />
-</section>
+</div>

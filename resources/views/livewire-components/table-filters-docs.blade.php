@@ -38,7 +38,7 @@
             <section id="remote-options" class="space-y-3">
                 <h2 class="text-xl font-medium">Remote options</h2>
                 <p>Use <x-sirius::code>searchUrl</x-sirius::code> with the <x-sirius::link href="{{ route('blade-components.select') }}" wire:navigate>Select component</x-sirius::link> for search, pagination, and selected-label resolution. Scope the endpoint and filter callback to the same permitted records.</p>
-                <x-docs-code language="PHP" :source="file_get_contents(app_path('Http/Controllers/InvoiceCustomerOptionController.php'))" />
+                @include('livewire-components.examples.table-options-controller')
             </section>
         </article>
     </x-docs-page>

@@ -13,7 +13,7 @@
             <section id="table-usage" class="space-y-4">
                 <h2 class="text-xl font-medium">Usage</h2>
                 <p>Create a class under <x-sirius::code>App\Livewire</x-sirius::code>, extend <x-sirius::code>Sirius\Ui\Livewire\Table</x-sirius::code>, and define <x-sirius::code>query()</x-sirius::code> and <x-sirius::code>columns()</x-sirius::code>. The base class renders the table; you do not need a separate Table view or <x-sirius::code>render()</x-sirius::code> method.</p>
-                <x-docs-code language="Shell" source="php artisan make:class Livewire/Examples/BasicInvoiceTable" />
+                @include('livewire-components.examples.table-create-class')
                 <p>The example uses the docs sample source.</p>
                 @include('livewire-components.examples.table')
             </section>

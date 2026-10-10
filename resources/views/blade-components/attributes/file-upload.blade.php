@@ -1,5 +1,4 @@
-<section class="min-w-0 space-y-3" data-docs-props>
-    <h3 class="text-xl font-medium">Attributes</h3>
+<div class="min-w-0 space-y-3" data-docs-props>
     <x-docs-props :rows="[
         ['value', 'array', '[]', 'Existing files: name and size in bytes are required; url is optional for image/PDF previews (root-relative or HTTP(S)). Without url, show name and size only. Files count toward limits and required but are not re-uploaded. Remove emits file-upload:remove-existing; your app handles deletion.'],
         ['readonly', 'boolean', 'false', 'Prevent changes while keeping the submitted value. Requires JavaScript.'],
@@ -19,4 +18,4 @@
         ['size', 'sm | md | lg', 'md', 'Font and padding size; separate from HTML size.'],
         ['wrapper-class', 'string', 'empty string', 'CSS classes for the field wrapper.'],
     ]" note="Accepts HTML5 file-input attributes, Alpine events, data-*, ARIA, and wire:model. Type and upload lifecycle are managed by the package. x-model is unsupported; value is for existing-file metadata." />
-</section>
+</div>

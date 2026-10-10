@@ -21,7 +21,7 @@
                 <p>Use serializable Standard options from the <x-sirius::link href="https://fullcalendar.io/docs" target="_blank" rel="noopener noreferrer">FullCalendar v7 reference</x-sirius::link>, such as <x-sirius::code>validRange</x-sirius::code>, <x-sirius::code>businessHours</x-sirius::code>, <x-sirius::code>weekends</x-sirius::code>, or <x-sirius::code>eventConstraint</x-sirius::code>. Validate restrictions again in your application.</p>
                 <p><x-sirius::code>lazyFetching</x-sirius::code> defaults to false so navigation fetches current server data. Enable the range cache only if you refresh after application changes.</p>
                 <p>Adapter-owned options are rejected: <x-sirius::code>{{ implode(', ', \Sirius\Ui\Calendar\Options::OWNED) }}</x-sirius::code>. Call protected <x-sirius::code>configure()</x-sirius::code> from an application action to update server-side options.</p>
-                <x-docs-code language="PHP" source="$this->configure(['weekends' => false, 'timeZone' => 'UTC']);" />
+                @include('livewire-components.examples.calendar-configure')
             </section>
             <section id="local-extensions" class="space-y-4">
                 <h2 class="text-xl font-medium">Local extensions</h2>
