@@ -50,6 +50,8 @@ it('blocks disabled submenu activation and restores interaction after a Livewire
         ->assertScript('window.triggerClicks', 0)
         ->assertAttribute('#livewire-group', 'aria-expanded', 'false')
         ->assertScript('document.querySelector("#livewire-group-submenu").inert', true)
+        ->click('Update count')->assertSeeIn('#navigation-count', 'Count: 1')
+        ->assertScript('document.querySelector("#livewire-group-submenu").inert', true)
         ->click('Toggle disabled')->assertAttribute('#livewire-group', 'aria-disabled', 'false')
         ->keys('#livewire-group', 'Enter')->assertAttribute('#livewire-group', 'aria-expanded', 'true')
         ->assertNoJavaScriptErrors();

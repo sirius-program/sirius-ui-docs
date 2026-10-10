@@ -12,7 +12,8 @@
             "dropdown",
             "tooltip",
             "submenu",
-            "lucide"
+            "lucide",
+            "submenus"
         ],
         "paths": []
     }
