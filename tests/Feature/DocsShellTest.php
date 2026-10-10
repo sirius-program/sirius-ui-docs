@@ -54,7 +54,10 @@ it('renders exact escaped source through block Code inside the existing pre cont
     expect($xpath->query('//pre/a | //pre/code/code')->length)->toBe(0);
 });
 
-it('serves the landing page and standalone appearance settings with the shared shell', function (): void {
-    $this->get('/')->assertOk()->assertSee('Getting Started')->assertSee('https://laravel.com/docs', false);
+it('serves a separate landing page while keeping appearance settings in the docs shell', function (): void {
+    $this->get('/')->assertOk()->assertViewIs('welcome')
+        ->assertSee('landing-main')->assertSee('landing-appearance-menu')
+        ->assertSee(route('started.installation'), false)->assertSee(route('started.introduction'), false)
+        ->assertDontSee('data-docs-sidebar', false)->assertDontSee('data-docs-mobile-navigation', false);
     $this->get('/settings/appearance')->assertOk()->assertSee('settings-appearance-dark')->assertSee('docs-main');
 });

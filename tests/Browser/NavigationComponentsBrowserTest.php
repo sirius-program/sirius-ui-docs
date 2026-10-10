@@ -83,7 +83,7 @@ it('synchronizes server open state and cleans up removed instances and navigatio
     $page->assertSeeIn('#navigation-count', 'Count: 1')->assertPresent('#livewire-settings-submenu');
     $page->script('Livewire.navigate("/blade-components/dropdown")');
     $page->click('#workspace-actions-trigger')->click('#workspace-actions-menu a:has-text("Dashboard")')
-        ->assertPathIs('/dashboard');
+        ->assertPathIs('/getting-started/introduction');
     $page->script('Livewire.navigate("/development/navigation")');
     $page->click('#livewire-actions-trigger')->click('#livewire-save')->assertSeeIn('#navigation-count', 'Count: 1')
         ->assertSeeIn('#navigation-clicks', 'Clicks: 1')->assertNoJavaScriptErrors();

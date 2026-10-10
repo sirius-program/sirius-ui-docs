@@ -2,6 +2,8 @@
 
 This application documents and tests the local `sirius/ui` package. Public components are added only after their implementation phases are completed.
 
+**Welcome** at `/` is a separate landing page without the documentation sidebar. It reuses the brand, assets, scrollbar, and Light/Dark/System preferences. Its project form previews local values in Dialog and opens a Toast; nothing is uploaded or saved. Button and Badge showcases include every supported variant. Links lead to Installation, Introduction, and component guides, which retain their docs layout.
+
 **Getting Started → Installation** at `/getting-started/installation` covers package installation, Vite asset imports, published assets, configuration, translations, and AI assistance. It links to the existing AI Agent Skill guide for activation and update details. Getting Started contains Introduction, Installation, and AI Agent Skill in the current navigation order.
 
 Getting Started also includes **Accessibility**, **License**, and **Changelog**. Accessibility documents shipped keyboard, focus, field/error, icon, and announcement behavior and application responsibilities without claiming certification. License reads the package license and generated package/docs dependency notices. Changelog has Package and Documentation tabs that read their independent local `CHANGELOG.md` files on each request. Package paths come from Composer installed-package metadata; Markdown strips raw HTML, rejects unsafe destinations, and renders links/code with Sirius components without evaluating Blade. Missing sources show a message without exposing paths. Keep both changelog files and generated notices in deployment sources; the docs changelog is included in Git exports.
@@ -76,6 +78,8 @@ Current work is tracked in the [implementation checklist](IMPLEMENTATION_PLAN.md
 ## Verification
 
 The 2026-10-09 documentation baseline passes `composer test` (221 tests / 1,366 assertions) and the full `composer test:browser` suite (251 tests / 2,748 assertions, without warnings). Phase 0 is complete in the [implementation plan](IMPLEMENTATION_PLAN.md); release scope and dated evidence remain in the [release checklist](RELEASE_CHECKLIST.md).
+
+The 2026-10-10 landing-page checks pass `composer test` (257 tests / 1,757 assertions, plus Pint/PHPStan/Rector), package and docs builds, and the full local Chromium browser suite (280 tests / 2,987 assertions, without warnings). Phase 6 is complete in the implementation plan.
 
 Run `composer test` in each changed project. Once all those checks pass, run `composer test:browser` in docs and wait for completion. Use `npm run build` after frontend changes; it also refreshes third-party license notices.
 

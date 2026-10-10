@@ -8,7 +8,7 @@ This is a new plan. Deleted implementation/phase reports will not be restored. T
 
 ## Progress
 
-**6 of 8 phases complete.** Phases 0–5 are complete. Phases 6–7 have not started.
+**7 of 8 phases complete.** Phases 0–6 are complete. Phase 7 has not started.
 
 Check a task only after its work is done and any required verification passes. Check a phase in the completion list only when all its work and acceptance criteria are complete. Approval of this plan does not mark implementation tasks complete. Update this summary and the recorded evidence as work progresses.
 
@@ -259,17 +259,27 @@ Check a task only after its work is done and any required verification passes. C
 
 ### Work
 
-- [ ] Build a dedicated landing layout without the docs sidebar; reuse shared head/assets, brand, appearance preference, and package components.
-- [ ] Add a short Sirius UI introduction and clear links to Introduction, Installation, and component documentation.
-- [ ] Include lightweight interactive showcases: Button/Badge variants, Card with representative form controls, and Dialog/Toast. Use local/demo state, not real uploads, database queries, authentication, or persistence.
-- [ ] Use the new Code/Link and menu composition where relevant. Keep docs pages on their existing documentation shell.
-- [ ] Support light/dark/system appearance, mobile layout, keyboard/focus, reduced motion, and viewport-contained floating controls.
+- [x] Build a dedicated landing layout without the docs sidebar; reuse shared head/assets, brand, appearance preference, and package components.
+- [x] Add a short Sirius UI introduction and clear links to Introduction, Installation, and component documentation.
+- [x] Include lightweight interactive showcases: Button/Badge variants, Card with representative form controls, and Dialog/Toast. Use local/demo state, not real uploads, database queries, authentication, or persistence.
+- [x] Use the new Code/Link and menu composition where relevant. Keep docs pages on their existing documentation shell.
+- [x] Support light/dark/system appearance, mobile layout, keyboard/focus, reduced motion, and viewport-contained floating controls.
 
 ### Acceptance
 
-- [ ] Welcome has no sidebar and remains usable on mobile/desktop in both themes.
-- [ ] Showcases interact correctly without pretending to save user data.
-- [ ] Appearance and navigation transitions remain consistent when moving between landing and docs pages.
+- [x] Welcome has no sidebar and remains usable on mobile/desktop in both themes.
+- [x] Showcases interact correctly without pretending to save user data.
+- [x] Appearance and navigation transitions remain consistent when moving between landing and docs pages.
+
+### Verification — 2026-10-10
+
+- Welcome now uses a dedicated landing layout without the docs sidebar. It reuses the shared head, assets, brand, scrollbar, appearance options, and Livewire navigation; documentation pages keep their existing shell.
+- Added a short introduction, Installation/component links, all Button/Badge variants, and a Card with local Input/Switch state. Dialog previews the current values; Toast explicitly describes a demo notification. No upload, database query, authentication flow, or saved form state was added.
+- Browser coverage verifies escaped preview text, keyboard controls, focus restoration, fresh form state after reload, persisted Light/Dark/System preferences across both shells, and contained Dropdown/Dialog/Toast panels at 320, 390, and 1,440 pixels with reduced motion. Inspected desktop and mobile screenshots in both themes.
+- Corrected one existing navigation assertion to wait for the final `/getting-started/introduction` destination rather than the intermediate `/dashboard` redirect. The related navigation and landing suite passes 17 tests / 167 assertions.
+- Package build followed by docs build passes. Package source and generated assets remain unchanged. Docs quality gate passes: 257 tests / 1,757 assertions, with Pint, PHPStan, and Rector passing.
+- Full local Chromium browser gate passes with two workers: 280 tests / 2,987 assertions, without warnings, in 236 seconds. Updated README; whitespace checks pass.
+- Gate/build logs are retained in the projects' ignored `.phpunit.cache/phase-6-*.log` files. No dependency changes, vendor-source edits, environment/system changes, release publication, or remote CI execution were performed.
 
 ## Phase 7 — Final validation and documentation alignment
 
@@ -288,7 +298,7 @@ Check a task only after its work is done and any required verification passes. C
 - [x] Phase 3 — Existing docs markup/examples, Introduction, and Icons.
 - [x] Phase 4 — Accessibility fix/pages, License, and source-driven Changelog.
 - [x] Phase 5 — Other pages.
-- [ ] Phase 6 — Separate Welcome landing.
+- [x] Phase 6 — Separate Welcome landing.
 - [ ] Phase 7 — Final integration/release checks.
 
 Each phase ends with concrete reviewable changes and relevant passing checks. No phase is marked complete from a plan or an assumed test result. User decisions above take priority over older conventions.
