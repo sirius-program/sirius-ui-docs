@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 require __DIR__ . '/settings.php';
 
 Route::view('/', 'welcome')->name('home');
-Route::view('dashboard', 'dashboard')->name('dashboard');
+Route::redirect('dashboard', 'getting-started/introduction')->name('dashboard');
 Route::redirect('getting-started', 'getting-started/introduction')->name('started');
 Route::view('getting-started/introduction', 'introduction')->name('started.introduction');
 Route::view('getting-started/installation', 'installation')->name('started.installation');
@@ -35,6 +35,8 @@ Route::view('getting-started/ai-agent-skill', 'ai-agent-skill')->name('started.a
 Route::view('getting-started/accessibility', 'accessibility')->name('started.accessibility');
 Route::get('getting-started/license', LicenseController::class)->name('started.license');
 Route::get('getting-started/changelog', ChangelogController::class)->name('started.changelog');
+Route::view('other/colors', 'other.colors')->name('other.colors');
+Route::view('other/customized-scrollbar', 'other.customized-scrollbar')->name('other.customized-scrollbar');
 
 Route::view('blade-components/choices', 'blade-components.choices-docs')->name('blade-components.choices');
 Route::view('blade-components/currency', 'blade-components.currency-docs')->name('blade-components.currency');

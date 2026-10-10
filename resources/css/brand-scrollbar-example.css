@@ -1,0 +1,12 @@
+.brand-scrollbar {
+    --sir-scrollbar-size: 0.75rem;
+    --sir-scrollbar-track: var(--color-cyan-50);
+    --sir-scrollbar-thumb: var(--color-cyan-600);
+    --sir-scrollbar-thumb-hover: var(--color-cyan-700);
+}
+
+.dark .brand-scrollbar {
+    --sir-scrollbar-track: var(--color-cyan-950);
+    --sir-scrollbar-thumb: var(--color-cyan-500);
+    --sir-scrollbar-thumb-hover: var(--color-cyan-400);
+}

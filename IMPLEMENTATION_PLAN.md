@@ -8,7 +8,7 @@ This is a new plan. Deleted implementation/phase reports will not be restored. T
 
 ## Progress
 
-**5 of 8 phases complete.** Phases 0–4 are complete. Phases 5–7 have not started.
+**6 of 8 phases complete.** Phases 0–5 are complete. Phases 6–7 have not started.
 
 Check a task only after its work is done and any required verification passes. Check a phase in the completion list only when all its work and acceptance criteria are complete. Approval of this plan does not mark implementation tasks complete. Update this summary and the recorded evidence as work progresses.
 
@@ -231,19 +231,29 @@ Check a task only after its work is done and any required verification passes. C
 
 ### Work
 
-- [ ] Add an **Other** navigation category with **Colors** and **Customized Scrollbar** pages.
-- [ ] Explain semantic variants with swatches and real examples: primary/sky, secondary/indigo, success/emerald, danger/red, warning/amber. Light presentation shades are 100/900/300; dark shades are 950/200/700 for background/text/border.
-- [ ] Explain info as a custom surface/border mix, not a named Tailwind shade. Cover ghost/outline as component-specific treatments rather than additional color families.
-- [ ] Distinguish semantic `--sir-{variant}-{bg,text,border}` tokens from global `--sir-color-primary` and other widget/layout tokens. Custom OKLCH values have no exact named Tailwind shade equivalence.
-- [ ] Provide copyable light/dark overrides after Sirius CSS; demonstrate both presentation tones and widget tokens without promising one token controls every component.
-- [ ] Document `sir-scrollbar` on an element and descendants, its four CSS variables, light/dark styling, standard thin/color fallbacks, and forced-colors behavior.
-- [ ] Use Code/Link and examples partials for all new documentation. Do not add a redundant scrollbar JavaScript API or alter default colors merely to document them.
+- [x] Add an **Other** navigation category with **Colors** and **Customized Scrollbar** pages.
+- [x] Explain semantic variants with swatches and real examples: primary/sky, secondary/indigo, success/emerald, danger/red, warning/amber. Light presentation shades are 100/900/300; dark shades are 950/200/700 for background/text/border.
+- [x] Explain info as a custom surface/border mix, not a named Tailwind shade. Cover ghost/outline as component-specific treatments rather than additional color families.
+- [x] Distinguish semantic `--sir-{variant}-{bg,text,border}` tokens from global `--sir-color-primary` and other widget/layout tokens. Custom OKLCH values have no exact named Tailwind shade equivalence.
+- [x] Provide copyable light/dark overrides after Sirius CSS; demonstrate both presentation tones and widget tokens without promising one token controls every component.
+- [x] Document `sir-scrollbar` on an element and descendants, its four CSS variables, light/dark styling, standard thin/color fallbacks, and forced-colors behavior.
+- [x] Use Code/Link and examples partials for all new documentation. Do not add a redundant scrollbar JavaScript API or alter default colors merely to document them.
 
 ### Acceptance
 
-- [ ] Displayed colors, shades, and CSS variables agree with package source and working examples.
-- [ ] Scrollbar examples work in both themes and narrow containers; compatibility limits are explicit.
-- [ ] Navigation/content links remain functional after the new category is added.
+- [x] Displayed colors, shades, and CSS variables agree with package source and working examples.
+- [x] Scrollbar examples work in both themes and narrow containers; compatibility limits are explicit.
+- [x] Navigation/content links remain functional after the new category is added.
+
+### Verification — 2026-10-10
+
+- Added the Other category with Colors and Customized Scrollbar routes, breadcrumbs, active sidebar links, and section navigation. Existing menu order remains unchanged. Demos, examples, and token tables live in separate other partials; every x-docs-code invocation remains inside an examples directory.
+- Colors demonstrates all six semantic tones and their actual light/dark Tailwind background/text/border mappings. It documents info as a surface/border mix, ghost/outline as component-specific treatments, and the distinct presentation and widget/layout tokens. The scoped cyan preview changes Badge/Code and a Switch independently without affecting the default preview.
+- Customized Scrollbar demonstrates nested vertical and horizontal scrolling, the four inherited variables, and scoped cyan overrides. It documents the WebKit treatment, standard thin/color fallback, operating-system appearance limits, and native forced-colors rendering, with primary CSS documentation links. No JavaScript scrollbar API was added.
+- Copyable CSS is read from the same two scoped stylesheets used by the previews, imported after Sirius CSS. Browser tests verify exact copied source, theme changes, isolated overrides, inherited scrollbar styling, keyboard scrolling, forced colors, and Livewire navigation. Mobile token tables scroll within their containers, keep token names intact, and have named keyboard focus targets. Inspected mobile light/dark screenshots.
+- Package and docs production builds pass. The first package build encountered a temporary write failure for dist/sirius.js; the retry succeeded and the package working tree remains unchanged. Package runtime, defaults, dependencies, and existing tests were not changed in this phase. The package quality gate from Phase 4 remains applicable: 793 tests / 2,563 assertions.
+- Docs formatting, PHPStan, Rector, and feature tests pass: 258 tests / 1,756 assertions. Full local Chromium browser gate passes with two workers: 274 tests / 2,911 assertions, without warnings, in 227 seconds. After the last token-name wrapping adjustment, the focused Other browser gate also passes: 7 tests / 37 assertions. The focused runner reports its existing two warnings without details; the full gate has none.
+- Evidence is retained in each project's ignored .phpunit.cache/phase-5-*.log. Existing non-fatal build notices remain. No vendor edits, system changes, dependency updates, publication, or remote CI execution were performed.
 
 ## Phase 6 — Separate Welcome landing page
 
@@ -277,7 +287,7 @@ Check a task only after its work is done and any required verification passes. C
 - [x] Phase 2 — Menu composition and navigation migration.
 - [x] Phase 3 — Existing docs markup/examples, Introduction, and Icons.
 - [x] Phase 4 — Accessibility fix/pages, License, and source-driven Changelog.
-- [ ] Phase 5 — Other pages.
+- [x] Phase 5 — Other pages.
 - [ ] Phase 6 — Separate Welcome landing.
 - [ ] Phase 7 — Final integration/release checks.
 

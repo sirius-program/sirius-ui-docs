@@ -115,11 +115,6 @@ Breadcrumbs::for('home', function (BreadcrumbTrail $trail): void {
     $trail->push(__('Home'), route('home'));
 });
 
-Breadcrumbs::for('dashboard', function (BreadcrumbTrail $trail): void {
-    $trail->parent('home');
-    $trail->push(__('Dashboard'), route('dashboard'));
-});
-
 Breadcrumbs::for('started', function (BreadcrumbTrail $trail): void {
     $trail->parent('home');
     $trail->push(__('Getting Started'));
@@ -153,6 +148,23 @@ Breadcrumbs::for('started.license', function (BreadcrumbTrail $trail): void {
 Breadcrumbs::for('started.changelog', function (BreadcrumbTrail $trail): void {
     $trail->parent('started');
     $trail->push('Changelog', route('started.changelog'));
+});
+
+// Other
+
+Breadcrumbs::for('other', function (BreadcrumbTrail $trail): void {
+    $trail->parent('home');
+    $trail->push('Other');
+});
+
+Breadcrumbs::for('other.colors', function (BreadcrumbTrail $trail): void {
+    $trail->parent('other');
+    $trail->push('Colors', route('other.colors'));
+});
+
+Breadcrumbs::for('other.customized-scrollbar', function (BreadcrumbTrail $trail): void {
+    $trail->parent('other');
+    $trail->push('Customized Scrollbar', route('other.customized-scrollbar'));
 });
 
 // Blade Components

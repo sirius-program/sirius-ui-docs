@@ -1,0 +1,19 @@
+.brand-theme {
+    --sir-primary-bg: var(--color-cyan-100);
+    --sir-primary-text: var(--color-cyan-900);
+    --sir-primary-border: var(--color-cyan-300);
+    --sir-color-primary: var(--color-cyan-600);
+    --sir-color-primary-hover: var(--color-cyan-700);
+    --sir-color-on-primary: var(--color-white);
+    --sir-focus-ring: var(--color-cyan-600);
+}
+
+.dark .brand-theme {
+    --sir-primary-bg: var(--color-cyan-950);
+    --sir-primary-text: var(--color-cyan-200);
+    --sir-primary-border: var(--color-cyan-700);
+    --sir-color-primary: var(--color-cyan-400);
+    --sir-color-primary-hover: var(--color-cyan-300);
+    --sir-color-on-primary: var(--color-cyan-950);
+    --sir-focus-ring: var(--color-cyan-300);
+}
