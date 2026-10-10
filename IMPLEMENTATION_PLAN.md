@@ -8,7 +8,7 @@ This is a new plan. Deleted implementation/phase reports will not be restored. T
 
 ## Progress
 
-**3 of 8 phases complete.** Phases 0–2 are complete. Phase 3 markup migration is complete; its remaining work and Phases 4–7 have not started.
+**5 of 8 phases complete.** Phases 0–4 are complete. Phases 5–7 have not started.
 
 Check a task only after its work is done and any required verification passes. Check a phase in the completion list only when all its work and acceptance criteria are complete. Approval of this plan does not mark implementation tasks complete. Update this summary and the recorded evidence as work progresses.
 
@@ -155,19 +155,19 @@ Check a task only after its work is done and any required verification passes. C
 
 - [x] Replace docs-owned rendered inline `code` with Code and anchors with Link, preserving all existing attributes and text.
 - [x] Make the reusable docs code-block renderer use block Code without changing its source escaping, highlighting, clipboard text, or error feedback.
-- [ ] Move every `x-docs-code` invocation into an `examples` partial. Include the helper invocation currently inside `docs-example` in this audit; the public wrapper can delegate to a shared example partial.
-- [ ] Keep `blade-components/examples` and `livewire-components/examples`. Add `getting-started/examples`, `other/examples`, and shared `resources/views/examples` only where needed. Pass snippet data explicitly through `@include`.
-- [ ] Pages include snippet partials; shared prose remains literal page content, following the existing wording rule. Avoid copying large variable definitions across pages.
-- [ ] Complete Introduction with a concise overview, Blade versus Livewire use, bundled widgets/themes, and application-owned validation/persistence/uploads. Keep the component directory on Introduction.
-- [ ] Expand the existing Icon page: only Heroicons ships by default; explain outline `heroicon-o-*` (24px), solid `heroicon-s-*` (24px), mini `heroicon-m-*` (20px), and micro `heroicon-c-*` (16px).
-- [ ] Distinguish source icon family from Sirius `size`. Explain installing a separately chosen Blade Icons pack, its registered prefix, custom sets, and icon-cache refresh. Link official pack documentation; do not imply every Blade Icons catalog set is preinstalled.
+- [x] Move every `x-docs-code` invocation into an `examples` partial. Include the helper invocation currently inside `docs-example` in this audit; the public wrapper can delegate to a shared example partial.
+- [x] Keep `blade-components/examples` and `livewire-components/examples`. Add `getting-started/examples`, `other/examples`, and shared `resources/views/examples` only where needed. Pass snippet data explicitly through `@include`.
+- [x] Pages include snippet partials; shared prose remains literal page content, following the existing wording rule. Avoid copying large variable definitions across pages.
+- [x] Complete Introduction with a concise overview, Blade versus Livewire use, bundled widgets/themes, and application-owned validation/persistence/uploads. Keep the component directory on Introduction.
+- [x] Expand the existing Icon page: only Heroicons ships by default; explain outline `heroicon-o-*` (24px), solid `heroicon-s-*` (24px), mini `heroicon-m-*` (20px), and micro `heroicon-c-*` (16px).
+- [x] Distinguish source icon family from Sirius `size`. Explain installing a separately chosen Blade Icons pack, its registered prefix, custom sets, and icon-cache refresh. Link official pack documentation; do not imply every Blade Icons catalog set is preinstalled.
 
 ### Acceptance
 
 - [x] Rendered docs code/link markup consistently uses the new components; example strings/native HTML demonstrations remain correct.
-- [ ] Page templates and helper components have no direct `x-docs-code` invocation outside an examples partial.
+- [x] Page templates and helper components have no direct `x-docs-code` invocation outside an examples partial.
 - [x] Syntax highlighting and exact Copy behavior survive ordinary navigation, Livewire navigation, and clipboard denial.
-- [ ] Introduction retains all current component links, and Icon documentation matches installed support.
+- [x] Introduction retains all current component links, and Icon documentation matches installed support.
 
 ### Markup migration verification — 2026-10-09
 
@@ -177,35 +177,55 @@ Check a task only after its work is done and any required verification passes. C
 - Docs build and quality gate pass: 225 tests / 1,405 assertions, including formatting, static analysis, and refactoring checks. Full local Chromium browser gate passes: 254 tests / 2,770 assertions, without warnings, in 211 seconds.
 - Evidence is retained in ignored `.phpunit.cache/docs-tags-*.log`. Examples extraction, Introduction expansion, and Icon guidance remain pending; this does not complete Phase 3.
 
+### Examples and reference verification — 2026-10-10
+
+- Extracted 24 page-level code snippets plus the shared docs-example renderer into examples partials. All x-docs-code invocations now live in an examples directory. Existing pre tags, highlighting, clipboard behavior, and literal source examples remain intact.
+- Expanded Introduction while retaining every current component-directory destination. Expanded Icon with outline/solid/mini/micro demos, source versus display dimensions, optional pack installation, custom sets, and cache instructions verified against installed packages and official sources. No optional icon dependency was installed.
+- Updated README and the bundled presentation skill reference. Inspected mobile light/dark screenshots; section navigation, viewport containment, exact copied snippets, and Livewire navigation are covered by passing tests.
+- Moved stale Menu regression scenarios into the existing development Navigation page after the user compacted its public demo. Preserved the public demo and every existing test. A reproducible Livewire morph regression also exposed loss of inert on a closed submenu; Menu now observes inert changes and updates it only when needed, avoiding observer loops. The regression fails before the fix and passes after it, including unrelated Livewire updates.
+- Package production build and quality gate pass: 788 tests / 2,498 assertions, with formatting, PHPStan, and Rector passing. Docs production build and quality gate pass: 229 tests / 1,554 assertions, with the same checks passing.
+- Full local Chromium browser gate passes with two workers: 262 tests / 2,841 assertions, without warnings, in 217 seconds. Logs are retained in each project's ignored .phpunit.cache/phase-3-*.log. The build retains existing non-fatal optional-font and chunk-size notices.
+- Phase 4 labeled-icon accessibility work remains pending. No vendor-source edits, dependency changes, system changes, publication, or remote CI execution were performed.
+
 ## Phase 4 — Accessibility, License, and Changelog
 
 ### Accessibility
 
-- [ ] Fix labeled Icon SVG output so `role="img"`/its accessible name are not negated by inherited `aria-hidden="true"`. Preserve decorative icons and avoid duplicate/conflicting effective attributes. Do not modify vendor SVG files.
-- [ ] Add a Getting Started Accessibility page covering verified labels/helpers/errors, keyboard/focus, overlay focus restoration, native disclosures, tabs, sliders, tooltip/popover distinctions, announcements, reduced motion, and forced-colors behavior.
-- [ ] Explain consumer responsibilities: useful names, sensible color overrides, validation/error routing, and accessible Chart alternatives. Do not claim screen-reader certification or audited WCAG conformance.
+- [x] Fix labeled Icon SVG output so `role="img"`/its accessible name are not negated by inherited `aria-hidden="true"`. Preserve decorative icons and avoid duplicate/conflicting effective attributes. Do not modify vendor SVG files.
+- [x] Add a Getting Started Accessibility page covering verified labels/helpers/errors, keyboard/focus, overlay focus restoration, native disclosures, tabs, sliders, tooltip/popover distinctions, announcements, reduced motion, and forced-colors behavior.
+- [x] Explain consumer responsibilities: useful names, sensible color overrides, validation/error routing, and accessible Chart alternatives. Do not claim screen-reader certification or audited WCAG conformance.
 
 ### License
 
-- [ ] Add a Getting Started License page using package `LICENSE.md` and the generated bundled dependency notices as authoritative sources.
-- [ ] Identify package MIT terms and relevant runtime dependency licenses; distinguish included dependencies from optional icon packs and application-added packages.
-- [ ] Retain third-party notices/provenance. Do not invent a docs copyright owner or a new license text; docs currently declares MIT in Composer but has no root license file.
+- [x] Add a Getting Started License page using package `LICENSE.md` and the generated bundled dependency notices as authoritative sources.
+- [x] Identify package MIT terms and relevant runtime dependency licenses; distinguish included dependencies from optional icon packs and application-added packages.
+- [x] Retain third-party notices/provenance. Do not invent a docs copyright owner or a new license text; docs currently declares MIT in Composer but has no root license file.
 
 ### Changelog
 
-- [ ] Add one Getting Started Changelog page with Package and Documentation tabs using the existing Tabs component.
-- [ ] Resolve package root via Composer installed-package metadata and read its `CHANGELOG.md`; read the docs file via a fixed `base_path` path.
-- [ ] Render with installed CommonMark, stripping raw HTML and rejecting unsafe links. Handle missing/unreadable sources clearly without exposing internal paths.
-- [ ] Route Markdown-generated links/code through safe node rendering that uses the new presentation components. Do not execute Markdown as Blade or apply unsafe string replacement to generated HTML.
-- [ ] Ensure the docs changelog is included in deployment/archive sources; its current `export-ignore` conflicts with request-time rendering. Package already ships its changelog.
-- [ ] Render current source content on requests without copying release entries into a view or fetching GitHub. Preserve the fact that both current files may contain the same initial-release text.
+- [x] Add one Getting Started Changelog page with Package and Documentation tabs using the existing Tabs component.
+- [x] Resolve package root via Composer installed-package metadata and read its `CHANGELOG.md`; read the docs file via a fixed `base_path` path.
+- [x] Render with installed CommonMark, stripping raw HTML and rejecting unsafe links. Handle missing/unreadable sources clearly without exposing internal paths.
+- [x] Route Markdown-generated links/code through safe node rendering that uses the new presentation components. Do not execute Markdown as Blade or apply unsafe string replacement to generated HTML.
+- [x] Ensure the docs changelog is included in deployment/archive sources; its current `export-ignore` conflicts with request-time rendering. Package already ships its changelog.
+- [x] Render current source content on requests without copying release entries into a view or fetching GitHub. Preserve the fact that both current files may contain the same initial-release text.
 
 ### Acceptance
 
-- [ ] Meaningful icons are exposed to the accessibility tree; decorative icons remain hidden.
-- [ ] New pages are linked with active state, breadcrumbs, and matching content navigation.
-- [ ] Changelog tabs read the correct independent sources and react to file changes; unsafe HTML/links cannot execute.
-- [ ] License and accessibility statements are traceable to shipped behavior/files and accurately state their limits.
+- [x] Meaningful icons are exposed to the accessibility tree; decorative icons remain hidden.
+- [x] New pages are linked with active state, breadcrumbs, and matching content navigation.
+- [x] Changelog tabs read the correct independent sources and react to file changes; unsafe HTML/links cannot execute.
+- [x] License and accessibility statements are traceable to shipped behavior/files and accurately state their limits.
+
+### Verification — 2026-10-10
+
+- Fixed Icon accessibility at the SVG root without changing vendor SVGs. The output contains one managed declaration per attribute; labeled icons have role=img and their escaped name without inherited aria-hidden. Decorative icons remain hidden. Root attributes are processed as complete tokens, preserving unrelated values that mention accessibility attribute names. Regression tests fail before both fixes and pass afterward across all four Heroicons families and forwarded data values. Browser role/name lookup confirms meaningful icons are exposed.
+- Added Getting Started Accessibility, License, and Changelog with active sidebar links, breadcrumbs, and content navigation. Accessibility describes verified labels/errors, keyboard/focus, announcements, motion and forced-colors support, and application responsibilities without claiming certification or screen-reader auditing.
+- License reads the installed package license and generated package/docs notices as escaped text. Runtime dependency summaries match local Composer metadata and bundled notices. Included the official Instrument Sans SIL OFL-1.1 text and provenance in docs build notices; retained the existing package notices and license ownership. No license text or copyright owner was invented, and no dependency was added.
+- Changelog reads two independent local files on each request. Composer installed-package metadata locates package sources; documentation paths are fixed. Tests cover independent updates, missing/unreadable sources, and read failures without exposing paths. Removed the docs changelog export-ignore so archives retain the request-time source. Existing release entries remain untouched, including their current matching initial-release notes.
+- CommonMark 2.10.3 strips raw HTML, rejects unsafe/control-character destinations, bounds parsing, and uses typed node renderers with fixed Blade templates for Sirius Code/Link. Markdown is never compiled as Blade or rewritten as generated HTML. Tests cover nested markup, escaped literals/titles, fenced and indented code, exact code text, and adjacent inline text. Source headings are rebased within the page hierarchy.
+- Package/docs production builds pass. Package formatting, PHPStan, Rector, and tests pass: 793 tests / 2,563 assertions. Docs equivalents pass: 256 tests / 1,710 assertions. Full local Chromium browser gate passes with two workers: 267 tests / 2,874 assertions, without warnings, in 227 seconds. Inspected mobile light/dark screenshots and tested Changelog keyboard activation after Livewire navigation.
+- The first full browser run had one existing multiple-upload completion failure; its focused rerun and the final full suite both pass. Upload behavior/tests were not changed for this phase. Evidence is retained in each project's ignored .phpunit.cache/phase-4-*.log. Existing non-fatal build notices remain; no publication, vendor edits, Windows changes, or remote CI execution was performed.
 
 ## Phase 5 — Other: Colors and Customized Scrollbar
 
@@ -255,8 +275,8 @@ Check a task only after its work is done and any required verification passes. C
 - [x] Phase 0 — Baseline/rules and stale references.
 - [x] Phase 1 — Code/Link APIs and docs.
 - [x] Phase 2 — Menu composition and navigation migration.
-- [ ] Phase 3 — Existing docs markup/examples, Introduction, and Icons.
-- [ ] Phase 4 — Accessibility fix/pages, License, and source-driven Changelog.
+- [x] Phase 3 — Existing docs markup/examples, Introduction, and Icons.
+- [x] Phase 4 — Accessibility fix/pages, License, and source-driven Changelog.
 - [ ] Phase 5 — Other pages.
 - [ ] Phase 6 — Separate Welcome landing.
 - [ ] Phase 7 — Final integration/release checks.

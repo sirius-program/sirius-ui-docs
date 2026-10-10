@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\BasicFormController;
+use App\Http\Controllers\ChangelogController;
 use App\Http\Controllers\ControlExampleController;
 use App\Http\Controllers\CurrencyExampleController;
 use App\Http\Controllers\DatetimePickerExampleController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\FormExampleController;
 use App\Http\Controllers\FormUploadStoreController;
 use App\Http\Controllers\FormValidationController;
 use App\Http\Controllers\InvoiceCustomerOptionController;
+use App\Http\Controllers\LicenseController;
 use App\Http\Controllers\PhoneExampleController;
 use App\Http\Controllers\RichtextExampleController;
 use App\Http\Controllers\RichtextImageShowController;
@@ -30,6 +32,9 @@ Route::redirect('getting-started', 'getting-started/introduction')->name('starte
 Route::view('getting-started/introduction', 'introduction')->name('started.introduction');
 Route::view('getting-started/installation', 'installation')->name('started.installation');
 Route::view('getting-started/ai-agent-skill', 'ai-agent-skill')->name('started.ai-agent-skill');
+Route::view('getting-started/accessibility', 'accessibility')->name('started.accessibility');
+Route::get('getting-started/license', LicenseController::class)->name('started.license');
+Route::get('getting-started/changelog', ChangelogController::class)->name('started.changelog');
 
 Route::view('blade-components/choices', 'blade-components.choices-docs')->name('blade-components.choices');
 Route::view('blade-components/currency', 'blade-components.currency-docs')->name('blade-components.currency');

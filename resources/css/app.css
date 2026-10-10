@@ -43,6 +43,19 @@ body { background: var(--sir-color-surface); color: var(--sir-color-text); }
 .dark .docs-token-attribute { color: #a5b4fc; }
 .dark .docs-token-expression { color: #fcd34d; }
 
+.docs-markdown { overflow-wrap: anywhere; }
+.docs-markdown :where(h2, h3, h4, h5, h6) { margin-block: 1.5rem .75rem; font-weight: 600; }
+.docs-markdown h2 { font-size: 1.5rem; }
+.docs-markdown h3 { font-size: 1.25rem; }
+.docs-markdown :where(p, ul, ol, pre, blockquote) { margin-block: .75rem; }
+.docs-markdown :where(ul, ol) { padding-inline-start: 1.5rem; }
+.docs-markdown ul { list-style: disc; }
+.docs-markdown ol { list-style: decimal; }
+.docs-markdown li + li { margin-top: .5rem; }
+.docs-markdown blockquote { padding-inline-start: 1rem; border-inline-start: 2px solid var(--sir-color-border); color: var(--sir-color-muted); }
+.docs-markdown img { max-width: 100%; }
+.docs-markdown > :first-child { margin-top: 0; }
+
 @media (min-width: 40rem) {
     .docs-main { padding: 2rem; }
     .docs-header { padding-inline: 2rem; }

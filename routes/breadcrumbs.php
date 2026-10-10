@@ -140,6 +140,21 @@ Breadcrumbs::for('started.installation', function (BreadcrumbTrail $trail): void
     $trail->push(__('Installation'), route('started.installation'));
 });
 
+Breadcrumbs::for('started.accessibility', function (BreadcrumbTrail $trail): void {
+    $trail->parent('started');
+    $trail->push('Accessibility', route('started.accessibility'));
+});
+
+Breadcrumbs::for('started.license', function (BreadcrumbTrail $trail): void {
+    $trail->parent('started');
+    $trail->push('License', route('started.license'));
+});
+
+Breadcrumbs::for('started.changelog', function (BreadcrumbTrail $trail): void {
+    $trail->parent('started');
+    $trail->push('Changelog', route('started.changelog'));
+});
+
 // Blade Components
 
 Breadcrumbs::for('blade-components.index', function (BreadcrumbTrail $trail): void {

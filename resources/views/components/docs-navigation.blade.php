@@ -4,6 +4,9 @@
         <x-sirius::menu.item icon="heroicon-s-rocket-launch" :link="route('started.introduction')" :active="request()->routeIs('started.introduction')" wire:navigate>Introduction</x-sirius::menu.item>
         <x-sirius::menu.item icon="heroicon-s-clipboard-document-list" :link="route('started.installation')" :active="request()->routeIs('started.installation')" wire:navigate>Installation</x-sirius::menu.item>
         <x-sirius::menu.item icon="heroicon-s-cog-6-tooth" :link="route('started.ai-agent-skill')" :active="request()->routeIs('started.ai-agent-skill')" wire:navigate>AI Agent Skill</x-sirius::menu.item>
+        <x-sirius::menu.item icon="heroicon-s-eye" :link="route('started.accessibility')" :active="request()->routeIs('started.accessibility')" wire:navigate>Accessibility</x-sirius::menu.item>
+        <x-sirius::menu.item icon="heroicon-s-scale" :link="route('started.license')" :active="request()->routeIs('started.license')" wire:navigate>License</x-sirius::menu.item>
+        <x-sirius::menu.item icon="heroicon-s-clock" :link="route('started.changelog')" :active="request()->routeIs('started.changelog')" wire:navigate>Changelog</x-sirius::menu.item>
     </x-sirius::menu.category>
     <x-sirius::menu.category :title="__('Blade Components')" class="docs-nav-section">
         <x-sirius::menu.item :id="$prefix.'-group-2'" name="Form Control" :open="request()->routeIs('blade-components.label', 'blade-components.input', 'blade-components.textarea', 'blade-components.choices', 'blade-components.slider', 'blade-components.currency', 'blade-components.datetime-picker', 'blade-components.phone', 'blade-components.select', 'blade-components.file-upload', 'blade-components.richtext', 'blade-components.form')"  class="docs-nav-group" transition>

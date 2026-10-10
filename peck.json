@@ -13,7 +13,9 @@
             "tooltip",
             "submenu",
             "lucide",
-            "submenus"
+            "renderer",
+            "submenus",
+            "ofl"
         ],
         "paths": []
     }

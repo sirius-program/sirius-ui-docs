@@ -37,4 +37,5 @@ function collect(name, from) {
 }
 
 for (const name of roots) collect(name, resolve('.'));
+notices.push('Instrument Sans (SIL OFL-1.1)\nSource: https://raw.githubusercontent.com/google/fonts/main/ofl/instrumentsans/OFL.txt\n\n' + readFileSync('scripts/licenses/instrument-sans-OFL-1.1.txt', 'utf8'));
 writeFileSync('public/third-party-notices.txt', notices.join('\n'));
