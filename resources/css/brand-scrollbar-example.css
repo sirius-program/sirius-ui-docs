@@ -1,9 +1,13 @@
+/* Example scrollbar: light theme */
+
 .brand-scrollbar {
     --sir-scrollbar-size: 0.75rem;
     --sir-scrollbar-track: var(--color-cyan-50);
     --sir-scrollbar-thumb: var(--color-cyan-600);
     --sir-scrollbar-thumb-hover: var(--color-cyan-700);
 }
+
+/* Example scrollbar: dark theme */
 
 .dark .brand-scrollbar {
     --sir-scrollbar-track: var(--color-cyan-950);

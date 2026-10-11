@@ -1,0 +1,9 @@
+/* Scoped package and documentation typography */
+
+.brand-typography {
+    --sir-font-family: Georgia, 'Times New Roman', serif;
+    --sir-font-family-mono: 'Courier New', monospace;
+    --docs-font-family: var(--sir-font-family);
+    --docs-font-family-mono: var(--sir-font-family-mono);
+    font-family: var(--sir-font-family);
+}

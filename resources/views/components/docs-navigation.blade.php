@@ -86,6 +86,7 @@
         </x-sirius::menu.item>
     </x-sirius::menu.category>
     <x-sirius::menu.category :title="__('Other')" class="docs-nav-section">
+        <x-sirius::menu.item icon="heroicon-s-language" :link="route('other.typography')" :active="request()->routeIs('other.typography')" wire:navigate>Typography</x-sirius::menu.item>
         <x-sirius::menu.item icon="heroicon-s-swatch" :link="route('other.colors')" :active="request()->routeIs('other.colors')" wire:navigate>Colors</x-sirius::menu.item>
         <x-sirius::menu.item icon="heroicon-s-arrows-up-down" :link="route('other.customized-scrollbar')" :active="request()->routeIs('other.customized-scrollbar')" wire:navigate>Customized Scrollbar</x-sirius::menu.item>
     </x-sirius::menu.category>

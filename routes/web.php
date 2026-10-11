@@ -35,6 +35,7 @@ Route::view('getting-started/ai-agent-skill', 'ai-agent-skill')->name('started.a
 Route::view('getting-started/accessibility', 'accessibility')->name('started.accessibility');
 Route::get('getting-started/license', LicenseController::class)->name('started.license');
 Route::get('getting-started/changelog', ChangelogController::class)->name('started.changelog');
+Route::view('other/typography', 'other.typography')->name('other.typography');
 Route::view('other/colors', 'other.colors')->name('other.colors');
 Route::view('other/customized-scrollbar', 'other.customized-scrollbar')->name('other.customized-scrollbar');
 

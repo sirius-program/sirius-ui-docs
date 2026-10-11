@@ -28,7 +28,7 @@ it('exposes the current documentation link with unique control IDs and no collap
     $currentLink = '//aside[@data-docs-sidebar]//a[@aria-current="page" and contains(@href, "' . $path . '")]';
     expect($xpath->query($currentLink)->length)->toBe(1);
     expect($xpath->query($currentLink . '/ancestor::*[@hidden]')->length)->toBe(0);
-})->with(['/getting-started/introduction', '/getting-started/ai-agent-skill', '/getting-started/installation', '/getting-started/accessibility', '/getting-started/license', '/getting-started/changelog', '/other/colors', '/other/customized-scrollbar', '/blade-components/input', '/livewire-components/table/query', '/livewire-components/calendar/events']);
+})->with(['/getting-started/introduction', '/getting-started/ai-agent-skill', '/getting-started/installation', '/getting-started/accessibility', '/getting-started/license', '/getting-started/changelog', '/other/typography', '/other/colors', '/other/customized-scrollbar', '/blade-components/input', '/livewire-components/table/query', '/livewire-components/calendar/events']);
 
 it('renders installation asset examples as literal code instead of loading additional assets', function (): void {
     $this->get(route('started.installation'))->assertOk()->assertViewIs('installation')

@@ -21,7 +21,8 @@ it('keeps multiple selections on one scrollable line with an accessible search i
 
     foreach (['Design', 'Engineering', 'Research'] as $label) {
         $page->click($input)->type($input, $label)->keys($input, 'Enter')->assertSeeIn($root . ' .ts-control', $label)
-            ->assertScript('(() => { const control = document.querySelector("[data-sir-select]:has(#blade-select-topics) .ts-control"); const bounds = control.getBoundingClientRect(); const input = control.querySelector("input").getBoundingClientRect(); return input.left >= bounds.left && input.right <= bounds.right; })()', true);
+            ->assertScript('(() => { const control = document.querySelector("[data-sir-select]:has(#blade-select-topics) .ts-control"); const bounds = control.getBoundingClientRect(); const input = control.querySelector("input").getBoundingClientRect(); return input.left >= bounds.left && input.right <= bounds.right; })()', true)
+            ->assertScript('(() => { const control = document.querySelector("[data-sir-select]:has(#blade-select-topics) .ts-control"); const bounds = control.getBoundingClientRect(); const center = bounds.top + bounds.height / 2; return [...control.querySelectorAll(".item, input")].every(element => { const item = element.getBoundingClientRect(); return Math.abs(item.top + item.height / 2 - center) <= 0.5; }); })()', true);
     }
     $page->assertScript('new FormData(document.querySelector("[data-blade-select]")).getAll("topics[]")', ['design', 'engineering', 'research'])
         ->assertScript('document.querySelector("[data-sir-select]:has(#blade-select-topics) .sir-select-shell").getBoundingClientRect().height === window.multipleHeight', true)

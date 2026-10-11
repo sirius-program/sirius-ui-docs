@@ -1,0 +1,21 @@
+/* Package font-size scale */
+
+.typography-size-xs {
+    font-size: var(--sir-font-size-xs, 0.75rem);
+}
+
+.typography-size-sm {
+    font-size: var(--sir-font-size-sm, 0.875rem);
+}
+
+.typography-size-base {
+    font-size: var(--sir-font-size-base, 1rem);
+}
+
+.typography-size-lg {
+    font-size: var(--sir-font-size-lg, 1.125rem);
+}
+
+.typography-size-xl {
+    font-size: var(--sir-font-size-xl, 1.25rem);
+}

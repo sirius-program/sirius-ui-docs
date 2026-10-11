@@ -157,6 +157,11 @@ Breadcrumbs::for('other', function (BreadcrumbTrail $trail): void {
     $trail->push('Other');
 });
 
+Breadcrumbs::for('other.typography', function (BreadcrumbTrail $trail): void {
+    $trail->parent('other');
+    $trail->push('Typography', route('other.typography'));
+});
+
 Breadcrumbs::for('other.colors', function (BreadcrumbTrail $trail): void {
     $trail->parent('other');
     $trail->push('Colors', route('other.colors'));

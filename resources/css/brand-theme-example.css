@@ -1,3 +1,5 @@
+/* Example brand colors: light theme */
+
 .brand-theme {
     --sir-primary-bg: var(--color-cyan-100);
     --sir-primary-text: var(--color-cyan-900);
@@ -7,6 +9,8 @@
     --sir-color-on-primary: var(--color-white);
     --sir-focus-ring: var(--color-cyan-600);
 }
+
+/* Example brand colors: dark theme */
 
 .dark .brand-theme {
     --sir-primary-bg: var(--color-cyan-950);
