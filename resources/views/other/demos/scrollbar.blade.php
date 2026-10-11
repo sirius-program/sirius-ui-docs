@@ -14,14 +14,14 @@
             <li>Schedule the release.</li>
         </ol>
     </div>
-    <div tabindex="0" role="region" aria-label="Project deliveries" class="overflow-x-auto rounded-xl border border-slate-300 focus-visible:outline-2 focus-visible:outline-offset-2 dark:border-slate-600" data-scrollbar-horizontal>
-        <table class="min-w-[36rem] text-left text-sm">
+    <div tabindex="0" role="region" aria-label="Project deliveries" class="docs-table-wrapper" data-scrollbar-horizontal>
+        <table class="docs-table">
             <caption class="p-4 text-left font-medium">Project deliveries</caption>
-            <thead><tr><th scope="col" class="px-4 py-3">Project</th><th scope="col" class="px-4 py-3">Customer</th><th scope="col" class="px-4 py-3">Delivery</th></tr></thead>
-            <tbody class="divide-y divide-slate-300 dark:divide-slate-600">
-                <tr><td class="px-4 py-3">Website redesign</td><td class="px-4 py-3">Northstar Studio</td><td class="px-4 py-3">October 15</td></tr>
-                <tr><td class="px-4 py-3">Brand guidelines</td><td class="px-4 py-3">Cedar Workshop</td><td class="px-4 py-3">October 20</td></tr>
-                <tr><td class="px-4 py-3">Product launch</td><td class="px-4 py-3">Orbit Coffee</td><td class="px-4 py-3">October 25</td></tr>
+            <thead><tr><th scope="col">Project</th><th scope="col">Customer</th><th scope="col">Delivery</th></tr></thead>
+            <tbody>
+                <tr><td>Website redesign</td><td>Northstar Studio</td><td>October 15</td></tr>
+                <tr><td>Brand guidelines</td><td>Cedar Workshop</td><td>October 20</td></tr>
+                <tr><td>Product launch</td><td>Orbit Coffee</td><td>October 25</td></tr>
             </tbody>
         </table>
     </div>

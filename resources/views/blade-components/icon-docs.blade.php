@@ -26,14 +26,15 @@
             <section id="included-icons" class="space-y-3">
                 <h2 class="text-xl font-medium">Included icons</h2>
                 <p>Heroicons is the only icon pack included with Sirius UI. Its four families are available immediately:</p>
-                <div class="overflow-x-auto rounded-xl border border-slate-300 dark:border-slate-600">
-                    <table class="w-full text-left text-sm">
-                        <thead><tr class="border-b border-slate-300 dark:border-slate-600"><th class="p-3">Family</th><th class="p-3">Prefix</th><th class="p-3">Source size</th></tr></thead>
+                <div tabindex="0" role="region" aria-label="Included icon families" class="docs-table-wrapper">
+                    <table class="docs-table">
+                        <caption class="sr-only">Heroicons families, prefixes, and source sizes</caption>
+                        <thead><tr><th scope="col">Family</th><th scope="col">Prefix</th><th scope="col">Source size</th></tr></thead>
                         <tbody>
-                            <tr><td class="p-3">Outline</td><td class="p-3"><x-sirius::code>heroicon-o-*</x-sirius::code></td><td class="p-3">24 × 24</td></tr>
-                            <tr><td class="p-3">Solid</td><td class="p-3"><x-sirius::code>heroicon-s-*</x-sirius::code></td><td class="p-3">24 × 24</td></tr>
-                            <tr><td class="p-3">Mini</td><td class="p-3"><x-sirius::code>heroicon-m-*</x-sirius::code></td><td class="p-3">20 × 20</td></tr>
-                            <tr><td class="p-3">Micro</td><td class="p-3"><x-sirius::code>heroicon-c-*</x-sirius::code></td><td class="p-3">16 × 16</td></tr>
+                            <tr><td>Outline</td><td><x-sirius::code>heroicon-o-*</x-sirius::code></td><td>24 × 24</td></tr>
+                            <tr><td>Solid</td><td><x-sirius::code>heroicon-s-*</x-sirius::code></td><td>24 × 24</td></tr>
+                            <tr><td>Mini</td><td><x-sirius::code>heroicon-m-*</x-sirius::code></td><td>20 × 20</td></tr>
+                            <tr><td>Micro</td><td><x-sirius::code>heroicon-c-*</x-sirius::code></td><td>16 × 16</td></tr>
                         </tbody>
                     </table>
                 </div>

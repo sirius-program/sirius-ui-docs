@@ -1,8 +1,8 @@
-<div tabindex="0" role="region" aria-label="Font size CSS tokens" class="overflow-x-auto rounded-xl border border-slate-300 focus-visible:outline-2 focus-visible:outline-offset-2 dark:border-slate-600">
-    <table class="w-full min-w-[40rem] text-left text-sm">
+<div tabindex="0" role="region" aria-label="Font size CSS tokens" class="docs-table-wrapper">
+    <table class="docs-table min-w-[40rem]">
         <caption class="sr-only">Font size tokens and defaults</caption>
-        <thead class="bg-slate-100 dark:bg-slate-900"><tr><th scope="col" class="px-4 py-3">Token</th><th scope="col" class="px-4 py-3">Default</th><th scope="col" class="px-4 py-3">Used for</th></tr></thead>
-        <tbody class="divide-y divide-slate-300 dark:divide-slate-600">
+        <thead><tr><th scope="col">Token</th><th scope="col">Default</th><th scope="col">Used for</th></tr></thead>
+        <tbody>
             @foreach ([
                 ['--sir-font-size-xs', '0.75rem', 'Small badges, menu headings, and label status'],
                 ['--sir-font-size-sm', '0.875rem', 'Small controls, helper text, navigation, and tables'],
@@ -14,7 +14,7 @@
                 ['--sir-richtext-large-button-font-size', '0.9375rem', 'Large Richtext UI buttons'],
                 ['--sir-avatar-font-scale', '0.35', 'Avatar text size as a fraction of the avatar size'],
             ] as [$token, $default, $usage])
-                <tr><th scope="row" class="whitespace-nowrap px-4 py-3"><x-sirius::code>{{ $token }}</x-sirius::code></th><td class="px-4 py-3"><x-sirius::code>{{ $default }}</x-sirius::code></td><td class="px-4 py-3">{{ $usage }}</td></tr>
+                <tr><th scope="row" class="whitespace-nowrap"><x-sirius::code>{{ $token }}</x-sirius::code></th><td><x-sirius::code>{{ $default }}</x-sirius::code></td><td>{{ $usage }}</td></tr>
             @endforeach
         </tbody>
     </table>

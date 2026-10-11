@@ -142,12 +142,12 @@ it('shows scoped typography and copies its exact applied CSS before navigating t
         })()
         JS, true);
 
-    expect($page->script('[...document.querySelectorAll("[data-typography-sizes] > p")].map(sample => getComputedStyle(sample).fontSize)'))
+    expect($page->script('[...document.querySelectorAll("[data-typography-sizes] [data-typography-size]")].map(sample => getComputedStyle(sample).fontSize)'))
         ->toBe(['12px', '14px', '16px', '18px', '20px']);
 
     $page->script('document.querySelector("[data-typography-sizes]").style.setProperty("--sir-font-size-sm", "17px");');
 
-    expect($page->script('[...document.querySelectorAll("[data-typography-sizes] > p")].map(sample => getComputedStyle(sample).fontSize)'))
+    expect($page->script('[...document.querySelectorAll("[data-typography-sizes] [data-typography-size]")].map(sample => getComputedStyle(sample).fontSize)'))
         ->toBe(['12px', '17px', '16px', '18px', '20px']);
 
     foreach ([false, true] as $dark) {

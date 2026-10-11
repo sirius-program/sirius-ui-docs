@@ -18,17 +18,18 @@
             <section id="bundled-dependencies" class="space-y-3">
                 <h2 class="text-xl font-medium">Bundled dependencies</h2>
                 <p>The compiled assets include the following libraries. The generated notices below contain their license text, copyright, and transitive dependencies.</p>
-                <div class="overflow-x-auto rounded-xl border border-slate-300 dark:border-slate-600">
-                    <table class="w-full text-left text-sm">
-                        <thead class="bg-slate-100 dark:bg-slate-900"><tr><th class="px-4 py-3">Library</th><th class="px-4 py-3">License</th></tr></thead>
-                        <tbody class="divide-y divide-slate-300 dark:divide-slate-600">
-                            <tr><td class="px-4 py-3">Flatpickr</td><td class="px-4 py-3">MIT</td></tr>
-                            <tr><td class="px-4 py-3">libphonenumber-js and numbering metadata</td><td class="px-4 py-3">MIT and Apache-2.0</td></tr>
-                            <tr><td class="px-4 py-3">Tom Select, Sifter, Unicode Variants</td><td class="px-4 py-3">Apache-2.0</td></tr>
-                            <tr><td class="px-4 py-3">FilePond and bundled validation/preview plugins</td><td class="px-4 py-3">MIT</td></tr>
-                            <tr><td class="px-4 py-3">Tiptap, Tiptap UI, React, ProseMirror, Radix UI, Floating UI</td><td class="px-4 py-3">MIT</td></tr>
-                            <tr><td class="px-4 py-3">FullCalendar Standard and Preact</td><td class="px-4 py-3">MIT</td></tr>
-                            <tr><td class="px-4 py-3">Chart.js, its date adapter, date-fns, and @kurkle/color</td><td class="px-4 py-3">MIT</td></tr>
+                <div tabindex="0" role="region" aria-label="Bundled dependency licenses" class="docs-table-wrapper">
+                    <table class="docs-table">
+                        <caption class="sr-only">Bundled libraries and their licenses</caption>
+                        <thead><tr><th scope="col">Library</th><th scope="col">License</th></tr></thead>
+                        <tbody>
+                            <tr><td>Flatpickr</td><td>MIT</td></tr>
+                            <tr><td>libphonenumber-js and numbering metadata</td><td>MIT and Apache-2.0</td></tr>
+                            <tr><td>Tom Select, Sifter, Unicode Variants</td><td>Apache-2.0</td></tr>
+                            <tr><td>FilePond and bundled validation/preview plugins</td><td>MIT</td></tr>
+                            <tr><td>Tiptap, Tiptap UI, React, ProseMirror, Radix UI, Floating UI</td><td>MIT</td></tr>
+                            <tr><td>FullCalendar Standard and Preact</td><td>MIT</td></tr>
+                            <tr><td>Chart.js, its date adapter, date-fns, and @kurkle/color</td><td>MIT</td></tr>
                         </tbody>
                     </table>
                 </div>
