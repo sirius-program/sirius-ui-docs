@@ -24,9 +24,11 @@ Chart visibility/loading toggles are kept only in /development/chart for lifecyc
 
 Keep `sirius-ui` and `sirius-ui-docs` in sibling directories. Build the package with `npm ci` and `npm run build`, then run `composer install`, `npm ci`, and `npm run build` in docs. Provision application environment values yourself; agents must never access `.env` directly.
 
-Docs uses a Composer path repository at `../sirius-ui`, mapped to `dev-main`. On Windows Composer creates a junction; elsewhere it uses a symlink. Source changes are immediately visible, but package assets must be rebuilt. After changing package Composer metadata, run `composer update sirius/ui --with-dependencies` in docs.
+The default `composer.json` and `composer.lock` use the Packagist release `sirius/ui:^0.1`. For local development, the ignored `composer.local.json` uses a path repository at `../sirius-ui`, mapped to `dev-main`, with `require.sirius/ui` set to `dev-main`. It maintains a separate `composer.local.lock` while sharing the same `vendor` directory.
 
-If linking is unavailable, set the repository's `options.symlink` to `false`, run `composer reinstall sirius/ui`, and repeat that reinstall after package edits to refresh the mirrored copy. Never edit files under `vendor`.
+To switch to local development in PowerShell, run `$env:COMPOSER = 'composer.local.json'`, then `composer update sirius/ui --with-dependencies`, and finally `Remove-Item Env:COMPOSER`. On Windows Composer creates a junction; elsewhere it uses a symlink. Source changes are immediately visible, but package assets must be rebuilt. Repeat the local update after changing package Composer metadata. To return to the Packagist version, ensure `COMPOSER` is unset and run `composer install`, then rebuild docs assets.
+
+If linking is unavailable, set the local repository's `options.symlink` to `false`, run `composer reinstall sirius/ui` with the same local `COMPOSER` environment setting, and repeat that reinstall after package edits to refresh the mirrored copy. Never edit files under `vendor`.
 
 The docs stylesheet imports `vendor/sirius/ui/dist/sirius.css`, and `resources/js/app.js` imports `vendor/sirius/ui/dist/sirius.js`. Build package assets before building docs. The package script enables password visibility, readonly choice controls, and mixed checkbox state without depending on Alpine or Livewire JavaScript. Widget proofs use lazy, locally bundled JS/CSS imports; no runtime CDN is required and no second Alpine instance is installed. Docs use Sirius UI throughout, without a Flux dependency.
 
